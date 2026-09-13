@@ -1,0 +1,161 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+BURGER_SHOP_POS_SYSTEm
+</name>
+</assembly>
+<members>
+<member name="T:BURGER_SHOP_POS_SYSTEm.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="P:BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.burger">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.eye">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.hide">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.logo__3_">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.padlock">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.user">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="T:BURGER_SHOP_POS_SYSTEm._BURGER_POS_SYSTEM_SQLDataSet">
+<summary>
+Represents a strongly typed in-memory cache of data.
+</summary>
+</member>
+<member name="T:BURGER_SHOP_POS_SYSTEm._BURGER_POS_SYSTEM_SQLDataSet.adminacctsDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:BURGER_SHOP_POS_SYSTEm._BURGER_POS_SYSTEM_SQLDataSet.cashieracctsDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:BURGER_SHOP_POS_SYSTEm._BURGER_POS_SYSTEM_SQLDataSet.owneracctsDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
+<member name="T:BURGER_SHOP_POS_SYSTEm._BURGER_POS_SYSTEM_SQLDataSet.adminacctsRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:BURGER_SHOP_POS_SYSTEm._BURGER_POS_SYSTEM_SQLDataSet.cashieracctsRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:BURGER_SHOP_POS_SYSTEm._BURGER_POS_SYSTEM_SQLDataSet.owneracctsRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:BURGER_SHOP_POS_SYSTEm._BURGER_POS_SYSTEM_SQLDataSet.adminacctsRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:BURGER_SHOP_POS_SYSTEm._BURGER_POS_SYSTEM_SQLDataSet.cashieracctsRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:BURGER_SHOP_POS_SYSTEm._BURGER_POS_SYSTEM_SQLDataSet.owneracctsRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
+<member name="T:BURGER_SHOP_POS_SYSTEm._BURGER_POS_SYSTEM_SQLDataSetTableAdapters.adminacctsTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:BURGER_SHOP_POS_SYSTEm._BURGER_POS_SYSTEM_SQLDataSetTableAdapters.cashieracctsTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:BURGER_SHOP_POS_SYSTEm._BURGER_POS_SYSTEM_SQLDataSetTableAdapters.owneracctsTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:BURGER_SHOP_POS_SYSTEm._BURGER_POS_SYSTEM_SQLDataSetTableAdapters.TableAdapterManager">
+<summary>
+TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
+</summary>
+</member>
+<member name="M:BURGER_SHOP_POS_SYSTEm._BURGER_POS_SYSTEM_SQLDataSetTableAdapters.TableAdapterManager.UpdateUpdatedRows(BURGER_SHOP_POS_SYSTEm._BURGER_POS_SYSTEM_SQLDataSet,System.Collections.Generic.List{System.Data.DataRow},System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Update rows in top-down order.
+</summary>
+</member>
+<member name="M:BURGER_SHOP_POS_SYSTEm._BURGER_POS_SYSTEM_SQLDataSetTableAdapters.TableAdapterManager.UpdateInsertedRows(BURGER_SHOP_POS_SYSTEm._BURGER_POS_SYSTEM_SQLDataSet,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Insert rows in top-down order.
+</summary>
+</member>
+<member name="M:BURGER_SHOP_POS_SYSTEm._BURGER_POS_SYSTEM_SQLDataSetTableAdapters.TableAdapterManager.UpdateDeletedRows(BURGER_SHOP_POS_SYSTEm._BURGER_POS_SYSTEM_SQLDataSet,System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Delete rows in bottom-up order.
+</summary>
+</member>
+<member name="M:BURGER_SHOP_POS_SYSTEm._BURGER_POS_SYSTEM_SQLDataSetTableAdapters.TableAdapterManager.GetRealUpdatedRows(System.Data.DataRow[],System.Collections.Generic.List{System.Data.DataRow})">
+<summary>
+Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
+</summary>
+</member>
+<member name="M:BURGER_SHOP_POS_SYSTEm._BURGER_POS_SYSTEM_SQLDataSetTableAdapters.TableAdapterManager.UpdateAll(BURGER_SHOP_POS_SYSTEm._BURGER_POS_SYSTEM_SQLDataSet)">
+<summary>
+Update all changes to the dataset.
+</summary>
+</member>
+<member name="T:BURGER_SHOP_POS_SYSTEm._BURGER_POS_SYSTEM_SQLDataSetTableAdapters.TableAdapterManager.UpdateOrderOption">
+<summary>
+Update Order Option
+</summary>
+</member>
+<member name="T:BURGER_SHOP_POS_SYSTEm._BURGER_POS_SYSTEM_SQLDataSetTableAdapters.TableAdapterManager.SelfReferenceComparer">
+<summary>
+Used to sort self-referenced table's rows
+</summary>
+</member>
+</members>
+</doc>
