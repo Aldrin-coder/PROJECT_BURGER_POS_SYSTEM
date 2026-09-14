@@ -102,7 +102,7 @@ Public Class loginform
 
 
         If matcheddata Then
-            MsgBox("Login successful", MsgBoxStyle.Information, "Success")
+            MsgBox("Login Successful", MsgBoxStyle.Information, "Success")
             Me.Hide()
             matcheddata = False
             mainform.Show()
@@ -113,7 +113,7 @@ Public Class loginform
 
 
         Else
-            MsgBox("Invalid Username or Password for Selected role", MsgBoxStyle.Exclamation, "Error")
+            MsgBox("Invalid username or password for selected role", MsgBoxStyle.Exclamation, "Error")
             usertxb.Clear()
             passtxb.Clear()
             rolecb.SelectedIndex = -1
@@ -129,7 +129,7 @@ Public Class loginform
             exitbtn.Enabled = False
             attempt1.Visible = False
             timerattempt.Start()
-            MsgBox("You have login failed for 3 times continuously. Please try after " & secondsleft & " seconds.", MsgBoxStyle.Critical, "Locked")
+            MsgBox("You have login failed for 3 times continuously. Please try after " & secondsleft & " seconds.", MsgBoxStyle.Critical, "Attempt")
 
 
         End If
@@ -139,7 +139,7 @@ Public Class loginform
     Private Sub timerattempt_Tick(sender As Object, e As EventArgs) Handles timerattempt.Tick
 
         secondsleft -= 1
-        attempt1.Text = "Try again in " & secondsleft & " seconds remaining".ToString
+        attempt1.Text = "Locked! Try again in " & secondsleft & " seconds remaining".ToString
         attempt1.Visible = True
 
         If secondsleft <= 0 Then

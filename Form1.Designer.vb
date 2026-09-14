@@ -23,8 +23,10 @@ Partial Class loginform
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(loginform))
         Me.Loginformd = New Guna.UI2.WinForms.Guna2BorderlessForm(Me.components)
         Me.Guna2Panel1 = New Guna.UI2.WinForms.Guna2Panel()
+        Me.attempt1 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.rolecb = New Guna.UI2.WinForms.Guna2ComboBox()
         Me.Guna2HtmlLabel9 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.showpasschb = New Guna.UI2.WinForms.Guna2ImageCheckBox()
@@ -48,7 +50,6 @@ Partial Class loginform
         Me.Guna2CirclePictureBox1 = New Guna.UI2.WinForms.Guna2CirclePictureBox()
         Me.minimize1 = New Guna.UI2.WinForms.Guna2ControlBox()
         Me.timerattempt = New System.Windows.Forms.Timer(Me.components)
-        Me.attempt1 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2Panel1.SuspendLayout()
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Guna2CirclePictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -61,10 +62,12 @@ Partial Class loginform
         Me.Loginformd.AnimationType = Guna.UI2.WinForms.Guna2BorderlessForm.AnimateWindowType.AW_CENTER
         Me.Loginformd.BorderRadius = 40
         Me.Loginformd.ContainerControl = Me
+        Me.Loginformd.DockForm = False
         Me.Loginformd.DockIndicatorTransparencyValue = 0.6R
         Me.Loginformd.HasFormShadow = False
         Me.Loginformd.ResizeForm = False
         Me.Loginformd.ShadowColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.Loginformd.TransparentWhileDrag = True
         '
         'Guna2Panel1
         '
@@ -91,6 +94,17 @@ Partial Class loginform
         Me.Guna2Panel1.Padding = New System.Windows.Forms.Padding(10)
         Me.Guna2Panel1.Size = New System.Drawing.Size(349, 449)
         Me.Guna2Panel1.TabIndex = 0
+        '
+        'attempt1
+        '
+        Me.attempt1.BackColor = System.Drawing.Color.Transparent
+        Me.attempt1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.attempt1.ForeColor = System.Drawing.SystemColors.ButtonFace
+        Me.attempt1.Location = New System.Drawing.Point(32, 350)
+        Me.attempt1.Name = "attempt1"
+        Me.attempt1.Size = New System.Drawing.Size(84, 17)
+        Me.attempt1.TabIndex = 17
+        Me.attempt1.Text = "timerattempt"
         '
         'rolecb
         '
@@ -128,15 +142,15 @@ Partial Class loginform
         '
         'showpasschb
         '
-        Me.showpasschb.CheckedState.Image = Global.BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.hide
+        Me.showpasschb.CheckedState.Image = CType(resources.GetObject("resource.Image"), System.Drawing.Image)
         Me.showpasschb.CheckedState.ImageSize = New System.Drawing.Size(22, 22)
-        Me.showpasschb.Image = Global.BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.eye
+        Me.showpasschb.Image = CType(resources.GetObject("showpasschb.Image"), System.Drawing.Image)
         Me.showpasschb.ImageOffset = New System.Drawing.Point(0, 0)
         Me.showpasschb.ImageRotate = 0!
         Me.showpasschb.ImageSize = New System.Drawing.Size(22, 22)
-        Me.showpasschb.Location = New System.Drawing.Point(266, 230)
+        Me.showpasschb.Location = New System.Drawing.Point(268, 218)
         Me.showpasschb.Name = "showpasschb"
-        Me.showpasschb.Size = New System.Drawing.Size(40, 17)
+        Me.showpasschb.Size = New System.Drawing.Size(50, 43)
         Me.showpasschb.TabIndex = 14
         Me.showpasschb.UseTransparentBackground = True
         '
@@ -180,6 +194,7 @@ Partial Class loginform
         '
         Me.passtxb.Animated = True
         Me.passtxb.AutoRoundedCorners = True
+        Me.passtxb.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.passtxb.BorderColor = System.Drawing.Color.Black
         Me.passtxb.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.passtxb.DefaultText = ""
@@ -209,6 +224,7 @@ Partial Class loginform
         '
         Me.usertxb.Animated = True
         Me.usertxb.AutoRoundedCorners = True
+        Me.usertxb.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.usertxb.BorderColor = System.Drawing.Color.Black
         Me.usertxb.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.usertxb.DefaultText = ""
@@ -341,12 +357,12 @@ Partial Class loginform
         Me.Guna2Shapes3.BorderThickness = 1
         Me.Guna2Shapes3.FillColor = System.Drawing.Color.Orange
         Me.Guna2Shapes3.LineThickness = 3
-        Me.Guna2Shapes3.Location = New System.Drawing.Point(1, 709)
+        Me.Guna2Shapes3.Location = New System.Drawing.Point(-5, 709)
         Me.Guna2Shapes3.Name = "Guna2Shapes3"
         Me.Guna2Shapes3.PolygonSkip = 1
         Me.Guna2Shapes3.Rotate = 0!
         Me.Guna2Shapes3.Shape = Guna.UI2.WinForms.Enums.ShapeType.Line
-        Me.Guna2Shapes3.Size = New System.Drawing.Size(164, 34)
+        Me.Guna2Shapes3.Size = New System.Drawing.Size(170, 34)
         Me.Guna2Shapes3.TabIndex = 14
         Me.Guna2Shapes3.Text = "Guna2Shapes3"
         Me.Guna2Shapes3.UseTransparentBackground = True
@@ -359,12 +375,12 @@ Partial Class loginform
         Me.Guna2Shapes4.BorderThickness = 1
         Me.Guna2Shapes4.FillColor = System.Drawing.Color.Orange
         Me.Guna2Shapes4.LineThickness = 3
-        Me.Guna2Shapes4.Location = New System.Drawing.Point(211, 709)
+        Me.Guna2Shapes4.Location = New System.Drawing.Point(216, 709)
         Me.Guna2Shapes4.Name = "Guna2Shapes4"
         Me.Guna2Shapes4.PolygonSkip = 1
         Me.Guna2Shapes4.Rotate = 0!
         Me.Guna2Shapes4.Shape = Guna.UI2.WinForms.Enums.ShapeType.Line
-        Me.Guna2Shapes4.Size = New System.Drawing.Size(175, 34)
+        Me.Guna2Shapes4.Size = New System.Drawing.Size(166, 34)
         Me.Guna2Shapes4.TabIndex = 17
         Me.Guna2Shapes4.Text = "Guna2Shapes4"
         Me.Guna2Shapes4.UseTransparentBackground = True
@@ -375,7 +391,7 @@ Partial Class loginform
         Me.Guna2HtmlLabel7.BackColor = System.Drawing.Color.Transparent
         Me.Guna2HtmlLabel7.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Guna2HtmlLabel7.ForeColor = System.Drawing.Color.White
-        Me.Guna2HtmlLabel7.Location = New System.Drawing.Point(93, 761)
+        Me.Guna2HtmlLabel7.Location = New System.Drawing.Point(99, 756)
         Me.Guna2HtmlLabel7.Name = "Guna2HtmlLabel7"
         Me.Guna2HtmlLabel7.Size = New System.Drawing.Size(187, 21)
         Me.Guna2HtmlLabel7.TabIndex = 14
@@ -386,7 +402,7 @@ Partial Class loginform
         Me.Guna2HtmlLabel8.BackColor = System.Drawing.Color.Transparent
         Me.Guna2HtmlLabel8.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Guna2HtmlLabel8.ForeColor = System.Drawing.Color.White
-        Me.Guna2HtmlLabel8.Location = New System.Drawing.Point(51, 786)
+        Me.Guna2HtmlLabel8.Location = New System.Drawing.Point(57, 781)
         Me.Guna2HtmlLabel8.Name = "Guna2HtmlLabel8"
         Me.Guna2HtmlLabel8.Size = New System.Drawing.Size(280, 21)
         Me.Guna2HtmlLabel8.TabIndex = 18
@@ -397,9 +413,9 @@ Partial Class loginform
         Me.Guna2PictureBox1.BackColor = System.Drawing.Color.Transparent
         Me.Guna2PictureBox1.Image = Global.BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.burger
         Me.Guna2PictureBox1.ImageRotate = 0!
-        Me.Guna2PictureBox1.Location = New System.Drawing.Point(166, 702)
+        Me.Guna2PictureBox1.Location = New System.Drawing.Point(171, 705)
         Me.Guna2PictureBox1.Name = "Guna2PictureBox1"
-        Me.Guna2PictureBox1.Size = New System.Drawing.Size(39, 41)
+        Me.Guna2PictureBox1.Size = New System.Drawing.Size(39, 38)
         Me.Guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.Guna2PictureBox1.TabIndex = 16
         Me.Guna2PictureBox1.TabStop = False
@@ -410,10 +426,10 @@ Partial Class loginform
         Me.Guna2CirclePictureBox1.BackColor = System.Drawing.Color.Transparent
         Me.Guna2CirclePictureBox1.Image = Global.BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.logo__3_
         Me.Guna2CirclePictureBox1.ImageRotate = 0!
-        Me.Guna2CirclePictureBox1.Location = New System.Drawing.Point(44, 27)
+        Me.Guna2CirclePictureBox1.Location = New System.Drawing.Point(47, 27)
         Me.Guna2CirclePictureBox1.Name = "Guna2CirclePictureBox1"
         Me.Guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
-        Me.Guna2CirclePictureBox1.Size = New System.Drawing.Size(118, 173)
+        Me.Guna2CirclePictureBox1.Size = New System.Drawing.Size(115, 173)
         Me.Guna2CirclePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.Guna2CirclePictureBox1.TabIndex = 4
         Me.Guna2CirclePictureBox1.TabStop = False
@@ -439,17 +455,6 @@ Partial Class loginform
         'timerattempt
         '
         Me.timerattempt.Interval = 1000
-        '
-        'attempt1
-        '
-        Me.attempt1.BackColor = System.Drawing.Color.Transparent
-        Me.attempt1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.attempt1.ForeColor = System.Drawing.SystemColors.ButtonFace
-        Me.attempt1.Location = New System.Drawing.Point(32, 350)
-        Me.attempt1.Name = "attempt1"
-        Me.attempt1.Size = New System.Drawing.Size(84, 17)
-        Me.attempt1.TabIndex = 17
-        Me.attempt1.Text = "timerattempt"
         '
         'loginform
         '
