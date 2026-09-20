@@ -38,19 +38,66 @@ Public Class loginform
 
     Private Sub loginbtn_Click(sender As Object, e As EventArgs) Handles loginbtn.Click
         If usertxb.Text = "" And passtxb.Text = "" Then
+            MsgBox("Please Fill up the Fields.", MsgBoxStyle.Exclamation, "Error")
+            Return
+        End If
 
-            MsgBox("Please enter your login credentials.", MsgBoxStyle.Exclamation, "Error")
-            Return
-        ElseIf usertxb.Text = "" Then
+        ' --- Username validation ---
+        Dim username As String = usertxb.Text.Trim()
 
-            MsgBox("Please enter a username.", MsgBoxStyle.Exclamation, "Error")
+        If username.Length = 0 Then
+            uservalm.Text = "⚠️ Please enter a username."
+            uservalm.ForeColor = Color.Tomato
+            uservalm.Visible = True
             Return
-        ElseIf passtxb.Text = "" Then
-            MsgBox("Please enter a password.", MsgBoxStyle.Exclamation, "Error")
-            Return
-        Else
 
         End If
+        If username.Length < 6 Then
+            uservalm.Text = "⚠️ Usernames require a minimum of 6 characters."
+            uservalm.ForeColor = Color.Tomato
+            uservalm.Visible = True
+            Return
+        Else
+            uservalm.Visible = False
+        End If
+
+        Dim pass As String = passtxb.Text.Trim()
+
+        If pass.Length = 0 Then
+            Passvalm.Text = "⚠️ Please enter a Password"
+            Passvalm.Visible = True
+            Passvalm.ForeColor = Color.Tomato
+            Return
+        ElseIf pass.Length < 8 Then
+            Passvalm.Text = "⚠️ Password require a minimum of 8 characters."
+            Passvalm.ForeColor = Color.Tomato
+            Passvalm.Visible = True
+            Return
+        End If
+
+        Dim hasCapital As Boolean = Regex.IsMatch(pass, "[A-Z]")
+        Dim hasNumber As Boolean = Regex.IsMatch(pass, "[0-9]")
+
+        If Not hasCapital AndAlso Not hasNumber Then
+            Passvalm.Text = "⚠️ Passwords must contain one uppercase letter and one number."
+            Passvalm.ForeColor = Color.Tomato
+            Passvalm.Visible = True
+            Return
+        ElseIf Not hasCapital Then
+            Passvalm.Text = "⚠️ Password must contain at least one Capital letter."
+            Passvalm.ForeColor = Color.Tomato
+            Passvalm.Visible = True
+            Return
+        ElseIf Not hasNumber Then
+            Passvalm.Text = "⚠️ Password must contain at least one Number."
+            Passvalm.ForeColor = Color.Tomato
+            Passvalm.Visible = True
+            Return
+        Else
+            Passvalm.Visible = False
+        End If
+
+
 
 
 
@@ -68,7 +115,7 @@ Public Class loginform
 
 
         If matcheddata Then
-            MsgBox("Login Successful", MsgBoxStyle.Information, "Success")
+            MsgBox("Login Successful ", MsgBoxStyle.Information, "Success")
             Me.Hide()
             matcheddata = False
             mainform.Show()
@@ -135,95 +182,12 @@ Public Class loginform
         End If
     End Sub
 
-    Private Function usernamevalid()
-
-        Dim username As String = usertxb.Text.Trim()
-
-
-        If username.Length = 0 Then
-            uservalm.Text = ""
-            uservalm.Visible = True
-
-
-            Return True
-        ElseIf username.Length < 6 Then
-            uservalm.Text = "⚠️ Usernames require a minimum of 6 characters."
-            uservalm.ForeColor = Color.Tomato
-            uservalm.Visible = True
-
-            Return True
-
-        Else
-            uservalm.Visible = False
-
-
-
-            Return True
-        End If
-    End Function
-    Private Function passvalid()
-        Dim pass As String = passtxb.Text
-
-        If pass.Length = 0 Then
-            Passvalm.Text = ""
-            Passvalm.Visible = False
-
-            Return False
-        ElseIf pass.Length < 8 Then
-
-            Passvalm.Text = "⚠️ Password require a minimum of 8 characters."
-            Passvalm.ForeColor = Color.Tomato
-            Passvalm.Visible = True
-
-
-
-            Return False
-        End If
-        Dim hasCapital As Boolean = Regex.IsMatch(pass, "[A-Z]")
-        Dim hasNumber As Boolean = Regex.IsMatch(pass, "[0-9]")
-
-        If Not hasCapital AndAlso Not hasNumber Then
-            Passvalm.Text = "⚠️ Passwords require one uppercase letter and one number."
-            Passvalm.ForeColor = Color.Tomato
-            Passvalm.Visible = True
-
-
-            Return False
-        ElseIf Not hasCapital Then
-            Passvalm.Text = "⚠️ Passwords require one uppercase letter."
-            Passvalm.ForeColor = Color.Tomato
-            Passvalm.Visible = True
-
-
-
-            Return False
-        ElseIf Not hasNumber Then
-            Passvalm.Text = "⚠️ Passwords require one number."
-            Passvalm.ForeColor = Color.Tomato
-            Passvalm.Visible = True
-
-            Return False
-        Else
-            Passvalm.Visible = False
-
-            Return True
-        End If
-
-
-
-    End Function
 
 
 
 
-    Private Sub usertxb_TextChanged(sender As Object, e As EventArgs) Handles usertxb.TextChanged
-        usernamevalid()
 
-    End Sub
 
-    Private Sub passtxb_TextChanged(sender As Object, e As EventArgs) Handles passtxb.TextChanged
-        passvalid()
-    End Sub
 
 
 End Class
