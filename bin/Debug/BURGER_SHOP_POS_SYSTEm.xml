@@ -22,7 +22,72 @@ BURGER_SHOP_POS_SYSTEm
   resource lookups using this strongly typed resource class.
 </summary>
 </member>
+<member name="P:BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.aasas">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.adfadfafqweqeqeqwe">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.asas_1_">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.asasasa">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.asasasa1">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.asasasas">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.ASDAASD">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.Black_and_White_Minimalist_Brand_Identity_Logo">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.Black_and_White_Minimalist_Brand_Identity_Logo1">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.burger">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.Capture20260919122142">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.ee364dae_05c3_46d3_b11d_c5337115f666">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.ee364dae_05c3_46d3_b11d_c5337115f6661">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.ee364dae_05c3_46d3_b11d_c5337115f6662">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
@@ -37,12 +102,107 @@ BURGER_SHOP_POS_SYSTEm
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="P:BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.images">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.images__1_">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.images__1_1">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.images__2_">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.images__2_1">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.login">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.logo__3_">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member>
 <member name="P:BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.padlock">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.PAPA_BURGER">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.PAPA_BURGER__1_">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.papa_burger_logo_crop">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.papa_burger_logo_transparent">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.papa_burger_photo_1">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.papa_burger_photo_2">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.papa_burger_photo_3">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.PAPA_BURGER1">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.PAPA_BURGER2">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.qweqweqweqwe">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.qweqweqweqwe1">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.sdasdsad">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.sdasdsad_removebg_preview">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>

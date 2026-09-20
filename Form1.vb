@@ -1,6 +1,4 @@
-﻿Imports System.Diagnostics.Eventing.Reader
-Imports System.Text
-
+﻿Imports System.Text.RegularExpressions
 Public Class loginform
     Dim matcheddata As Boolean = False
     Dim failedAttempts As Integer = 0
@@ -8,29 +6,25 @@ Public Class loginform
     Dim secondsleft As Integer = 60
 
 
-
     Private Sub loginform_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         conn()
-        roles()
-        attempt1.Visible = False
+
+
+        attempt.Visible = False
+        uservalm.Visible = False
+        Passvalm.Visible = False
+
+
     End Sub
+
 
     Private Sub exitbtn_Click(sender As Object, e As EventArgs) Handles exitbtn.Click
         Me.Close()
     End Sub
 
-    Sub roles()
-        rolecb.Items.Clear()
-        With rolecb.Items
-            .Add("OWNER")
-            .Add("ADMIN")
-            .Add("CASHIER")
 
-            rolecb.SelectedIndex = -1
 
-        End With
-    End Sub
-    Private Sub minimize1_Click(sender As Object, e As EventArgs) Handles minimize1.Click
+    Private Sub minimize1_Click(sender As Object, e As EventArgs)
         Me.WindowState = FormWindowState.Minimized
     End Sub
 
@@ -43,53 +37,25 @@ Public Class loginform
     End Sub
 
     Private Sub loginbtn_Click(sender As Object, e As EventArgs) Handles loginbtn.Click
-        If usertxb.Text = "" And passtxb.Text = "" And rolecb.SelectedIndex = -1 Then
-            MsgBox("Please fill up all the fields", MsgBoxStyle.Exclamation, "Error")
+        If usertxb.Text = "" And passtxb.Text = "" Then
+
+            MsgBox("Please enter your login credentials.", MsgBoxStyle.Exclamation, "Error")
             Return
         ElseIf usertxb.Text = "" Then
-            MsgBox("Please enter your username", MsgBoxStyle.Exclamation, "Error")
-            usertxb.Focus()
+
+            MsgBox("Please enter a username.", MsgBoxStyle.Exclamation, "Error")
             Return
         ElseIf passtxb.Text = "" Then
-            MsgBox("Please enter your password", MsgBoxStyle.Exclamation, "Error")
-            passtxb.Focus()
+            MsgBox("Please enter a password.", MsgBoxStyle.Exclamation, "Error")
             Return
-        ElseIf rolecb.SelectedIndex = -1 Then
-            MsgBox("Please select a role", MsgBoxStyle.Exclamation, "Error")
-            rolecb.Focus()
-            Return
-
-        End If
-
-
-        Dim table As String = ""
-        Dim idcolumn As String = ""
-
-        If rolecb.SelectedItem = "OWNER" Then
-            table = "owneraccts"
-            idcolumn = "ownerid"
-
-        ElseIf rolecb.SelectedItem = "ADMIN" Then
-            table = "adminaccts"
-            idcolumn = "adminid"
-
-        ElseIf rolecb.SelectedItem = "CASHIER" Then
-            table = "cashieraccts"
-            idcolumn = "cashierid"
-
-
         Else
-            MsgBox("Invalid role selected", MsgBoxStyle.Exclamation, "Error")
-            Return
+
         End If
 
-        matcheddata = False
 
 
-        query = "SELECT * FROM " & table & " WHERE   username = @username AND password = @password"
+        query = "SELECT * FROM User_Accounts WHERE USERNAME = '" & usertxb.Text & "' AND PASSWORD = '" & passtxb.Text & "'"
         cmd = New SqlClient.SqlCommand(query, sqlconn)
-        cmd.Parameters.AddWithValue("@username", usertxb.Text)
-        cmd.Parameters.AddWithValue("@password", passtxb.Text)
 
         dr = cmd.ExecuteReader()
 
@@ -108,15 +74,15 @@ Public Class loginform
             mainform.Show()
             usertxb.Clear()
             passtxb.Clear()
-            rolecb.SelectedIndex = -1
+
             failedAttempts = 0
 
 
         Else
-            MsgBox("Invalid username or password for selected role", MsgBoxStyle.Exclamation, "Error")
+            MsgBox("Invalid Credentials", MsgBoxStyle.Exclamation, "Error")
             usertxb.Clear()
             passtxb.Clear()
-            rolecb.SelectedIndex = -1
+
             failedAttempts += 1
 
         End If
@@ -124,45 +90,140 @@ Public Class loginform
         If failedAttempts >= maxtries Then
             usertxb.Enabled = False
             passtxb.Enabled = False
-            rolecb.Enabled = False
+
             loginbtn.Enabled = False
             exitbtn.Enabled = False
-            attempt1.Visible = False
+            showpasschb.Enabled = False
+            attempt.Visible = False
+
             timerattempt.Start()
             MsgBox("You have login failed for 3 times continuously. Please try after " & secondsleft & " seconds.", MsgBoxStyle.Critical, "Attempt")
 
-
         End If
+
 
     End Sub
 
     Private Sub timerattempt_Tick(sender As Object, e As EventArgs) Handles timerattempt.Tick
 
         secondsleft -= 1
-        attempt1.Text = "Locked! Try again in " & secondsleft & " seconds remaining".ToString
-        attempt1.Visible = True
+
+
+        attempt.Text = "⚠️ Account locked ! Please try again in <strong>" & secondsleft & "</strong> seconds.".ToString
+        attempt.ForeColor = Color.Tomato
+
+        attempt.Visible = True
 
         If secondsleft <= 0 Then
             timerattempt.Stop()
             usertxb.Enabled = True
             passtxb.Enabled = True
-            rolecb.Enabled = True
+            showpasschb.Enabled = True
             loginbtn.Enabled = True
             exitbtn.Enabled = True
 
 
             failedAttempts = 0
             MsgBox("You can try again now.", MsgBoxStyle.Information, "Unlocked")
-            attempt1.Visible = False
+            attempt.Visible = False
             usertxb.Enabled = True
             passtxb.Enabled = True
-            rolecb.Enabled = True
+
             loginbtn.Enabled = True
             exitbtn.Enabled = True
             Return
         End If
+    End Sub
+
+    Private Function usernamevalid()
+
+        Dim username As String = usertxb.Text.Trim()
 
 
+        If username.Length = 0 Then
+            uservalm.Text = ""
+            uservalm.Visible = True
+
+
+            Return True
+        ElseIf username.Length < 6 Then
+            uservalm.Text = "⚠️ Usernames require a minimum of 6 characters."
+            uservalm.ForeColor = Color.Tomato
+            uservalm.Visible = True
+
+            Return True
+
+        Else
+            uservalm.Visible = False
+
+
+
+            Return True
+        End If
+    End Function
+    Private Function passvalid()
+        Dim pass As String = passtxb.Text
+
+        If pass.Length = 0 Then
+            Passvalm.Text = ""
+            Passvalm.Visible = False
+
+            Return False
+        ElseIf pass.Length < 8 Then
+
+            Passvalm.Text = "⚠️ Password require a minimum of 8 characters."
+            Passvalm.ForeColor = Color.Tomato
+            Passvalm.Visible = True
+
+
+
+            Return False
+        End If
+        Dim hasCapital As Boolean = Regex.IsMatch(pass, "[A-Z]")
+        Dim hasNumber As Boolean = Regex.IsMatch(pass, "[0-9]")
+
+        If Not hasCapital AndAlso Not hasNumber Then
+            Passvalm.Text = "⚠️ Passwords require one uppercase letter and one number."
+            Passvalm.ForeColor = Color.Tomato
+            Passvalm.Visible = True
+
+
+            Return False
+        ElseIf Not hasCapital Then
+            Passvalm.Text = "⚠️ Passwords require one uppercase letter."
+            Passvalm.ForeColor = Color.Tomato
+            Passvalm.Visible = True
+
+
+
+            Return False
+        ElseIf Not hasNumber Then
+            Passvalm.Text = "⚠️ Passwords require one number."
+            Passvalm.ForeColor = Color.Tomato
+            Passvalm.Visible = True
+
+            Return False
+        Else
+            Passvalm.Visible = False
+
+            Return True
+        End If
+
+
+
+    End Function
+
+
+
+
+    Private Sub usertxb_TextChanged(sender As Object, e As EventArgs) Handles usertxb.TextChanged
+        usernamevalid()
 
     End Sub
+
+    Private Sub passtxb_TextChanged(sender As Object, e As EventArgs) Handles passtxb.TextChanged
+        passvalid()
+    End Sub
+
+
 End Class

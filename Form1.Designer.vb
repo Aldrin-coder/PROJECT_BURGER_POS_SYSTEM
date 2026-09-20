@@ -25,34 +25,49 @@ Partial Class loginform
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(loginform))
         Me.Loginformd = New Guna.UI2.WinForms.Guna2BorderlessForm(Me.components)
-        Me.Guna2Panel1 = New Guna.UI2.WinForms.Guna2Panel()
-        Me.attempt1 = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.rolecb = New Guna.UI2.WinForms.Guna2ComboBox()
-        Me.Guna2HtmlLabel9 = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.showpasschb = New Guna.UI2.WinForms.Guna2ImageCheckBox()
-        Me.exitbtn = New Guna.UI2.WinForms.Guna2Button()
-        Me.loginbtn = New Guna.UI2.WinForms.Guna2Button()
-        Me.passtxb = New Guna.UI2.WinForms.Guna2TextBox()
-        Me.usertxb = New Guna.UI2.WinForms.Guna2TextBox()
-        Me.Guna2HtmlLabel6 = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.Guna2Shapes2 = New Guna.UI2.WinForms.Guna2Shapes()
-        Me.Guna2Shapes1 = New Guna.UI2.WinForms.Guna2Shapes()
+        Me.timerattempt = New System.Windows.Forms.Timer(Me.components)
         Me.Guna2HtmlLabel5 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.Guna2DragControl1 = New Guna.UI2.WinForms.Guna2DragControl(Me.components)
+        Me.Guna2GradientPanel2 = New Guna.UI2.WinForms.Guna2GradientPanel()
+        Me.minimize = New Guna.UI2.WinForms.Guna2ControlBox()
+        Me.Guna2Panel1 = New Guna.UI2.WinForms.Guna2Panel()
+        Me.loginpanel = New Guna.UI2.WinForms.Guna2Panel()
+        Me.Passvalm = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.uservalm = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.attempt = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.Guna2HtmlLabel15 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.Guna2HtmlLabel14 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.Guna2HtmlLabel13 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.Guna2HtmlLabel12 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.Guna2HtmlLabel11 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.Guna2HtmlLabel10 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.Guna2Shapes3 = New Guna.UI2.WinForms.Guna2Shapes()
+        Me.Guna2Shapes5 = New Guna.UI2.WinForms.Guna2Shapes()
+        Me.Guna2Shapes6 = New Guna.UI2.WinForms.Guna2Shapes()
+        Me.Guna2PictureBox2 = New Guna.UI2.WinForms.Guna2PictureBox()
+        Me.Guna2PictureBox4 = New Guna.UI2.WinForms.Guna2PictureBox()
+        Me.loginbtn = New Guna.UI2.WinForms.Guna2Button()
+        Me.exitbtn = New Guna.UI2.WinForms.Guna2Button()
+        Me.Guna2Shapes2 = New Guna.UI2.WinForms.Guna2Shapes()
+        Me.usertxb = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.showpasschb = New Guna.UI2.WinForms.Guna2ImageCheckBox()
+        Me.passtxb = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.Guna2PictureBox3 = New Guna.UI2.WinForms.Guna2PictureBox()
+        Me.Guna2HtmlLabel9 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.Guna2DragControl2 = New Guna.UI2.WinForms.Guna2DragControl(Me.components)
+        Me.Guna2DragControl3 = New Guna.UI2.WinForms.Guna2DragControl(Me.components)
+        Me.Guna2HtmlLabel6 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2HtmlLabel4 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2HtmlLabel1 = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.Guna2HtmlLabel2 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2HtmlLabel3 = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.Guna2Shapes3 = New Guna.UI2.WinForms.Guna2Shapes()
-        Me.Guna2Shapes4 = New Guna.UI2.WinForms.Guna2Shapes()
+        Me.Guna2HtmlLabel2 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2HtmlLabel7 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2HtmlLabel8 = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.Guna2PictureBox1 = New Guna.UI2.WinForms.Guna2PictureBox()
-        Me.Guna2CirclePictureBox1 = New Guna.UI2.WinForms.Guna2CirclePictureBox()
-        Me.minimize1 = New Guna.UI2.WinForms.Guna2ControlBox()
-        Me.timerattempt = New System.Windows.Forms.Timer(Me.components)
-        Me.Guna2Panel1.SuspendLayout()
-        CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Guna2CirclePictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Guna2GradientPanel2.SuspendLayout()
+        Me.loginpanel.SuspendLayout()
+        CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Guna2PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Guna2PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Loginformd
@@ -64,137 +79,407 @@ Partial Class loginform
         Me.Loginformd.ContainerControl = Me
         Me.Loginformd.DockForm = False
         Me.Loginformd.DockIndicatorTransparencyValue = 0.6R
-        Me.Loginformd.HasFormShadow = False
         Me.Loginformd.ResizeForm = False
-        Me.Loginformd.ShadowColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.Loginformd.TransparentWhileDrag = True
+        '
+        'timerattempt
+        '
+        Me.timerattempt.Interval = 1000
+        '
+        'Guna2HtmlLabel5
+        '
+        Me.Guna2HtmlLabel5.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2HtmlLabel5.Font = New System.Drawing.Font("Microsoft PhagsPa", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Guna2HtmlLabel5.ForeColor = System.Drawing.Color.White
+        Me.Guna2HtmlLabel5.Location = New System.Drawing.Point(170, 3)
+        Me.Guna2HtmlLabel5.Name = "Guna2HtmlLabel5"
+        Me.Guna2HtmlLabel5.Size = New System.Drawing.Size(77, 34)
+        Me.Guna2HtmlLabel5.TabIndex = 6
+        Me.Guna2HtmlLabel5.Text = "LOGIN"
+        Me.Guna2HtmlLabel5.TextAlignment = System.Drawing.ContentAlignment.TopCenter
+        '
+        'Guna2DragControl1
+        '
+        Me.Guna2DragControl1.DockIndicatorTransparencyValue = 0.6R
+        Me.Guna2DragControl1.TargetControl = Me.Guna2GradientPanel2
+        Me.Guna2DragControl1.UseTransparentDrag = True
+        '
+        'Guna2GradientPanel2
+        '
+        Me.Guna2GradientPanel2.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2GradientPanel2.BackgroundImage = Global.BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.PAPA_BURGER2
+        Me.Guna2GradientPanel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Guna2GradientPanel2.Controls.Add(Me.minimize)
+        Me.Guna2GradientPanel2.Controls.Add(Me.Guna2Panel1)
+        Me.Guna2GradientPanel2.Controls.Add(Me.loginpanel)
+        Me.Guna2GradientPanel2.Controls.Add(Me.Guna2PictureBox3)
+        Me.Guna2GradientPanel2.Controls.Add(Me.Guna2HtmlLabel9)
+        Me.Guna2GradientPanel2.Location = New System.Drawing.Point(-21, -2)
+        Me.Guna2GradientPanel2.Name = "Guna2GradientPanel2"
+        Me.Guna2GradientPanel2.Size = New System.Drawing.Size(1604, 974)
+        Me.Guna2GradientPanel2.TabIndex = 38
+        '
+        'minimize
+        '
+        Me.minimize.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.minimize.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MinimizeBox
+        Me.minimize.FillColor = System.Drawing.Color.Transparent
+        Me.minimize.HoverState.BorderColor = System.Drawing.Color.Transparent
+        Me.minimize.HoverState.FillColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.minimize.IconColor = System.Drawing.Color.White
+        Me.minimize.Location = New System.Drawing.Point(1483, 0)
+        Me.minimize.Name = "minimize"
+        Me.minimize.PressedColor = System.Drawing.Color.Red
+        Me.minimize.Size = New System.Drawing.Size(85, 28)
+        Me.minimize.TabIndex = 36
         '
         'Guna2Panel1
         '
-        Me.Guna2Panel1.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2Panel1.BorderColor = System.Drawing.SystemColors.GradientActiveCaption
-        Me.Guna2Panel1.BorderRadius = 25
+        Me.Guna2Panel1.BorderColor = System.Drawing.Color.White
         Me.Guna2Panel1.BorderThickness = 2
-        Me.Guna2Panel1.Controls.Add(Me.attempt1)
-        Me.Guna2Panel1.Controls.Add(Me.rolecb)
-        Me.Guna2Panel1.Controls.Add(Me.Guna2HtmlLabel9)
-        Me.Guna2Panel1.Controls.Add(Me.showpasschb)
-        Me.Guna2Panel1.Controls.Add(Me.exitbtn)
-        Me.Guna2Panel1.Controls.Add(Me.loginbtn)
-        Me.Guna2Panel1.Controls.Add(Me.passtxb)
-        Me.Guna2Panel1.Controls.Add(Me.usertxb)
-        Me.Guna2Panel1.Controls.Add(Me.Guna2HtmlLabel6)
-        Me.Guna2Panel1.Controls.Add(Me.Guna2Shapes2)
-        Me.Guna2Panel1.Controls.Add(Me.Guna2Shapes1)
-        Me.Guna2Panel1.Controls.Add(Me.Guna2HtmlLabel5)
-        Me.Guna2Panel1.Controls.Add(Me.Guna2HtmlLabel4)
-        Me.Guna2Panel1.FillColor = System.Drawing.Color.Firebrick
-        Me.Guna2Panel1.Location = New System.Drawing.Point(19, 226)
+        Me.Guna2Panel1.FillColor = System.Drawing.Color.FromArgb(CType(CType(34, Byte), Integer), CType(CType(68, Byte), Integer), CType(CType(125, Byte), Integer))
+        Me.Guna2Panel1.Location = New System.Drawing.Point(0, 940)
         Me.Guna2Panel1.Name = "Guna2Panel1"
-        Me.Guna2Panel1.Padding = New System.Windows.Forms.Padding(10)
-        Me.Guna2Panel1.Size = New System.Drawing.Size(349, 449)
-        Me.Guna2Panel1.TabIndex = 0
+        Me.Guna2Panel1.Size = New System.Drawing.Size(1568, 78)
+        Me.Guna2Panel1.TabIndex = 35
         '
-        'attempt1
+        'loginpanel
         '
-        Me.attempt1.BackColor = System.Drawing.Color.Transparent
-        Me.attempt1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.attempt1.ForeColor = System.Drawing.SystemColors.ButtonFace
-        Me.attempt1.Location = New System.Drawing.Point(32, 350)
-        Me.attempt1.Name = "attempt1"
-        Me.attempt1.Size = New System.Drawing.Size(84, 17)
-        Me.attempt1.TabIndex = 17
-        Me.attempt1.Text = "timerattempt"
+        Me.loginpanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.loginpanel.BackColor = System.Drawing.Color.Transparent
+        Me.loginpanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.loginpanel.BorderColor = System.Drawing.Color.Pink
+        Me.loginpanel.BorderRadius = 25
+        Me.loginpanel.BorderThickness = 2
+        Me.loginpanel.Controls.Add(Me.Passvalm)
+        Me.loginpanel.Controls.Add(Me.uservalm)
+        Me.loginpanel.Controls.Add(Me.attempt)
+        Me.loginpanel.Controls.Add(Me.Guna2HtmlLabel15)
+        Me.loginpanel.Controls.Add(Me.Guna2HtmlLabel14)
+        Me.loginpanel.Controls.Add(Me.Guna2HtmlLabel13)
+        Me.loginpanel.Controls.Add(Me.Guna2HtmlLabel12)
+        Me.loginpanel.Controls.Add(Me.Guna2HtmlLabel11)
+        Me.loginpanel.Controls.Add(Me.Guna2HtmlLabel10)
+        Me.loginpanel.Controls.Add(Me.Guna2Shapes3)
+        Me.loginpanel.Controls.Add(Me.Guna2Shapes5)
+        Me.loginpanel.Controls.Add(Me.Guna2Shapes6)
+        Me.loginpanel.Controls.Add(Me.Guna2PictureBox2)
+        Me.loginpanel.Controls.Add(Me.Guna2PictureBox4)
+        Me.loginpanel.Controls.Add(Me.loginbtn)
+        Me.loginpanel.Controls.Add(Me.exitbtn)
+        Me.loginpanel.Controls.Add(Me.Guna2Shapes2)
+        Me.loginpanel.Controls.Add(Me.usertxb)
+        Me.loginpanel.Controls.Add(Me.showpasschb)
+        Me.loginpanel.Controls.Add(Me.passtxb)
+        Me.loginpanel.CustomBorderThickness = New System.Windows.Forms.Padding(10, 0, 0, 0)
+        Me.loginpanel.FillColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(26, Byte), Integer), CType(CType(19, Byte), Integer))
+        Me.loginpanel.ForeColor = System.Drawing.Color.Transparent
+        Me.loginpanel.Location = New System.Drawing.Point(607, 161)
+        Me.loginpanel.Name = "loginpanel"
+        Me.loginpanel.Size = New System.Drawing.Size(443, 742)
+        Me.loginpanel.TabIndex = 30
         '
-        'rolecb
+        'Passvalm
         '
-        Me.rolecb.AutoRoundedCorners = True
-        Me.rolecb.BackColor = System.Drawing.Color.Transparent
-        Me.rolecb.BorderColor = System.Drawing.Color.Black
-        Me.rolecb.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
-        Me.rolecb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.rolecb.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.rolecb.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.rolecb.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.rolecb.ForeColor = System.Drawing.Color.Black
-        Me.rolecb.ItemHeight = 30
-        Me.rolecb.ItemsAppearance.BackColor = System.Drawing.Color.White
-        Me.rolecb.ItemsAppearance.SelectedBackColor = System.Drawing.Color.LightGreen
-        Me.rolecb.ItemsAppearance.SelectedFont = New System.Drawing.Font("Microsoft YaHei UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.rolecb.ItemsAppearance.SelectedForeColor = System.Drawing.Color.Red
-        Me.rolecb.Location = New System.Drawing.Point(28, 308)
-        Me.rolecb.Name = "rolecb"
-        Me.rolecb.Size = New System.Drawing.Size(290, 36)
-        Me.rolecb.TabIndex = 16
-        Me.rolecb.TextOffset = New System.Drawing.Point(8, 0)
-        Me.rolecb.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.UpperCase
+        Me.Passvalm.BackColor = System.Drawing.Color.Transparent
+        Me.Passvalm.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Passvalm.ForeColor = System.Drawing.Color.White
+        Me.Passvalm.Location = New System.Drawing.Point(47, 478)
+        Me.Passvalm.Name = "Passvalm"
+        Me.Passvalm.Size = New System.Drawing.Size(54, 19)
+        Me.Passvalm.TabIndex = 45
+        Me.Passvalm.Text = "pass req"
         '
-        'Guna2HtmlLabel9
+        'uservalm
         '
-        Me.Guna2HtmlLabel9.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2HtmlLabel9.Font = New System.Drawing.Font("Microsoft YaHei UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Guna2HtmlLabel9.ForeColor = System.Drawing.Color.White
-        Me.Guna2HtmlLabel9.Location = New System.Drawing.Point(28, 274)
-        Me.Guna2HtmlLabel9.Name = "Guna2HtmlLabel9"
-        Me.Guna2HtmlLabel9.Size = New System.Drawing.Size(53, 28)
-        Me.Guna2HtmlLabel9.TabIndex = 15
-        Me.Guna2HtmlLabel9.Text = "ROLE"
+        Me.uservalm.BackColor = System.Drawing.Color.Transparent
+        Me.uservalm.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.uservalm.ForeColor = System.Drawing.Color.White
+        Me.uservalm.Location = New System.Drawing.Point(48, 367)
+        Me.uservalm.Name = "uservalm"
+        Me.uservalm.Size = New System.Drawing.Size(95, 21)
+        Me.uservalm.TabIndex = 44
+        Me.uservalm.Text = "username req"
+        '
+        'attempt
+        '
+        Me.attempt.BackColor = System.Drawing.Color.Transparent
+        Me.attempt.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.attempt.ForeColor = System.Drawing.Color.White
+        Me.attempt.Location = New System.Drawing.Point(47, 478)
+        Me.attempt.Name = "attempt"
+        Me.attempt.Size = New System.Drawing.Size(85, 19)
+        Me.attempt.TabIndex = 43
+        Me.attempt.Text = "timerattempt"
+        '
+        'Guna2HtmlLabel15
+        '
+        Me.Guna2HtmlLabel15.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2HtmlLabel15.Font = New System.Drawing.Font("Microsoft YaHei UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Guna2HtmlLabel15.ForeColor = System.Drawing.Color.White
+        Me.Guna2HtmlLabel15.Location = New System.Drawing.Point(105, 173)
+        Me.Guna2HtmlLabel15.Name = "Guna2HtmlLabel15"
+        Me.Guna2HtmlLabel15.Size = New System.Drawing.Size(233, 28)
+        Me.Guna2HtmlLabel15.TabIndex = 42
+        Me.Guna2HtmlLabel15.Text = "POINT OF SALE SYSTEM"
+        Me.Guna2HtmlLabel15.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Guna2HtmlLabel14
+        '
+        Me.Guna2HtmlLabel14.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2HtmlLabel14.Font = New System.Drawing.Font("Cooper Black", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Guna2HtmlLabel14.ForeColor = System.Drawing.Color.FromArgb(CType(CType(220, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(50, Byte), Integer))
+        Me.Guna2HtmlLabel14.Location = New System.Drawing.Point(82, 125)
+        Me.Guna2HtmlLabel14.Name = "Guna2HtmlLabel14"
+        Me.Guna2HtmlLabel14.Size = New System.Drawing.Size(274, 42)
+        Me.Guna2HtmlLabel14.TabIndex = 41
+        Me.Guna2HtmlLabel14.Text = "BURGER SHOP"
+        Me.Guna2HtmlLabel14.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Guna2HtmlLabel13
+        '
+        Me.Guna2HtmlLabel13.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2HtmlLabel13.Font = New System.Drawing.Font("Microsoft YaHei UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Guna2HtmlLabel13.ForeColor = System.Drawing.Color.White
+        Me.Guna2HtmlLabel13.Location = New System.Drawing.Point(61, 658)
+        Me.Guna2HtmlLabel13.Name = "Guna2HtmlLabel13"
+        Me.Guna2HtmlLabel13.Size = New System.Drawing.Size(310, 58)
+        Me.Guna2HtmlLabel13.TabIndex = 40
+        Me.Guna2HtmlLabel13.Text = "Fresh Burgers, Great Taste ! <br><br>" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "© 2026 Burger Shop. All Rights Reserved."
+        Me.Guna2HtmlLabel13.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Guna2HtmlLabel12
+        '
+        Me.Guna2HtmlLabel12.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2HtmlLabel12.Font = New System.Drawing.Font("Microsoft YaHei UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Guna2HtmlLabel12.ForeColor = System.Drawing.Color.White
+        Me.Guna2HtmlLabel12.Location = New System.Drawing.Point(73, 394)
+        Me.Guna2HtmlLabel12.Name = "Guna2HtmlLabel12"
+        Me.Guna2HtmlLabel12.Size = New System.Drawing.Size(93, 28)
+        Me.Guna2HtmlLabel12.TabIndex = 39
+        Me.Guna2HtmlLabel12.Text = "Password"
+        Me.Guna2HtmlLabel12.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Guna2HtmlLabel11
+        '
+        Me.Guna2HtmlLabel11.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2HtmlLabel11.Font = New System.Drawing.Font("Microsoft YaHei UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Guna2HtmlLabel11.ForeColor = System.Drawing.Color.White
+        Me.Guna2HtmlLabel11.Location = New System.Drawing.Point(73, 289)
+        Me.Guna2HtmlLabel11.Name = "Guna2HtmlLabel11"
+        Me.Guna2HtmlLabel11.Size = New System.Drawing.Size(99, 28)
+        Me.Guna2HtmlLabel11.TabIndex = 38
+        Me.Guna2HtmlLabel11.Text = "Username"
+        Me.Guna2HtmlLabel11.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Guna2HtmlLabel10
+        '
+        Me.Guna2HtmlLabel10.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2HtmlLabel10.Font = New System.Drawing.Font("Microsoft YaHei UI", 20.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Guna2HtmlLabel10.ForeColor = System.Drawing.Color.White
+        Me.Guna2HtmlLabel10.Location = New System.Drawing.Point(176, 219)
+        Me.Guna2HtmlLabel10.Name = "Guna2HtmlLabel10"
+        Me.Guna2HtmlLabel10.Size = New System.Drawing.Size(93, 38)
+        Me.Guna2HtmlLabel10.TabIndex = 37
+        Me.Guna2HtmlLabel10.Text = "LOGIN"
+        Me.Guna2HtmlLabel10.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Guna2Shapes3
+        '
+        Me.Guna2Shapes3.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2Shapes3.BorderColor = System.Drawing.Color.Transparent
+        Me.Guna2Shapes3.BorderThickness = 0
+        Me.Guna2Shapes3.FillColor = System.Drawing.Color.White
+        Me.Guna2Shapes3.ForeColor = System.Drawing.Color.Black
+        Me.Guna2Shapes3.LineThickness = 2
+        Me.Guna2Shapes3.Location = New System.Drawing.Point(257, 223)
+        Me.Guna2Shapes3.Name = "Guna2Shapes3"
+        Me.Guna2Shapes3.PolygonSkip = 1
+        Me.Guna2Shapes3.Rotate = 0!
+        Me.Guna2Shapes3.Shape = Guna.UI2.WinForms.Enums.ShapeType.Line
+        Me.Guna2Shapes3.Size = New System.Drawing.Size(192, 34)
+        Me.Guna2Shapes3.TabIndex = 33
+        Me.Guna2Shapes3.Text = "Guna2Shapes3"
+        Me.Guna2Shapes3.UseTransparentBackground = True
+        Me.Guna2Shapes3.Zoom = 80
+        '
+        'Guna2Shapes5
+        '
+        Me.Guna2Shapes5.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2Shapes5.BorderColor = System.Drawing.Color.Transparent
+        Me.Guna2Shapes5.BorderThickness = 0
+        Me.Guna2Shapes5.FillColor = System.Drawing.Color.White
+        Me.Guna2Shapes5.ForeColor = System.Drawing.Color.Black
+        Me.Guna2Shapes5.LineThickness = 2
+        Me.Guna2Shapes5.Location = New System.Drawing.Point(232, 598)
+        Me.Guna2Shapes5.Name = "Guna2Shapes5"
+        Me.Guna2Shapes5.PolygonSkip = 1
+        Me.Guna2Shapes5.Rotate = 0!
+        Me.Guna2Shapes5.Shape = Guna.UI2.WinForms.Enums.ShapeType.Line
+        Me.Guna2Shapes5.Size = New System.Drawing.Size(210, 34)
+        Me.Guna2Shapes5.TabIndex = 36
+        Me.Guna2Shapes5.Text = "Guna2Shapes5"
+        Me.Guna2Shapes5.UseTransparentBackground = True
+        Me.Guna2Shapes5.Zoom = 80
+        '
+        'Guna2Shapes6
+        '
+        Me.Guna2Shapes6.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2Shapes6.BorderColor = System.Drawing.Color.Transparent
+        Me.Guna2Shapes6.BorderThickness = 0
+        Me.Guna2Shapes6.FillColor = System.Drawing.Color.White
+        Me.Guna2Shapes6.ForeColor = System.Drawing.Color.Black
+        Me.Guna2Shapes6.LineThickness = 2
+        Me.Guna2Shapes6.Location = New System.Drawing.Point(0, 598)
+        Me.Guna2Shapes6.Name = "Guna2Shapes6"
+        Me.Guna2Shapes6.PolygonSkip = 1
+        Me.Guna2Shapes6.Rotate = 0!
+        Me.Guna2Shapes6.Shape = Guna.UI2.WinForms.Enums.ShapeType.Line
+        Me.Guna2Shapes6.Size = New System.Drawing.Size(206, 34)
+        Me.Guna2Shapes6.TabIndex = 35
+        Me.Guna2Shapes6.Text = "Guna2Shapes6"
+        Me.Guna2Shapes6.UseTransparentBackground = True
+        Me.Guna2Shapes6.Zoom = 80
+        '
+        'Guna2PictureBox2
+        '
+        Me.Guna2PictureBox2.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2PictureBox2.Image = Global.BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.adfadfafqweqeqeqwe
+        Me.Guna2PictureBox2.ImageRotate = 0!
+        Me.Guna2PictureBox2.Location = New System.Drawing.Point(174, 23)
+        Me.Guna2PictureBox2.Name = "Guna2PictureBox2"
+        Me.Guna2PictureBox2.Size = New System.Drawing.Size(95, 96)
+        Me.Guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.Guna2PictureBox2.TabIndex = 28
+        Me.Guna2PictureBox2.TabStop = False
+        Me.Guna2PictureBox2.UseTransparentBackground = True
+        '
+        'Guna2PictureBox4
+        '
+        Me.Guna2PictureBox4.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2PictureBox4.Image = Global.BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.adfadfafqweqeqeqwe
+        Me.Guna2PictureBox4.ImageRotate = 0!
+        Me.Guna2PictureBox4.Location = New System.Drawing.Point(194, 586)
+        Me.Guna2PictureBox4.Name = "Guna2PictureBox4"
+        Me.Guna2PictureBox4.Size = New System.Drawing.Size(53, 56)
+        Me.Guna2PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.Guna2PictureBox4.TabIndex = 25
+        Me.Guna2PictureBox4.TabStop = False
+        Me.Guna2PictureBox4.UseTransparentBackground = True
+        '
+        'loginbtn
+        '
+        Me.loginbtn.AutoRoundedCorners = True
+        Me.loginbtn.BackColor = System.Drawing.Color.Transparent
+        Me.loginbtn.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.ToogleButton
+        Me.loginbtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.loginbtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.loginbtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.loginbtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.loginbtn.FillColor = System.Drawing.Color.FromArgb(CType(CType(237, Byte), Integer), CType(CType(90, Byte), Integer), CType(CType(9, Byte), Integer))
+        Me.loginbtn.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.loginbtn.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.loginbtn.HoverState.FillColor = System.Drawing.Color.LimeGreen
+        Me.loginbtn.Image = Global.BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.login
+        Me.loginbtn.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left
+        Me.loginbtn.ImageOffset = New System.Drawing.Point(11, 0)
+        Me.loginbtn.ImageSize = New System.Drawing.Size(25, 20)
+        Me.loginbtn.Location = New System.Drawing.Point(48, 519)
+        Me.loginbtn.Name = "loginbtn"
+        Me.loginbtn.Size = New System.Drawing.Size(160, 44)
+        Me.loginbtn.TabIndex = 12
+        Me.loginbtn.Text = "LOGIN"
+        Me.loginbtn.TextOffset = New System.Drawing.Point(3, 0)
+        '
+        'exitbtn
+        '
+        Me.exitbtn.Animated = True
+        Me.exitbtn.AutoRoundedCorners = True
+        Me.exitbtn.BackColor = System.Drawing.Color.Transparent
+        Me.exitbtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.exitbtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.exitbtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.exitbtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.exitbtn.FillColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.exitbtn.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.exitbtn.ForeColor = System.Drawing.SystemColors.Control
+        Me.exitbtn.HoverState.FillColor = System.Drawing.Color.Red
+        Me.exitbtn.IndicateFocus = True
+        Me.exitbtn.Location = New System.Drawing.Point(229, 519)
+        Me.exitbtn.Name = "exitbtn"
+        Me.exitbtn.Size = New System.Drawing.Size(159, 44)
+        Me.exitbtn.TabIndex = 13
+        Me.exitbtn.Text = "EXIT"
+        '
+        'Guna2Shapes2
+        '
+        Me.Guna2Shapes2.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2Shapes2.BorderColor = System.Drawing.Color.Transparent
+        Me.Guna2Shapes2.BorderThickness = 0
+        Me.Guna2Shapes2.FillColor = System.Drawing.Color.White
+        Me.Guna2Shapes2.ForeColor = System.Drawing.Color.Black
+        Me.Guna2Shapes2.LineThickness = 2
+        Me.Guna2Shapes2.Location = New System.Drawing.Point(-7, 222)
+        Me.Guna2Shapes2.Name = "Guna2Shapes2"
+        Me.Guna2Shapes2.PolygonSkip = 1
+        Me.Guna2Shapes2.Rotate = 0!
+        Me.Guna2Shapes2.Shape = Guna.UI2.WinForms.Enums.ShapeType.Line
+        Me.Guna2Shapes2.Size = New System.Drawing.Size(191, 34)
+        Me.Guna2Shapes2.TabIndex = 30
+        Me.Guna2Shapes2.Text = "Guna2Shapes2"
+        Me.Guna2Shapes2.UseTransparentBackground = True
+        Me.Guna2Shapes2.Zoom = 80
+        '
+        'usertxb
+        '
+        Me.usertxb.AutoRoundedCorners = True
+        Me.usertxb.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.usertxb.BackColor = System.Drawing.Color.Transparent
+        Me.usertxb.BorderColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.usertxb.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.usertxb.DefaultText = ""
+        Me.usertxb.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.usertxb.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.usertxb.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.usertxb.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.usertxb.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.usertxb.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.usertxb.ForeColor = System.Drawing.Color.Black
+        Me.usertxb.HoverState.BorderColor = System.Drawing.Color.Transparent
+        Me.usertxb.IconLeft = Global.BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.user
+        Me.usertxb.IconLeftOffset = New System.Drawing.Point(10, 0)
+        Me.usertxb.IconLeftSize = New System.Drawing.Size(25, 25)
+        Me.usertxb.Location = New System.Drawing.Point(73, 324)
+        Me.usertxb.Margin = New System.Windows.Forms.Padding(4)
+        Me.usertxb.Name = "usertxb"
+        Me.usertxb.PlaceholderForeColor = System.Drawing.Color.Gray
+        Me.usertxb.PlaceholderText = "ENTER YOUR USERNAME"
+        Me.usertxb.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal
+        Me.usertxb.SelectedText = ""
+        Me.usertxb.Size = New System.Drawing.Size(289, 37)
+        Me.usertxb.TabIndex = 10
+        Me.usertxb.TextOffset = New System.Drawing.Point(2, 0)
         '
         'showpasschb
         '
+        Me.showpasschb.BackColor = System.Drawing.Color.Transparent
         Me.showpasschb.CheckedState.Image = CType(resources.GetObject("resource.Image"), System.Drawing.Image)
         Me.showpasschb.CheckedState.ImageSize = New System.Drawing.Size(22, 22)
         Me.showpasschb.Image = CType(resources.GetObject("showpasschb.Image"), System.Drawing.Image)
         Me.showpasschb.ImageOffset = New System.Drawing.Point(0, 0)
         Me.showpasschb.ImageRotate = 0!
         Me.showpasschb.ImageSize = New System.Drawing.Size(22, 22)
-        Me.showpasschb.Location = New System.Drawing.Point(268, 218)
+        Me.showpasschb.Location = New System.Drawing.Point(320, 439)
         Me.showpasschb.Name = "showpasschb"
-        Me.showpasschb.Size = New System.Drawing.Size(50, 43)
+        Me.showpasschb.Size = New System.Drawing.Size(29, 21)
         Me.showpasschb.TabIndex = 14
         Me.showpasschb.UseTransparentBackground = True
         '
-        'exitbtn
-        '
-        Me.exitbtn.Animated = True
-        Me.exitbtn.AutoRoundedCorners = True
-        Me.exitbtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray
-        Me.exitbtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
-        Me.exitbtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
-        Me.exitbtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.exitbtn.FillColor = System.Drawing.Color.Salmon
-        Me.exitbtn.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.exitbtn.ForeColor = System.Drawing.Color.Black
-        Me.exitbtn.IndicateFocus = True
-        Me.exitbtn.Location = New System.Drawing.Point(181, 384)
-        Me.exitbtn.Name = "exitbtn"
-        Me.exitbtn.Size = New System.Drawing.Size(153, 45)
-        Me.exitbtn.TabIndex = 13
-        Me.exitbtn.Text = "EXIT"
-        '
-        'loginbtn
-        '
-        Me.loginbtn.Animated = True
-        Me.loginbtn.AutoRoundedCorners = True
-        Me.loginbtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray
-        Me.loginbtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
-        Me.loginbtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
-        Me.loginbtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.loginbtn.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.loginbtn.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.loginbtn.ForeColor = System.Drawing.Color.Black
-        Me.loginbtn.IndicateFocus = True
-        Me.loginbtn.Location = New System.Drawing.Point(13, 384)
-        Me.loginbtn.Name = "loginbtn"
-        Me.loginbtn.Size = New System.Drawing.Size(153, 45)
-        Me.loginbtn.TabIndex = 12
-        Me.loginbtn.Text = "LOGIN"
-        '
         'passtxb
         '
-        Me.passtxb.Animated = True
         Me.passtxb.AutoRoundedCorners = True
         Me.passtxb.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.passtxb.BackColor = System.Drawing.Color.Transparent
         Me.passtxb.BorderColor = System.Drawing.Color.Black
         Me.passtxb.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.passtxb.DefaultText = ""
@@ -203,317 +488,212 @@ Partial Class loginform
         Me.passtxb.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.passtxb.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.passtxb.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.passtxb.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.passtxb.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.75!, System.Drawing.FontStyle.Bold)
         Me.passtxb.ForeColor = System.Drawing.Color.Black
-        Me.passtxb.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.passtxb.HoverState.BorderColor = System.Drawing.Color.Transparent
         Me.passtxb.IconLeft = Global.BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.padlock
         Me.passtxb.IconLeftOffset = New System.Drawing.Point(5, 0)
         Me.passtxb.IconLeftSize = New System.Drawing.Size(25, 25)
-        Me.passtxb.Location = New System.Drawing.Point(28, 218)
+        Me.passtxb.Location = New System.Drawing.Point(73, 429)
         Me.passtxb.Margin = New System.Windows.Forms.Padding(4)
         Me.passtxb.Name = "passtxb"
         Me.passtxb.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.passtxb.PlaceholderForeColor = System.Drawing.Color.Gray
         Me.passtxb.PlaceholderText = "ENTER YOUR PASSWORD"
         Me.passtxb.SelectedText = ""
-        Me.passtxb.Size = New System.Drawing.Size(290, 40)
+        Me.passtxb.Size = New System.Drawing.Size(289, 40)
         Me.passtxb.TabIndex = 11
         Me.passtxb.TextOffset = New System.Drawing.Point(2, 0)
         '
-        'usertxb
+        'Guna2PictureBox3
         '
-        Me.usertxb.Animated = True
-        Me.usertxb.AutoRoundedCorners = True
-        Me.usertxb.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.usertxb.BorderColor = System.Drawing.Color.Black
-        Me.usertxb.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.usertxb.DefaultText = ""
-        Me.usertxb.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.usertxb.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.usertxb.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.usertxb.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.usertxb.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.usertxb.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.usertxb.ForeColor = System.Drawing.Color.Black
-        Me.usertxb.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.usertxb.IconLeft = Global.BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.user
-        Me.usertxb.IconLeftOffset = New System.Drawing.Point(10, 0)
-        Me.usertxb.IconLeftSize = New System.Drawing.Size(25, 25)
-        Me.usertxb.Location = New System.Drawing.Point(28, 122)
-        Me.usertxb.Margin = New System.Windows.Forms.Padding(4)
-        Me.usertxb.Name = "usertxb"
-        Me.usertxb.PlaceholderForeColor = System.Drawing.Color.Gray
-        Me.usertxb.PlaceholderText = "ENTER YOUR USERNAME"
-        Me.usertxb.SelectedText = ""
-        Me.usertxb.Size = New System.Drawing.Size(290, 40)
-        Me.usertxb.TabIndex = 10
-        Me.usertxb.TextOffset = New System.Drawing.Point(2, 0)
+        Me.Guna2PictureBox3.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2PictureBox3.Image = Global.BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.sdasdsad_removebg_preview
+        Me.Guna2PictureBox3.ImageRotate = 0!
+        Me.Guna2PictureBox3.Location = New System.Drawing.Point(18, 0)
+        Me.Guna2PictureBox3.Name = "Guna2PictureBox3"
+        Me.Guna2PictureBox3.Size = New System.Drawing.Size(181, 163)
+        Me.Guna2PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.Guna2PictureBox3.TabIndex = 34
+        Me.Guna2PictureBox3.TabStop = False
+        Me.Guna2PictureBox3.UseTransparentBackground = True
+        '
+        'Guna2HtmlLabel9
+        '
+        Me.Guna2HtmlLabel9.AutoSize = False
+        Me.Guna2HtmlLabel9.AutoSizeHeightOnly = True
+        Me.Guna2HtmlLabel9.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2HtmlLabel9.Font = New System.Drawing.Font("Cooper Black", 36.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Guna2HtmlLabel9.ForeColor = System.Drawing.Color.White
+        Me.Guna2HtmlLabel9.Location = New System.Drawing.Point(178, 53)
+        Me.Guna2HtmlLabel9.Margin = New System.Windows.Forms.Padding(0)
+        Me.Guna2HtmlLabel9.Name = "Guna2HtmlLabel9"
+        Me.Guna2HtmlLabel9.Size = New System.Drawing.Size(382, 56)
+        Me.Guna2HtmlLabel9.TabIndex = 25
+        Me.Guna2HtmlLabel9.Text = "PAPA BURGER" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.Guna2HtmlLabel9.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SingleBitPerPixelGridFit
+        '
+        'Guna2DragControl2
+        '
+        Me.Guna2DragControl2.DockIndicatorTransparencyValue = 0.6R
+        Me.Guna2DragControl2.TargetControl = Me.Guna2Panel1
+        Me.Guna2DragControl2.UseTransparentDrag = True
+        '
+        'Guna2DragControl3
+        '
+        Me.Guna2DragControl3.DockIndicatorTransparencyValue = 0.6R
+        Me.Guna2DragControl3.TargetControl = Me.loginpanel
+        Me.Guna2DragControl3.UseTransparentDrag = True
         '
         'Guna2HtmlLabel6
         '
         Me.Guna2HtmlLabel6.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2HtmlLabel6.Font = New System.Drawing.Font("Microsoft YaHei UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Guna2HtmlLabel6.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Guna2HtmlLabel6.ForeColor = System.Drawing.Color.White
-        Me.Guna2HtmlLabel6.Location = New System.Drawing.Point(28, 183)
+        Me.Guna2HtmlLabel6.Location = New System.Drawing.Point(73, 398)
         Me.Guna2HtmlLabel6.Name = "Guna2HtmlLabel6"
-        Me.Guna2HtmlLabel6.Size = New System.Drawing.Size(115, 28)
+        Me.Guna2HtmlLabel6.Size = New System.Drawing.Size(100, 24)
         Me.Guna2HtmlLabel6.TabIndex = 9
         Me.Guna2HtmlLabel6.Text = "PASSWORD"
-        '
-        'Guna2Shapes2
-        '
-        Me.Guna2Shapes2.BorderColor = System.Drawing.Color.Transparent
-        Me.Guna2Shapes2.BorderThickness = 1
-        Me.Guna2Shapes2.FillColor = System.Drawing.Color.Orange
-        Me.Guna2Shapes2.LineThickness = 3
-        Me.Guna2Shapes2.Location = New System.Drawing.Point(5, 24)
-        Me.Guna2Shapes2.Name = "Guna2Shapes2"
-        Me.Guna2Shapes2.PolygonSkip = 1
-        Me.Guna2Shapes2.Rotate = 0!
-        Me.Guna2Shapes2.Shape = Guna.UI2.WinForms.Enums.ShapeType.Line
-        Me.Guna2Shapes2.Size = New System.Drawing.Size(141, 34)
-        Me.Guna2Shapes2.TabIndex = 8
-        Me.Guna2Shapes2.Text = "Guna2Shapes2"
-        Me.Guna2Shapes2.UseTransparentBackground = True
-        Me.Guna2Shapes2.Zoom = 80
-        '
-        'Guna2Shapes1
-        '
-        Me.Guna2Shapes1.BorderColor = System.Drawing.Color.Transparent
-        Me.Guna2Shapes1.BorderThickness = 1
-        Me.Guna2Shapes1.FillColor = System.Drawing.Color.Orange
-        Me.Guna2Shapes1.LineThickness = 3
-        Me.Guna2Shapes1.Location = New System.Drawing.Point(199, 24)
-        Me.Guna2Shapes1.Name = "Guna2Shapes1"
-        Me.Guna2Shapes1.PolygonSkip = 1
-        Me.Guna2Shapes1.Rotate = 0!
-        Me.Guna2Shapes1.Shape = Guna.UI2.WinForms.Enums.ShapeType.Line
-        Me.Guna2Shapes1.Size = New System.Drawing.Size(150, 34)
-        Me.Guna2Shapes1.TabIndex = 7
-        Me.Guna2Shapes1.Text = "Guna2Shapes1"
-        Me.Guna2Shapes1.UseTransparentBackground = True
-        Me.Guna2Shapes1.Zoom = 80
-        '
-        'Guna2HtmlLabel5
-        '
-        Me.Guna2HtmlLabel5.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2HtmlLabel5.Font = New System.Drawing.Font("Microsoft PhagsPa", 17.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Guna2HtmlLabel5.ForeColor = System.Drawing.Color.Orange
-        Me.Guna2HtmlLabel5.Location = New System.Drawing.Point(138, 24)
-        Me.Guna2HtmlLabel5.Name = "Guna2HtmlLabel5"
-        Me.Guna2HtmlLabel5.Size = New System.Drawing.Size(73, 33)
-        Me.Guna2HtmlLabel5.TabIndex = 6
-        Me.Guna2HtmlLabel5.Text = "LOGIN"
-        Me.Guna2HtmlLabel5.TextAlignment = System.Drawing.ContentAlignment.TopCenter
         '
         'Guna2HtmlLabel4
         '
         Me.Guna2HtmlLabel4.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2HtmlLabel4.Font = New System.Drawing.Font("Microsoft YaHei UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Guna2HtmlLabel4.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Guna2HtmlLabel4.ForeColor = System.Drawing.Color.White
-        Me.Guna2HtmlLabel4.Location = New System.Drawing.Point(32, 87)
+        Me.Guna2HtmlLabel4.Location = New System.Drawing.Point(73, 293)
         Me.Guna2HtmlLabel4.Name = "Guna2HtmlLabel4"
-        Me.Guna2HtmlLabel4.Size = New System.Drawing.Size(114, 28)
+        Me.Guna2HtmlLabel4.Size = New System.Drawing.Size(96, 24)
         Me.Guna2HtmlLabel4.TabIndex = 5
         Me.Guna2HtmlLabel4.Text = "USERNAME"
         '
         'Guna2HtmlLabel1
         '
         Me.Guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2HtmlLabel1.Font = New System.Drawing.Font("Microsoft PhagsPa", 26.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Guna2HtmlLabel1.ForeColor = System.Drawing.Color.DarkOrange
-        Me.Guna2HtmlLabel1.Location = New System.Drawing.Point(157, 72)
+        Me.Guna2HtmlLabel1.Font = New System.Drawing.Font("Microsoft YaHei UI", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Guna2HtmlLabel1.ForeColor = System.Drawing.Color.White
+        Me.Guna2HtmlLabel1.Location = New System.Drawing.Point(178, 223)
         Me.Guna2HtmlLabel1.Name = "Guna2HtmlLabel1"
-        Me.Guna2HtmlLabel1.Size = New System.Drawing.Size(196, 48)
-        Me.Guna2HtmlLabel1.TabIndex = 1
-        Me.Guna2HtmlLabel1.Text = "DS BURGER"
-        '
-        'Guna2HtmlLabel2
-        '
-        Me.Guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2HtmlLabel2.Font = New System.Drawing.Font("Microsoft PhagsPa", 26.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Guna2HtmlLabel2.ForeColor = System.Drawing.Color.SeaShell
-        Me.Guna2HtmlLabel2.Location = New System.Drawing.Point(157, 117)
-        Me.Guna2HtmlLabel2.Name = "Guna2HtmlLabel2"
-        Me.Guna2HtmlLabel2.Size = New System.Drawing.Size(99, 48)
-        Me.Guna2HtmlLabel2.TabIndex = 2
-        Me.Guna2HtmlLabel2.Text = "SHOP"
+        Me.Guna2HtmlLabel1.Size = New System.Drawing.Size(82, 33)
+        Me.Guna2HtmlLabel1.TabIndex = 23
+        Me.Guna2HtmlLabel1.Text = "LOGIN"
+        Me.Guna2HtmlLabel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Guna2HtmlLabel3
         '
         Me.Guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2HtmlLabel3.Font = New System.Drawing.Font("Microsoft PhagsPa", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Guna2HtmlLabel3.ForeColor = System.Drawing.Color.SeaShell
-        Me.Guna2HtmlLabel3.Location = New System.Drawing.Point(121, 166)
+        Me.Guna2HtmlLabel3.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Guna2HtmlLabel3.ForeColor = System.Drawing.Color.White
+        Me.Guna2HtmlLabel3.Location = New System.Drawing.Point(119, 171)
         Me.Guna2HtmlLabel3.Name = "Guna2HtmlLabel3"
-        Me.Guna2HtmlLabel3.Size = New System.Drawing.Size(147, 34)
-        Me.Guna2HtmlLabel3.TabIndex = 3
-        Me.Guna2HtmlLabel3.Text = "POS SYSTEM"
+        Me.Guna2HtmlLabel3.Size = New System.Drawing.Size(198, 24)
+        Me.Guna2HtmlLabel3.TabIndex = 32
+        Me.Guna2HtmlLabel3.Text = "POINT OF SALE SYSTEM"
+        Me.Guna2HtmlLabel3.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'Guna2Shapes3
+        'Guna2HtmlLabel2
         '
-        Me.Guna2Shapes3.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2Shapes3.BorderColor = System.Drawing.Color.Transparent
-        Me.Guna2Shapes3.BorderThickness = 1
-        Me.Guna2Shapes3.FillColor = System.Drawing.Color.Orange
-        Me.Guna2Shapes3.LineThickness = 3
-        Me.Guna2Shapes3.Location = New System.Drawing.Point(-5, 709)
-        Me.Guna2Shapes3.Name = "Guna2Shapes3"
-        Me.Guna2Shapes3.PolygonSkip = 1
-        Me.Guna2Shapes3.Rotate = 0!
-        Me.Guna2Shapes3.Shape = Guna.UI2.WinForms.Enums.ShapeType.Line
-        Me.Guna2Shapes3.Size = New System.Drawing.Size(170, 34)
-        Me.Guna2Shapes3.TabIndex = 14
-        Me.Guna2Shapes3.Text = "Guna2Shapes3"
-        Me.Guna2Shapes3.UseTransparentBackground = True
-        Me.Guna2Shapes3.Zoom = 80
-        '
-        'Guna2Shapes4
-        '
-        Me.Guna2Shapes4.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2Shapes4.BorderColor = System.Drawing.Color.Transparent
-        Me.Guna2Shapes4.BorderThickness = 1
-        Me.Guna2Shapes4.FillColor = System.Drawing.Color.Orange
-        Me.Guna2Shapes4.LineThickness = 3
-        Me.Guna2Shapes4.Location = New System.Drawing.Point(216, 709)
-        Me.Guna2Shapes4.Name = "Guna2Shapes4"
-        Me.Guna2Shapes4.PolygonSkip = 1
-        Me.Guna2Shapes4.Rotate = 0!
-        Me.Guna2Shapes4.Shape = Guna.UI2.WinForms.Enums.ShapeType.Line
-        Me.Guna2Shapes4.Size = New System.Drawing.Size(166, 34)
-        Me.Guna2Shapes4.TabIndex = 17
-        Me.Guna2Shapes4.Text = "Guna2Shapes4"
-        Me.Guna2Shapes4.UseTransparentBackground = True
-        Me.Guna2Shapes4.Zoom = 80
+        Me.Guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2HtmlLabel2.Font = New System.Drawing.Font("Cooper Black", 24.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Guna2HtmlLabel2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(247, Byte), Integer), CType(CType(97, Byte), Integer), CType(CType(13, Byte), Integer))
+        Me.Guna2HtmlLabel2.Location = New System.Drawing.Point(93, 125)
+        Me.Guna2HtmlLabel2.Name = "Guna2HtmlLabel2"
+        Me.Guna2HtmlLabel2.Size = New System.Drawing.Size(259, 40)
+        Me.Guna2HtmlLabel2.TabIndex = 29
+        Me.Guna2HtmlLabel2.Text = "BURGER SHOP"
+        Me.Guna2HtmlLabel2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Guna2HtmlLabel7
         '
         Me.Guna2HtmlLabel7.BackColor = System.Drawing.Color.Transparent
         Me.Guna2HtmlLabel7.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Guna2HtmlLabel7.ForeColor = System.Drawing.Color.White
-        Me.Guna2HtmlLabel7.Location = New System.Drawing.Point(99, 756)
+        Me.Guna2HtmlLabel7.Location = New System.Drawing.Point(128, 658)
         Me.Guna2HtmlLabel7.Name = "Guna2HtmlLabel7"
         Me.Guna2HtmlLabel7.Size = New System.Drawing.Size(187, 21)
         Me.Guna2HtmlLabel7.TabIndex = 14
         Me.Guna2HtmlLabel7.Text = "Fresh Burgers, Great Taste !"
+        Me.Guna2HtmlLabel7.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Guna2HtmlLabel8
         '
         Me.Guna2HtmlLabel8.BackColor = System.Drawing.Color.Transparent
         Me.Guna2HtmlLabel8.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Guna2HtmlLabel8.ForeColor = System.Drawing.Color.White
-        Me.Guna2HtmlLabel8.Location = New System.Drawing.Point(57, 781)
+        Me.Guna2HtmlLabel8.Location = New System.Drawing.Point(73, 697)
         Me.Guna2HtmlLabel8.Name = "Guna2HtmlLabel8"
         Me.Guna2HtmlLabel8.Size = New System.Drawing.Size(280, 21)
         Me.Guna2HtmlLabel8.TabIndex = 18
         Me.Guna2HtmlLabel8.Text = "© 2026 Burger Shop. All Rights Reserved."
-        '
-        'Guna2PictureBox1
-        '
-        Me.Guna2PictureBox1.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2PictureBox1.Image = Global.BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.burger
-        Me.Guna2PictureBox1.ImageRotate = 0!
-        Me.Guna2PictureBox1.Location = New System.Drawing.Point(171, 705)
-        Me.Guna2PictureBox1.Name = "Guna2PictureBox1"
-        Me.Guna2PictureBox1.Size = New System.Drawing.Size(39, 38)
-        Me.Guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.Guna2PictureBox1.TabIndex = 16
-        Me.Guna2PictureBox1.TabStop = False
-        Me.Guna2PictureBox1.UseTransparentBackground = True
-        '
-        'Guna2CirclePictureBox1
-        '
-        Me.Guna2CirclePictureBox1.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2CirclePictureBox1.Image = Global.BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.logo__3_
-        Me.Guna2CirclePictureBox1.ImageRotate = 0!
-        Me.Guna2CirclePictureBox1.Location = New System.Drawing.Point(47, 27)
-        Me.Guna2CirclePictureBox1.Name = "Guna2CirclePictureBox1"
-        Me.Guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
-        Me.Guna2CirclePictureBox1.Size = New System.Drawing.Size(115, 173)
-        Me.Guna2CirclePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.Guna2CirclePictureBox1.TabIndex = 4
-        Me.Guna2CirclePictureBox1.TabStop = False
-        Me.Guna2CirclePictureBox1.UseTransparentBackground = True
-        '
-        'minimize1
-        '
-        Me.minimize1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.minimize1.Animated = True
-        Me.minimize1.AutoRoundedCorners = True
-        Me.minimize1.BackColor = System.Drawing.Color.Transparent
-        Me.minimize1.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MinimizeBox
-        Me.minimize1.CustomClick = True
-        Me.minimize1.FillColor = System.Drawing.Color.Transparent
-        Me.minimize1.IconColor = System.Drawing.Color.White
-        Me.minimize1.Location = New System.Drawing.Point(330, -1)
-        Me.minimize1.Name = "minimize1"
-        Me.minimize1.PressedColor = System.Drawing.Color.White
-        Me.minimize1.Size = New System.Drawing.Size(56, 37)
-        Me.minimize1.TabIndex = 19
-        Me.minimize1.UseTransparentBackground = True
-        '
-        'timerattempt
-        '
-        Me.timerattempt.Interval = 1000
+        Me.Guna2HtmlLabel8.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
         '
         'loginform
         '
         Me.AcceptButton = Me.loginbtn
         Me.AutoScaleDimensions = New System.Drawing.SizeF(10.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.SystemColors.InfoText
-        Me.ClientSize = New System.Drawing.Size(390, 836)
-        Me.Controls.Add(Me.minimize1)
-        Me.Controls.Add(Me.Guna2HtmlLabel8)
-        Me.Controls.Add(Me.Guna2HtmlLabel7)
-        Me.Controls.Add(Me.Guna2Shapes4)
-        Me.Controls.Add(Me.Guna2Shapes3)
-        Me.Controls.Add(Me.Guna2PictureBox1)
-        Me.Controls.Add(Me.Guna2CirclePictureBox1)
-        Me.Controls.Add(Me.Guna2HtmlLabel3)
-        Me.Controls.Add(Me.Guna2HtmlLabel2)
-        Me.Controls.Add(Me.Guna2HtmlLabel1)
-        Me.Controls.Add(Me.Guna2Panel1)
+        Me.BackColor = System.Drawing.Color.White
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.ClientSize = New System.Drawing.Size(1536, 965)
+        Me.Controls.Add(Me.Guna2GradientPanel2)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ForeColor = System.Drawing.Color.Crimson
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Margin = New System.Windows.Forms.Padding(5)
         Me.Name = "loginform"
         Me.Padding = New System.Windows.Forms.Padding(5)
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "LOGIN FORM"
-        Me.Guna2Panel1.ResumeLayout(False)
-        Me.Guna2Panel1.PerformLayout()
-        CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Guna2CirclePictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Guna2GradientPanel2.ResumeLayout(False)
+        Me.loginpanel.ResumeLayout(False)
+        Me.loginpanel.PerformLayout()
+        CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Guna2PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Guna2PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents Loginformd As Guna.UI2.WinForms.Guna2BorderlessForm
-    Friend WithEvents Guna2Panel1 As Guna.UI2.WinForms.Guna2Panel
-    Friend WithEvents Guna2HtmlLabel1 As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents Guna2HtmlLabel2 As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents Guna2HtmlLabel3 As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents Guna2CirclePictureBox1 As Guna.UI2.WinForms.Guna2CirclePictureBox
-    Friend WithEvents Guna2HtmlLabel5 As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents Guna2Shapes1 As Guna.UI2.WinForms.Guna2Shapes
-    Friend WithEvents Guna2Shapes2 As Guna.UI2.WinForms.Guna2Shapes
-    Friend WithEvents Guna2HtmlLabel6 As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents usertxb As Guna.UI2.WinForms.Guna2TextBox
-    Friend WithEvents passtxb As Guna.UI2.WinForms.Guna2TextBox
-    Friend WithEvents loginbtn As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents exitbtn As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents Guna2HtmlLabel7 As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents Guna2Shapes4 As Guna.UI2.WinForms.Guna2Shapes
-    Friend WithEvents Guna2Shapes3 As Guna.UI2.WinForms.Guna2Shapes
-    Friend WithEvents Guna2PictureBox1 As Guna.UI2.WinForms.Guna2PictureBox
-    Friend WithEvents Guna2HtmlLabel8 As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents showpasschb As Guna.UI2.WinForms.Guna2ImageCheckBox
-    Friend WithEvents minimize1 As Guna.UI2.WinForms.Guna2ControlBox
-    Friend WithEvents Guna2HtmlLabel9 As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents rolecb As Guna.UI2.WinForms.Guna2ComboBox
-    Friend WithEvents Guna2HtmlLabel4 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents timerattempt As Timer
-    Friend WithEvents attempt1 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents Guna2HtmlLabel5 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents Guna2DragControl1 As Guna.UI2.WinForms.Guna2DragControl
+    Friend WithEvents Guna2DragControl2 As Guna.UI2.WinForms.Guna2DragControl
+    Friend WithEvents Guna2DragControl3 As Guna.UI2.WinForms.Guna2DragControl
+    Friend WithEvents Guna2HtmlLabel6 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents Guna2HtmlLabel4 As Guna.UI2.WinForms.Guna2HtmlLabel
+
+    Friend WithEvents Guna2HtmlLabel1 As Guna.UI2.WinForms.Guna2HtmlLabel
+
+    Friend WithEvents Guna2HtmlLabel3 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents Guna2HtmlLabel2 As Guna.UI2.WinForms.Guna2HtmlLabel
+
+    Friend WithEvents Guna2HtmlLabel7 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents Guna2HtmlLabel8 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents loginbtn As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents loginpanel As Guna.UI2.WinForms.Guna2Panel
+    Friend WithEvents Passvalm As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents uservalm As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents attempt As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents Guna2HtmlLabel15 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents Guna2HtmlLabel14 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents Guna2HtmlLabel13 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents Guna2HtmlLabel12 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents Guna2HtmlLabel11 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents Guna2HtmlLabel10 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents Guna2Shapes3 As Guna.UI2.WinForms.Guna2Shapes
+    Friend WithEvents Guna2Shapes5 As Guna.UI2.WinForms.Guna2Shapes
+    Friend WithEvents Guna2Shapes6 As Guna.UI2.WinForms.Guna2Shapes
+    Friend WithEvents Guna2PictureBox2 As Guna.UI2.WinForms.Guna2PictureBox
+    Friend WithEvents Guna2PictureBox4 As Guna.UI2.WinForms.Guna2PictureBox
+    Friend WithEvents exitbtn As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents Guna2Shapes2 As Guna.UI2.WinForms.Guna2Shapes
+    Friend WithEvents usertxb As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents showpasschb As Guna.UI2.WinForms.Guna2ImageCheckBox
+    Friend WithEvents passtxb As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents Guna2GradientPanel2 As Guna.UI2.WinForms.Guna2GradientPanel
+    Friend WithEvents Guna2HtmlLabel9 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents Guna2PictureBox3 As Guna.UI2.WinForms.Guna2PictureBox
+    Friend WithEvents Guna2Panel1 As Guna.UI2.WinForms.Guna2Panel
+    Friend WithEvents minimize As Guna.UI2.WinForms.Guna2ControlBox
 End Class

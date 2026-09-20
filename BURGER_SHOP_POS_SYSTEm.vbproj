@@ -24,6 +24,7 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DocumentationFile>BURGER_SHOP_POS_SYSTEm.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -103,6 +104,7 @@
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -172,6 +174,102 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\hide.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PAPA BURGER %281%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PAPA BURGER.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Black and White Minimalist Brand Identity Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Black and White Minimalist Brand Identity Logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PAPA BURGER.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PAPA BURGER1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ASDAASD.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images %281%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images %281%291.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\aasas.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images %282%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images %282%291.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Capture20260919122142.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\asas%281%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ee364dae-05c3-46d3-b11d-c5337115f666.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\asasasas.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\papa_burger_logo_crop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ee364dae-05c3-46d3-b11d-c5337115f6661.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ee364dae-05c3-46d3-b11d-c5337115f6662.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\papa_burger_photo_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\papa_burger_logo_transparent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\papa_burger_photo_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\papa_burger_photo_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\qweqweqweqwe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\asasasa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\asasasa1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\qweqweqweqwe1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\adfadfafqweqeqeqwe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\login.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sdasdsad.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sdasdsad-removebg-preview.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
