@@ -1,10 +1,11 @@
 ﻿Imports System.Text.RegularExpressions
+Imports Microsoft.VisualBasic.ApplicationServices
 Public Class loginform
     Dim matcheddata As Boolean = False
     Dim failedAttempts As Integer = 0
     Dim maxtries As Integer = 3
     Dim secondsleft As Integer = 60
-
+    Dim username1 As String = ""
 
     Private Sub loginform_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         conn()
@@ -12,7 +13,8 @@ Public Class loginform
 
         attempt.Visible = False
         uservalm.Visible = False
-        Passvalm.Visible = False
+        Passvalm.Visible = False '
+
 
 
     End Sub
@@ -42,23 +44,25 @@ Public Class loginform
             Return
         End If
 
-        ' --- Username validation ---
+
         Dim username As String = usertxb.Text.Trim()
 
         If username.Length = 0 Then
             uservalm.Text = "⚠️ Please enter a username."
             uservalm.ForeColor = Color.Tomato
             uservalm.Visible = True
+            usertxb.BorderColor = Color.Red
             Return
-
         End If
         If username.Length < 6 Then
-            uservalm.Text = "⚠️ Usernames require a minimum of 6 characters."
+            uservalm.Text = "⚠️ Usernames requires a minimum of 6 characters."
             uservalm.ForeColor = Color.Tomato
             uservalm.Visible = True
+            usertxb.BorderColor = Color.Red
             Return
         Else
             uservalm.Visible = False
+            usertxb.BorderColor = Color.Transparent
         End If
 
         Dim pass As String = passtxb.Text.Trim()
@@ -67,11 +71,14 @@ Public Class loginform
             Passvalm.Text = "⚠️ Please enter a Password"
             Passvalm.Visible = True
             Passvalm.ForeColor = Color.Tomato
+            passtxb.BorderColor = Color.Red
             Return
         ElseIf pass.Length < 8 Then
-            Passvalm.Text = "⚠️ Password require a minimum of 8 characters."
+            Passvalm.Text = "⚠️ Password requires a minimum of 8 characters.."
             Passvalm.ForeColor = Color.Tomato
+            passtxb.BorderColor = Color.Red
             Passvalm.Visible = True
+
             Return
         End If
 
@@ -81,20 +88,26 @@ Public Class loginform
         If Not hasCapital AndAlso Not hasNumber Then
             Passvalm.Text = "⚠️ Passwords must contain one uppercase letter and one number."
             Passvalm.ForeColor = Color.Tomato
+            passtxb.BorderColor = Color.Red
             Passvalm.Visible = True
+
             Return
         ElseIf Not hasCapital Then
             Passvalm.Text = "⚠️ Password must contain at least one Capital letter."
             Passvalm.ForeColor = Color.Tomato
+            passtxb.BorderColor = Color.Red
             Passvalm.Visible = True
+
             Return
         ElseIf Not hasNumber Then
             Passvalm.Text = "⚠️ Password must contain at least one Number."
             Passvalm.ForeColor = Color.Tomato
+            passtxb.BorderColor = Color.Red
             Passvalm.Visible = True
             Return
         Else
             Passvalm.Visible = False
+            usertxb.BorderColor = Color.Transparent
         End If
 
 
@@ -109,13 +122,16 @@ Public Class loginform
         If dr.HasRows Then
             dr.Read()
             matcheddata = True
+
+            username1 = dr("USERNAME").ToString()
         End If
         dr.Close()
         cmd.Dispose()
 
 
+
         If matcheddata Then
-            MsgBox("Login Successful ", MsgBoxStyle.Information, "Success")
+            MsgBox("Login Successful! Welcome " & username1, MsgBoxStyle.Information, "Success")
             Me.Hide()
             matcheddata = False
             mainform.Show()
@@ -156,7 +172,7 @@ Public Class loginform
         secondsleft -= 1
 
 
-        attempt.Text = "⚠️ Account locked ! Please try again in <strong>" & secondsleft & "</strong> seconds.".ToString
+        attempt.Text = "⚠️ Account locked ! Please try again in " & secondsleft & " seconds.".ToString
         attempt.ForeColor = Color.Tomato
 
         attempt.Visible = True
@@ -181,12 +197,6 @@ Public Class loginform
             Return
         End If
     End Sub
-
-
-
-
-
-
 
 
 

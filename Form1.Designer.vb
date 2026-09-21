@@ -114,9 +114,9 @@ Partial Class loginform
         Me.Guna2GradientPanel2.Controls.Add(Me.loginpanel)
         Me.Guna2GradientPanel2.Controls.Add(Me.Guna2PictureBox3)
         Me.Guna2GradientPanel2.Controls.Add(Me.Guna2HtmlLabel9)
-        Me.Guna2GradientPanel2.Location = New System.Drawing.Point(-21, -2)
+        Me.Guna2GradientPanel2.Location = New System.Drawing.Point(-21, -7)
         Me.Guna2GradientPanel2.Name = "Guna2GradientPanel2"
-        Me.Guna2GradientPanel2.Size = New System.Drawing.Size(1604, 974)
+        Me.Guna2GradientPanel2.Size = New System.Drawing.Size(1582, 979)
         Me.Guna2GradientPanel2.TabIndex = 38
         '
         'minimize
@@ -129,10 +129,10 @@ Partial Class loginform
         Me.minimize.HoverState.BorderColor = System.Drawing.Color.Transparent
         Me.minimize.HoverState.FillColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.minimize.IconColor = System.Drawing.Color.White
-        Me.minimize.Location = New System.Drawing.Point(1506, 0)
+        Me.minimize.Location = New System.Drawing.Point(1496, 3)
         Me.minimize.Name = "minimize"
         Me.minimize.PressedColor = System.Drawing.Color.Red
-        Me.minimize.Size = New System.Drawing.Size(53, 33)
+        Me.minimize.Size = New System.Drawing.Size(72, 33)
         Me.minimize.TabIndex = 36
         '
         'Guna2Panel1
@@ -150,9 +150,8 @@ Partial Class loginform
         Me.loginpanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.loginpanel.BackColor = System.Drawing.Color.Transparent
         Me.loginpanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.loginpanel.BorderColor = System.Drawing.Color.Pink
+        Me.loginpanel.BorderColor = System.Drawing.Color.Transparent
         Me.loginpanel.BorderRadius = 25
-        Me.loginpanel.BorderThickness = 2
         Me.loginpanel.Controls.Add(Me.Passvalm)
         Me.loginpanel.Controls.Add(Me.uservalm)
         Me.loginpanel.Controls.Add(Me.attempt)
@@ -174,9 +173,9 @@ Partial Class loginform
         Me.loginpanel.Controls.Add(Me.showpasschb)
         Me.loginpanel.Controls.Add(Me.passtxb)
         Me.loginpanel.CustomBorderThickness = New System.Windows.Forms.Padding(10, 0, 0, 0)
-        Me.loginpanel.FillColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(26, Byte), Integer), CType(CType(19, Byte), Integer))
+        Me.loginpanel.FillColor = System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(28, Byte), Integer))
         Me.loginpanel.ForeColor = System.Drawing.Color.Transparent
-        Me.loginpanel.Location = New System.Drawing.Point(599, 129)
+        Me.loginpanel.Location = New System.Drawing.Point(553, 126)
         Me.loginpanel.Name = "loginpanel"
         Me.loginpanel.Size = New System.Drawing.Size(485, 742)
         Me.loginpanel.TabIndex = 30
@@ -186,7 +185,7 @@ Partial Class loginform
         Me.Passvalm.BackColor = System.Drawing.Color.Transparent
         Me.Passvalm.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Passvalm.ForeColor = System.Drawing.Color.White
-        Me.Passvalm.Location = New System.Drawing.Point(56, 458)
+        Me.Passvalm.Location = New System.Drawing.Point(56, 463)
         Me.Passvalm.Name = "Passvalm"
         Me.Passvalm.Size = New System.Drawing.Size(54, 19)
         Me.Passvalm.TabIndex = 45
@@ -197,7 +196,7 @@ Partial Class loginform
         Me.uservalm.BackColor = System.Drawing.Color.Transparent
         Me.uservalm.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.uservalm.ForeColor = System.Drawing.Color.White
-        Me.uservalm.Location = New System.Drawing.Point(56, 458)
+        Me.uservalm.Location = New System.Drawing.Point(56, 359)
         Me.uservalm.Name = "uservalm"
         Me.uservalm.Size = New System.Drawing.Size(95, 21)
         Me.uservalm.TabIndex = 44
@@ -208,7 +207,7 @@ Partial Class loginform
         Me.attempt.BackColor = System.Drawing.Color.Transparent
         Me.attempt.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.attempt.ForeColor = System.Drawing.Color.White
-        Me.attempt.Location = New System.Drawing.Point(56, 458)
+        Me.attempt.Location = New System.Drawing.Point(86, 463)
         Me.attempt.Name = "attempt"
         Me.attempt.Size = New System.Drawing.Size(85, 19)
         Me.attempt.TabIndex = 43
@@ -219,7 +218,7 @@ Partial Class loginform
         Me.Guna2HtmlLabel15.BackColor = System.Drawing.Color.Transparent
         Me.Guna2HtmlLabel15.Font = New System.Drawing.Font("Microsoft YaHei UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Guna2HtmlLabel15.ForeColor = System.Drawing.Color.White
-        Me.Guna2HtmlLabel15.Location = New System.Drawing.Point(123, 171)
+        Me.Guna2HtmlLabel15.Location = New System.Drawing.Point(129, 173)
         Me.Guna2HtmlLabel15.Name = "Guna2HtmlLabel15"
         Me.Guna2HtmlLabel15.Size = New System.Drawing.Size(233, 28)
         Me.Guna2HtmlLabel15.TabIndex = 42
@@ -231,7 +230,7 @@ Partial Class loginform
         Me.Guna2HtmlLabel14.BackColor = System.Drawing.Color.Transparent
         Me.Guna2HtmlLabel14.Font = New System.Drawing.Font("Cooper Black", 26.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Guna2HtmlLabel14.ForeColor = System.Drawing.Color.FromArgb(CType(CType(220, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(50, Byte), Integer))
-        Me.Guna2HtmlLabel14.Location = New System.Drawing.Point(109, 123)
+        Me.Guna2HtmlLabel14.Location = New System.Drawing.Point(110, 125)
         Me.Guna2HtmlLabel14.Name = "Guna2HtmlLabel14"
         Me.Guna2HtmlLabel14.Size = New System.Drawing.Size(274, 42)
         Me.Guna2HtmlLabel14.TabIndex = 41
@@ -243,7 +242,7 @@ Partial Class loginform
         Me.Guna2HtmlLabel13.BackColor = System.Drawing.Color.Transparent
         Me.Guna2HtmlLabel13.Font = New System.Drawing.Font("Microsoft YaHei UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Guna2HtmlLabel13.ForeColor = System.Drawing.Color.White
-        Me.Guna2HtmlLabel13.Location = New System.Drawing.Point(100, 661)
+        Me.Guna2HtmlLabel13.Location = New System.Drawing.Point(89, 661)
         Me.Guna2HtmlLabel13.Name = "Guna2HtmlLabel13"
         Me.Guna2HtmlLabel13.Size = New System.Drawing.Size(310, 58)
         Me.Guna2HtmlLabel13.TabIndex = 40
@@ -255,7 +254,7 @@ Partial Class loginform
         Me.Guna2HtmlLabel12.BackColor = System.Drawing.Color.Transparent
         Me.Guna2HtmlLabel12.Font = New System.Drawing.Font("Microsoft YaHei UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Guna2HtmlLabel12.ForeColor = System.Drawing.Color.White
-        Me.Guna2HtmlLabel12.Location = New System.Drawing.Point(86, 376)
+        Me.Guna2HtmlLabel12.Location = New System.Drawing.Point(86, 381)
         Me.Guna2HtmlLabel12.Name = "Guna2HtmlLabel12"
         Me.Guna2HtmlLabel12.Size = New System.Drawing.Size(93, 28)
         Me.Guna2HtmlLabel12.TabIndex = 39
@@ -267,7 +266,7 @@ Partial Class loginform
         Me.Guna2HtmlLabel11.BackColor = System.Drawing.Color.Transparent
         Me.Guna2HtmlLabel11.Font = New System.Drawing.Font("Microsoft YaHei UI", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Guna2HtmlLabel11.ForeColor = System.Drawing.Color.White
-        Me.Guna2HtmlLabel11.Location = New System.Drawing.Point(86, 285)
+        Me.Guna2HtmlLabel11.Location = New System.Drawing.Point(86, 277)
         Me.Guna2HtmlLabel11.Name = "Guna2HtmlLabel11"
         Me.Guna2HtmlLabel11.Size = New System.Drawing.Size(99, 28)
         Me.Guna2HtmlLabel11.TabIndex = 38
@@ -348,7 +347,7 @@ Partial Class loginform
         Me.Guna2PictureBox2.BackColor = System.Drawing.Color.Transparent
         Me.Guna2PictureBox2.Image = Global.BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.adfadfafqweqeqeqwe
         Me.Guna2PictureBox2.ImageRotate = 0!
-        Me.Guna2PictureBox2.Location = New System.Drawing.Point(197, 21)
+        Me.Guna2PictureBox2.Location = New System.Drawing.Point(199, 23)
         Me.Guna2PictureBox2.Name = "Guna2PictureBox2"
         Me.Guna2PictureBox2.Size = New System.Drawing.Size(95, 96)
         Me.Guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -386,7 +385,7 @@ Partial Class loginform
         Me.loginbtn.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.loginbtn.ImageOffset = New System.Drawing.Point(11, 0)
         Me.loginbtn.ImageSize = New System.Drawing.Size(25, 20)
-        Me.loginbtn.Location = New System.Drawing.Point(56, 505)
+        Me.loginbtn.Location = New System.Drawing.Point(76, 520)
         Me.loginbtn.Name = "loginbtn"
         Me.loginbtn.Size = New System.Drawing.Size(160, 44)
         Me.loginbtn.TabIndex = 12
@@ -407,7 +406,7 @@ Partial Class loginform
         Me.exitbtn.ForeColor = System.Drawing.SystemColors.Control
         Me.exitbtn.HoverState.FillColor = System.Drawing.Color.Red
         Me.exitbtn.IndicateFocus = True
-        Me.exitbtn.Location = New System.Drawing.Point(265, 505)
+        Me.exitbtn.Location = New System.Drawing.Point(263, 520)
         Me.exitbtn.Name = "exitbtn"
         Me.exitbtn.Size = New System.Drawing.Size(159, 44)
         Me.exitbtn.TabIndex = 13
@@ -437,7 +436,7 @@ Partial Class loginform
         Me.usertxb.AutoRoundedCorners = True
         Me.usertxb.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.usertxb.BackColor = System.Drawing.Color.Transparent
-        Me.usertxb.BorderColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.usertxb.BorderColor = System.Drawing.Color.Transparent
         Me.usertxb.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.usertxb.DefaultText = ""
         Me.usertxb.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
@@ -451,7 +450,7 @@ Partial Class loginform
         Me.usertxb.IconLeft = Global.BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.user
         Me.usertxb.IconLeftOffset = New System.Drawing.Point(10, 0)
         Me.usertxb.IconLeftSize = New System.Drawing.Size(25, 25)
-        Me.usertxb.Location = New System.Drawing.Point(86, 320)
+        Me.usertxb.Location = New System.Drawing.Point(86, 312)
         Me.usertxb.Margin = New System.Windows.Forms.Padding(4)
         Me.usertxb.Name = "usertxb"
         Me.usertxb.PlaceholderForeColor = System.Drawing.Color.Gray
@@ -471,7 +470,7 @@ Partial Class loginform
         Me.showpasschb.ImageOffset = New System.Drawing.Point(0, 0)
         Me.showpasschb.ImageRotate = 0!
         Me.showpasschb.ImageSize = New System.Drawing.Size(22, 22)
-        Me.showpasschb.Location = New System.Drawing.Point(363, 420)
+        Me.showpasschb.Location = New System.Drawing.Point(370, 426)
         Me.showpasschb.Name = "showpasschb"
         Me.showpasschb.Size = New System.Drawing.Size(29, 21)
         Me.showpasschb.TabIndex = 14
@@ -496,7 +495,7 @@ Partial Class loginform
         Me.passtxb.IconLeft = Global.BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.padlock
         Me.passtxb.IconLeftOffset = New System.Drawing.Point(5, 0)
         Me.passtxb.IconLeftSize = New System.Drawing.Size(25, 25)
-        Me.passtxb.Location = New System.Drawing.Point(86, 411)
+        Me.passtxb.Location = New System.Drawing.Point(86, 416)
         Me.passtxb.Margin = New System.Windows.Forms.Padding(4)
         Me.passtxb.Name = "passtxb"
         Me.passtxb.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
@@ -514,7 +513,7 @@ Partial Class loginform
         Me.Guna2PictureBox3.ImageRotate = 0!
         Me.Guna2PictureBox3.Location = New System.Drawing.Point(3, -12)
         Me.Guna2PictureBox3.Name = "Guna2PictureBox3"
-        Me.Guna2PictureBox3.Size = New System.Drawing.Size(196, 171)
+        Me.Guna2PictureBox3.Size = New System.Drawing.Size(196, 183)
         Me.Guna2PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.Guna2PictureBox3.TabIndex = 34
         Me.Guna2PictureBox3.TabStop = False
@@ -527,7 +526,7 @@ Partial Class loginform
         Me.Guna2HtmlLabel9.BackColor = System.Drawing.Color.Transparent
         Me.Guna2HtmlLabel9.Font = New System.Drawing.Font("Cooper Black", 36.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Guna2HtmlLabel9.ForeColor = System.Drawing.Color.White
-        Me.Guna2HtmlLabel9.Location = New System.Drawing.Point(174, 50)
+        Me.Guna2HtmlLabel9.Location = New System.Drawing.Point(171, 55)
         Me.Guna2HtmlLabel9.Margin = New System.Windows.Forms.Padding(0)
         Me.Guna2HtmlLabel9.Name = "Guna2HtmlLabel9"
         Me.Guna2HtmlLabel9.Size = New System.Drawing.Size(390, 56)
