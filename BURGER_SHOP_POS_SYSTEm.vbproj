@@ -66,6 +66,7 @@
     <Reference Include="System.Management" />
     <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -94,10 +95,10 @@
       <DependentUpon>Form1.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="mainform.Designer.vb">
-      <DependentUpon>mainform.vb</DependentUpon>
+    <Compile Include="Mainformd.Designer.vb">
+      <DependentUpon>Mainformd.vb</DependentUpon>
     </Compile>
-    <Compile Include="mainform.vb">
+    <Compile Include="Mainformd.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -126,11 +127,14 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Mainformd.resx">
+      <DependentUpon>Mainformd.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -206,9 +210,6 @@
     <None Include="Resources\aasas.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\images.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\images %282%29.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -270,6 +271,78 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\sdasdsad-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PAPA BURGER2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dashboard icom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dashboard icom1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dashboard-monitor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dashboard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\818611466_1451730220198454_586017437584187953_n.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\818611466_1451730220198454_586017437584187953_n-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clipboard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clipboard %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clipboard %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clipboard %283%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\transaction-record.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\apps-add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user-gear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\business-report.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\turn-off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clipboard %284%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clipboard %285%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\transaction-record %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user-gear1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\multiple-users-silhouette.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\power.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sales.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

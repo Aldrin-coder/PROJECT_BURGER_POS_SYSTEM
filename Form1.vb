@@ -1,4 +1,5 @@
-﻿Imports System.Text.RegularExpressions
+﻿Imports System.Diagnostics.Eventing.Reader
+Imports System.Text.RegularExpressions
 Imports Microsoft.VisualBasic.ApplicationServices
 Public Class loginform
     Dim matcheddata As Boolean = False
@@ -26,9 +27,7 @@ Public Class loginform
 
 
 
-    Private Sub minimize1_Click(sender As Object, e As EventArgs)
-        Me.WindowState = FormWindowState.Minimized
-    End Sub
+
 
     Private Sub showpasschb_CheckedChanged(sender As Object, e As EventArgs) Handles showpasschb.CheckedChanged
         If showpasschb.Checked Then
@@ -41,6 +40,7 @@ Public Class loginform
     Private Sub loginbtn_Click(sender As Object, e As EventArgs) Handles loginbtn.Click
         If usertxb.Text = "" And passtxb.Text = "" Then
             MsgBox("Please Fill up the Fields.", MsgBoxStyle.Exclamation, "Error")
+
             Return
         End If
 
@@ -63,9 +63,12 @@ Public Class loginform
         Else
             uservalm.Visible = False
             usertxb.BorderColor = Color.Transparent
+
+
         End If
 
-        Dim pass As String = passtxb.Text.Trim()
+
+        Dim pass As String = passtxb.Text()
 
         If pass.Length = 0 Then
             Passvalm.Text = "⚠️ Please enter a Password"
@@ -107,14 +110,15 @@ Public Class loginform
             Return
         Else
             Passvalm.Visible = False
-            usertxb.BorderColor = Color.Transparent
+            passtxb.BorderColor = Color.Transparent
+
         End If
 
 
 
 
 
-        query = "SELECT * FROM User_Accounts WHERE USERNAME = '" & usertxb.Text & "' AND PASSWORD = '" & passtxb.Text & "'"
+        query = "SELECT * FROM User_Accounts WHERE USERNAME COLLATE SQL_Latin1_General_CP1_CS_AS = '" & usertxb.Text & "' AND PASSWORD COLLATE SQL_Latin1_General_CP1_CS_AS = '" & passtxb.Text & "'"
         cmd = New SqlClient.SqlCommand(query, sqlconn)
 
         dr = cmd.ExecuteReader()
@@ -131,10 +135,10 @@ Public Class loginform
 
 
         If matcheddata Then
-            MsgBox("Login Successful! Welcome " & username1, MsgBoxStyle.Information, "Success")
+            MsgBox("Login Successfully! Welcome " & username1, MsgBoxStyle.Information, "Success")
             Me.Hide()
             matcheddata = False
-            mainform.Show()
+
             usertxb.Clear()
             passtxb.Clear()
 
@@ -198,6 +202,7 @@ Public Class loginform
         End If
     End Sub
 
-
-
+    Private Sub minimize_Click(sender As Object, e As EventArgs) Handles minimize.Click
+        Me.WindowState = FormWindowState.Minimized
+    End Sub
 End Class
