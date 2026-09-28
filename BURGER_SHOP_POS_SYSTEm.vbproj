@@ -88,6 +88,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="connect.vb" />
+    <Compile Include="CurrentUser.vb" />
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -95,10 +96,11 @@
       <DependentUpon>Form1.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Mainformd.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Mainformd.Designer.vb">
       <DependentUpon>Mainformd.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Mainformd.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -116,6 +118,18 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="ucmua.Designer.vb">
+      <DependentUpon>ucmua.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ucmua.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucoe.Designer.vb">
+      <DependentUpon>ucoe.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ucoe.vb">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="_BURGER_POS_SYSTEM_SQLDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -135,6 +149,12 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucmua.resx">
+      <DependentUpon>ucmua.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucoe.resx">
+      <DependentUpon>ucoe.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

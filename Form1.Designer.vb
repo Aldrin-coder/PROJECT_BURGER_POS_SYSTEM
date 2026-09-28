@@ -192,7 +192,7 @@ Partial Class loginform
         Me.Passvalm.BackColor = System.Drawing.Color.Transparent
         Me.Passvalm.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Passvalm.ForeColor = System.Drawing.Color.White
-        Me.Passvalm.Location = New System.Drawing.Point(46, 463)
+        Me.Passvalm.Location = New System.Drawing.Point(35, 463)
         Me.Passvalm.Name = "Passvalm"
         Me.Passvalm.Size = New System.Drawing.Size(54, 19)
         Me.Passvalm.TabIndex = 45

@@ -26,6 +26,7 @@ C:\Users\ramos\Downloads\PROJECTS2\PROJECT_BURGER_POS_SYSTEM\obj\Debug\BURGER_SH
 C:\Users\ramos\Downloads\PROJECTS2\PROJECT_BURGER_POS_SYSTEM\obj\Debug\BURGER_SHOP_POS_SYSTEm.vbproj.SuggestedBindingRedirects.cache
 C:\Users\ramos\Downloads\PROJECTS2\PROJECT_BURGER_POS_SYSTEM\obj\Debug\BURGER_SHOP_POS_SYSTEm.exe.config
 C:\Users\ramos\Downloads\PROJECTS2\PROJECT_BURGER_POS_SYSTEM\obj\Debug\BURGER_SHOP_POS_SYSTEm.loginform.resources
+C:\Users\ramos\Downloads\PROJECTS2\PROJECT_BURGER_POS_SYSTEM\obj\Debug\BURGER_SHOP_POS_SYSTEm.Mainformd.resources
 C:\Users\ramos\Downloads\PROJECTS2\PROJECT_BURGER_POS_SYSTEM\obj\Debug\BURGER_SHOP_POS_SYSTEm.Resources.resources
 C:\Users\ramos\Downloads\PROJECTS2\PROJECT_BURGER_POS_SYSTEM\obj\Debug\BURGER_SHOP_POS_SYSTEm.vbproj.GenerateResource.cache
 C:\Users\ramos\Downloads\PROJECTS2\PROJECT_BURGER_POS_SYSTEM\obj\Debug\BURGER_SHOP_POS_SYSTEm.vbproj.CoreCompileInputs.cache
@@ -33,4 +34,5 @@ C:\Users\ramos\Downloads\PROJECTS2\PROJECT_BURGER_POS_SYSTEM\obj\Debug\BURGER_S.
 C:\Users\ramos\Downloads\PROJECTS2\PROJECT_BURGER_POS_SYSTEM\obj\Debug\BURGER_SHOP_POS_SYSTEm.exe
 C:\Users\ramos\Downloads\PROJECTS2\PROJECT_BURGER_POS_SYSTEM\obj\Debug\BURGER_SHOP_POS_SYSTEm.xml
 C:\Users\ramos\Downloads\PROJECTS2\PROJECT_BURGER_POS_SYSTEM\obj\Debug\BURGER_SHOP_POS_SYSTEm.pdb
-C:\Users\ramos\Downloads\PROJECTS2\PROJECT_BURGER_POS_SYSTEM\obj\Debug\BURGER_SHOP_POS_SYSTEm.Mainformd.resources
+C:\Users\ramos\Downloads\PROJECTS2\PROJECT_BURGER_POS_SYSTEM\obj\Debug\BURGER_SHOP_POS_SYSTEm.ucoe.resources
+C:\Users\ramos\Downloads\PROJECTS2\PROJECT_BURGER_POS_SYSTEM\obj\Debug\BURGER_SHOP_POS_SYSTEm.ucmua.resources

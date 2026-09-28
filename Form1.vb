@@ -1,12 +1,13 @@
 ﻿Imports System.Diagnostics.Eventing.Reader
 Imports System.Text.RegularExpressions
+Imports System.Web.Security
 Imports Microsoft.VisualBasic.ApplicationServices
+Imports TheArtOfDevHtmlRenderer
 Public Class loginform
     Dim matcheddata As Boolean = False
     Dim failedAttempts As Integer = 0
     Dim maxtries As Integer = 3
     Dim secondsleft As Integer = 60
-    Dim username1 As String = ""
 
     Private Sub loginform_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         conn()
@@ -22,7 +23,7 @@ Public Class loginform
 
 
     Private Sub exitbtn_Click(sender As Object, e As EventArgs) Handles exitbtn.Click
-        Me.Close()
+        Application.Exit()
     End Sub
 
 
@@ -118,7 +119,14 @@ Public Class loginform
 
 
 
-        query = "SELECT * FROM User_Accounts WHERE USERNAME COLLATE SQL_Latin1_General_CP1_CS_AS = '" & usertxb.Text & "' AND PASSWORD COLLATE SQL_Latin1_General_CP1_CS_AS = '" & passtxb.Text & "'"
+        query =
+    "SELECT u.user_id, u.first_name, u.last_name, u.gender, u.role, o.owner_code, a.admin_code, c.cashier_code,c.shift " &
+    "FROM user_accounts u " &
+    "LEFT JOIN owner_accounts   o ON u.user_id = o.user_id " &
+    "LEFT JOIN admin_accounts   a ON u.user_id = a.user_id " &
+    "LEFT JOIN cashier_accounts c ON u.user_id = c.user_id " &
+          "WHERE u.username COLLATE SQL_Latin1_General_CP1_CS_AS = '" & usertxb.Text & "'
+           AND u.password_hash COLLATE SQL_Latin1_General_CP1_CS_AS = '" & passtxb.Text & "'"
         cmd = New SqlClient.SqlCommand(query, sqlconn)
 
         dr = cmd.ExecuteReader()
@@ -127,15 +135,51 @@ Public Class loginform
             dr.Read()
             matcheddata = True
 
-            username1 = dr("USERNAME").ToString()
+            CurrentUser.code = ""
+            CurrentUser.fullname = dr("first_name").ToString() & " " & dr("last_name").ToString()
+            CurrentUser.gender = dr("gender").ToString()
+            CurrentUser.role = dr("role").ToString()
+            CurrentUser.shift = dr("shift").ToString()
+
+
+
+            If role = "owner" Then
+                CurrentUser.code = dr("owner_code").ToString()
+            ElseIf role = "admin" Then
+                CurrentUser.code = dr("admin_code").ToString()
+            ElseIf role = "cashier" Then
+                CurrentUser.code = dr("cashier_code").ToString()
+            End If
         End If
+
+
         dr.Close()
         cmd.Dispose()
 
 
 
         If matcheddata Then
-            MsgBox("Login Successfully! Welcome " & username1, MsgBoxStyle.Information, "Success")
+            MsgBox("Login Successfully! Welcome " & StrConv(fullname, vbProperCase) & " (" & role.ToUpper & ")", MsgBoxStyle.Information, "Success")
+
+            If role = "owner" Then
+
+                Dim f As New Mainformd()
+                f.Show()
+                Me.Hide()
+
+            ElseIf role = "admin" Then
+                Dim f As New Mainformd()
+                f.Show()
+                Me.Hide()
+
+            ElseIf role = "cashier" Then
+                Dim f As New Mainformd()
+                f.Show()
+                Me.Hide()
+
+            End If
+
+
             Me.Hide()
             matcheddata = False
 
@@ -205,4 +249,6 @@ Public Class loginform
     Private Sub minimize_Click(sender As Object, e As EventArgs) Handles minimize.Click
         Me.WindowState = FormWindowState.Minimized
     End Sub
+
+
 End Class

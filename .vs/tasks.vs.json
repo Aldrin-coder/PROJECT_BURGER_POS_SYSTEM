@@ -5,6 +5,11 @@
       "taskLabel": "task-dashboarduc",
       "appliesTo": "dashboarduc.vb",
       "type": "launch"
+    },
+    {
+      "taskLabel": "task-Application1.Designer",
+      "appliesTo": "My Project/Application1.Designer.vb",
+      "type": "launch"
     }
   ]
 }
