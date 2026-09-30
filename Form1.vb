@@ -1,4 +1,5 @@
 ﻿Imports System.Diagnostics.Eventing.Reader
+Imports System.Reflection
 Imports System.Text.RegularExpressions
 Imports System.Web.Security
 Imports Microsoft.VisualBasic.ApplicationServices
@@ -15,8 +16,8 @@ Public Class loginform
 
         attempt.Visible = False
         uservalm.Visible = False
-        Passvalm.Visible = False '
-
+        Passvalm.Visible = False
+        CurrentUser.Clear()
 
 
     End Sub
@@ -39,6 +40,10 @@ Public Class loginform
     End Sub
 
     Private Sub loginbtn_Click(sender As Object, e As EventArgs) Handles loginbtn.Click
+
+        CurrentUser.Clear()
+
+
         If usertxb.Text = "" And passtxb.Text = "" Then
             MsgBox("Please Fill up the Fields.", MsgBoxStyle.Exclamation, "Error")
 
@@ -120,7 +125,7 @@ Public Class loginform
 
 
         query =
-    "SELECT u.user_id, u.first_name, u.last_name, u.gender, u.role, o.owner_code, a.admin_code, c.cashier_code,c.shift " &
+    "SELECT u.user_id, u.first_name, u.middle_name, u.last_name, u.gender, u.role, o.owner_code, a.admin_code, c.cashier_code,c.shift " &
     "FROM user_accounts u " &
     "LEFT JOIN owner_accounts   o ON u.user_id = o.user_id " &
     "LEFT JOIN admin_accounts   a ON u.user_id = a.user_id " &
@@ -135,19 +140,34 @@ Public Class loginform
             dr.Read()
             matcheddata = True
 
-            CurrentUser.code = ""
-            CurrentUser.fullname = dr("first_name").ToString() & " " & dr("last_name").ToString()
+            midname = dr("middle_name").ToString()
+
+            Dim middlePart As String = ""
+            If Not String.IsNullOrWhiteSpace(midname) Then
+                Dim m As String = midname.Trim().TrimEnd("."c).ToUpper()
+                middlePart = " " & m & If(m.Length = 1, ".", "")
+            End If
+
+
+
+            CurrentUser.firstname = dr("first_name").ToString()
+            CurrentUser.lastname = dr("last_name").ToString()
+            CurrentUser.midname = midname
             CurrentUser.gender = dr("gender").ToString()
             CurrentUser.role = dr("role").ToString()
             CurrentUser.shift = dr("shift").ToString()
 
+            CurrentUser.fullname =
+                StrConv(CurrentUser.firstname.Trim(), vbProperCase) &
+                middlePart & " " &
+                StrConv(CurrentUser.lastname.Trim(), vbProperCase)
 
-
-            If role = "owner" Then
+            If role.ToLower = "owner" Then
                 CurrentUser.code = dr("owner_code").ToString()
-            ElseIf role = "admin" Then
+
+            ElseIf role.ToLower = "admin" Then
                 CurrentUser.code = dr("admin_code").ToString()
-            ElseIf role = "cashier" Then
+            ElseIf role.ToLower = "cashier" Then
                 CurrentUser.code = dr("cashier_code").ToString()
             End If
         End If
@@ -159,7 +179,8 @@ Public Class loginform
 
 
         If matcheddata Then
-            MsgBox("Login Successfully! Welcome " & StrConv(fullname, vbProperCase) & " (" & role.ToUpper & ")", MsgBoxStyle.Information, "Success")
+
+            MsgBox("Welcome! " & CurrentUser.fullname & " is now logged in as" & " (" & StrConv(CurrentUser.role, vbProperCase) & ")", MsgBoxStyle.Information, "Login Successfully!")
 
             If role = "owner" Then
 

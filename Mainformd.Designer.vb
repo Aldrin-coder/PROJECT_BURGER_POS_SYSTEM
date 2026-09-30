@@ -37,6 +37,9 @@ Partial Class Mainformd
         Me.FlowLayoutPanel3 = New System.Windows.Forms.FlowLayoutPanel()
         Me.lbluserinfo = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.lbluserid = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.lbluserfn = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.lbluserg = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.lblusershift = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2Panel1 = New Guna.UI2.WinForms.Guna2Panel()
         Me.Guna2ControlBox2 = New Guna.UI2.WinForms.Guna2ControlBox()
         Me.exit2 = New Guna.UI2.WinForms.Guna2ControlBox()
@@ -51,9 +54,7 @@ Partial Class Mainformd
         Me.mainformf = New Guna.UI2.WinForms.Guna2BorderlessForm(Me.components)
         Me.datentimer = New System.Windows.Forms.Timer(Me.components)
         Me.Guna2HtmlLabel1 = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.lbluserfn = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.lbluserg = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.lblusershift = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.Ucmuaforadmin1 = New BURGER_SHOP_POS_SYSTEm.ucmuaforadmin()
         Me.FlowLayoutPanel2.SuspendLayout()
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.FlowLayoutPanel3.SuspendLayout()
@@ -76,9 +77,9 @@ Partial Class Mainformd
         Me.FlowLayoutPanel2.Controls.Add(Me.logoutbtn)
         Me.FlowLayoutPanel2.Controls.Add(Me.FlowLayoutPanel3)
         Me.FlowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Left
-        Me.FlowLayoutPanel2.Location = New System.Drawing.Point(0, 165)
+        Me.FlowLayoutPanel2.Location = New System.Drawing.Point(0, 132)
         Me.FlowLayoutPanel2.Name = "FlowLayoutPanel2"
-        Me.FlowLayoutPanel2.Size = New System.Drawing.Size(367, 935)
+        Me.FlowLayoutPanel2.Size = New System.Drawing.Size(374, 968)
         Me.FlowLayoutPanel2.TabIndex = 1
         '
         'Guna2PictureBox1
@@ -100,8 +101,8 @@ Partial Class Mainformd
         Me.Guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent
         Me.Guna2HtmlLabel2.Font = New System.Drawing.Font("Microsoft YaHei", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Guna2HtmlLabel2.ForeColor = System.Drawing.Color.White
-        Me.Guna2HtmlLabel2.Location = New System.Drawing.Point(40, 145)
-        Me.Guna2HtmlLabel2.Margin = New System.Windows.Forms.Padding(40, 10, 3, 70)
+        Me.Guna2HtmlLabel2.Location = New System.Drawing.Point(40, 150)
+        Me.Guna2HtmlLabel2.Margin = New System.Windows.Forms.Padding(40, 15, 3, 70)
         Me.Guna2HtmlLabel2.Name = "Guna2HtmlLabel2"
         Me.Guna2HtmlLabel2.Size = New System.Drawing.Size(272, 28)
         Me.Guna2HtmlLabel2.TabIndex = 3
@@ -125,7 +126,7 @@ Partial Class Mainformd
         Me.dashboardbtn.Image = CType(resources.GetObject("dashboardbtn.Image"), System.Drawing.Image)
         Me.dashboardbtn.ImageSize = New System.Drawing.Size(25, 25)
         Me.dashboardbtn.IndicateFocus = True
-        Me.dashboardbtn.Location = New System.Drawing.Point(0, 246)
+        Me.dashboardbtn.Location = New System.Drawing.Point(0, 251)
         Me.dashboardbtn.Margin = New System.Windows.Forms.Padding(0, 3, 3, 14)
         Me.dashboardbtn.Name = "dashboardbtn"
         Me.dashboardbtn.PressedColor = System.Drawing.Color.OrangeRed
@@ -147,14 +148,14 @@ Partial Class Mainformd
         Me.oebtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
         Me.oebtn.FillColor = System.Drawing.Color.Transparent
         Me.oebtn.FocusedColor = System.Drawing.Color.Transparent
-        Me.oebtn.Font = New System.Drawing.Font("Cooper Black", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.oebtn.Font = New System.Drawing.Font("Cooper Black", 14.25!)
         Me.oebtn.ForeColor = System.Drawing.Color.White
         Me.oebtn.HoverState.FillColor = System.Drawing.Color.FromArgb(CType(CType(233, Byte), Integer), CType(CType(90, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.oebtn.Image = CType(resources.GetObject("oebtn.Image"), System.Drawing.Image)
         Me.oebtn.ImageOffset = New System.Drawing.Point(3, 0)
         Me.oebtn.ImageSize = New System.Drawing.Size(25, 25)
         Me.oebtn.IndicateFocus = True
-        Me.oebtn.Location = New System.Drawing.Point(0, 303)
+        Me.oebtn.Location = New System.Drawing.Point(0, 308)
         Me.oebtn.Margin = New System.Windows.Forms.Padding(0, 3, 3, 14)
         Me.oebtn.Name = "oebtn"
         Me.oebtn.PressedColor = System.Drawing.Color.OrangeRed
@@ -183,7 +184,7 @@ Partial Class Mainformd
         Me.mmbtn.ImageOffset = New System.Drawing.Point(5, 0)
         Me.mmbtn.ImageSize = New System.Drawing.Size(25, 25)
         Me.mmbtn.IndicateFocus = True
-        Me.mmbtn.Location = New System.Drawing.Point(0, 360)
+        Me.mmbtn.Location = New System.Drawing.Point(0, 365)
         Me.mmbtn.Margin = New System.Windows.Forms.Padding(0, 3, 3, 14)
         Me.mmbtn.Name = "mmbtn"
         Me.mmbtn.PressedColor = System.Drawing.Color.OrangeRed
@@ -209,18 +210,19 @@ Partial Class Mainformd
         Me.muabtn.ForeColor = System.Drawing.Color.White
         Me.muabtn.HoverState.FillColor = System.Drawing.Color.FromArgb(CType(CType(233, Byte), Integer), CType(CType(90, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.muabtn.Image = CType(resources.GetObject("muabtn.Image"), System.Drawing.Image)
-        Me.muabtn.ImageOffset = New System.Drawing.Point(8, 0)
+        Me.muabtn.ImageAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.muabtn.ImageOffset = New System.Drawing.Point(17, 0)
         Me.muabtn.ImageSize = New System.Drawing.Size(25, 25)
         Me.muabtn.IndicateFocus = True
-        Me.muabtn.Location = New System.Drawing.Point(0, 417)
+        Me.muabtn.Location = New System.Drawing.Point(0, 422)
         Me.muabtn.Margin = New System.Windows.Forms.Padding(0, 3, 3, 14)
         Me.muabtn.Name = "muabtn"
         Me.muabtn.PressedColor = System.Drawing.Color.OrangeRed
         Me.muabtn.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.muabtn.Size = New System.Drawing.Size(338, 40)
+        Me.muabtn.Size = New System.Drawing.Size(366, 40)
         Me.muabtn.TabIndex = 7
         Me.muabtn.Text = "MANAGE USER ACCOUNTS"
-        Me.muabtn.TextOffset = New System.Drawing.Point(8, 0)
+        Me.muabtn.TextOffset = New System.Drawing.Point(18, 0)
         Me.muabtn.UseTransparentBackground = True
         '
         'trbtn
@@ -241,7 +243,7 @@ Partial Class Mainformd
         Me.trbtn.ImageOffset = New System.Drawing.Point(5, 0)
         Me.trbtn.ImageSize = New System.Drawing.Size(25, 25)
         Me.trbtn.IndicateFocus = True
-        Me.trbtn.Location = New System.Drawing.Point(0, 474)
+        Me.trbtn.Location = New System.Drawing.Point(0, 479)
         Me.trbtn.Margin = New System.Windows.Forms.Padding(0, 3, 3, 14)
         Me.trbtn.Name = "trbtn"
         Me.trbtn.PressedColor = System.Drawing.Color.OrangeRed
@@ -269,7 +271,7 @@ Partial Class Mainformd
         Me.srbtn.Image = CType(resources.GetObject("srbtn.Image"), System.Drawing.Image)
         Me.srbtn.ImageOffset = New System.Drawing.Point(3, 0)
         Me.srbtn.ImageSize = New System.Drawing.Size(25, 25)
-        Me.srbtn.Location = New System.Drawing.Point(0, 531)
+        Me.srbtn.Location = New System.Drawing.Point(0, 536)
         Me.srbtn.Margin = New System.Windows.Forms.Padding(0, 3, 3, 14)
         Me.srbtn.Name = "srbtn"
         Me.srbtn.PressedColor = System.Drawing.Color.OrangeRed
@@ -299,7 +301,7 @@ Partial Class Mainformd
         Me.logoutbtn.ImageOffset = New System.Drawing.Point(16, 0)
         Me.logoutbtn.ImageSize = New System.Drawing.Size(28, 28)
         Me.logoutbtn.IndicateFocus = True
-        Me.logoutbtn.Location = New System.Drawing.Point(0, 588)
+        Me.logoutbtn.Location = New System.Drawing.Point(0, 593)
         Me.logoutbtn.Margin = New System.Windows.Forms.Padding(0, 3, 3, 12)
         Me.logoutbtn.Name = "logoutbtn"
         Me.logoutbtn.PressedColor = System.Drawing.Color.Red
@@ -319,10 +321,10 @@ Partial Class Mainformd
         Me.FlowLayoutPanel3.Controls.Add(Me.lbluserfn)
         Me.FlowLayoutPanel3.Controls.Add(Me.lbluserg)
         Me.FlowLayoutPanel3.Controls.Add(Me.lblusershift)
-        Me.FlowLayoutPanel3.Location = New System.Drawing.Point(25, 690)
+        Me.FlowLayoutPanel3.Location = New System.Drawing.Point(25, 695)
         Me.FlowLayoutPanel3.Margin = New System.Windows.Forms.Padding(25, 50, 3, 20)
         Me.FlowLayoutPanel3.Name = "FlowLayoutPanel3"
-        Me.FlowLayoutPanel3.Size = New System.Drawing.Size(300, 208)
+        Me.FlowLayoutPanel3.Size = New System.Drawing.Size(313, 208)
         Me.FlowLayoutPanel3.TabIndex = 10
         '
         'lbluserinfo
@@ -332,11 +334,11 @@ Partial Class Mainformd
         Me.lbluserinfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.lbluserinfo.Dock = System.Windows.Forms.DockStyle.Top
         Me.lbluserinfo.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbluserinfo.ForeColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.lbluserinfo.ForeColor = System.Drawing.Color.White
         Me.lbluserinfo.Location = New System.Drawing.Point(0, 0)
         Me.lbluserinfo.Margin = New System.Windows.Forms.Padding(0)
         Me.lbluserinfo.Name = "lbluserinfo"
-        Me.lbluserinfo.Size = New System.Drawing.Size(300, 35)
+        Me.lbluserinfo.Size = New System.Drawing.Size(311, 35)
         Me.lbluserinfo.TabIndex = 0
         Me.lbluserinfo.Text = "User Info"
         Me.lbluserinfo.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
@@ -347,13 +349,55 @@ Partial Class Mainformd
         Me.lbluserid.BackColor = System.Drawing.Color.Transparent
         Me.lbluserid.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbluserid.ForeColor = System.Drawing.Color.White
-        Me.lbluserid.Location = New System.Drawing.Point(50, 60)
-        Me.lbluserid.Margin = New System.Windows.Forms.Padding(50, 25, 3, 5)
+        Me.lbluserid.Location = New System.Drawing.Point(20, 60)
+        Me.lbluserid.Margin = New System.Windows.Forms.Padding(20, 25, 3, 5)
         Me.lbluserid.Name = "lbluserid"
         Me.lbluserid.Size = New System.Drawing.Size(280, 16)
         Me.lbluserid.TabIndex = 1
         Me.lbluserid.Text = "user id: "
         Me.lbluserid.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'lbluserfn
+        '
+        Me.lbluserfn.AutoSize = False
+        Me.lbluserfn.BackColor = System.Drawing.Color.Transparent
+        Me.lbluserfn.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbluserfn.ForeColor = System.Drawing.Color.White
+        Me.lbluserfn.Location = New System.Drawing.Point(20, 91)
+        Me.lbluserfn.Margin = New System.Windows.Forms.Padding(20, 10, 3, 5)
+        Me.lbluserfn.Name = "lbluserfn"
+        Me.lbluserfn.Size = New System.Drawing.Size(297, 16)
+        Me.lbluserfn.TabIndex = 2
+        Me.lbluserfn.Text = "user fn: "
+        Me.lbluserfn.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'lbluserg
+        '
+        Me.lbluserg.AutoSize = False
+        Me.lbluserg.BackColor = System.Drawing.Color.Transparent
+        Me.lbluserg.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbluserg.ForeColor = System.Drawing.Color.White
+        Me.lbluserg.Location = New System.Drawing.Point(20, 122)
+        Me.lbluserg.Margin = New System.Windows.Forms.Padding(20, 10, 3, 5)
+        Me.lbluserg.Name = "lbluserg"
+        Me.lbluserg.Size = New System.Drawing.Size(297, 16)
+        Me.lbluserg.TabIndex = 3
+        Me.lbluserg.Text = "userg"
+        Me.lbluserg.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'lblusershift
+        '
+        Me.lblusershift.AutoSize = False
+        Me.lblusershift.BackColor = System.Drawing.Color.Transparent
+        Me.lblusershift.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblusershift.ForeColor = System.Drawing.Color.White
+        Me.lblusershift.Location = New System.Drawing.Point(20, 153)
+        Me.lblusershift.Margin = New System.Windows.Forms.Padding(20, 10, 3, 5)
+        Me.lblusershift.Name = "lblusershift"
+        Me.lblusershift.Size = New System.Drawing.Size(297, 16)
+        Me.lblusershift.TabIndex = 4
+        Me.lblusershift.Text = "user shift"
+        Me.lblusershift.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft
         '
         'Guna2Panel1
         '
@@ -371,13 +415,12 @@ Partial Class Mainformd
         Me.Guna2Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Guna2Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Guna2Panel1.Name = "Guna2Panel1"
-        Me.Guna2Panel1.Size = New System.Drawing.Size(1850, 165)
+        Me.Guna2Panel1.Size = New System.Drawing.Size(1850, 132)
         Me.Guna2Panel1.TabIndex = 2
         '
         'Guna2ControlBox2
         '
         Me.Guna2ControlBox2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Guna2ControlBox2.BorderThickness = 1
         Me.Guna2ControlBox2.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MinimizeBox
         Me.Guna2ControlBox2.FillColor = System.Drawing.Color.Transparent
         Me.Guna2ControlBox2.HoverState.FillColor = System.Drawing.Color.Red
@@ -391,7 +434,6 @@ Partial Class Mainformd
         'exit2
         '
         Me.exit2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.exit2.BorderThickness = 1
         Me.exit2.FillColor = System.Drawing.Color.Transparent
         Me.exit2.HoverState.FillColor = System.Drawing.Color.Red
         Me.exit2.IconColor = System.Drawing.Color.White
@@ -407,7 +449,7 @@ Partial Class Mainformd
         Me.Guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent
         Me.Guna2HtmlLabel3.Font = New System.Drawing.Font("Cooper Black", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Guna2HtmlLabel3.ForeColor = System.Drawing.Color.White
-        Me.Guna2HtmlLabel3.Location = New System.Drawing.Point(268, 59)
+        Me.Guna2HtmlLabel3.Location = New System.Drawing.Point(273, 48)
         Me.Guna2HtmlLabel3.Margin = New System.Windows.Forms.Padding(40, 10, 3, 70)
         Me.Guna2HtmlLabel3.Name = "Guna2HtmlLabel3"
         Me.Guna2HtmlLabel3.Size = New System.Drawing.Size(114, 56)
@@ -419,7 +461,7 @@ Partial Class Mainformd
         Me.Guna2PictureBox2.BackColor = System.Drawing.Color.Transparent
         Me.Guna2PictureBox2.Image = CType(resources.GetObject("Guna2PictureBox2.Image"), System.Drawing.Image)
         Me.Guna2PictureBox2.ImageRotate = 0!
-        Me.Guna2PictureBox2.Location = New System.Drawing.Point(174, 38)
+        Me.Guna2PictureBox2.Location = New System.Drawing.Point(179, 27)
         Me.Guna2PictureBox2.Name = "Guna2PictureBox2"
         Me.Guna2PictureBox2.Size = New System.Drawing.Size(110, 98)
         Me.Guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -435,12 +477,12 @@ Partial Class Mainformd
         Me.Guna2Shapes4.BorderColor = System.Drawing.Color.Transparent
         Me.Guna2Shapes4.FillColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(109, Byte), Integer))
         Me.Guna2Shapes4.LineThickness = 4
-        Me.Guna2Shapes4.Location = New System.Drawing.Point(1736, 75)
+        Me.Guna2Shapes4.Location = New System.Drawing.Point(1707, 48)
         Me.Guna2Shapes4.Name = "Guna2Shapes4"
         Me.Guna2Shapes4.PolygonSkip = 1
         Me.Guna2Shapes4.Rotate = 0!
         Me.Guna2Shapes4.Shape = Guna.UI2.WinForms.Enums.ShapeType.Line
-        Me.Guna2Shapes4.Size = New System.Drawing.Size(129, 113)
+        Me.Guna2Shapes4.Size = New System.Drawing.Size(154, 113)
         Me.Guna2Shapes4.TabIndex = 15
         Me.Guna2Shapes4.Text = "Guna2Shapes4"
         Me.Guna2Shapes4.UseTransparentBackground = True
@@ -454,12 +496,12 @@ Partial Class Mainformd
         Me.Guna2Shapes3.BorderColor = System.Drawing.Color.Transparent
         Me.Guna2Shapes3.FillColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(109, Byte), Integer))
         Me.Guna2Shapes3.LineThickness = 4
-        Me.Guna2Shapes3.Location = New System.Drawing.Point(1550, 30)
+        Me.Guna2Shapes3.Location = New System.Drawing.Point(1486, 48)
         Me.Guna2Shapes3.Name = "Guna2Shapes3"
         Me.Guna2Shapes3.PolygonSkip = 1
         Me.Guna2Shapes3.Rotate = 0!
         Me.Guna2Shapes3.Shape = Guna.UI2.WinForms.Enums.ShapeType.Line
-        Me.Guna2Shapes3.Size = New System.Drawing.Size(300, 113)
+        Me.Guna2Shapes3.Size = New System.Drawing.Size(384, 40)
         Me.Guna2Shapes3.TabIndex = 14
         Me.Guna2Shapes3.Text = "Guna2Shapes3"
         Me.Guna2Shapes3.UseTransparentBackground = True
@@ -473,12 +515,13 @@ Partial Class Mainformd
         Me.Guna2Shapes2.BorderColor = System.Drawing.Color.Transparent
         Me.Guna2Shapes2.FillColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(109, Byte), Integer))
         Me.Guna2Shapes2.LineThickness = 4
-        Me.Guna2Shapes2.Location = New System.Drawing.Point(1668, -14)
+        Me.Guna2Shapes2.Location = New System.Drawing.Point(1623, 1)
+        Me.Guna2Shapes2.Margin = New System.Windows.Forms.Padding(1, 3, 3, 3)
         Me.Guna2Shapes2.Name = "Guna2Shapes2"
         Me.Guna2Shapes2.PolygonSkip = 1
         Me.Guna2Shapes2.Rotate = 0!
         Me.Guna2Shapes2.Shape = Guna.UI2.WinForms.Enums.ShapeType.Line
-        Me.Guna2Shapes2.Size = New System.Drawing.Size(182, 113)
+        Me.Guna2Shapes2.Size = New System.Drawing.Size(253, 62)
         Me.Guna2Shapes2.TabIndex = 13
         Me.Guna2Shapes2.Text = "Guna2Shapes2"
         Me.Guna2Shapes2.UseTransparentBackground = True
@@ -487,11 +530,11 @@ Partial Class Mainformd
         'timerlabel
         '
         Me.timerlabel.BackColor = System.Drawing.Color.Transparent
-        Me.timerlabel.Font = New System.Drawing.Font("MingLiU_HKSCS-ExtB", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.timerlabel.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.timerlabel.ForeColor = System.Drawing.Color.Black
-        Me.timerlabel.Location = New System.Drawing.Point(40, 94)
+        Me.timerlabel.Location = New System.Drawing.Point(47, 83)
         Me.timerlabel.Name = "timerlabel"
-        Me.timerlabel.Size = New System.Drawing.Size(47, 21)
+        Me.timerlabel.Size = New System.Drawing.Size(35, 21)
         Me.timerlabel.TabIndex = 12
         Me.timerlabel.Text = "time"
         Me.timerlabel.TextAlignment = System.Drawing.ContentAlignment.TopCenter
@@ -499,11 +542,11 @@ Partial Class Mainformd
         'datelabel
         '
         Me.datelabel.BackColor = System.Drawing.Color.Transparent
-        Me.datelabel.Font = New System.Drawing.Font("MingLiU_HKSCS-ExtB", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.datelabel.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.datelabel.ForeColor = System.Drawing.Color.Black
-        Me.datelabel.Location = New System.Drawing.Point(40, 67)
+        Me.datelabel.Location = New System.Drawing.Point(47, 56)
         Me.datelabel.Name = "datelabel"
-        Me.datelabel.Size = New System.Drawing.Size(47, 21)
+        Me.datelabel.Size = New System.Drawing.Size(38, 21)
         Me.datelabel.TabIndex = 11
         Me.datelabel.Text = "Date"
         Me.datelabel.TextAlignment = System.Drawing.ContentAlignment.TopCenter
@@ -516,12 +559,12 @@ Partial Class Mainformd
         Me.Guna2Shapes1.BorderColor = System.Drawing.Color.Transparent
         Me.Guna2Shapes1.FillColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(109, Byte), Integer))
         Me.Guna2Shapes1.LineThickness = 4
-        Me.Guna2Shapes1.Location = New System.Drawing.Point(95, 38)
+        Me.Guna2Shapes1.Location = New System.Drawing.Point(96, 27)
         Me.Guna2Shapes1.Name = "Guna2Shapes1"
         Me.Guna2Shapes1.PolygonSkip = 1
         Me.Guna2Shapes1.Rotate = 90.0!
         Me.Guna2Shapes1.Shape = Guna.UI2.WinForms.Enums.ShapeType.Line
-        Me.Guna2Shapes1.Size = New System.Drawing.Size(107, 102)
+        Me.Guna2Shapes1.Size = New System.Drawing.Size(107, 89)
         Me.Guna2Shapes1.TabIndex = 3
         Me.Guna2Shapes1.Text = "Guna2Shapes1"
         Me.Guna2Shapes1.UseTransparentBackground = True
@@ -553,47 +596,16 @@ Partial Class Mainformd
         Me.Guna2HtmlLabel1.TabIndex = 10
         Me.Guna2HtmlLabel1.Text = "PAPA <br> BURGER"
         '
-        'lbluserfn
+        'Ucmuaforadmin1
         '
-        Me.lbluserfn.AutoSize = False
-        Me.lbluserfn.BackColor = System.Drawing.Color.Transparent
-        Me.lbluserfn.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbluserfn.ForeColor = System.Drawing.Color.White
-        Me.lbluserfn.Location = New System.Drawing.Point(50, 91)
-        Me.lbluserfn.Margin = New System.Windows.Forms.Padding(50, 10, 3, 5)
-        Me.lbluserfn.Name = "lbluserfn"
-        Me.lbluserfn.Size = New System.Drawing.Size(297, 16)
-        Me.lbluserfn.TabIndex = 2
-        Me.lbluserfn.Text = "user fn: "
-        Me.lbluserfn.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'lbluserg
-        '
-        Me.lbluserg.AutoSize = False
-        Me.lbluserg.BackColor = System.Drawing.Color.Transparent
-        Me.lbluserg.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbluserg.ForeColor = System.Drawing.Color.White
-        Me.lbluserg.Location = New System.Drawing.Point(50, 122)
-        Me.lbluserg.Margin = New System.Windows.Forms.Padding(50, 10, 3, 5)
-        Me.lbluserg.Name = "lbluserg"
-        Me.lbluserg.Size = New System.Drawing.Size(297, 16)
-        Me.lbluserg.TabIndex = 3
-        Me.lbluserg.Text = "userg"
-        Me.lbluserg.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'lblusershift
-        '
-        Me.lblusershift.AutoSize = False
-        Me.lblusershift.BackColor = System.Drawing.Color.Transparent
-        Me.lblusershift.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblusershift.ForeColor = System.Drawing.Color.White
-        Me.lblusershift.Location = New System.Drawing.Point(50, 153)
-        Me.lblusershift.Margin = New System.Windows.Forms.Padding(50, 10, 3, 5)
-        Me.lblusershift.Name = "lblusershift"
-        Me.lblusershift.Size = New System.Drawing.Size(297, 16)
-        Me.lblusershift.TabIndex = 4
-        Me.lblusershift.Text = "user shift"
-        Me.lblusershift.TextAlignment = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Ucmuaforadmin1.AutoSize = True
+        Me.Ucmuaforadmin1.BackColor = System.Drawing.Color.White
+        Me.Ucmuaforadmin1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Ucmuaforadmin1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Ucmuaforadmin1.Location = New System.Drawing.Point(374, 132)
+        Me.Ucmuaforadmin1.Name = "Ucmuaforadmin1"
+        Me.Ucmuaforadmin1.Size = New System.Drawing.Size(1476, 968)
+        Me.Ucmuaforadmin1.TabIndex = 3
         '
         'Mainformd
         '
@@ -602,6 +614,7 @@ Partial Class Mainformd
         Me.AutoSize = True
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.ClientSize = New System.Drawing.Size(1850, 1100)
+        Me.Controls.Add(Me.Ucmuaforadmin1)
         Me.Controls.Add(Me.FlowLayoutPanel2)
         Me.Controls.Add(Me.Guna2Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
@@ -617,6 +630,7 @@ Partial Class Mainformd
         Me.Guna2Panel1.PerformLayout()
         CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents mmbtn As Guna.UI2.WinForms.Guna2Button
@@ -649,4 +663,5 @@ Partial Class Mainformd
     Friend WithEvents lbluserfn As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents lbluserg As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents lblusershift As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents Ucmuaforadmin1 As ucmuaforadmin
 End Class
