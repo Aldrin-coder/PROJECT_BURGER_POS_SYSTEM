@@ -34,4 +34,7 @@ C:\Users\ramos\Downloads\PROJECTS2\PROJECT_BURGER_POS_SYSTEM\obj\Debug\BURGER_S.
 C:\Users\ramos\Downloads\PROJECTS2\PROJECT_BURGER_POS_SYSTEM\obj\Debug\BURGER_SHOP_POS_SYSTEm.exe
 C:\Users\ramos\Downloads\PROJECTS2\PROJECT_BURGER_POS_SYSTEM\obj\Debug\BURGER_SHOP_POS_SYSTEm.xml
 C:\Users\ramos\Downloads\PROJECTS2\PROJECT_BURGER_POS_SYSTEM\obj\Debug\BURGER_SHOP_POS_SYSTEm.pdb
-C:\Users\ramos\Downloads\PROJECTS2\PROJECT_BURGER_POS_SYSTEM\obj\Debug\BURGER_SHOP_POS_SYSTEm.ucmuaforadmin.resources
+C:\Users\ramos\Downloads\PROJECTS2\PROJECT_BURGER_POS_SYSTEM\obj\Debug\BURGER_SHOP_POS_SYSTEm.ucmuaforadmin1.resources
+C:\Users\ramos\Downloads\PROJECTS2\PROJECT_BURGER_POS_SYSTEM\obj\Debug\BURGER_SHOP_POS_SYSTEm.ucdashboard4admin.resources
+C:\Users\ramos\Downloads\PROJECTS2\PROJECT_BURGER_POS_SYSTEM\obj\Debug\BURGER_SHOP_POS_SYSTEm.ucdashboard4cashier.resources
+C:\Users\ramos\Downloads\PROJECTS2\PROJECT_BURGER_POS_SYSTEM\obj\Debug\BURGER_SHOP_POS_SYSTEm.ucdashboard4owner.resources

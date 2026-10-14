@@ -249,7 +249,7 @@ Partial Class loginform
         Me.Guna2HtmlLabel13.BackColor = System.Drawing.Color.Transparent
         Me.Guna2HtmlLabel13.Font = New System.Drawing.Font("Microsoft YaHei UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Guna2HtmlLabel13.ForeColor = System.Drawing.Color.White
-        Me.Guna2HtmlLabel13.Location = New System.Drawing.Point(89, 645)
+        Me.Guna2HtmlLabel13.Location = New System.Drawing.Point(86, 645)
         Me.Guna2HtmlLabel13.Name = "Guna2HtmlLabel13"
         Me.Guna2HtmlLabel13.Size = New System.Drawing.Size(310, 58)
         Me.Guna2HtmlLabel13.TabIndex = 40

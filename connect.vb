@@ -7,6 +7,7 @@ Module connect
     Public query As String
 
 
+
     Sub conn()
         Try
             If sqlconn.State = ConnectionState.Open Then sqlconn.Close()

@@ -48,6 +48,9 @@
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Guna.Charts.WinForms, Version=1.1.0.0, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
       <HintPath>packages\Guna.Charts.WinForms.1.1.0\lib\net48\Guna.Charts.WinForms.dll</HintPath>
@@ -89,6 +92,12 @@
   <ItemGroup>
     <Compile Include="connect.vb" />
     <Compile Include="CurrentUser.vb" />
+    <Compile Include="ucdashboard4owner.Designer.vb">
+      <DependentUpon>ucdashboard4owner.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ucdashboard4owner.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +128,18 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="ucdashboard4admin.Designer.vb">
+      <DependentUpon>ucdashboard4admin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ucdashboard4admin.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucdashboard4cashier.Designer.vb">
+      <DependentUpon>ucdashboard4cashier.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ucdashboard4cashier.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="ucmuaforadmin.Designer.vb">
       <DependentUpon>ucmuaforadmin.vb</DependentUpon>
     </Compile>
@@ -132,6 +153,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ucdashboard4owner.resx">
+      <DependentUpon>ucdashboard4owner.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
     </EmbeddedResource>
@@ -143,6 +167,12 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucdashboard4admin.resx">
+      <DependentUpon>ucdashboard4admin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucdashboard4cashier.resx">
+      <DependentUpon>ucdashboard4cashier.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucmuaforadmin.resx">
       <DependentUpon>ucmuaforadmin.vb</DependentUpon>
@@ -354,6 +384,44 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\sales.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="favicon.ico" />
+    <None Include="Resources\calendar.png" />
+    <None Include="Resources\caution %281%29.png" />
+    <None Include="Resources\multiple-users-silhouette1.png" />
+    <None Include="Resources\sold1.png" />
+    <None Include="Resources\sold.png" />
+    <None Include="Resources\clipboard1.png" />
+    <None Include="Resources\sales1.png" />
+    <None Include="Resources\warning.png" />
+    <None Include="Resources\caution.png" />
+    <None Include="Resources\crisis1.png" />
+    <None Include="Resources\crisis.png" />
+    <None Include="Resources\users.png" />
+    <None Include="Resources\menu %282%29.png" />
+    <None Include="Resources\menu %281%291.png" />
+    <None Include="Resources\menu %281%29.png" />
+    <None Include="Resources\menu1.png" />
+    <None Include="Resources\burger-shop %285%291.png" />
+    <None Include="Resources\store %282%29.png" />
+    <None Include="Resources\store %281%29.png" />
+    <None Include="Resources\store.png" />
+    <None Include="Resources\papaburgerlogotrans-removebg-preview.png" />
+    <None Include="Resources\papaburgerlogotrans.jpg" />
+    <None Include="Resources\dashboard1.png" />
+    <None Include="Resources\profile %281%29.png" />
+    <None Include="Resources\profile1.png" />
+    <None Include="Resources\profile.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
