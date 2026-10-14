@@ -18,7 +18,7 @@ Public Class loginform
         attempt.Visible = False
         uservalm.Visible = False
         Passvalm.Visible = False
-        CurrentUser.Clear()
+
     End Sub
 
     Private Sub exitbtn_Click(sender As Object, e As EventArgs) Handles exitbtn.Click
@@ -35,7 +35,7 @@ Public Class loginform
 
     Private Sub loginbtn_Click(sender As Object, e As EventArgs) Handles loginbtn.Click
 
-        CurrentUser.Clear()
+
         matcheddata = False
 
         If usertxb.Text = "" And passtxb.Text = "" Then

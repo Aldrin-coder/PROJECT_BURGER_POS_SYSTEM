@@ -60,11 +60,9 @@ Public Class Mainformd
 
 
             ElseIf btn.Name = "muabtn" Then
-                If CurrentUser.role.ToLower() = "admin" Then
-                    LoadUserControl(New ucmuaforadmin1())
-                End If
 
-            ElseIf btn.Name = "oebtn" Then
+
+        ElseIf btn.Name = "oebtn" Then
 
 
             ElseIf btn.Name = "trbtn" Then
@@ -134,7 +132,7 @@ Public Class Mainformd
             lbluserg1.Text = "GENDER           : " & CurrentUser.gender.ToUpper
             lblusershift1.Text = "SHIFT           : " & CurrentUser.shift.ToUpper
             lbluserinfo1.Margin = New Padding(0, 0, 0, 10)
-            logoutbtn.Margin = New Padding(92, 230, 3, 0)
+            logoutbtn.Margin = New Padding(92, 180, 3, 0)
 
         End If
 
@@ -179,7 +177,4 @@ Public Class Mainformd
 
     End Sub
 
-    Private Sub panelcontainer_Paint(sender As Object, e As PaintEventArgs) Handles panelcontainer.Paint
-
-    End Sub
 End Class

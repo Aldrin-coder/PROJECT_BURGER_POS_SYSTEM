@@ -155,7 +155,7 @@ Partial Class ucdashboard4cashier
         Me.filtercbx.HoverState.FillColor = System.Drawing.Color.Red
         Me.filtercbx.ItemHeight = 25
         Me.filtercbx.ItemsAppearance.SelectedBackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.filtercbx.Location = New System.Drawing.Point(1393, 25)
+        Me.filtercbx.Location = New System.Drawing.Point(1392, 31)
         Me.filtercbx.Name = "filtercbx"
         Me.filtercbx.Size = New System.Drawing.Size(112, 31)
         Me.filtercbx.TabIndex = 114
@@ -167,7 +167,7 @@ Partial Class ucdashboard4cashier
         Me.Guna2HtmlLabel14.BackColor = System.Drawing.Color.Transparent
         Me.Guna2HtmlLabel14.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Guna2HtmlLabel14.ForeColor = System.Drawing.Color.White
-        Me.Guna2HtmlLabel14.Location = New System.Drawing.Point(1332, 27)
+        Me.Guna2HtmlLabel14.Location = New System.Drawing.Point(1331, 33)
         Me.Guna2HtmlLabel14.Name = "Guna2HtmlLabel14"
         Me.Guna2HtmlLabel14.Size = New System.Drawing.Size(55, 24)
         Me.Guna2HtmlLabel14.TabIndex = 113
