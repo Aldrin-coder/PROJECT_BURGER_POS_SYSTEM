@@ -29,6 +29,7 @@ Partial Class loginform
         Me.Guna2HtmlLabel5 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2DragControl1 = New Guna.UI2.WinForms.Guna2DragControl(Me.components)
         Me.Guna2GradientPanel2 = New Guna.UI2.WinForms.Guna2GradientPanel()
+        Me.minimize1 = New Guna.UI2.WinForms.Guna2ControlBox()
         Me.minimize = New Guna.UI2.WinForms.Guna2ControlBox()
         Me.Guna2Panel1 = New Guna.UI2.WinForms.Guna2Panel()
         Me.loginpanel = New Guna.UI2.WinForms.Guna2Panel()
@@ -113,13 +114,29 @@ Partial Class loginform
         Me.Guna2GradientPanel2.BackColor = System.Drawing.Color.SeaShell
         Me.Guna2GradientPanel2.BackgroundImage = Global.BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.PAPA_BURGER3
         Me.Guna2GradientPanel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Guna2GradientPanel2.Controls.Add(Me.minimize1)
         Me.Guna2GradientPanel2.Controls.Add(Me.minimize)
         Me.Guna2GradientPanel2.Controls.Add(Me.Guna2Panel1)
         Me.Guna2GradientPanel2.Controls.Add(Me.loginpanel)
         Me.Guna2GradientPanel2.Location = New System.Drawing.Point(-21, -7)
         Me.Guna2GradientPanel2.Name = "Guna2GradientPanel2"
-        Me.Guna2GradientPanel2.Size = New System.Drawing.Size(1581, 1024)
+        Me.Guna2GradientPanel2.Size = New System.Drawing.Size(1568, 1021)
         Me.Guna2GradientPanel2.TabIndex = 38
+        '
+        'minimize1
+        '
+        Me.minimize1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.minimize1.AutoRoundedCorners = True
+        Me.minimize1.BackColor = System.Drawing.Color.Transparent
+        Me.minimize1.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MinimizeBox
+        Me.minimize1.FillColor = System.Drawing.Color.Transparent
+        Me.minimize1.HoverState.FillColor = System.Drawing.Color.Red
+        Me.minimize1.IconColor = System.Drawing.Color.White
+        Me.minimize1.Location = New System.Drawing.Point(1488, 3)
+        Me.minimize1.Name = "minimize1"
+        Me.minimize1.PressedColor = System.Drawing.Color.DarkRed
+        Me.minimize1.Size = New System.Drawing.Size(77, 39)
+        Me.minimize1.TabIndex = 37
         '
         'minimize
         '
@@ -133,7 +150,7 @@ Partial Class loginform
         Me.minimize.HoverState.BorderColor = System.Drawing.Color.Transparent
         Me.minimize.HoverState.FillColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.minimize.IconColor = System.Drawing.Color.White
-        Me.minimize.Location = New System.Drawing.Point(1493, 3)
+        Me.minimize.Location = New System.Drawing.Point(3061, 3)
         Me.minimize.Name = "minimize"
         Me.minimize.PressedColor = System.Drawing.Color.Red
         Me.minimize.Size = New System.Drawing.Size(72, 33)
@@ -182,9 +199,9 @@ Partial Class loginform
         Me.loginpanel.CustomBorderThickness = New System.Windows.Forms.Padding(10, 0, 0, 0)
         Me.loginpanel.FillColor = System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(32, Byte), Integer), CType(CType(28, Byte), Integer))
         Me.loginpanel.ForeColor = System.Drawing.Color.Transparent
-        Me.loginpanel.Location = New System.Drawing.Point(507, 135)
+        Me.loginpanel.Location = New System.Drawing.Point(519, 93)
         Me.loginpanel.Name = "loginpanel"
-        Me.loginpanel.Size = New System.Drawing.Size(474, 741)
+        Me.loginpanel.Size = New System.Drawing.Size(484, 782)
         Me.loginpanel.TabIndex = 30
         '
         'Passvalm
@@ -249,7 +266,7 @@ Partial Class loginform
         Me.Guna2HtmlLabel13.BackColor = System.Drawing.Color.Transparent
         Me.Guna2HtmlLabel13.Font = New System.Drawing.Font("Microsoft YaHei UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Guna2HtmlLabel13.ForeColor = System.Drawing.Color.White
-        Me.Guna2HtmlLabel13.Location = New System.Drawing.Point(86, 645)
+        Me.Guna2HtmlLabel13.Location = New System.Drawing.Point(86, 671)
         Me.Guna2HtmlLabel13.Name = "Guna2HtmlLabel13"
         Me.Guna2HtmlLabel13.Size = New System.Drawing.Size(310, 58)
         Me.Guna2HtmlLabel13.TabIndex = 40
@@ -319,7 +336,7 @@ Partial Class loginform
         Me.Guna2Shapes5.FillColor = System.Drawing.Color.White
         Me.Guna2Shapes5.ForeColor = System.Drawing.Color.Black
         Me.Guna2Shapes5.LineThickness = 2
-        Me.Guna2Shapes5.Location = New System.Drawing.Point(253, 595)
+        Me.Guna2Shapes5.Location = New System.Drawing.Point(253, 621)
         Me.Guna2Shapes5.Name = "Guna2Shapes5"
         Me.Guna2Shapes5.PolygonSkip = 1
         Me.Guna2Shapes5.Rotate = 0!
@@ -338,7 +355,7 @@ Partial Class loginform
         Me.Guna2Shapes6.FillColor = System.Drawing.Color.White
         Me.Guna2Shapes6.ForeColor = System.Drawing.Color.Black
         Me.Guna2Shapes6.LineThickness = 2
-        Me.Guna2Shapes6.Location = New System.Drawing.Point(16, 595)
+        Me.Guna2Shapes6.Location = New System.Drawing.Point(16, 621)
         Me.Guna2Shapes6.Name = "Guna2Shapes6"
         Me.Guna2Shapes6.PolygonSkip = 1
         Me.Guna2Shapes6.Rotate = 0!
@@ -367,7 +384,7 @@ Partial Class loginform
         Me.Guna2PictureBox4.BackColor = System.Drawing.Color.Transparent
         Me.Guna2PictureBox4.Image = Global.BURGER_SHOP_POS_SYSTEm.My.Resources.Resources._818611466_1451730220198454_586017437584187953_n_removebg_preview
         Me.Guna2PictureBox4.ImageRotate = 0!
-        Me.Guna2PictureBox4.Location = New System.Drawing.Point(215, 583)
+        Me.Guna2PictureBox4.Location = New System.Drawing.Point(215, 609)
         Me.Guna2PictureBox4.Name = "Guna2PictureBox4"
         Me.Guna2PictureBox4.Size = New System.Drawing.Size(53, 56)
         Me.Guna2PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -687,4 +704,5 @@ Partial Class loginform
     Friend WithEvents minimize As Guna.UI2.WinForms.Guna2ControlBox
     Friend WithEvents Guna2DragControl4 As Guna.UI2.WinForms.Guna2DragControl
     Friend WithEvents Guna2DragControl5 As Guna.UI2.WinForms.Guna2DragControl
+    Friend WithEvents minimize1 As Guna.UI2.WinForms.Guna2ControlBox
 End Class

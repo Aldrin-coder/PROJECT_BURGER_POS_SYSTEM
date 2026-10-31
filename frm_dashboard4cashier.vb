@@ -1,5 +1,5 @@
-﻿Public Class ucdashboard4cashier
-    Private Sub ucdashboard4cashier_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+﻿Public Class frm_dashboard4cashier
+    Private Sub frm_dashboard4cashier_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         chartsph.Update()
         chartpaymentm.Update()
         AddTableColumns()
@@ -85,4 +85,23 @@
         Next
     End Sub
 
+    Private Sub Guna2HtmlLabel4_Click(sender As Object, e As EventArgs) Handles Guna2HtmlLabel4.Click
+
+    End Sub
+
+    Private Sub chartsph_Load(sender As Object, e As EventArgs) Handles chartsph.Load
+
+    End Sub
+
+    Private Sub Guna2HtmlLabel1_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub Guna2HtmlLabel7_Click(sender As Object, e As EventArgs) Handles Guna2HtmlLabel7.Click
+
+    End Sub
+
+    Private Sub Guna2HtmlLabel6_Click(sender As Object, e As EventArgs) Handles Guna2HtmlLabel6.Click
+
+    End Sub
 End Class

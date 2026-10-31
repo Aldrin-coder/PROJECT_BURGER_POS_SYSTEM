@@ -1,7 +1,7 @@
 ﻿Imports Guna.Charts.WinForms
 
-Public Class ucdashboard4admin
-    Private Sub ucdashboard4admin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+Public Class frm_dashboard4admin
+    Private Sub frm_dashboard4admin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ChartLowStock1.Update()
         Menucomposition.Update()
         AddTableColumns()
@@ -70,6 +70,15 @@ Public Class ucdashboard4admin
             End Select
         Next
     End Sub
+
+    Private Sub Guna2HtmlLabel1_Click(sender As Object, e As EventArgs) Handles Guna2HtmlLabel1.Click
+
+    End Sub
+
+    Private Sub Menucomposition_Load(sender As Object, e As EventArgs) Handles Menucomposition.Load
+
+    End Sub
+
 
 
 End Class

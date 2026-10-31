@@ -1,8 +1,8 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class ucdashboard4admin
-    Inherits System.Windows.Forms.UserControl
+Partial Class frm_dashboard4admin
+    Inherits System.Windows.Forms.Form
 
-    'UserControl overrides dispose to clean up the component list.
+    'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
@@ -22,6 +22,11 @@ Partial Class ucdashboard4admin
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim ChartFont17 As Guna.Charts.WinForms.ChartFont = New Guna.Charts.WinForms.ChartFont()
         Dim ChartFont18 As Guna.Charts.WinForms.ChartFont = New Guna.Charts.WinForms.ChartFont()
         Dim ChartFont19 As Guna.Charts.WinForms.ChartFont = New Guna.Charts.WinForms.ChartFont()
@@ -67,24 +72,35 @@ Partial Class ucdashboard4admin
         Dim LPoint4 As Guna.Charts.WinForms.LPoint = New Guna.Charts.WinForms.LPoint()
         Dim LPoint5 As Guna.Charts.WinForms.LPoint = New Guna.Charts.WinForms.LPoint()
         Dim LPoint6 As Guna.Charts.WinForms.LPoint = New Guna.Charts.WinForms.LPoint()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Me.Guna2PictureBox2 = New Guna.UI2.WinForms.Guna2PictureBox()
+        Me.Guna2HtmlLabel13 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.Guna2Shapes4 = New Guna.UI2.WinForms.Guna2Shapes()
+        Me.Guna2HtmlLabel12 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.Guna2Shapes3 = New Guna.UI2.WinForms.Guna2Shapes()
+        Me.Guna2HtmlLabel11 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.Guna2HtmlLabel10 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.Guna2HtmlLabel9 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2Panel1 = New Guna.UI2.WinForms.Guna2Panel()
-        Me.Guna2HtmlLabel1 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.Guna2Shapes37 = New Guna.UI2.WinForms.Guna2Shapes()
         Me.Guna2PictureBox3 = New Guna.UI2.WinForms.Guna2PictureBox()
+        Me.Guna2HtmlLabel1 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.filtercbx = New Guna.UI2.WinForms.Guna2ComboBox()
         Me.Guna2HtmlLabel14 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2Shapes6 = New Guna.UI2.WinForms.Guna2Shapes()
         Me.searchtxb = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.dgvstock = New Guna.UI2.WinForms.Guna2DataGridView()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.GunaAreaDataset1 = New Guna.Charts.WinForms.GunaAreaDataset()
+        Me.Guna2PictureBox5 = New Guna.UI2.WinForms.Guna2PictureBox()
+        Me.Guna2PictureBox4 = New Guna.UI2.WinForms.Guna2PictureBox()
+        Me.Guna2Shapes5 = New Guna.UI2.WinForms.Guna2Shapes()
+        Me.Guna2PictureBox1 = New Guna.UI2.WinForms.Guna2PictureBox()
+        Me.Guna2Panel5 = New Guna.UI2.WinForms.Guna2Panel()
         Me.Guna2Panel2 = New Guna.UI2.WinForms.Guna2Panel()
         Me.Guna2HtmlLabel2 = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.Guna2PictureBox1 = New Guna.UI2.WinForms.Guna2PictureBox()
         Me.lblgg = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2Panel4 = New Guna.UI2.WinForms.Guna2Panel()
         Me.Guna2HtmlLabel4 = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.Guna2PictureBox2 = New Guna.UI2.WinForms.Guna2PictureBox()
         Me.Guna2HtmlLabel3 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2Panel6 = New Guna.UI2.WinForms.Guna2Panel()
         Me.ChartLowStock1 = New Guna.Charts.WinForms.GunaChart()
@@ -100,64 +116,159 @@ Partial Class ucdashboard4admin
         Me.Guna2HtmlLabel7 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2Shapes1 = New Guna.UI2.WinForms.Guna2Shapes()
         Me.Guna2HtmlLabel6 = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.Guna2PictureBox4 = New Guna.UI2.WinForms.Guna2PictureBox()
         Me.Guna2HtmlLabel5 = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.Guna2Panel5 = New Guna.UI2.WinForms.Guna2Panel()
-        Me.Guna2Shapes5 = New Guna.UI2.WinForms.Guna2Shapes()
-        Me.Guna2HtmlLabel13 = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.Guna2Shapes4 = New Guna.UI2.WinForms.Guna2Shapes()
-        Me.Guna2HtmlLabel12 = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.Guna2Shapes3 = New Guna.UI2.WinForms.Guna2Shapes()
-        Me.Guna2HtmlLabel11 = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.Guna2HtmlLabel10 = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.Guna2PictureBox5 = New Guna.UI2.WinForms.Guna2PictureBox()
-        Me.Guna2HtmlLabel9 = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.dgvstock = New Guna.UI2.WinForms.Guna2DataGridView()
+        CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Guna2Panel1.SuspendLayout()
         CType(Me.Guna2PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Guna2Panel2.SuspendLayout()
+        CType(Me.dgvstock, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Guna2PictureBox5, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Guna2PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Guna2Panel5.SuspendLayout()
+        Me.Guna2Panel2.SuspendLayout()
         Me.Guna2Panel4.SuspendLayout()
-        CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Guna2Panel6.SuspendLayout()
         Me.Guna2Panel7.SuspendLayout()
         Me.Guna2Panel3.SuspendLayout()
-        CType(Me.Guna2PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Guna2Panel5.SuspendLayout()
-        CType(Me.Guna2PictureBox5, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.dgvstock, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
+        '
+        'Guna2PictureBox2
+        '
+        Me.Guna2PictureBox2.Image = Global.BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.menu__2_
+        Me.Guna2PictureBox2.ImageRotate = 0!
+        Me.Guna2PictureBox2.Location = New System.Drawing.Point(295, 46)
+        Me.Guna2PictureBox2.Name = "Guna2PictureBox2"
+        Me.Guna2PictureBox2.Size = New System.Drawing.Size(86, 94)
+        Me.Guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.Guna2PictureBox2.TabIndex = 1
+        Me.Guna2PictureBox2.TabStop = False
+        '
+        'Guna2HtmlLabel13
+        '
+        Me.Guna2HtmlLabel13.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2HtmlLabel13.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Guna2HtmlLabel13.Location = New System.Drawing.Point(266, 128)
+        Me.Guna2HtmlLabel13.Name = "Guna2HtmlLabel13"
+        Me.Guna2HtmlLabel13.Size = New System.Drawing.Size(92, 23)
+        Me.Guna2HtmlLabel13.TabIndex = 14
+        Me.Guna2HtmlLabel13.Text = "1 refill soon"
+        '
+        'Guna2Shapes4
+        '
+        Me.Guna2Shapes4.BorderThickness = 0
+        Me.Guna2Shapes4.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(152, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.Guna2Shapes4.Location = New System.Drawing.Point(162, 131)
+        Me.Guna2Shapes4.Name = "Guna2Shapes4"
+        Me.Guna2Shapes4.PolygonSides = 2
+        Me.Guna2Shapes4.PolygonSkip = 1
+        Me.Guna2Shapes4.Rotate = 0!
+        Me.Guna2Shapes4.RoundedRadius = 5
+        Me.Guna2Shapes4.Shape = Guna.UI2.WinForms.Enums.ShapeType.Ellipse
+        Me.Guna2Shapes4.Size = New System.Drawing.Size(21, 21)
+        Me.Guna2Shapes4.TabIndex = 13
+        Me.Guna2Shapes4.Text = "Guna2Shapes4"
+        Me.Guna2Shapes4.UseTransparentBackground = True
+        Me.Guna2Shapes4.Zoom = 80
+        '
+        'Guna2HtmlLabel12
+        '
+        Me.Guna2HtmlLabel12.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2HtmlLabel12.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Guna2HtmlLabel12.Location = New System.Drawing.Point(189, 129)
+        Me.Guna2HtmlLabel12.Name = "Guna2HtmlLabel12"
+        Me.Guna2HtmlLabel12.Size = New System.Drawing.Size(44, 23)
+        Me.Guna2HtmlLabel12.TabIndex = 12
+        Me.Guna2HtmlLabel12.Text = "3 low "
+        '
+        'Guna2Shapes3
+        '
+        Me.Guna2Shapes3.BorderThickness = 0
+        Me.Guna2Shapes3.FillColor = System.Drawing.Color.FromArgb(CType(CType(220, Byte), Integer), CType(CType(53, Byte), Integer), CType(CType(69, Byte), Integer))
+        Me.Guna2Shapes3.Location = New System.Drawing.Point(61, 131)
+        Me.Guna2Shapes3.Name = "Guna2Shapes3"
+        Me.Guna2Shapes3.PolygonSides = 2
+        Me.Guna2Shapes3.PolygonSkip = 1
+        Me.Guna2Shapes3.Rotate = 0!
+        Me.Guna2Shapes3.RoundedRadius = 5
+        Me.Guna2Shapes3.Shape = Guna.UI2.WinForms.Enums.ShapeType.Ellipse
+        Me.Guna2Shapes3.Size = New System.Drawing.Size(21, 21)
+        Me.Guna2Shapes3.TabIndex = 9
+        Me.Guna2Shapes3.Text = "Guna2Shapes3"
+        Me.Guna2Shapes3.UseTransparentBackground = True
+        Me.Guna2Shapes3.Zoom = 80
+        '
+        'Guna2HtmlLabel11
+        '
+        Me.Guna2HtmlLabel11.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2HtmlLabel11.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Guna2HtmlLabel11.Location = New System.Drawing.Point(88, 129)
+        Me.Guna2HtmlLabel11.Name = "Guna2HtmlLabel11"
+        Me.Guna2HtmlLabel11.Size = New System.Drawing.Size(66, 23)
+        Me.Guna2HtmlLabel11.TabIndex = 11
+        Me.Guna2HtmlLabel11.Text = "5 critical "
+        '
+        'Guna2HtmlLabel10
+        '
+        Me.Guna2HtmlLabel10.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2HtmlLabel10.Font = New System.Drawing.Font("Microsoft YaHei UI", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Guna2HtmlLabel10.Location = New System.Drawing.Point(78, 71)
+        Me.Guna2HtmlLabel10.Name = "Guna2HtmlLabel10"
+        Me.Guna2HtmlLabel10.Size = New System.Drawing.Size(252, 30)
+        Me.Guna2HtmlLabel10.TabIndex = 9
+        Me.Guna2HtmlLabel10.Text = "9 Items Need Attention"
+        '
+        'Guna2HtmlLabel9
+        '
+        Me.Guna2HtmlLabel9.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2HtmlLabel9.Font = New System.Drawing.Font("Microsoft YaHei UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Guna2HtmlLabel9.Location = New System.Drawing.Point(88, 13)
+        Me.Guna2HtmlLabel9.Name = "Guna2HtmlLabel9"
+        Me.Guna2HtmlLabel9.Size = New System.Drawing.Size(229, 30)
+        Me.Guna2HtmlLabel9.TabIndex = 8
+        Me.Guna2HtmlLabel9.Text = "STOCK ALERT SYSTEM"
         '
         'Guna2Panel1
         '
         Me.Guna2Panel1.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2Panel1.Controls.Add(Me.Guna2HtmlLabel1)
+        Me.Guna2Panel1.BorderColor = System.Drawing.Color.DarkOrange
+        Me.Guna2Panel1.Controls.Add(Me.Guna2Shapes37)
         Me.Guna2Panel1.Controls.Add(Me.Guna2PictureBox3)
+        Me.Guna2Panel1.Controls.Add(Me.Guna2HtmlLabel1)
         Me.Guna2Panel1.Controls.Add(Me.filtercbx)
         Me.Guna2Panel1.Controls.Add(Me.Guna2HtmlLabel14)
         Me.Guna2Panel1.Controls.Add(Me.Guna2Shapes6)
         Me.Guna2Panel1.Controls.Add(Me.searchtxb)
+        Me.Guna2Panel1.CustomBorderThickness = New System.Windows.Forms.Padding(1, 0, 0, 0)
+        Me.Guna2Panel1.CustomizableEdges.BottomLeft = False
+        Me.Guna2Panel1.CustomizableEdges.BottomRight = False
+        Me.Guna2Panel1.CustomizableEdges.TopLeft = False
+        Me.Guna2Panel1.CustomizableEdges.TopRight = False
         Me.Guna2Panel1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Guna2Panel1.FillColor = System.Drawing.Color.FromArgb(CType(CType(63, Byte), Integer), CType(CType(92, Byte), Integer), CType(CType(142, Byte), Integer))
+        Me.Guna2Panel1.FillColor = System.Drawing.Color.FromArgb(CType(CType(34, Byte), Integer), CType(CType(68, Byte), Integer), CType(CType(125, Byte), Integer))
         Me.Guna2Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Guna2Panel1.Name = "Guna2Panel1"
-        Me.Guna2Panel1.Size = New System.Drawing.Size(1588, 85)
-        Me.Guna2Panel1.TabIndex = 1
+        Me.Guna2Panel1.Size = New System.Drawing.Size(1572, 85)
+        Me.Guna2Panel1.TabIndex = 127
         '
-        'Guna2HtmlLabel1
+        'Guna2Shapes37
         '
-        Me.Guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2HtmlLabel1.Font = New System.Drawing.Font("Impact", 45.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Guna2HtmlLabel1.ForeColor = System.Drawing.Color.Transparent
-        Me.Guna2HtmlLabel1.Location = New System.Drawing.Point(3, 5)
-        Me.Guna2HtmlLabel1.Name = "Guna2HtmlLabel1"
-        Me.Guna2HtmlLabel1.Size = New System.Drawing.Size(472, 77)
-        Me.Guna2HtmlLabel1.TabIndex = 116
-        Me.Guna2HtmlLabel1.Text = "ADMIN DASHBOARD        "
-        Me.Guna2HtmlLabel1.TextAlignment = System.Drawing.ContentAlignment.TopCenter
+        Me.Guna2Shapes37.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2Shapes37.FillColor = System.Drawing.Color.White
+        Me.Guna2Shapes37.LineThickness = 1
+        Me.Guna2Shapes37.Location = New System.Drawing.Point(-58, -97)
+        Me.Guna2Shapes37.Name = "Guna2Shapes37"
+        Me.Guna2Shapes37.PolygonSkip = 1
+        Me.Guna2Shapes37.Rotate = 90.0!
+        Me.Guna2Shapes37.Shape = Guna.UI2.WinForms.Enums.ShapeType.Line
+        Me.Guna2Shapes37.Size = New System.Drawing.Size(119, 286)
+        Me.Guna2Shapes37.TabIndex = 128
+        Me.Guna2Shapes37.Text = "Guna2Shapes37"
+        Me.Guna2Shapes37.UseTransparentBackground = True
+        Me.Guna2Shapes37.Zoom = 80
         '
         'Guna2PictureBox3
         '
+        Me.Guna2PictureBox3.BackColor = System.Drawing.Color.Transparent
         Me.Guna2PictureBox3.Image = Global.BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.search__1_
         Me.Guna2PictureBox3.ImageRotate = 0!
         Me.Guna2PictureBox3.Location = New System.Drawing.Point(1261, 32)
@@ -167,6 +278,18 @@ Partial Class ucdashboard4admin
         Me.Guna2PictureBox3.TabIndex = 115
         Me.Guna2PictureBox3.TabStop = False
         Me.Guna2PictureBox3.UseTransparentBackground = True
+        '
+        'Guna2HtmlLabel1
+        '
+        Me.Guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2HtmlLabel1.Font = New System.Drawing.Font("Impact", 48.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Guna2HtmlLabel1.ForeColor = System.Drawing.Color.Transparent
+        Me.Guna2HtmlLabel1.Location = New System.Drawing.Point(16, 3)
+        Me.Guna2HtmlLabel1.Name = "Guna2HtmlLabel1"
+        Me.Guna2HtmlLabel1.Size = New System.Drawing.Size(502, 82)
+        Me.Guna2HtmlLabel1.TabIndex = 115
+        Me.Guna2HtmlLabel1.Text = "ADMIN DASHBOARD        "
+        Me.Guna2HtmlLabel1.TextAlignment = System.Drawing.ContentAlignment.TopCenter
         '
         'filtercbx
         '
@@ -184,7 +307,7 @@ Partial Class ucdashboard4admin
         Me.filtercbx.HoverState.FillColor = System.Drawing.Color.Red
         Me.filtercbx.ItemHeight = 25
         Me.filtercbx.ItemsAppearance.SelectedBackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.filtercbx.Location = New System.Drawing.Point(1384, 30)
+        Me.filtercbx.Location = New System.Drawing.Point(1392, 31)
         Me.filtercbx.Name = "filtercbx"
         Me.filtercbx.Size = New System.Drawing.Size(112, 31)
         Me.filtercbx.TabIndex = 114
@@ -196,7 +319,7 @@ Partial Class ucdashboard4admin
         Me.Guna2HtmlLabel14.BackColor = System.Drawing.Color.Transparent
         Me.Guna2HtmlLabel14.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Guna2HtmlLabel14.ForeColor = System.Drawing.Color.White
-        Me.Guna2HtmlLabel14.Location = New System.Drawing.Point(1323, 32)
+        Me.Guna2HtmlLabel14.Location = New System.Drawing.Point(1331, 33)
         Me.Guna2HtmlLabel14.Name = "Guna2HtmlLabel14"
         Me.Guna2HtmlLabel14.Size = New System.Drawing.Size(55, 24)
         Me.Guna2HtmlLabel14.TabIndex = 113
@@ -204,6 +327,7 @@ Partial Class ucdashboard4admin
         '
         'Guna2Shapes6
         '
+        Me.Guna2Shapes6.BackColor = System.Drawing.Color.Transparent
         Me.Guna2Shapes6.FillColor = System.Drawing.Color.FromArgb(CType(CType(34, Byte), Integer), CType(CType(68, Byte), Integer), CType(CType(125, Byte), Integer))
         Me.Guna2Shapes6.Flip = Guna.UI2.WinForms.Enums.FlipOrientation.Vertical
         Me.Guna2Shapes6.LineThickness = 2
@@ -240,6 +364,136 @@ Partial Class ucdashboard4admin
         Me.searchtxb.Size = New System.Drawing.Size(340, 37)
         Me.searchtxb.TabIndex = 111
         '
+        'dgvstock
+        '
+        Me.dgvstock.AllowUserToAddRows = False
+        Me.dgvstock.AllowUserToDeleteRows = False
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.White
+        Me.dgvstock.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle5
+        Me.dgvstock.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle6.BackColor = System.Drawing.Color.RoyalBlue
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgvstock.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
+        Me.dgvstock.ColumnHeadersHeight = 50
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle7.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvstock.DefaultCellStyle = DataGridViewCellStyle7
+        Me.dgvstock.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.dgvstock.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.dgvstock.Location = New System.Drawing.Point(0, 732)
+        Me.dgvstock.Name = "dgvstock"
+        Me.dgvstock.ReadOnly = True
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvstock.RowHeadersDefaultCellStyle = DataGridViewCellStyle8
+        Me.dgvstock.RowHeadersVisible = False
+        Me.dgvstock.Size = New System.Drawing.Size(1572, 203)
+        Me.dgvstock.TabIndex = 126
+        Me.dgvstock.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White
+        Me.dgvstock.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.RoyalBlue
+        Me.dgvstock.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        Me.dgvstock.ThemeStyle.HeaderStyle.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dgvstock.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        Me.dgvstock.ThemeStyle.HeaderStyle.Height = 50
+        Me.dgvstock.ThemeStyle.ReadOnly = True
+        Me.dgvstock.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        '
+        'GunaAreaDataset1
+        '
+        Me.GunaAreaDataset1.BorderColor = System.Drawing.Color.Empty
+        Me.GunaAreaDataset1.FillColor = System.Drawing.Color.Empty
+        Me.GunaAreaDataset1.Label = "Area1"
+        '
+        'Guna2PictureBox5
+        '
+        Me.Guna2PictureBox5.Image = Global.BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.caution__1_
+        Me.Guna2PictureBox5.ImageRotate = 0!
+        Me.Guna2PictureBox5.Location = New System.Drawing.Point(336, 39)
+        Me.Guna2PictureBox5.Name = "Guna2PictureBox5"
+        Me.Guna2PictureBox5.Size = New System.Drawing.Size(103, 100)
+        Me.Guna2PictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.Guna2PictureBox5.TabIndex = 8
+        Me.Guna2PictureBox5.TabStop = False
+        '
+        'Guna2PictureBox4
+        '
+        Me.Guna2PictureBox4.Image = Global.BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.multiple_users_silhouette1
+        Me.Guna2PictureBox4.ImageRotate = 0!
+        Me.Guna2PictureBox4.Location = New System.Drawing.Point(311, 46)
+        Me.Guna2PictureBox4.Name = "Guna2PictureBox4"
+        Me.Guna2PictureBox4.Size = New System.Drawing.Size(101, 93)
+        Me.Guna2PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.Guna2PictureBox4.TabIndex = 3
+        Me.Guna2PictureBox4.TabStop = False
+        '
+        'Guna2Shapes5
+        '
+        Me.Guna2Shapes5.BorderThickness = 0
+        Me.Guna2Shapes5.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(193, Byte), Integer), CType(CType(7, Byte), Integer))
+        Me.Guna2Shapes5.Location = New System.Drawing.Point(239, 131)
+        Me.Guna2Shapes5.Name = "Guna2Shapes5"
+        Me.Guna2Shapes5.PolygonSides = 2
+        Me.Guna2Shapes5.PolygonSkip = 1
+        Me.Guna2Shapes5.Rotate = 0!
+        Me.Guna2Shapes5.RoundedRadius = 5
+        Me.Guna2Shapes5.Shape = Guna.UI2.WinForms.Enums.ShapeType.Ellipse
+        Me.Guna2Shapes5.Size = New System.Drawing.Size(21, 21)
+        Me.Guna2Shapes5.TabIndex = 15
+        Me.Guna2Shapes5.Text = "Guna2Shapes5"
+        Me.Guna2Shapes5.UseTransparentBackground = True
+        Me.Guna2Shapes5.Zoom = 80
+        '
+        'Guna2PictureBox1
+        '
+        Me.Guna2PictureBox1.Image = Global.BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.burger_shop__5_1
+        Me.Guna2PictureBox1.ImageRotate = 0!
+        Me.Guna2PictureBox1.Location = New System.Drawing.Point(12, 9)
+        Me.Guna2PictureBox1.Name = "Guna2PictureBox1"
+        Me.Guna2PictureBox1.Size = New System.Drawing.Size(45, 38)
+        Me.Guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.Guna2PictureBox1.TabIndex = 113
+        Me.Guna2PictureBox1.TabStop = False
+        Me.Guna2PictureBox1.UseTransparentBackground = True
+        '
+        'Guna2Panel5
+        '
+        Me.Guna2Panel5.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2Panel5.BorderColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.Guna2Panel5.BorderRadius = 25
+        Me.Guna2Panel5.Controls.Add(Me.Guna2Shapes5)
+        Me.Guna2Panel5.Controls.Add(Me.Guna2HtmlLabel13)
+        Me.Guna2Panel5.Controls.Add(Me.Guna2Shapes4)
+        Me.Guna2Panel5.Controls.Add(Me.Guna2HtmlLabel12)
+        Me.Guna2Panel5.Controls.Add(Me.Guna2Shapes3)
+        Me.Guna2Panel5.Controls.Add(Me.Guna2HtmlLabel11)
+        Me.Guna2Panel5.Controls.Add(Me.Guna2HtmlLabel10)
+        Me.Guna2Panel5.Controls.Add(Me.Guna2PictureBox5)
+        Me.Guna2Panel5.Controls.Add(Me.Guna2HtmlLabel9)
+        Me.Guna2Panel5.FillColor = System.Drawing.Color.White
+        Me.Guna2Panel5.Location = New System.Drawing.Point(1057, 246)
+        Me.Guna2Panel5.Margin = New System.Windows.Forms.Padding(3, 3, 20, 3)
+        Me.Guna2Panel5.Name = "Guna2Panel5"
+        Me.Guna2Panel5.ShadowDecoration.BorderRadius = 25
+        Me.Guna2Panel5.ShadowDecoration.Depth = 10
+        Me.Guna2Panel5.ShadowDecoration.Enabled = True
+        Me.Guna2Panel5.Size = New System.Drawing.Size(443, 175)
+        Me.Guna2Panel5.TabIndex = 124
+        '
         'Guna2Panel2
         '
         Me.Guna2Panel2.BackColor = System.Drawing.Color.Transparent
@@ -256,7 +510,7 @@ Partial Class ucdashboard4admin
         Me.Guna2Panel2.ShadowDecoration.Color = System.Drawing.Color.Orange
         Me.Guna2Panel2.ShadowDecoration.Depth = 10
         Me.Guna2Panel2.Size = New System.Drawing.Size(1516, 124)
-        Me.Guna2Panel2.TabIndex = 2
+        Me.Guna2Panel2.TabIndex = 120
         '
         'Guna2HtmlLabel2
         '
@@ -269,18 +523,6 @@ Partial Class ucdashboard4admin
         Me.Guna2HtmlLabel2.TabIndex = 114
         Me.Guna2HtmlLabel2.Text = "Here is your menu and stock summary for today."
         Me.Guna2HtmlLabel2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Guna2PictureBox1
-        '
-        Me.Guna2PictureBox1.Image = Global.BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.burger_shop__5_1
-        Me.Guna2PictureBox1.ImageRotate = 0!
-        Me.Guna2PictureBox1.Location = New System.Drawing.Point(12, 9)
-        Me.Guna2PictureBox1.Name = "Guna2PictureBox1"
-        Me.Guna2PictureBox1.Size = New System.Drawing.Size(45, 38)
-        Me.Guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.Guna2PictureBox1.TabIndex = 113
-        Me.Guna2PictureBox1.TabStop = False
-        Me.Guna2PictureBox1.UseTransparentBackground = True
         '
         'lblgg
         '
@@ -310,38 +552,28 @@ Partial Class ucdashboard4admin
         Me.Guna2Panel4.ShadowDecoration.Depth = 10
         Me.Guna2Panel4.ShadowDecoration.Enabled = True
         Me.Guna2Panel4.Size = New System.Drawing.Size(440, 176)
-        Me.Guna2Panel4.TabIndex = 115
+        Me.Guna2Panel4.TabIndex = 121
         '
         'Guna2HtmlLabel4
         '
         Me.Guna2HtmlLabel4.BackColor = System.Drawing.Color.Transparent
         Me.Guna2HtmlLabel4.Font = New System.Drawing.Font("Microsoft YaHei UI", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Guna2HtmlLabel4.Location = New System.Drawing.Point(83, 71)
+        Me.Guna2HtmlLabel4.Location = New System.Drawing.Point(101, 86)
         Me.Guna2HtmlLabel4.Name = "Guna2HtmlLabel4"
         Me.Guna2HtmlLabel4.Size = New System.Drawing.Size(149, 33)
         Me.Guna2HtmlLabel4.TabIndex = 2
         Me.Guna2HtmlLabel4.Text = "16/16 Items"
         '
-        'Guna2PictureBox2
-        '
-        Me.Guna2PictureBox2.Image = Global.BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.menu__2_
-        Me.Guna2PictureBox2.ImageRotate = 0!
-        Me.Guna2PictureBox2.Location = New System.Drawing.Point(295, 46)
-        Me.Guna2PictureBox2.Name = "Guna2PictureBox2"
-        Me.Guna2PictureBox2.Size = New System.Drawing.Size(86, 94)
-        Me.Guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.Guna2PictureBox2.TabIndex = 1
-        Me.Guna2PictureBox2.TabStop = False
-        '
         'Guna2HtmlLabel3
         '
         Me.Guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent
         Me.Guna2HtmlLabel3.Font = New System.Drawing.Font("Microsoft YaHei UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Guna2HtmlLabel3.Location = New System.Drawing.Point(67, 13)
+        Me.Guna2HtmlLabel3.Location = New System.Drawing.Point(101, 13)
         Me.Guna2HtmlLabel3.Name = "Guna2HtmlLabel3"
-        Me.Guna2HtmlLabel3.Size = New System.Drawing.Size(211, 30)
+        Me.Guna2HtmlLabel3.Size = New System.Drawing.Size(188, 58)
         Me.Guna2HtmlLabel3.TabIndex = 0
-        Me.Guna2HtmlLabel3.Text = "TOTAL MENU ITEMS"
+        Me.Guna2HtmlLabel3.Text = "TOTAL AVAILABLE  <br> MENU ITEMS"
+        Me.Guna2HtmlLabel3.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Guna2Panel6
         '
@@ -357,7 +589,7 @@ Partial Class ucdashboard4admin
         Me.Guna2Panel6.ShadowDecoration.Depth = 10
         Me.Guna2Panel6.ShadowDecoration.Enabled = True
         Me.Guna2Panel6.Size = New System.Drawing.Size(942, 300)
-        Me.Guna2Panel6.TabIndex = 116
+        Me.Guna2Panel6.TabIndex = 122
         '
         'ChartLowStock1
         '
@@ -469,7 +701,7 @@ Partial Class ucdashboard4admin
         Me.Guna2Panel7.ShadowDecoration.Depth = 10
         Me.Guna2Panel7.ShadowDecoration.Enabled = True
         Me.Guna2Panel7.Size = New System.Drawing.Size(452, 300)
-        Me.Guna2Panel7.TabIndex = 117
+        Me.Guna2Panel7.TabIndex = 125
         '
         'Menucomposition
         '
@@ -494,6 +726,7 @@ Partial Class ucdashboard4admin
         ChartFont28.Size = 9
         ChartFont28.Style = Guna.Charts.WinForms.ChartFontStyle.Bold
         Me.Menucomposition.Tooltips.TitleFont = ChartFont28
+        Me.Menucomposition.Tooltips.TitleForeColor = System.Drawing.Color.Transparent
         Grid10.Display = False
         Grid10.LineWidth = 0
         Grid10.TickMarkLength = 0
@@ -524,7 +757,7 @@ Partial Class ucdashboard4admin
         '
         LPoint1.Label = "Add-ons (4)"
         LPoint1.Y = 4.0R
-        LPoint2.Label = "Hotdogs (3)"
+        LPoint2.Label = "Hotdogs  (3)"
         LPoint2.Y = 3.0R
         LPoint3.Label = "Drinks (5)"
         LPoint3.Y = 5.0R
@@ -560,7 +793,7 @@ Partial Class ucdashboard4admin
         Me.Guna2Panel3.ShadowDecoration.Depth = 10
         Me.Guna2Panel3.ShadowDecoration.Enabled = True
         Me.Guna2Panel3.Size = New System.Drawing.Size(443, 175)
-        Me.Guna2Panel3.TabIndex = 116
+        Me.Guna2Panel3.TabIndex = 123
         '
         'Guna2Shapes2
         '
@@ -623,17 +856,6 @@ Partial Class ucdashboard4admin
         Me.Guna2HtmlLabel6.TabIndex = 4
         Me.Guna2HtmlLabel6.Text = "5 Accounts"
         '
-        'Guna2PictureBox4
-        '
-        Me.Guna2PictureBox4.Image = Global.BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.multiple_users_silhouette1
-        Me.Guna2PictureBox4.ImageRotate = 0!
-        Me.Guna2PictureBox4.Location = New System.Drawing.Point(311, 46)
-        Me.Guna2PictureBox4.Name = "Guna2PictureBox4"
-        Me.Guna2PictureBox4.Size = New System.Drawing.Size(101, 93)
-        Me.Guna2PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.Guna2PictureBox4.TabIndex = 3
-        Me.Guna2PictureBox4.TabStop = False
-        '
         'Guna2HtmlLabel5
         '
         Me.Guna2HtmlLabel5.BackColor = System.Drawing.Color.Transparent
@@ -644,267 +866,86 @@ Partial Class ucdashboard4admin
         Me.Guna2HtmlLabel5.TabIndex = 3
         Me.Guna2HtmlLabel5.Text = "ACTIVE SYSTEM USERS"
         '
-        'Guna2Panel5
-        '
-        Me.Guna2Panel5.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2Panel5.BorderColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.Guna2Panel5.BorderRadius = 25
-        Me.Guna2Panel5.Controls.Add(Me.Guna2Shapes5)
-        Me.Guna2Panel5.Controls.Add(Me.Guna2HtmlLabel13)
-        Me.Guna2Panel5.Controls.Add(Me.Guna2Shapes4)
-        Me.Guna2Panel5.Controls.Add(Me.Guna2HtmlLabel12)
-        Me.Guna2Panel5.Controls.Add(Me.Guna2Shapes3)
-        Me.Guna2Panel5.Controls.Add(Me.Guna2HtmlLabel11)
-        Me.Guna2Panel5.Controls.Add(Me.Guna2HtmlLabel10)
-        Me.Guna2Panel5.Controls.Add(Me.Guna2PictureBox5)
-        Me.Guna2Panel5.Controls.Add(Me.Guna2HtmlLabel9)
-        Me.Guna2Panel5.FillColor = System.Drawing.Color.White
-        Me.Guna2Panel5.Location = New System.Drawing.Point(1057, 246)
-        Me.Guna2Panel5.Margin = New System.Windows.Forms.Padding(3, 3, 20, 3)
-        Me.Guna2Panel5.Name = "Guna2Panel5"
-        Me.Guna2Panel5.ShadowDecoration.BorderRadius = 25
-        Me.Guna2Panel5.ShadowDecoration.Depth = 10
-        Me.Guna2Panel5.ShadowDecoration.Enabled = True
-        Me.Guna2Panel5.Size = New System.Drawing.Size(443, 175)
-        Me.Guna2Panel5.TabIndex = 117
-        '
-        'Guna2Shapes5
-        '
-        Me.Guna2Shapes5.BorderThickness = 0
-        Me.Guna2Shapes5.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(193, Byte), Integer), CType(CType(7, Byte), Integer))
-        Me.Guna2Shapes5.Location = New System.Drawing.Point(239, 131)
-        Me.Guna2Shapes5.Name = "Guna2Shapes5"
-        Me.Guna2Shapes5.PolygonSides = 2
-        Me.Guna2Shapes5.PolygonSkip = 1
-        Me.Guna2Shapes5.Rotate = 0!
-        Me.Guna2Shapes5.RoundedRadius = 5
-        Me.Guna2Shapes5.Shape = Guna.UI2.WinForms.Enums.ShapeType.Ellipse
-        Me.Guna2Shapes5.Size = New System.Drawing.Size(21, 21)
-        Me.Guna2Shapes5.TabIndex = 15
-        Me.Guna2Shapes5.Text = "Guna2Shapes5"
-        Me.Guna2Shapes5.UseTransparentBackground = True
-        Me.Guna2Shapes5.Zoom = 80
-        '
-        'Guna2HtmlLabel13
-        '
-        Me.Guna2HtmlLabel13.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2HtmlLabel13.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Guna2HtmlLabel13.Location = New System.Drawing.Point(266, 128)
-        Me.Guna2HtmlLabel13.Name = "Guna2HtmlLabel13"
-        Me.Guna2HtmlLabel13.Size = New System.Drawing.Size(92, 23)
-        Me.Guna2HtmlLabel13.TabIndex = 14
-        Me.Guna2HtmlLabel13.Text = "1 refill soon"
-        '
-        'Guna2Shapes4
-        '
-        Me.Guna2Shapes4.BorderThickness = 0
-        Me.Guna2Shapes4.FillColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(152, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.Guna2Shapes4.Location = New System.Drawing.Point(162, 131)
-        Me.Guna2Shapes4.Name = "Guna2Shapes4"
-        Me.Guna2Shapes4.PolygonSides = 2
-        Me.Guna2Shapes4.PolygonSkip = 1
-        Me.Guna2Shapes4.Rotate = 0!
-        Me.Guna2Shapes4.RoundedRadius = 5
-        Me.Guna2Shapes4.Shape = Guna.UI2.WinForms.Enums.ShapeType.Ellipse
-        Me.Guna2Shapes4.Size = New System.Drawing.Size(21, 21)
-        Me.Guna2Shapes4.TabIndex = 13
-        Me.Guna2Shapes4.Text = "Guna2Shapes4"
-        Me.Guna2Shapes4.UseTransparentBackground = True
-        Me.Guna2Shapes4.Zoom = 80
-        '
-        'Guna2HtmlLabel12
-        '
-        Me.Guna2HtmlLabel12.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2HtmlLabel12.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Guna2HtmlLabel12.Location = New System.Drawing.Point(189, 129)
-        Me.Guna2HtmlLabel12.Name = "Guna2HtmlLabel12"
-        Me.Guna2HtmlLabel12.Size = New System.Drawing.Size(44, 23)
-        Me.Guna2HtmlLabel12.TabIndex = 12
-        Me.Guna2HtmlLabel12.Text = "3 low "
-        '
-        'Guna2Shapes3
-        '
-        Me.Guna2Shapes3.BorderThickness = 0
-        Me.Guna2Shapes3.FillColor = System.Drawing.Color.FromArgb(CType(CType(220, Byte), Integer), CType(CType(53, Byte), Integer), CType(CType(69, Byte), Integer))
-        Me.Guna2Shapes3.Location = New System.Drawing.Point(61, 131)
-        Me.Guna2Shapes3.Name = "Guna2Shapes3"
-        Me.Guna2Shapes3.PolygonSides = 2
-        Me.Guna2Shapes3.PolygonSkip = 1
-        Me.Guna2Shapes3.Rotate = 0!
-        Me.Guna2Shapes3.RoundedRadius = 5
-        Me.Guna2Shapes3.Shape = Guna.UI2.WinForms.Enums.ShapeType.Ellipse
-        Me.Guna2Shapes3.Size = New System.Drawing.Size(21, 21)
-        Me.Guna2Shapes3.TabIndex = 9
-        Me.Guna2Shapes3.Text = "Guna2Shapes3"
-        Me.Guna2Shapes3.UseTransparentBackground = True
-        Me.Guna2Shapes3.Zoom = 80
-        '
-        'Guna2HtmlLabel11
-        '
-        Me.Guna2HtmlLabel11.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2HtmlLabel11.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Guna2HtmlLabel11.Location = New System.Drawing.Point(88, 129)
-        Me.Guna2HtmlLabel11.Name = "Guna2HtmlLabel11"
-        Me.Guna2HtmlLabel11.Size = New System.Drawing.Size(66, 23)
-        Me.Guna2HtmlLabel11.TabIndex = 11
-        Me.Guna2HtmlLabel11.Text = "5 critical "
-        '
-        'Guna2HtmlLabel10
-        '
-        Me.Guna2HtmlLabel10.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2HtmlLabel10.Font = New System.Drawing.Font("Microsoft YaHei UI", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Guna2HtmlLabel10.Location = New System.Drawing.Point(78, 71)
-        Me.Guna2HtmlLabel10.Name = "Guna2HtmlLabel10"
-        Me.Guna2HtmlLabel10.Size = New System.Drawing.Size(252, 30)
-        Me.Guna2HtmlLabel10.TabIndex = 9
-        Me.Guna2HtmlLabel10.Text = "9 Items Need Attention"
-        '
-        'Guna2PictureBox5
-        '
-        Me.Guna2PictureBox5.Image = Global.BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.caution__1_
-        Me.Guna2PictureBox5.ImageRotate = 0!
-        Me.Guna2PictureBox5.Location = New System.Drawing.Point(336, 39)
-        Me.Guna2PictureBox5.Name = "Guna2PictureBox5"
-        Me.Guna2PictureBox5.Size = New System.Drawing.Size(103, 100)
-        Me.Guna2PictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.Guna2PictureBox5.TabIndex = 8
-        Me.Guna2PictureBox5.TabStop = False
-        '
-        'Guna2HtmlLabel9
-        '
-        Me.Guna2HtmlLabel9.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2HtmlLabel9.Font = New System.Drawing.Font("Microsoft YaHei UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Guna2HtmlLabel9.Location = New System.Drawing.Point(88, 13)
-        Me.Guna2HtmlLabel9.Name = "Guna2HtmlLabel9"
-        Me.Guna2HtmlLabel9.Size = New System.Drawing.Size(229, 30)
-        Me.Guna2HtmlLabel9.TabIndex = 8
-        Me.Guna2HtmlLabel9.Text = "STOCK ALERT SYSTEM"
-        '
-        'dgvstock
-        '
-        Me.dgvstock.AllowUserToAddRows = False
-        Me.dgvstock.AllowUserToDeleteRows = False
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.White
-        Me.dgvstock.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle5
-        Me.dgvstock.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle6.BackColor = System.Drawing.Color.RoyalBlue
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgvstock.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
-        Me.dgvstock.ColumnHeadersHeight = 50
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle7.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvstock.DefaultCellStyle = DataGridViewCellStyle7
-        Me.dgvstock.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.dgvstock.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.dgvstock.Location = New System.Drawing.Point(0, 771)
-        Me.dgvstock.Name = "dgvstock"
-        Me.dgvstock.ReadOnly = True
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgvstock.RowHeadersDefaultCellStyle = DataGridViewCellStyle8
-        Me.dgvstock.RowHeadersVisible = False
-        Me.dgvstock.Size = New System.Drawing.Size(1588, 203)
-        Me.dgvstock.TabIndex = 118
-        Me.dgvstock.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White
-        Me.dgvstock.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.RoyalBlue
-        Me.dgvstock.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        Me.dgvstock.ThemeStyle.HeaderStyle.Font = New System.Drawing.Font("Microsoft YaHei UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dgvstock.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.dgvstock.ThemeStyle.HeaderStyle.Height = 50
-        Me.dgvstock.ThemeStyle.ReadOnly = True
-        Me.dgvstock.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        '
-        'ucdashboard4admin
+        'frm_dashboard4admin
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.ClientSize = New System.Drawing.Size(1572, 935)
+        Me.Controls.Add(Me.Guna2Panel1)
         Me.Controls.Add(Me.dgvstock)
         Me.Controls.Add(Me.Guna2Panel5)
-        Me.Controls.Add(Me.Guna2Panel3)
-        Me.Controls.Add(Me.Guna2Panel7)
-        Me.Controls.Add(Me.Guna2Panel6)
-        Me.Controls.Add(Me.Guna2Panel4)
         Me.Controls.Add(Me.Guna2Panel2)
-        Me.Controls.Add(Me.Guna2Panel1)
-        Me.Name = "ucdashboard4admin"
-        Me.Size = New System.Drawing.Size(1588, 974)
+        Me.Controls.Add(Me.Guna2Panel4)
+        Me.Controls.Add(Me.Guna2Panel6)
+        Me.Controls.Add(Me.Guna2Panel7)
+        Me.Controls.Add(Me.Guna2Panel3)
+        Me.Name = "frm_dashboard4admin"
+        Me.Text = "ucdashboardadmin1"
+        CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Guna2Panel1.ResumeLayout(False)
         Me.Guna2Panel1.PerformLayout()
         CType(Me.Guna2PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvstock, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Guna2PictureBox5, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Guna2PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Guna2Panel5.ResumeLayout(False)
+        Me.Guna2Panel5.PerformLayout()
         Me.Guna2Panel2.ResumeLayout(False)
         Me.Guna2Panel2.PerformLayout()
-        CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Guna2Panel4.ResumeLayout(False)
         Me.Guna2Panel4.PerformLayout()
-        CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Guna2Panel6.ResumeLayout(False)
         Me.Guna2Panel7.ResumeLayout(False)
         Me.Guna2Panel3.ResumeLayout(False)
         Me.Guna2Panel3.PerformLayout()
-        CType(Me.Guna2PictureBox4, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Guna2Panel5.ResumeLayout(False)
-        Me.Guna2Panel5.PerformLayout()
-        CType(Me.Guna2PictureBox5, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.dgvstock, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
 
-    Friend WithEvents Guna2Panel1 As Guna.UI2.WinForms.Guna2Panel
-    Friend WithEvents Guna2Panel2 As Guna.UI2.WinForms.Guna2Panel
-    Friend WithEvents lblgg As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents Guna2PictureBox1 As Guna.UI2.WinForms.Guna2PictureBox
-    Friend WithEvents Guna2HtmlLabel2 As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents Guna2Panel4 As Guna.UI2.WinForms.Guna2Panel
-    Friend WithEvents Guna2Panel6 As Guna.UI2.WinForms.Guna2Panel
-    Friend WithEvents Guna2Panel7 As Guna.UI2.WinForms.Guna2Panel
-    Friend WithEvents Guna2Panel3 As Guna.UI2.WinForms.Guna2Panel
-    Friend WithEvents Guna2Panel5 As Guna.UI2.WinForms.Guna2Panel
-    Friend WithEvents Guna2HtmlLabel3 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2PictureBox2 As Guna.UI2.WinForms.Guna2PictureBox
-    Friend WithEvents Guna2HtmlLabel4 As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents Guna2HtmlLabel5 As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents Guna2PictureBox4 As Guna.UI2.WinForms.Guna2PictureBox
-    Friend WithEvents Guna2HtmlLabel6 As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents Guna2Shapes1 As Guna.UI2.WinForms.Guna2Shapes
-    Friend WithEvents Guna2HtmlLabel7 As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents Guna2HtmlLabel8 As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents Guna2HtmlLabel9 As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents Guna2PictureBox5 As Guna.UI2.WinForms.Guna2PictureBox
-    Friend WithEvents Guna2HtmlLabel10 As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents Guna2Shapes2 As Guna.UI2.WinForms.Guna2Shapes
-    Friend WithEvents Guna2HtmlLabel11 As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents GunaHorizontalBarDataset1 As Guna.Charts.WinForms.GunaHorizontalBarDataset
-    Friend WithEvents Guna2Shapes3 As Guna.UI2.WinForms.Guna2Shapes
-    Friend WithEvents Guna2HtmlLabel12 As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents Guna2Shapes4 As Guna.UI2.WinForms.Guna2Shapes
-    Friend WithEvents Guna2Shapes5 As Guna.UI2.WinForms.Guna2Shapes
-    Friend WithEvents ChartLowStock1 As Guna.Charts.WinForms.GunaChart
     Friend WithEvents Guna2HtmlLabel13 As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents GunaHorizontalBarDataset2 As Guna.Charts.WinForms.GunaHorizontalBarDataset
-    Friend WithEvents GunaHorizontalBarDataset3 As Guna.Charts.WinForms.GunaHorizontalBarDataset
-    Friend WithEvents gunadougnutDataset As Guna.Charts.WinForms.GunaDoughnutDataset
-    Friend WithEvents Menucomposition As Guna.Charts.WinForms.GunaChart
-    Friend WithEvents dgvstock As Guna.UI2.WinForms.Guna2DataGridView
+    Friend WithEvents Guna2Shapes4 As Guna.UI2.WinForms.Guna2Shapes
+    Friend WithEvents Guna2HtmlLabel12 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents Guna2Shapes3 As Guna.UI2.WinForms.Guna2Shapes
+    Friend WithEvents Guna2HtmlLabel11 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents Guna2HtmlLabel10 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents Guna2HtmlLabel9 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents Guna2Panel1 As Guna.UI2.WinForms.Guna2Panel
+    Friend WithEvents Guna2Shapes37 As Guna.UI2.WinForms.Guna2Shapes
     Friend WithEvents Guna2PictureBox3 As Guna.UI2.WinForms.Guna2PictureBox
+    Friend WithEvents Guna2HtmlLabel1 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents filtercbx As Guna.UI2.WinForms.Guna2ComboBox
     Friend WithEvents Guna2HtmlLabel14 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2Shapes6 As Guna.UI2.WinForms.Guna2Shapes
     Friend WithEvents searchtxb As Guna.UI2.WinForms.Guna2TextBox
-    Friend WithEvents Guna2HtmlLabel1 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents dgvstock As Guna.UI2.WinForms.Guna2DataGridView
+    Friend WithEvents Timer1 As Timer
+    Friend WithEvents GunaAreaDataset1 As Guna.Charts.WinForms.GunaAreaDataset
+    Friend WithEvents Guna2PictureBox5 As Guna.UI2.WinForms.Guna2PictureBox
+    Friend WithEvents Guna2PictureBox4 As Guna.UI2.WinForms.Guna2PictureBox
+    Friend WithEvents Guna2Shapes5 As Guna.UI2.WinForms.Guna2Shapes
+    Friend WithEvents Guna2PictureBox1 As Guna.UI2.WinForms.Guna2PictureBox
+    Friend WithEvents Guna2Panel5 As Guna.UI2.WinForms.Guna2Panel
+    Friend WithEvents Guna2Panel2 As Guna.UI2.WinForms.Guna2Panel
+    Friend WithEvents Guna2HtmlLabel2 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents lblgg As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents Guna2Panel4 As Guna.UI2.WinForms.Guna2Panel
+    Friend WithEvents Guna2HtmlLabel4 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents Guna2HtmlLabel3 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents Guna2Panel6 As Guna.UI2.WinForms.Guna2Panel
+    Friend WithEvents ChartLowStock1 As Guna.Charts.WinForms.GunaChart
+    Friend WithEvents GunaHorizontalBarDataset1 As Guna.Charts.WinForms.GunaHorizontalBarDataset
+    Friend WithEvents GunaHorizontalBarDataset2 As Guna.Charts.WinForms.GunaHorizontalBarDataset
+    Friend WithEvents GunaHorizontalBarDataset3 As Guna.Charts.WinForms.GunaHorizontalBarDataset
+    Friend WithEvents Guna2Panel7 As Guna.UI2.WinForms.Guna2Panel
+    Friend WithEvents Menucomposition As Guna.Charts.WinForms.GunaChart
+    Friend WithEvents gunadougnutDataset As Guna.Charts.WinForms.GunaDoughnutDataset
+    Friend WithEvents Guna2Panel3 As Guna.UI2.WinForms.Guna2Panel
+    Friend WithEvents Guna2Shapes2 As Guna.UI2.WinForms.Guna2Shapes
+    Friend WithEvents Guna2HtmlLabel8 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents Guna2HtmlLabel7 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents Guna2Shapes1 As Guna.UI2.WinForms.Guna2Shapes
+    Friend WithEvents Guna2HtmlLabel6 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents Guna2HtmlLabel5 As Guna.UI2.WinForms.Guna2HtmlLabel
 End Class

@@ -1,5 +1,5 @@
-﻿Public Class ucdashboard4owner
-    Private Sub ucdashboard4owner_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+﻿Public Class frm_dashboard4owner
+    Private Sub frm_dashboard4owner_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Chartms.Update()
         charttsi.Update()
         AddTableColumns()

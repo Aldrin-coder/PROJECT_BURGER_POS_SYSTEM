@@ -292,12 +292,22 @@ BURGER_SHOP_POS_SYSTEm
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="P:BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.menu__5_">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.menu1">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member>
 <member name="P:BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.multiple_users_silhouette">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.multiple_users_silhouette__1_">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>

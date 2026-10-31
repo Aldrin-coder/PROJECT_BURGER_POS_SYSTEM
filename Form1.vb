@@ -1,4 +1,5 @@
 ﻿Imports System.Diagnostics.Eventing.Reader
+Imports System.IO
 Imports System.Reflection
 Imports System.Text.RegularExpressions
 Imports System.Web.Security
@@ -35,8 +36,8 @@ Public Class loginform
 
     Private Sub loginbtn_Click(sender As Object, e As EventArgs) Handles loginbtn.Click
 
-
         matcheddata = False
+        Dim img() As Byte
 
         If usertxb.Text = "" And passtxb.Text = "" Then
             MsgBox("Please Fill up the Fields.", MsgBoxStyle.Exclamation, "Error")
@@ -106,17 +107,16 @@ Public Class loginform
             passtxb.BorderColor = Color.Transparent
         End If
 
-
-        Dim query As String =
-            "SELECT u.user_id, u.first_name, u.middle_name, u.last_name, " &
+        query =
+            "SELECT u.userID, u.first_name, u.middle_name, u.last_name,u.extension_name,u.userimage," &
             "       u.gender, u.role, " &
-            "       a.admin_id, o.owner_id, c.cashier_id, " &
+            "       a.admin_code, o.owner_code, c.cashier_code, " &
             "       c.shift " &
             "FROM user_accounts u " &
-            "LEFT JOIN admin_accounts   a ON a.user_id = u.user_id " &
-            "LEFT JOIN owner_accounts   o ON o.user_id = u.user_id " &
-            "LEFT JOIN cashier_accounts c ON c.user_id = u.user_id " &
-            "WHERE u.username = @username AND u.password_hash = @password"
+            "LEFT JOIN admin_accounts   a ON a.userID = u.userID " &
+            "LEFT JOIN owner_accounts   o ON o.userID = u.userID " &
+            "LEFT JOIN cashier_accounts c ON c.userID = u.userID " &
+            "WHERE u.username = @username AND u.password = @password"
 
         cmd = New SqlClient.SqlCommand(query, sqlconn)
         cmd.Parameters.AddWithValue("@username", username)
@@ -124,49 +124,61 @@ Public Class loginform
 
         dr = cmd.ExecuteReader()
 
-        If dr.HasRows Then
-            dr.Read()
+        While dr.Read()
             matcheddata = True
 
-            CurrentUser.user_id = Convert.ToInt32(dr("user_id"))
+            CurrentUser.user_id = Convert.ToInt32(dr("userID"))
             CurrentUser.firstname = dr("first_name").ToString()
             CurrentUser.lastname = dr("last_name").ToString()
             CurrentUser.gender = dr("gender").ToString()
             CurrentUser.role = dr("role").ToString()
+            CurrentUser.admin_id = dr("admin_code").ToString()
+            CurrentUser.owner_id = dr("owner_code").ToString()
+            CurrentUser.cashier_id = dr("cashier_code").ToString()
+            CurrentUser.middle_name = dr("middle_name").ToString()
+            CurrentUser.extension_name = dr("extension_name").ToString()
+            CurrentUser.shift = dr("shift").ToString()
 
-
-            If Not IsDBNull(dr("admin_id")) Then
-                CurrentUser.role_code = dr("admin_id").ToString()
-            ElseIf Not IsDBNull(dr("owner_id")) Then
-                CurrentUser.role_code = dr("owner_id").ToString()
-            ElseIf Not IsDBNull(dr("cashier_id")) Then
-                CurrentUser.role_code = dr("cashier_id").ToString()
+            If CurrentUser.admin_id <> "" Then
+                CurrentUser.role_code = CurrentUser.admin_id
+            ElseIf CurrentUser.owner_id <> "" Then
+                CurrentUser.role_code = CurrentUser.owner_id
+            ElseIf CurrentUser.cashier_id <> "" Then
+                CurrentUser.role_code = CurrentUser.cashier_id
             Else
                 CurrentUser.role_code = ""
             End If
 
-            If Not IsDBNull(dr("shift")) Then
-                CurrentUser.shift = dr("shift").ToString()
+            If CurrentUser.shift <> "" Then
+                CurrentUser.shift = CurrentUser.shift
             Else
                 CurrentUser.shift = ""
             End If
 
-            Dim midname As String = ""
-            If Not IsDBNull(dr("middle_name")) Then
-                midname = dr("middle_name").ToString().Trim()
+            If CurrentUser.middle_name <> "" Then
+                CurrentUser.middle_name = CurrentUser.middle_name
             End If
 
-            Dim middlePart As String = ""
-            If midname <> "" Then
-                Dim m As String = midname.Substring(0, 1).ToUpper()
-                middlePart = " " & m & "."
+            If CurrentUser.middle_name <> "" Then
+                CurrentUser.middle_name = CurrentUser.middle_name.Substring(0, 1).ToUpper()
+                CurrentUser.middle_name = " " & CurrentUser.middle_name & "."
             End If
 
             CurrentUser.fullname =
-                StrConv(CurrentUser.firstname.Trim(), vbProperCase) &
-                middlePart & " " &
-                StrConv(CurrentUser.lastname.Trim(), vbProperCase)
-        End If
+                StrConv(CurrentUser.firstname, vbProperCase) &
+                CurrentUser.middle_name & " " &
+                StrConv(CurrentUser.lastname, vbProperCase) &
+                If(CurrentUser.extension_name <> "", " " & StrConv(CurrentUser.extension_name, vbProperCase), "")
+
+            If IsDBNull(dr("userimage")) Then
+                Mainformd.picturebox1.Image = Nothing
+            Else
+                img = CType(dr("userimage"), Byte())
+                Dim ms As New MemoryStream(img)
+                Mainformd.picturebox1.Image = Image.FromStream(ms)
+            End If
+
+        End While
 
         dr.Close()
         cmd.Dispose()
@@ -179,12 +191,14 @@ Public Class loginform
                    MsgBoxStyle.Information, "Login Successful!")
 
             Mainformd.Show()
+
             Me.Hide()
 
             matcheddata = False
             usertxb.Clear()
             passtxb.Clear()
             failedAttempts = 0
+            Mainformd.logintimer11.Text = "0"
 
         Else
             MsgBox("Invalid Credentials", MsgBoxStyle.Exclamation, "Error")
@@ -233,15 +247,11 @@ Public Class loginform
         End If
     End Sub
 
-    Private Sub minimize_Click(sender As Object, e As EventArgs) Handles minimize.Click
+    Private Sub minimize1_Click(sender As Object, e As EventArgs) Handles minimize.Click
         Me.WindowState = FormWindowState.Minimized
     End Sub
 
     Private Sub Guna2GradientPanel2_Paint(sender As Object, e As PaintEventArgs) Handles Guna2GradientPanel2.Paint
-
-    End Sub
-
-    Private Sub attempt_Click(sender As Object, e As EventArgs) Handles attempt.Click
 
     End Sub
 End Class

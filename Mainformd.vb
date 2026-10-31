@@ -1,6 +1,8 @@
 ﻿Imports System.Data.Common
 Imports System.Drawing.Text
+Imports System.IO
 Imports System.Text
+Imports System.Timers
 Imports System.Web.UI.Design.WebControls
 Imports Microsoft.VisualBasic.ApplicationServices
 Imports TheArtOfDevHtmlRenderer.Adapters.RGraphicsPath
@@ -9,31 +11,40 @@ Imports TheArtOfDevHtmlRenderer.Adapters.RGraphicsPath
 
 
 Public Class Mainformd
+
+    Dim timercout As Integer = 0
+
+
     Private Sub Mainformd_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        datentimer.Start()
-        ApplyUserInfo()
         dashboardbtn.Checked = True
-
+        datetimenlogintimer.Start()
+        ApplyUserInfo()
+        logintimer11.Text = "0"
         loaddashboardroles()
-
 
     End Sub
 
-    Private Sub loaddashboardroles()
+
+
+
+
+    Sub loaddashboardroles()
         If CurrentUser.role.ToLower() = "owner" Then
-            LoadUserControl(New ucdashboard4owner())
+            LoadFormInsidePanel(New frm_dashboard4owner())
         ElseIf CurrentUser.role.ToLower() = "admin" Then
-            LoadUserControl(New ucdashboard4admin())
+            LoadFormInsidePanel(New frm_dashboard4admin())
         ElseIf CurrentUser.role.ToLower() = "cashier" Then
-            LoadUserControl(New ucdashboard4cashier())
+            LoadFormInsidePanel(New frm_dashboard4cashier())
         End If
     End Sub
 
-    Sub LoadUserControl(uc As UserControl)
+    Sub LoadFormInsidePanel(frm As Form)
         panelcontainer.Controls.Clear()
-        uc.Dock = DockStyle.Fill
-        panelcontainer.Controls.Add(uc)
-
+        frm.TopLevel = False
+        frm.FormBorderStyle = FormBorderStyle.None
+        frm.Dock = DockStyle.Fill
+        panelcontainer.Controls.Add(frm)
+        frm.Show()
     End Sub
 
     Private Sub buttonswitch_Click(sender As Object, e As EventArgs) Handles _
@@ -50,26 +61,32 @@ Public Class Mainformd
 
         If btn.Name = "dashboardbtn" Then
             If CurrentUser.role.ToLower() = "owner" Then
-                LoadUserControl(New ucdashboard4owner())
+                LoadFormInsidePanel(New frm_dashboard4owner())
             ElseIf CurrentUser.role.ToLower() = "admin" Then
-                LoadUserControl(New ucdashboard4admin())
+                LoadFormInsidePanel(New frm_dashboard4admin())
             ElseIf CurrentUser.role.ToLower() = "cashier" Then
-                LoadUserControl(New ucdashboard4cashier())
+                LoadFormInsidePanel(New frm_dashboard4cashier())
             End If
         ElseIf btn.Name = "mmbtn" Then
+            If CurrentUser.role.ToLower() = "admin" Then
+                LoadFormInsidePanel(New frm_mm4admin())
+            End If
 
+        ElseIf btn.Name = "muabtn" Then
+            If CurrentUser.role.ToLower() = "admin" Then
+                LoadFormInsidePanel(New frm_mua4admin_owner2())
 
-            ElseIf btn.Name = "muabtn" Then
-
-
+            ElseIf CurrentUser.role.ToLower() = "owner" Then
+                LoadFormInsidePanel(New frm_mua4admin_owner2())
+            End If
         ElseIf btn.Name = "oebtn" Then
 
 
-            ElseIf btn.Name = "trbtn" Then
+        ElseIf btn.Name = "trbtn" Then
 
-            ElseIf btn.Name = "srbtn" Then
+        ElseIf btn.Name = "srbtn" Then
 
-            End If
+        End If
     End Sub
 
 
@@ -88,8 +105,6 @@ Public Class Mainformd
         If CurrentUser.role.ToLower = "owner" Then
 
             dashboardbtn.Visible = True
-            oebtn.Visible = True
-            mmbtn.Visible = True
             muabtn.Visible = True
             trbtn.Visible = True
             srbtn.Visible = True
@@ -98,9 +113,11 @@ Public Class Mainformd
             lbluserid1.Text = "OWNER ID      : " & CurrentUser.role_code
             lbluserfn1.Text = "FULLNAME           : " & CurrentUser.fullname
             lbluserg1.Text = "GENDER           : " & CurrentUser.gender.ToUpper
+
             lblusershift1.Visible = False
-            lbluserinfo1.Margin = New Padding(0, 0, 0, 15)
-            logoutbtn.Margin = New Padding(92, 70, 0, 0)
+            lbluserinfo1.Margin = New Padding(0, 0, 0, 10)
+            logoutbtn.Margin = New Padding(92, 120, 3, 0)
+
 
 
 
@@ -114,8 +131,8 @@ Public Class Mainformd
             lbluserfn1.Text = "FULLNAME           : " & CurrentUser.fullname
             lbluserg1.Text = "GENDER           : " & CurrentUser.gender.ToUpper
             lblusershift1.Visible = False
-            lbluserinfo1.Margin = New Padding(0, 0, 0, 15)
-            logoutbtn.Margin = New Padding(90, 230, 0, 0)
+            lbluserinfo1.Margin = New Padding(0, 0, 0, 10)
+            logoutbtn.Margin = New Padding(92, 180, 3, 0)
 
 
 
@@ -124,7 +141,7 @@ Public Class Mainformd
             trbtn.Visible = True
             dashboardbtn.Visible = True
             lblusershift1.Visible = True
-            mmbtn.Visible = True
+
 
             lbluserinfo1.Text = "CASHIER INFORMATION"
             lbluserid1.Text = "CASHIER ID      : " & CurrentUser.role_code
@@ -132,12 +149,12 @@ Public Class Mainformd
             lbluserg1.Text = "GENDER           : " & CurrentUser.gender.ToUpper
             lblusershift1.Text = "SHIFT           : " & CurrentUser.shift.ToUpper
             lbluserinfo1.Margin = New Padding(0, 0, 0, 10)
-            logoutbtn.Margin = New Padding(92, 180, 3, 0)
+            logoutbtn.Margin = New Padding(92, 170, 3, 0)
+
 
         End If
 
     End Sub
-
 
 
 
@@ -157,9 +174,13 @@ Public Class Mainformd
 
 
 
-    Private Sub datentimer_Tick(sender As Object, e As EventArgs) Handles datentimer.Tick
+    Private Sub datentimer_Tick(sender As Object, e As EventArgs) Handles datetimenlogintimer.Tick
         datelabel1.Text = " DATE: " & Date.Now.ToString(" MMM dd, yyyy").ToUpper
         timerlabel1.Text = "TIME: " & Date.Now.ToString(" hh:mm:ss tt").ToUpper
+
+        timercout += 1
+        Dim ts As TimeSpan = TimeSpan.FromSeconds(timercout)
+        logintimer11.Text = "LOGIN TIME: " & ts.ToString("hh\:mm\:ss")
 
     End Sub
 
@@ -177,4 +198,7 @@ Public Class Mainformd
 
     End Sub
 
+    Private Sub panelcontainer_Paint(sender As Object, e As PaintEventArgs) Handles panelcontainer.Paint
+
+    End Sub
 End Class
