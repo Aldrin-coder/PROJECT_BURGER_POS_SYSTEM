@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\ramos\\Downloads\\PROJECTS2\\PROJECT_BURGER_POS_SYSTEM\\",
+  "WorkspaceRootPath": "C:\\Users\\ramos\\Downloads\\PROJECT2\\PROJECT_BURGER_POS_SYSTEM\\",
   "Documents": [],
   "DocumentGroupContainers": [
     {
@@ -126,10 +126,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:137:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
             }
           ]
         }

@@ -22,7 +22,7 @@ CREATE TABLE menu_items (
     price DECIMAL(10, 2) NOT NULL,
     category_id INT NOT NULL,
     quantity INT NOT NULL DEFAULT 0,
-    product_image VARCHAR(MAX),
+    product_image Image,
     IsActive BIT DEFAULT 1,
     FOREIGN KEY (category_id) REFERENCES categories(category_id)
 );
@@ -33,20 +33,16 @@ CREATE PROCEDURE sp_AutoNumbermenu
 AS
 BEGIN
     DECLARE @lastNum VARCHAR(15), @intNum INT, @newNumStr VARCHAR(15);
-    
-    -- Look in AutoNumberUsers table for the last 'M' number
     SELECT TOP 1 @lastNum = NewNumber FROM AutoNumberUsers WHERE pfx = @pfx ORDER BY NewNumber DESC;
     
     IF @lastNum IS NULL
     BEGIN
-        -- IF RESET: Start at M1000
         SET @intNum = 1000;
         SET @newNumStr = @pfx + CAST(@intNum AS VARCHAR);
         INSERT INTO AutoNumberUsers (pfx, NewNumber) VALUES (@pfx, @newNumStr);
     END
     ELSE
     BEGIN
-        -- Add 1 to the last number (e.g., M1000 -> M1001)
         SET @intNum = CAST(SUBSTRING(@lastNum, LEN(@pfx) + 1, LEN(@lastNum)) AS INT) + 1;
         SET @newNumStr = @pfx + CAST(@intNum AS VARCHAR);
         INSERT INTO AutoNumberUsers (pfx, NewNumber) VALUES (@pfx, @newNumStr);
@@ -55,16 +51,24 @@ BEGIN
 END
 GO
 
--- Insert Default Categories
+-- 1. Insert Default Categories
 INSERT INTO categories (category_name) VALUES 
 ('Burgers'), ('Hotdogs'), ('Sandwiches'), ('Fries'), ('Add-ons'), ('Drinks');
+GO
+
+-- 2. ⭐ INSERT A TEST MENU ITEM USING EXEC ⭐
+-- This proves the auto-number works before you even open VB.NET!
+DECLARE @NewItemCode VARCHAR(15);
+EXEC sp_AutoNumbermenu 'M', @NewItemCode OUTPUT; -- Generates M1000
+
+INSERT INTO menu_items (item_code, product_name, price, category_id, quantity, product_image, IsActive)
+VALUES (@NewItemCode, 'Classic Burger', 50.00, 1, 100, 'C:\Images\burger.png', 1);
 GO
 
 -- -------------------------------------------------------------------------
 -- PART B: SELECT (VIEW DATA)
 -- -------------------------------------------------------------------------
-
--- View all Menu Items with Category Names
+-- View all Menu Items with their Category Names
 SELECT 
     m.item_id, m.item_code, m.product_name, m.price, 
     m.quantity, m.IsActive, m.product_image,
@@ -78,22 +82,28 @@ SELECT * FROM categories ORDER BY category_id;
 GO
 
 -- -------------------------------------------------------------------------
--- PART C: RESET / RESEED SCRIPT 
--- (Remove the -- to run. This resets the Table AND the sp_AutoNumbermenu)
+-- PART C: RESET / RESEED SCRIPT (Fully Active)
 -- -------------------------------------------------------------------------
-
+GO
 -- 1. Delete all menu items and categories
--- DELETE FROM menu_items;
--- DELETE FROM categories;
+DELETE FROM menu_items;
+DELETE FROM categories;
 
 -- 2. Reset the Identity IDs back to 1
--- DBCC CHECKIDENT ('menu_items', RESEED, 0);
--- DBCC CHECKIDENT ('categories', RESEED, 0);
+DBCC CHECKIDENT ('menu_items', RESEED, 0);
+DBCC CHECKIDENT ('categories', RESEED, 0);
 
 -- 3. Clear the 'M' history from AutoNumberUsers
--- DELETE FROM AutoNumberUsers WHERE pfx = 'M';
+DELETE FROM AutoNumberUsers WHERE pfx = 'M';
 
 -- 4. Add back the default categories
--- INSERT INTO categories (category_name) VALUES 
--- ('Burgers'), ('Hotdogs'), ('Sandwiches'), ('Fries'), ('Add-ons'), ('Drinks');
+INSERT INTO categories (category_name) VALUES 
+('Burgers'), ('Hotdogs'), ('Sandwiches'), ('Fries'), ('Add-ons'), ('Drinks');
+
+-- 5. Insert a fresh Test Item using EXEC to start the sequence
+DECLARE @ResetItemCode VARCHAR(15);
+EXEC sp_AutoNumbermenu 'M', @ResetItemCode OUTPUT; -- Generates M1000 again
+
+INSERT INTO menu_items (item_code, product_name, price, category_id, quantity, product_image, IsActive)
+VALUES (@ResetItemCode, 'Classic Burger', 50.00, 1, 100, 'C:\Images\burger.png', 1);
 GO

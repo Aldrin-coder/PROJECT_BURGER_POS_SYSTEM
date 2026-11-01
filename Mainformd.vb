@@ -80,7 +80,9 @@ Public Class Mainformd
                 LoadFormInsidePanel(New frm_mua4admin_owner2())
             End If
         ElseIf btn.Name = "oebtn" Then
-
+            If CurrentUser.role.ToLower() = "cashier" Then
+                LoadFormInsidePanel(New frm_oe4cashier())
+            End If
 
         ElseIf btn.Name = "trbtn" Then
 

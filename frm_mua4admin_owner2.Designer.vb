@@ -19,10 +19,13 @@ Partial Class frm_mua4admin_owner2
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_mua4admin_owner2))
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Guna2Shapes8 = New Guna.UI2.WinForms.Guna2Shapes()
         Me.Guna2Shapes7 = New Guna.UI2.WinForms.Guna2Shapes()
         Me.Guna2Shapes4 = New Guna.UI2.WinForms.Guna2Shapes()
@@ -44,6 +47,7 @@ Partial Class frm_mua4admin_owner2
         Me.Guna2Shapes35 = New Guna.UI2.WinForms.Guna2Shapes()
         Me.Guna2HtmlLabel10 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.picturebox1 = New System.Windows.Forms.PictureBox()
         Me.Guna2HtmlLabel3 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.datagridviewaccounts = New Guna.UI2.WinForms.Guna2DataGridView()
         Me.clearbtn = New Guna.UI2.WinForms.Guna2Button()
@@ -74,13 +78,13 @@ Partial Class frm_mua4admin_owner2
         Me.cmbshift = New Guna.UI2.WinForms.Guna2ComboBox()
         Me.txbrole = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Guna2Panel1 = New Guna.UI2.WinForms.Guna2Panel()
+        Me.Guna2PictureBox3 = New Guna.UI2.WinForms.Guna2PictureBox()
+        Me.Guna2PictureBox2 = New Guna.UI2.WinForms.Guna2PictureBox()
         Me.Guna2Shapes1 = New Guna.UI2.WinForms.Guna2Shapes()
         Me.lblmua = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.txbsearch = New Guna.UI2.WinForms.Guna2TextBox()
         Me.tooltipuserimage = New Guna.UI2.WinForms.Guna2HtmlToolTip()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
-        Me.picturebox1 = New System.Windows.Forms.PictureBox()
-        Me.Guna2PictureBox2 = New Guna.UI2.WinForms.Guna2PictureBox()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -96,9 +100,10 @@ Partial Class frm_mua4admin_owner2
         Me.Column14 = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.Column15 = New System.Windows.Forms.DataGridViewButtonColumn()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.picturebox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.datagridviewaccounts, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Guna2Panel1.SuspendLayout()
-        CType(Me.picturebox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Guna2PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -473,6 +478,20 @@ Partial Class frm_mua4admin_owner2
         Me.ErrorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink
         Me.ErrorProvider1.ContainerControl = Me
         '
+        'picturebox1
+        '
+        Me.picturebox1.BackColor = System.Drawing.Color.SlateGray
+        Me.picturebox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.picturebox1.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.ErrorProvider1.SetIconAlignment(Me.picturebox1, System.Windows.Forms.ErrorIconAlignment.MiddleLeft)
+        Me.picturebox1.Location = New System.Drawing.Point(104, 115)
+        Me.picturebox1.Name = "picturebox1"
+        Me.picturebox1.Size = New System.Drawing.Size(213, 152)
+        Me.picturebox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.picturebox1.TabIndex = 243
+        Me.picturebox1.TabStop = False
+        Me.tooltipuserimage.SetToolTip(Me.picturebox1, "CLICK HERE TO INSERT USER IMAGE")
+        '
         'Guna2HtmlLabel3
         '
         Me.Guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent
@@ -500,24 +519,26 @@ Partial Class frm_mua4admin_owner2
         Me.datagridviewaccounts.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.datagridviewaccounts.ColumnHeadersHeight = 30
         Me.datagridviewaccounts.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5, Me.Column6, Me.Column7, Me.Column8, Me.Column9, Me.Column10, Me.Column13, Me.Column11, Me.Column14, Me.Column15})
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.datagridviewaccounts.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.datagridviewaccounts.DefaultCellStyle = DataGridViewCellStyle5
         Me.datagridviewaccounts.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.datagridviewaccounts.GridColor = System.Drawing.Color.Black
         Me.datagridviewaccounts.Location = New System.Drawing.Point(0, 682)
         Me.datagridviewaccounts.Name = "datagridviewaccounts"
         Me.datagridviewaccounts.ReadOnly = True
         Me.datagridviewaccounts.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        Me.datagridviewaccounts.RowHeadersDefaultCellStyle = DataGridViewCellStyle5
+        Me.datagridviewaccounts.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
         Me.datagridviewaccounts.RowHeadersVisible = False
         Me.datagridviewaccounts.RowHeadersWidth = 10
         Me.datagridviewaccounts.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
+        DataGridViewCellStyle7.BackColor = System.Drawing.Color.White
+        Me.datagridviewaccounts.RowsDefaultCellStyle = DataGridViewCellStyle7
         Me.datagridviewaccounts.Size = New System.Drawing.Size(1572, 253)
         Me.datagridviewaccounts.TabIndex = 269
         Me.datagridviewaccounts.ThemeStyle.GridColor = System.Drawing.Color.Black
@@ -527,7 +548,6 @@ Partial Class frm_mua4admin_owner2
         Me.datagridviewaccounts.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.datagridviewaccounts.ThemeStyle.HeaderStyle.Height = 30
         Me.datagridviewaccounts.ThemeStyle.ReadOnly = True
-        Me.datagridviewaccounts.ThemeStyle.RowsStyle.BackColor = System.Drawing.SystemColors.Window
         Me.datagridviewaccounts.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.[Single]
         Me.datagridviewaccounts.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.datagridviewaccounts.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.Black
@@ -966,6 +986,7 @@ Partial Class frm_mua4admin_owner2
         'Guna2Panel1
         '
         Me.Guna2Panel1.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2Panel1.Controls.Add(Me.Guna2PictureBox3)
         Me.Guna2Panel1.Controls.Add(Me.Guna2PictureBox2)
         Me.Guna2Panel1.Controls.Add(Me.Guna2Shapes37)
         Me.Guna2Panel1.Controls.Add(Me.cmbfilter)
@@ -979,6 +1000,32 @@ Partial Class frm_mua4admin_owner2
         Me.Guna2Panel1.Name = "Guna2Panel1"
         Me.Guna2Panel1.Size = New System.Drawing.Size(1572, 89)
         Me.Guna2Panel1.TabIndex = 242
+        '
+        'Guna2PictureBox3
+        '
+        Me.Guna2PictureBox3.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2PictureBox3.Image = Global.BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.search__1_
+        Me.Guna2PictureBox3.ImageRotate = 0!
+        Me.Guna2PictureBox3.Location = New System.Drawing.Point(1254, 38)
+        Me.Guna2PictureBox3.Name = "Guna2PictureBox3"
+        Me.Guna2PictureBox3.Size = New System.Drawing.Size(22, 21)
+        Me.Guna2PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.Guna2PictureBox3.TabIndex = 290
+        Me.Guna2PictureBox3.TabStop = False
+        Me.Guna2PictureBox3.UseTransparentBackground = True
+        '
+        'Guna2PictureBox2
+        '
+        Me.Guna2PictureBox2.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2PictureBox2.Image = Global.BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.multiple_users_silhouette__1_
+        Me.Guna2PictureBox2.ImageRotate = 0!
+        Me.Guna2PictureBox2.Location = New System.Drawing.Point(19, 14)
+        Me.Guna2PictureBox2.Name = "Guna2PictureBox2"
+        Me.Guna2PictureBox2.Size = New System.Drawing.Size(65, 61)
+        Me.Guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.Guna2PictureBox2.TabIndex = 191
+        Me.Guna2PictureBox2.TabStop = False
+        Me.Guna2PictureBox2.UseTransparentBackground = True
         '
         'Guna2Shapes1
         '
@@ -1018,12 +1065,12 @@ Partial Class frm_mua4admin_owner2
         Me.txbsearch.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Bold)
         Me.txbsearch.ForeColor = System.Drawing.Color.Black
         Me.txbsearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.txbsearch.Location = New System.Drawing.Point(953, 31)
+        Me.txbsearch.Location = New System.Drawing.Point(896, 31)
         Me.txbsearch.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.txbsearch.Name = "txbsearch"
-        Me.txbsearch.PlaceholderText = "Search "
+        Me.txbsearch.PlaceholderText = "Search Name, Username, or Role ID..."
         Me.txbsearch.SelectedText = ""
-        Me.txbsearch.Size = New System.Drawing.Size(340, 37)
+        Me.txbsearch.Size = New System.Drawing.Size(397, 37)
         Me.txbsearch.TabIndex = 2
         '
         'tooltipuserimage
@@ -1038,33 +1085,6 @@ Partial Class frm_mua4admin_owner2
         'OpenFileDialog1
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
-        '
-        'picturebox1
-        '
-        Me.picturebox1.BackColor = System.Drawing.Color.SlateGray
-        Me.picturebox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.picturebox1.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.ErrorProvider1.SetIconAlignment(Me.picturebox1, System.Windows.Forms.ErrorIconAlignment.MiddleLeft)
-        Me.picturebox1.Location = New System.Drawing.Point(104, 115)
-        Me.picturebox1.Name = "picturebox1"
-        Me.picturebox1.Size = New System.Drawing.Size(213, 152)
-        Me.picturebox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.picturebox1.TabIndex = 243
-        Me.picturebox1.TabStop = False
-        Me.tooltipuserimage.SetToolTip(Me.picturebox1, "CLICK HERE TO INSERT USER IMAGE")
-        '
-        'Guna2PictureBox2
-        '
-        Me.Guna2PictureBox2.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2PictureBox2.Image = Global.BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.multiple_users_silhouette__1_
-        Me.Guna2PictureBox2.ImageRotate = 0!
-        Me.Guna2PictureBox2.Location = New System.Drawing.Point(19, 14)
-        Me.Guna2PictureBox2.Name = "Guna2PictureBox2"
-        Me.Guna2PictureBox2.Size = New System.Drawing.Size(65, 61)
-        Me.Guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.Guna2PictureBox2.TabIndex = 191
-        Me.Guna2PictureBox2.TabStop = False
-        Me.Guna2PictureBox2.UseTransparentBackground = True
         '
         'Column1
         '
@@ -1140,15 +1160,21 @@ Partial Class frm_mua4admin_owner2
         '
         'Column13
         '
+        Me.Column13.FillWeight = 160.0!
         Me.Column13.HeaderText = "CREATED DATE"
         Me.Column13.Name = "Column13"
         Me.Column13.ReadOnly = True
         '
         'Column11
         '
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkGray
+        DataGridViewCellStyle2.NullValue = CType(resources.GetObject("DataGridViewCellStyle2.NullValue"), Object)
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkGray
+        Me.Column11.DefaultCellStyle = DataGridViewCellStyle2
+        Me.Column11.FillWeight = 120.0!
         Me.Column11.HeaderText = "USER PICTURE"
         Me.Column11.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch
-        Me.Column11.MinimumWidth = 50
         Me.Column11.Name = "Column11"
         Me.Column11.ReadOnly = True
         Me.Column11.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
@@ -1156,12 +1182,12 @@ Partial Class frm_mua4admin_owner2
         '
         'Column14
         '
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.LawnGreen
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LawnGreen
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black
-        Me.Column14.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.LawnGreen
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LawnGreen
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
+        Me.Column14.DefaultCellStyle = DataGridViewCellStyle3
         Me.Column14.FillWeight = 90.0!
         Me.Column14.HeaderText = "UPDATE"
         Me.Column14.Name = "Column14"
@@ -1169,12 +1195,12 @@ Partial Class frm_mua4admin_owner2
         '
         'Column15
         '
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.Red
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Red
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
-        Me.Column15.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.Red
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Red
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black
+        Me.Column15.DefaultCellStyle = DataGridViewCellStyle4
         Me.Column15.FillWeight = 90.0!
         Me.Column15.HeaderText = "DELETE"
         Me.Column15.Name = "Column15"
@@ -1237,10 +1263,11 @@ Partial Class frm_mua4admin_owner2
         Me.Name = "frm_mua4admin_owner2"
         Me.Text = "frm_mua4admin_owner2"
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.picturebox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.datagridviewaccounts, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Guna2Panel1.ResumeLayout(False)
         Me.Guna2Panel1.PerformLayout()
-        CType(Me.picturebox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Guna2PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -1305,6 +1332,7 @@ Partial Class frm_mua4admin_owner2
     Friend WithEvents tooltipuserimage As Guna.UI2.WinForms.Guna2HtmlToolTip
     Friend WithEvents OpenFileDialog1 As OpenFileDialog
     Friend WithEvents Guna2PictureBox2 As Guna.UI2.WinForms.Guna2PictureBox
+    Friend WithEvents Guna2PictureBox3 As Guna.UI2.WinForms.Guna2PictureBox
     Friend WithEvents Column1 As DataGridViewTextBoxColumn
     Friend WithEvents Column2 As DataGridViewTextBoxColumn
     Friend WithEvents Column3 As DataGridViewTextBoxColumn

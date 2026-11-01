@@ -4,28 +4,42 @@ Imports System.Text.RegularExpressions
 
 Public Class frm_mm4admin
 
-    'mga variable na hawak ang state ng form
     Dim currentCategoryId As Integer = 0
     Dim currentItemId As Integer = 0
-    Dim selectedImagePath As String = ""
     Dim isvalid As Boolean = True
-    Dim isLoading As Boolean = True     'flag para sa load state
+    Dim isLoading As Boolean = True
 
-    'kapag nagload ang form, ikonekta sa db at iload lahat ng data
+    ' ⭐ Holds the image bytes so we can save them to the DB ⭐
+    Dim selectedImageBytes As Byte() = Nothing
+
     Private Sub frm_mm4admin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         conn()
         isvalid = False
 
-
-
         readdatacategories()
         readdatamenuitems()
-        createautonumber()
+        previewautonumber()
 
-        isLoading = False    'tapos na magload, pwede na magsearch at filter
+        ErrorProvider1.Clear()
+        isLoading = False
     End Sub
 
-    'kinukuha lahat ng categories galing db at nilalagay sa grid at combo
+    Sub previewautonumber()
+        conn()
+        query = "SELECT Max(NewNumber) FROM AutoNumberUsers where pfx = 'M'"
+        cmd = New SqlClient.SqlCommand(query, sqlconn)
+        Dim result As Object = cmd.ExecuteScalar()
+        cmd.Dispose()
+
+        If result Is Nothing OrElse IsDBNull(result) Then
+            txbiditem.Text = "M1000"
+        Else
+            Dim lastNum As String = result.ToString()
+            Dim intNum As Integer = Convert.ToInt32(lastNum.Substring(1)) + 1
+            txbiditem.Text = "M" & intNum.ToString()
+        End If
+    End Sub
+
     Sub readdatacategories()
         If datagridviewcategories.Columns.Count = 0 Then Exit Sub
         conn()
@@ -56,7 +70,6 @@ Public Class frm_mm4admin
         cmd.Dispose()
     End Sub
 
-    'kinukuha lahat ng menu items kasama category name at image
     Sub readdatamenuitems()
         If datagridviewmenulist.Columns.Count = 0 Then Exit Sub
         conn()
@@ -76,7 +89,7 @@ Public Class frm_mm4admin
         End If
 
         If searchText <> "" Then
-            query &= " AND ( m.item_code LIKE @SEARCH OR m.product_name LIKE @SEARCH OR c.category_name LIKE @SEARCH ) "
+            query &= " AND ( m.item_code LIKE @SEARCH OR m.product_name LIKE @SEARCH) "
         End If
 
         query &= " ORDER BY m.item_id"
@@ -95,12 +108,14 @@ Public Class frm_mm4admin
 
         While dr.Read()
             Dim img As Image = Nothing
+
+            ' ⭐ LOADING IMAGE FROM DATABASE BYTES ⭐
             If Not IsDBNull(dr("product_image")) Then
-                Dim imgPath As String = dr("product_image").ToString()
-                If imgPath <> "" AndAlso File.Exists(imgPath) Then
+                Dim imgBytes As Byte() = CType(dr("product_image"), Byte())
+                If imgBytes.Length > 0 Then
                     Try
-                        Using fs As New FileStream(imgPath, FileMode.Open, FileAccess.Read)
-                            Using tempImg As Image = Image.FromStream(fs)
+                        Using ms As New MemoryStream(imgBytes)
+                            Using tempImg As Image = Image.FromStream(ms)
                                 img = New Bitmap(tempImg, 100, 100)
                             End Using
                         End Using
@@ -137,36 +152,11 @@ Public Class frm_mm4admin
         Next
     End Sub
 
-    ' ⭐ AUTO-SUGGEST SA SEARCH BOX ⭐
     Private Sub txbsearch_TextChanged(sender As Object, e As EventArgs) Handles txbsearch.TextChanged
-
-
-
-        Dim searchText As String = txbsearch.Text.Trim()
-
-        conn()
-        query = "SELECT TOP 5 item_code + ' - ' + product_name AS SuggestText FROM menu_items WHERE item_code LIKE @SEARCH OR product_name LIKE @SEARCH"
-        cmd = New SqlClient.SqlCommand(query, sqlconn)
-        cmd.Parameters.AddWithValue("@SEARCH", "%" & searchText & "%")
-        dr = cmd.ExecuteReader()
-
-        While dr.Read()
-
-        End While
-
-        dr.Close()
-        cmd.Dispose()
-
-
+        If isLoading Then Exit Sub
+        readdatamenuitems()
     End Sub
 
-
-
-    Private Sub frm_mm4admin_Click(sender As Object, e As EventArgs) Handles MyBase.Click
-
-    End Sub
-
-    ' ⭐ CELL FORMATTING (Kulay ng Status) ⭐
     Private Sub datagridviewmenulist_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles datagridviewmenulist.CellFormatting
         If e.RowIndex >= 0 AndAlso e.Value IsNot Nothing Then
             If e.ColumnIndex = 5 Then
@@ -233,7 +223,7 @@ Public Class frm_mm4admin
             isvalid = False
         End If
 
-        If picturebox1.Image Is Nothing AndAlso selectedImagePath = "" Then
+        If picturebox1.Image Is Nothing AndAlso selectedImageBytes Is Nothing Then
             ErrorProvider1.SetError(picturebox1, "Product image is required.")
             isvalid = False
         End If
@@ -298,8 +288,9 @@ Public Class frm_mm4admin
         txbpq.Clear()
         txbproductcat.SelectedIndex = -1
         picturebox1.Image = Nothing
-        selectedImagePath = ""
+        selectedImageBytes = Nothing
         currentItemId = 0
+
         ErrorProvider1.Clear()
         ResetBorders()
     End Sub
@@ -369,13 +360,20 @@ Public Class frm_mm4admin
         End If
     End Sub
 
+    ' ⭐ CONVERT IMAGE TO BYTES ON SELECT ⭐
     Private Sub picturebox1_Click(sender As Object, e As EventArgs) Handles picturebox1.Click
         Using ofd As New OpenFileDialog()
             ofd.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp"
             If ofd.ShowDialog() = DialogResult.OK Then
                 picturebox1.SizeMode = PictureBoxSizeMode.StretchImage
                 picturebox1.Image = Image.FromFile(ofd.FileName)
-                selectedImagePath = ofd.FileName
+
+                ' Convert image to byte array
+                Using ms As New MemoryStream()
+                    picturebox1.Image.Save(ms, picturebox1.Image.RawFormat)
+                    selectedImageBytes = ms.ToArray()
+                End Using
+
                 ErrorProvider1.SetError(picturebox1, "")
             End If
         End Using
@@ -397,19 +395,34 @@ Public Class frm_mm4admin
         Integer.TryParse(txbpq.Text, qtyValue)
 
         If currentItemId = 0 Then
+            Dim actualItemCode As String = ""
+            Using spCmd As New SqlCommand("sp_AutoNumbermenu", sqlconn)
+                spCmd.CommandType = CommandType.StoredProcedure
+                spCmd.Parameters.AddWithValue("@pfx", "M")
+                Dim outParam As SqlParameter = spCmd.Parameters.Add("@NewNumber", SqlDbType.NVarChar, 20)
+                outParam.Direction = ParameterDirection.Output
+                spCmd.ExecuteNonQuery()
+                actualItemCode = outParam.Value.ToString()
+            End Using
+
             query = "INSERT INTO menu_items (item_code, product_name, price, category_id, quantity, product_image, IsActive) " &
                     "VALUES (@code, @name, @price, @catid, @qty, @img, 1)"
 
             cmd = New SqlClient.SqlCommand(query, sqlconn)
-            cmd.Parameters.AddWithValue("@code", txbiditem.Text)
+            cmd.Parameters.AddWithValue("@code", actualItemCode)
             cmd.Parameters.AddWithValue("@name", txbpn.Text.Trim())
             cmd.Parameters.AddWithValue("@price", priceValue)
             cmd.Parameters.AddWithValue("@catid", catId)
             cmd.Parameters.AddWithValue("@qty", qtyValue)
-            cmd.Parameters.AddWithValue("@img", selectedImagePath)
+            ' ⭐ SAVE BYTES ⭐
+            If selectedImageBytes IsNot Nothing Then
+                cmd.Parameters.AddWithValue("@img", selectedImageBytes)
+            Else
+                cmd.Parameters.AddWithValue("@img", DBNull.Value)
+            End If
             cmd.ExecuteNonQuery()
             cmd.Dispose()
-            MsgBox("Menu item added successfully!", MsgBoxStyle.Information, "Success")
+            MsgBox("Menu item added successfully with code " & actualItemCode & "!", MsgBoxStyle.Information, "Success")
         Else
             query = "UPDATE menu_items SET product_name=@name, price=@price, category_id=@catid, " &
                     "quantity=@qty, product_image=@img WHERE item_id=@id"
@@ -419,7 +432,12 @@ Public Class frm_mm4admin
             cmd.Parameters.AddWithValue("@price", priceValue)
             cmd.Parameters.AddWithValue("@catid", catId)
             cmd.Parameters.AddWithValue("@qty", qtyValue)
-            cmd.Parameters.AddWithValue("@img", selectedImagePath)
+            ' ⭐ SAVE BYTES ⭐
+            If selectedImageBytes IsNot Nothing Then
+                cmd.Parameters.AddWithValue("@img", selectedImageBytes)
+            Else
+                cmd.Parameters.AddWithValue("@img", DBNull.Value)
+            End If
             cmd.Parameters.AddWithValue("@id", currentItemId)
             cmd.ExecuteNonQuery()
             cmd.Dispose()
@@ -428,11 +446,12 @@ Public Class frm_mm4admin
 
         clearMenuForm()
         readdatamenuitems()
-        createautonumber()
+        previewautonumber()
     End Sub
 
     Private Sub clearbtn_Click(sender As Object, e As EventArgs) Handles clearbtn.Click
         clearMenuForm(keepCode:=True)
+        previewautonumber()
     End Sub
 
     Private Sub addbtncateg_Click(sender As Object, e As EventArgs) Handles addbtncateg.Click
@@ -499,15 +518,18 @@ Public Class frm_mm4admin
             query = "SELECT product_image FROM menu_items WHERE item_id = @id"
             cmd = New SqlClient.SqlCommand(query, sqlconn)
             cmd.Parameters.AddWithValue("@id", currentItemId)
-            Dim imgPath As String = Convert.ToString(cmd.ExecuteScalar())
+            Dim imgObj As Object = cmd.ExecuteScalar()
             cmd.Dispose()
 
-            If imgPath <> "" AndAlso File.Exists(imgPath) Then
-                picturebox1.Image = Image.FromFile(imgPath)
-                selectedImagePath = imgPath
+            ' ⭐ LOAD BYTES INTO PICTUREBOX ON UPDATE ⭐
+            If imgObj IsNot Nothing AndAlso Not IsDBNull(imgObj) Then
+                selectedImageBytes = CType(imgObj, Byte())
+                Using ms As New MemoryStream(selectedImageBytes)
+                    picturebox1.Image = Image.FromStream(ms)
+                End Using
             Else
                 picturebox1.Image = Nothing
-                selectedImagePath = ""
+                selectedImageBytes = Nothing
             End If
 
         ElseIf e.ColumnIndex = 9 Then
@@ -587,19 +609,5 @@ Public Class frm_mm4admin
         cmd.Dispose()
         Return id
     End Function
-
-    Sub createautonumber()
-        conn()
-        Using spCmd As New SqlCommand("sp_AutoNumbermenu", sqlconn)
-            spCmd.CommandType = CommandType.StoredProcedure
-            spCmd.Parameters.AddWithValue("@pfx", "M")
-
-            Dim outParam As SqlParameter = spCmd.Parameters.Add("@NewNumber", SqlDbType.NVarChar, 20)
-            outParam.Direction = ParameterDirection.Output
-
-            spCmd.ExecuteNonQuery()
-            txbiditem.Text = outParam.Value.ToString()
-        End Using
-    End Sub
 
 End Class

@@ -129,6 +129,12 @@
     <Compile Include="frm_mua4admin_owner2.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frm_oe4cashier.Designer.vb">
+      <DependentUpon>frm_oe4cashier.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_oe4cashier.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Mainformd.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -170,6 +176,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_mua4admin_owner2.resx">
       <DependentUpon>frm_mua4admin_owner2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_oe4cashier.resx">
+      <DependentUpon>frm_oe4cashier.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Mainformd.resx">
       <DependentUpon>Mainformd.vb</DependentUpon>
@@ -399,6 +408,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
+    <None Include="Resources\checklist.png" />
     <None Include="Resources\menu %285%29.png" />
     <None Include="Resources\multiple-users-silhouette %281%29.png" />
     <None Include="Resources\calendar.png" />
