@@ -5,27 +5,104 @@ Imports Guna.UI2.WinForms
 
 Public Class frm_oe4cashier
 
-    ' === VARIABLES (like your reference) ===
-    Dim originalItemId As String = ""     ' If not empty → we are editing
-    Dim isLoading As Boolean = True
+    Dim isvalid As Boolean = True
 
     Private Sub frm_oe4cashier_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         conn()
+        cmbitems()
+        LoadCategories()
         loaditems()
-        isLoading = False
+        isvalid = False
+        PreviewNextOrderNumber()
     End Sub
 
-    ' ============================================================
-    ' LOAD PRODUCT CARDS (same as before, unchanged)
-    ' ============================================================
+    Sub cmbitems()
+        cmbpm.Items.Clear()
+        cmbpm.Items.AddRange({"CASH", "GCASH", "MAYA"})
+    End Sub
+
+    Sub LoadCategories()
+        cmbcategory.Items.Clear()
+        cmbcategory.Items.Add("ALL")
+
+        Try
+            conn()
+            query = "SELECT category_name FROM categories ORDER BY category_name"
+            cmd = New SqlClient.SqlCommand(query, sqlconn)
+            dr = cmd.ExecuteReader()
+
+            While dr.Read()
+                cmbcategory.Items.Add(dr("category_name").ToString().ToUpper())
+            End While
+
+            dr.Close()
+            cmd.Dispose()
+
+            cmbcategory.SelectedIndex = 0
+        Catch ex As Exception
+            MessageBox.Show("Error loading categories: " & ex.Message)
+        End Try
+    End Sub
+
+    Private Sub cmbcategory_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbcategory.SelectedIndexChanged
+        loaditems()
+    End Sub
+
+    Private Sub txbsearch_TextChanged(sender As Object, e As EventArgs) Handles txbsearch.TextChanged
+        loaditems()
+    End Sub
+
+    Private Sub PreviewNextOrderNumber()
+        Try
+            conn()
+            query = "SELECT MAX(NewNumber) FROM AutoNumberOrder"
+            cmd = New SqlClient.SqlCommand(query, sqlconn)
+            Dim result As Object = cmd.ExecuteScalar()
+            cmd.Dispose()
+
+            If result Is Nothing OrElse IsDBNull(result) Then
+                txbordern.Text = "ORD-001"
+            Else
+                Dim lastNum As String = result.ToString()
+                Dim numPart As String = lastNum.Replace("ORD-", "")
+                Dim intNum As Integer
+                If Integer.TryParse(numPart, intNum) Then
+                    txbordern.Text = "ORD-" & (intNum + 1).ToString("000")
+                Else
+                    txbordern.Text = "ORD-001"
+                End If
+            End If
+        Catch ex As Exception
+            txbordern.Text = "ORD-001"
+        End Try
+    End Sub
+
     Sub loaditems()
         FlowLayoutPanel1.Controls.Clear()
+        conn()   ' <--- FIX: open the connection every time
 
-        query = "SELECT m.*, c.category_name FROM menu_items m " &
-                "INNER JOIN categories c ON m.category_id = c.category_id " &
-                "WHERE m.IsActive = 1"
+        Dim sql As String = "SELECT m.*, c.category_name FROM menu_items m " &
+                            "INNER JOIN categories c ON m.category_id = c.category_id " &
+                            "WHERE m.IsActive = 1 "
 
-        cmd = New SqlClient.SqlCommand(query, sqlconn)
+        If cmbcategory.Text <> "" AndAlso cmbcategory.Text.ToUpper() <> "ALL" Then
+            sql &= " AND c.category_name = @CAT "
+        End If
+
+        If txbsearch.Text.Trim() <> "" Then
+            sql &= " AND m.product_name LIKE @SEARCH "
+        End If
+
+        cmd = New SqlClient.SqlCommand(sql, sqlconn)
+
+        If cmbcategory.Text <> "" AndAlso cmbcategory.Text.ToUpper() <> "ALL" Then
+            cmd.Parameters.AddWithValue("@CAT", cmbcategory.Text)
+        End If
+
+        If txbsearch.Text.Trim() <> "" Then
+            cmd.Parameters.AddWithValue("@SEARCH", "%" & txbsearch.Text.Trim() & "%")
+        End If
+
         dr = cmd.ExecuteReader()
 
         While dr.Read()
@@ -35,74 +112,74 @@ Public Class frm_oe4cashier
             Dim catName As String = dr("category_name").ToString()
             Dim qty As Integer = Convert.ToInt32(dr("quantity"))
 
+            If qty <= 0 Then Continue While
+
             Dim pnl As New Guna2Panel With {
-                .Width = 219,
-                .Height = 307,
-                .Margin = New Padding(8, 10, 5, 5),
-                .BorderThickness = 1,
-                .BorderRadius = 5,
-                .BorderColor = Color.DarkOrange,
-                .FillColor = Color.White,
-                .Cursor = Cursors.Hand
+                .Width = 219, .Height = 307, .Margin = New Padding(8, 10, 5, 5),
+                .BorderThickness = 1, .BorderRadius = 5, .BorderColor = Color.DarkOrange, .FillColor = Color.White, .Cursor = Cursors.Hand
             }
 
             Dim pic As New Guna2PictureBox With {
-                .Width = 137,
-                .Height = 98,
-                .Location = New Point(40, 25),
-                .SizeMode = PictureBoxSizeMode.StretchImage,
-                .BorderStyle = BorderStyle.FixedSingle,
-                .Cursor = Cursors.Hand
+                .Width = 137, .Height = 98, .Location = New Point(40, 25),
+                .SizeMode = PictureBoxSizeMode.StretchImage, .BorderStyle = BorderStyle.FixedSingle, .Cursor = Cursors.Hand
             }
 
             If Not IsDBNull(dr("product_image")) Then
-                Dim imgBytes As Byte() = CType(dr("product_image"), Byte())
-                If imgBytes.Length > 0 Then
-                    Using ms As New MemoryStream(imgBytes)
-                        pic.Image = System.Drawing.Image.FromStream(ms)
-                    End Using
+                Dim imgObj As Object = dr("product_image")
+                If imgObj IsNot Nothing Then
+                    Dim imgBytes As Byte() = CType(imgObj, Byte())
+                    If imgBytes.Length > 0 Then
+                        Using ms As New MemoryStream(imgBytes)
+                            pic.Image = System.Drawing.Image.FromStream(ms)
+                        End Using
+                    End If
                 End If
             End If
 
             Dim pname As New Label With {
-                .Text = prodName.ToUpper(),
-                .Width = 215, .Height = 45,
-                .Location = New Point(2, 135),
-                .TextAlign = ContentAlignment.MiddleCenter,
-                .Font = New Font("Microsoft YaHei UI", 10, FontStyle.Bold),
-                .ForeColor = Color.Black, .BackColor = Color.White,
-                .AutoSize = False, .Cursor = Cursors.Hand
+                .Text = prodName.ToUpper(), .Width = 215, .Height = 45, .Location = New Point(2, 135),
+                .TextAlign = ContentAlignment.MiddleCenter, .Font = New Font("Microsoft YaHei UI", 10, FontStyle.Bold),
+                .ForeColor = Color.Black, .BackColor = Color.White, .AutoSize = False, .Cursor = Cursors.Hand
             }
 
             Dim pprice As New Label With {
-                .Text = "₱ " & price.ToString("N2"),
-                .Width = 215, .Height = 30,
-                .Location = New Point(2, 180),
-                .TextAlign = ContentAlignment.MiddleCenter,
-                .Font = New Font("Microsoft YaHei UI", 11, FontStyle.Bold),
-                .ForeColor = Color.OrangeRed, .BackColor = Color.White,
-                .AutoSize = False, .Cursor = Cursors.Hand
+                .Text = "₱ " & price.ToString("N2"), .Width = 215, .Height = 30, .Location = New Point(2, 180),
+                .TextAlign = ContentAlignment.MiddleCenter, .Font = New Font("Microsoft YaHei UI", 11, FontStyle.Bold),
+                .ForeColor = Color.OrangeRed, .BackColor = Color.White, .AutoSize = False, .Cursor = Cursors.Hand
             }
 
             Dim pcategory As New Label With {
-                .Text = "CAT: " & catName.ToUpper(),
-                .Width = 215, .Height = 30,
-                .Location = New Point(2, 220),
-                .TextAlign = ContentAlignment.MiddleCenter,
-                .Font = New Font("Microsoft YaHei UI", 10, FontStyle.Bold),
-                .ForeColor = Color.Black, .BackColor = Color.White,
-                .AutoSize = False, .Cursor = Cursors.Hand
+                .Text = "CATEGORY: " & catName.ToUpper(), .Width = 215, .Height = 30, .Location = New Point(2, 220),
+                .TextAlign = ContentAlignment.MiddleCenter, .Font = New Font("Microsoft YaHei UI", 10, FontStyle.Bold),
+                .ForeColor = Color.Black, .BackColor = Color.White, .AutoSize = False, .Cursor = Cursors.Hand
             }
 
             Dim pquantity As New Label With {
-                .Text = "QTY: " & qty.ToString(),
-                .Width = 215, .Height = 30,
-                .Location = New Point(2, 260),
-                .TextAlign = ContentAlignment.MiddleCenter,
-                .Font = New Font("Microsoft YaHei UI", 12, FontStyle.Italic),
-                .ForeColor = Color.Gray, .BackColor = Color.White,
-                .AutoSize = False, .Cursor = Cursors.Hand
+                .Text = "QTY: " & qty.ToString(), .Width = 215, .Height = 30, .Location = New Point(2, 260),
+                .TextAlign = ContentAlignment.MiddleCenter, .Font = New Font("Microsoft YaHei UI", 12, FontStyle.Italic),
+                .ForeColor = Color.Gray, .BackColor = Color.White, .AutoSize = False, .Cursor = Cursors.Hand
             }
+
+            Dim hoverIn = Sub(sender, e)
+                              Dim hoverColor As Color = Color.FromArgb(255, 245, 238)
+                              pnl.FillColor = hoverColor
+                              pnl.BorderColor = Color.OrangeRed
+                              pname.BackColor = hoverColor
+                              pprice.BackColor = hoverColor
+                              pcategory.BackColor = hoverColor
+                              pquantity.BackColor = hoverColor
+                          End Sub
+
+            Dim hoverOut = Sub(sender, e)
+                               If Not pnl.ClientRectangle.Contains(pnl.PointToClient(Control.MousePosition)) Then
+                                   pnl.FillColor = Color.White
+                                   pnl.BorderColor = Color.DarkOrange
+                                   pname.BackColor = Color.White
+                                   pprice.BackColor = Color.White
+                                   pcategory.BackColor = Color.White
+                                   pquantity.BackColor = Color.White
+                               End If
+                           End Sub
 
             AddHandler pnl.Click, Sub(sender, e) AddToGrid(itemId, prodName, price, catName)
             AddHandler pic.Click, Sub(sender, e) AddToGrid(itemId, prodName, price, catName)
@@ -110,6 +187,12 @@ Public Class frm_oe4cashier
             AddHandler pprice.Click, Sub(sender, e) AddToGrid(itemId, prodName, price, catName)
             AddHandler pcategory.Click, Sub(sender, e) AddToGrid(itemId, prodName, price, catName)
             AddHandler pquantity.Click, Sub(sender, e) AddToGrid(itemId, prodName, price, catName)
+
+            Dim controlsToHover As Control() = {pnl, pic, pname, pprice, pcategory, pquantity}
+            For Each ctrl As Control In controlsToHover
+                AddHandler ctrl.MouseEnter, hoverIn
+                AddHandler ctrl.MouseLeave, hoverOut
+            Next
 
             pnl.Controls.Add(pic)
             pnl.Controls.Add(pname)
@@ -124,13 +207,10 @@ Public Class frm_oe4cashier
         cmd.Dispose()
     End Sub
 
-    ' ============================================================
-    ' ADD / INCREASE QUANTITY IN CART
-    ' ============================================================
     Private Sub AddToGrid(id As String, name As String, price As Decimal, category As String)
+        If datagridvieworder Is Nothing OrElse datagridvieworder.Columns.Count < 4 Then Return
 
         Dim existingRow As DataGridViewRow = Nothing
-
         For Each row As DataGridViewRow In datagridvieworder.Rows
             If row.IsNewRow Then Continue For
             If row.Cells(1).Value IsNot Nothing AndAlso row.Cells(1).Value.ToString() = name.ToUpper() Then
@@ -143,19 +223,12 @@ Public Class frm_oe4cashier
             Dim currentQty As Integer = Convert.ToInt32(existingRow.Cells(0).Value)
             existingRow.Cells(0).Value = (currentQty + 1).ToString()
         Else
-            datagridvieworder.Rows.Add(
-                "1",
-                name.ToUpper(),
-                "₱" & price.ToString("N2")
-            )
+            datagridvieworder.Rows.Add("1", name.ToUpper(), "₱" & price.ToString("N2"), "VOID ITEM")
         End If
 
         UpdateTotals()
     End Sub
 
-    ' ============================================================
-    ' CALCULATE SUBTOTAL / TAX / TOTAL
-    ' ============================================================
     Private Sub UpdateTotals()
         Dim subtotal As Decimal = 0
 
@@ -178,117 +251,224 @@ Public Class frm_oe4cashier
         lbltotal2.Text = " ₱" & total.ToString("N2")
     End Sub
 
-    ' ============================================================
-    ' VOID ITEM (Guna2Button2)
-    ' ============================================================
-    Private Sub Guna2Button2_Click(sender As Object, e As EventArgs) Handles btnvi.Click
-
-        If datagridvieworder.SelectedRows.Count = 0 Then
-            MessageBox.Show("Please select an item to void.", "No Item Selected",
-                            MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            Return
-        End If
-
-        Dim row As DataGridViewRow = datagridvieworder.SelectedRows(0)
-        Dim currentQty As Integer = Convert.ToInt32(row.Cells(0).Value)
-
-        If currentQty > 1 Then
-            row.Cells(0).Value = (currentQty - 1).ToString()
-        Else
-            Dim itemName As String = row.Cells(1).Value.ToString()
-            Dim result As DialogResult = MessageBox.Show(
-                "Remove " & itemName & " from cart?",
-                "Confirm Void", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-
-            If result = DialogResult.Yes Then
-                datagridvieworder.Rows.Remove(row)
-            End If
-        End If
-
-        UpdateTotals()
+    Private Sub ResetBorders()
+        txbap.BorderColor = Color.Black
+        cmbpm.BorderColor = Color.Black
     End Sub
 
-    ' ============================================================
-    ' CLEAR CART (Guna2Button3)
-    ' ============================================================
-    Private Sub Guna2Button3_Click(sender As Object, e As EventArgs) Handles btnclear.Click
+    Private Function ValidateOrder() As Boolean
+        ErrorProvider1.Clear()
+        ResetBorders()
+        isvalid = True
 
-        If datagridvieworder.Rows.Count = 0 Then Return
-
-        Dim result As DialogResult = MessageBox.Show(
-            "Clear the entire cart?", "Confirm Clear",
-            MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-
-        If result = DialogResult.Yes Then
-            datagridvieworder.Rows.Clear()
-            UpdateTotals()
-            txbap.Clear()
-        End If
-    End Sub
-
-    ' ============================================================
-    ' PRINT BILL (Guna2Button1) — placeholder
-    ' ============================================================
-    Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles btnpb.Click
         If datagridvieworder.Rows.Count = 0 Then
-            MessageBox.Show("Cart is empty.", "Nothing to Print",
-                            MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            Return
-        End If
-        MessageBox.Show("Receipt printed! (Implement actual printing here)",
-                        "Print Bill", MessageBoxButtons.OK, MessageBoxIcon.Information)
-    End Sub
-
-    ' ============================================================
-    ' PAY NOW (addbtncateg) — SAVE ORDER TO DATABASE
-    ' ============================================================
-    Private Sub addbtncateg_Click(sender As Object, e As EventArgs) Handles btnpn.Click
-
-        ' 1. Validate cart is not empty
-        If datagridvieworder.Rows.Count = 0 Then
-            MessageBox.Show("Cart is empty. Add items first.", "Cannot Pay",
-                            MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            Return
+            MessageBox.Show("Cart is empty. Add items first.", "Cannot Pay", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            isvalid = False
         End If
 
-        ' 2. Validate amount paid
+        If cmbpm.SelectedIndex = -1 Then
+            ErrorProvider1.SetError(cmbpm, "Payment method is required.")
+            cmbpm.BorderColor = Color.Red
+            isvalid = False
+        End If
+
         Dim totalText As String = lbltotal2.Text.Replace("₱", "").Replace(",", "").Trim()
         Dim total As Decimal = Convert.ToDecimal(totalText)
 
         Dim paid As Decimal = 0
-        If Not Decimal.TryParse(txbap.Text, paid) Then
-            MessageBox.Show("Please enter a valid amount paid.", "Invalid Payment",
-                            MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            Return
+        If txbap.Text = "" Then
+            ErrorProvider1.SetError(txbap, "Amount paid is required.")
+            txbap.BorderColor = Color.Red
+            isvalid = False
+        ElseIf Not Decimal.TryParse(txbap.Text, paid) Then
+            ErrorProvider1.SetError(txbap, "Please enter a valid amount.")
+            txbap.BorderColor = Color.Red
+            isvalid = False
+        ElseIf paid < total Then
+            ErrorProvider1.SetError(txbap, "Insufficient payment. Total is ₱" & total.ToString("N2"))
+            txbap.BorderColor = Color.Red
+            isvalid = False
         End If
 
-        If paid < total Then
-            MessageBox.Show("Insufficient payment. Total is ₱" & total.ToString("N2"),
-                            "Insufficient", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            Return
+        Return isvalid
+    End Function
+
+    Sub ClearFields()
+        txbap.Clear()
+        cmbpm.SelectedIndex = -1
+        lblchange.Text = "₱ 0.00"
+        ErrorProvider1.Clear()
+        ResetBorders()
+    End Sub
+
+    Private Sub cmbpm_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbpm.SelectedIndexChanged
+        ErrorProvider1.SetError(cmbpm, "")
+        cmbpm.BorderColor = Color.Black
+    End Sub
+
+    Private Sub txbap_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txbap.KeyPress
+        If Not Char.IsDigit(e.KeyChar) AndAlso Not Char.IsControl(e.KeyChar) AndAlso e.KeyChar <> "."c Then
+            e.Handled = True
+            Exit Sub
         End If
+        If e.KeyChar = "."c AndAlso txbap.Text.Contains(".") Then
+            e.Handled = True
+        End If
+    End Sub
 
-        Dim change As Decimal = paid - total
+    Private Sub txbap_TextChanged(sender As Object, e As EventArgs) Handles txbap.TextChanged
+        ErrorProvider1.SetError(txbap, "")
+        txbap.BorderColor = Color.Black
 
-        ' 3. Save to database
         Try
-            conn()
+            If lbltotal2 Is Nothing Then Exit Sub
+            If lblchange Is Nothing Then Exit Sub
 
-            ' 3a. Insert main order
-            query = "INSERT INTO orders (order_date, total_amount, amount_paid, change_amount, cashier_id) " &
-                    "OUTPUT INSERTED.order_id " &
-                    "VALUES (@DATE, @TOTAL, @PAID, @CHANGE, @CASHIER)"
-            cmd = New SqlCommand(query, sqlconn)
-            cmd.Parameters.AddWithValue("@DATE", DateTime.Now)
-            cmd.Parameters.AddWithValue("@TOTAL", total)
-            cmd.Parameters.AddWithValue("@PAID", paid)
-            cmd.Parameters.AddWithValue("@CHANGE", change)
-            cmd.Parameters.AddWithValue("@CASHIER", CurrentUser.user_id)
+            Dim totalText As String = lbltotal2.Text
+            If totalText = "" Then
+                lblchange.Text = "₱ 0.00"
+                Exit Sub
+            End If
 
-            Dim newOrderId As Integer = Convert.ToInt32(cmd.ExecuteScalar())
-            cmd.Dispose()
+            totalText = totalText.Replace("₱", "").Replace(",", "").Trim()
+            If totalText = "" Then
+                lblchange.Text = "₱ 0.00"
+                Exit Sub
+            End If
 
-            ' 3b. Insert order items
+            Dim total As Decimal = 0
+            If Not Decimal.TryParse(totalText, total) Then
+                lblchange.Text = "₱ 0.00"
+                Exit Sub
+            End If
+
+            If txbap.Text = "" Then
+                lblchange.Text = "₱ 0.00"
+                Exit Sub
+            End If
+
+            Dim paid As Decimal = 0
+            If Decimal.TryParse(txbap.Text.Trim(), paid) Then
+                Dim change As Decimal = paid - total
+                If change >= 0 Then
+                    lblchange.Text = "₱ " & change.ToString("N2")
+                Else
+                    lblchange.Text = "₱ 0.00"
+                End If
+            Else
+                lblchange.Text = "₱ 0.00"
+            End If
+        Catch ex As Exception
+            If lblchange IsNot Nothing Then lblchange.Text = "₱ 0.00"
+        End Try
+    End Sub
+
+    Private Sub datagridvieworder_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles datagridvieworder.CellContentClick
+        If e.RowIndex < 0 Then Exit Sub
+        If e.ColumnIndex < 0 OrElse e.ColumnIndex >= datagridvieworder.Columns.Count Then Exit Sub
+
+        If datagridvieworder.Columns(e.ColumnIndex).Name = "Column4" Then
+            Dim row As DataGridViewRow = datagridvieworder.Rows(e.RowIndex)
+
+            If row.Cells(0).Value IsNot Nothing Then
+                Dim currentQty As Integer = Convert.ToInt32(row.Cells(0).Value)
+
+                If currentQty > 1 Then
+                    row.Cells(0).Value = (currentQty - 1).ToString()
+                Else
+                    datagridvieworder.Rows.Remove(row)
+                End If
+
+                UpdateTotals()
+            End If
+        End If
+
+    End Sub
+
+    Private Sub btnclear_Click(sender As Object, e As EventArgs) Handles btnclear.Click
+        ErrorProvider1.Clear()
+        If datagridvieworder.Rows.Count = 0 Then Return
+
+        If MessageBox.Show("Clear the entire cart?", "Confirm Clear", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+            datagridvieworder.Rows.Clear()
+            UpdateTotals()
+            ClearFields()
+        End If
+    End Sub
+
+    Private Sub frm_oe4cashier_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
+        If e.KeyCode = Keys.F1 Then
+            btnpn.PerformClick()
+        ElseIf e.KeyCode = Keys.F3 Then
+            btnclear.PerformClick()
+        End If
+    End Sub
+
+    Private Function GenerateNextNumber(storedProcName As String, txn As SqlTransaction) As String
+        Try
+            Using cmdNum As New SqlCommand(storedProcName, sqlconn, txn)
+                cmdNum.CommandType = CommandType.StoredProcedure
+                Dim outParam As SqlParameter = cmdNum.Parameters.Add("@NewNumber", SqlDbType.VarChar, 20)
+                outParam.Direction = ParameterDirection.Output
+                cmdNum.ExecuteNonQuery()
+                Return Convert.ToString(outParam.Value)
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("AutoNumber Error (" & storedProcName & "): " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return ""
+        End Try
+    End Function
+
+    Private Sub btnpn_Click(sender As Object, e As EventArgs) Handles btnpn.Click
+        If Not ValidateOrder() Then Exit Sub
+
+        Dim totalDisplay As String = lbltotal2.Text.Replace("₱", "").Trim()
+        Dim confirm As DialogResult = MessageBox.Show(
+            "Confirm payment?" & vbCrLf & vbCrLf &
+            "Total: ₱" & totalDisplay & vbCrLf &
+            "Payment Method: " & cmbpm.Text.Trim().ToUpper(),
+            "Confirm Payment",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question)
+
+        If confirm = DialogResult.No Then Exit Sub
+
+        Dim totalText As String = lbltotal2.Text.Replace("₱", "").Replace(",", "").Trim()
+        Dim total As Decimal = Convert.ToDecimal(totalText)
+        Dim paid As Decimal = Convert.ToDecimal(txbap.Text)
+        Dim change As Decimal = paid - total
+        Dim subtotal As Decimal = total / 1.02D
+        Dim tax As Decimal = total - subtotal
+
+        Dim newTransactionId As String = ""
+        Dim newOrderId As String = ""
+
+        conn()
+        Dim txn As SqlTransaction = sqlconn.BeginTransaction()
+
+        Try
+            newTransactionId = GenerateNextNumber("sp_AutoNumberTxn", txn)
+            If newTransactionId = "" Then Throw New Exception("Failed to generate Transaction ID.")
+
+            newOrderId = GenerateNextNumber("sp_AutoNumberOrder", txn)
+            If newOrderId = "" Then Throw New Exception("Failed to generate Order ID.")
+
+            query = "INSERT INTO payments (transaction_id, order_id, cashier_id, cashier_fullname, payment_method, subtotal_amount, amount_paid) " &
+                    "OUTPUT INSERTED.payment_id " &
+                    "VALUES (@TXNID, @OID, @CID, @CNAME, @METHOD, @SUB, @PAID)"
+
+            Dim newPaymentId As Integer = 0
+            Using cmdPay As New SqlCommand(query, sqlconn, txn)
+                cmdPay.Parameters.AddWithValue("@TXNID", newTransactionId)
+                cmdPay.Parameters.AddWithValue("@OID", newOrderId)
+                cmdPay.Parameters.AddWithValue("@CID", CurrentUser.role_code)
+                cmdPay.Parameters.AddWithValue("@CNAME", CurrentUser.fullname)
+                cmdPay.Parameters.AddWithValue("@METHOD", cmbpm.Text.Trim().ToUpper())
+                cmdPay.Parameters.AddWithValue("@SUB", subtotal)
+                cmdPay.Parameters.AddWithValue("@PAID", paid)
+                newPaymentId = Convert.ToInt32(cmdPay.ExecuteScalar())
+            End Using
+
             For Each row As DataGridViewRow In datagridvieworder.Rows
                 If row.IsNewRow Then Continue For
 
@@ -297,49 +477,79 @@ Public Class frm_oe4cashier
                 Dim priceText As String = row.Cells(2).Value.ToString().Replace("₱", "").Replace(",", "").Trim()
                 Dim unitPrice As Decimal = Convert.ToDecimal(priceText)
 
-                ' Get product_id from name
-                query = "SELECT item_id FROM menu_items WHERE product_name = @NAME"
-                cmd = New SqlCommand(query, sqlconn)
-                cmd.Parameters.AddWithValue("@NAME", itemName)
-                Dim itemId As String = Convert.ToString(cmd.ExecuteScalar())
-                cmd.Dispose()
+                query = "INSERT INTO transaction_records (payment_id, product_name, product_price, product_quantity) " &
+                        "VALUES (@PID, @PNAME, @PPRICE, @QTY)"
+                Using cmdRec As New SqlCommand(query, sqlconn, txn)
+                    cmdRec.Parameters.AddWithValue("@PID", newPaymentId)
+                    cmdRec.Parameters.AddWithValue("@PNAME", itemName)
+                    cmdRec.Parameters.AddWithValue("@PPRICE", unitPrice)
+                    cmdRec.Parameters.AddWithValue("@QTY", itemQty)
+                    cmdRec.ExecuteNonQuery()
+                End Using
 
-                query = "INSERT INTO order_details (order_id, item_id, quantity, unit_price, subtotal) " &
-                        "VALUES (@OID, @IID, @QTY, @PRICE, @SUB)"
-                cmd = New SqlCommand(query, sqlconn)
-                cmd.Parameters.AddWithValue("@OID", newOrderId)
-                cmd.Parameters.AddWithValue("@IID", itemId)
-                cmd.Parameters.AddWithValue("@QTY", itemQty)
-                cmd.Parameters.AddWithValue("@PRICE", unitPrice)
-                cmd.Parameters.AddWithValue("@SUB", itemQty * unitPrice)
-                cmd.ExecuteNonQuery()
-                cmd.Dispose()
-
-                ' Deduct stock
-                query = "UPDATE menu_items SET quantity = quantity - @QTY WHERE item_id = @IID"
-                cmd = New SqlCommand(query, sqlconn)
-                cmd.Parameters.AddWithValue("@QTY", itemQty)
-                cmd.Parameters.AddWithValue("@IID", itemId)
-                cmd.ExecuteNonQuery()
-                cmd.Dispose()
+                query = "UPDATE menu_items SET quantity = quantity - @QTY WHERE product_name = @PNAME"
+                Using cmdStock As New SqlCommand(query, sqlconn, txn)
+                    cmdStock.Parameters.AddWithValue("@QTY", itemQty)
+                    cmdStock.Parameters.AddWithValue("@PNAME", itemName)
+                    cmdStock.ExecuteNonQuery()
+                End Using
             Next
 
-            MessageBox.Show("Payment successful!" & vbCrLf &
+            txn.Commit()
+
+            Dim receiptItems As New List(Of frm_receipt.ReceiptItem)
+            For Each row As DataGridViewRow In datagridvieworder.Rows
+                If row.IsNewRow Then Continue For
+                Dim qty As Integer = Convert.ToInt32(row.Cells(0).Value)
+                Dim nm As String = row.Cells(1).Value.ToString()
+                Dim ptxt As String = row.Cells(2).Value.ToString().Replace("₱", "").Replace(",", "").Trim()
+                Dim uprice As Decimal = Convert.ToDecimal(ptxt)
+
+                receiptItems.Add(New frm_receipt.ReceiptItem With {
+                    .Name = nm,
+                    .Qty = qty,
+                    .UnitPrice = uprice,
+                    .Subtotal = uprice * qty
+                })
+            Next
+
+            MessageBox.Show("Payment successful!" & vbCrLf & vbCrLf &
+                            "Transaction ID: " & newTransactionId & vbCrLf &
+                            "Order ID: " & newOrderId & vbCrLf & vbCrLf &
                             "Total: ₱" & total.ToString("N2") & vbCrLf &
                             "Paid: ₱" & paid.ToString("N2") & vbCrLf &
                             "Change: ₱" & change.ToString("N2"),
                             "Order Completed", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-            ' 4. Reset
+            Try
+                Dim rptForm As New frm_receipt()
+                rptForm.ShowReceipt(
+                    newTransactionId, newOrderId, CurrentUser.fullname,
+                    cmbpm.Text.Trim().ToUpper(),
+                    subtotal, tax, total, paid, change, receiptItems)
+            Catch exPrint As Exception
+                MessageBox.Show("Receipt printing failed:" & vbCrLf & exPrint.Message,
+                                "Printer Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            End Try
+
             datagridvieworder.Rows.Clear()
-            txbap.Clear()
             UpdateTotals()
-            loaditems()   ' Reload products (stock changed)
+            ClearFields()
+            loaditems()
+            PreviewNextOrderNumber()
 
         Catch ex As Exception
-            MessageBox.Show("Error saving order: " & ex.Message, "Error",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Try
+                txn.Rollback()
+            Catch
+            End Try
+            MessageBox.Show("Error saving order: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            If sqlconn.State = ConnectionState.Open Then sqlconn.Close()
         End Try
     End Sub
 
+    Private Sub FlowLayoutPanel1_Paint(sender As Object, e As PaintEventArgs) Handles FlowLayoutPanel1.Paint
+
+    End Sub
 End Class

@@ -200,7 +200,5 @@ Public Class Mainformd
 
     End Sub
 
-    Private Sub panelcontainer_Paint(sender As Object, e As PaintEventArgs) Handles panelcontainer.Paint
 
-    End Sub
 End Class

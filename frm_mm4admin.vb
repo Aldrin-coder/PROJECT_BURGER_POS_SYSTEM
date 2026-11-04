@@ -9,7 +9,7 @@ Public Class frm_mm4admin
     Dim isvalid As Boolean = True
     Dim isLoading As Boolean = True
 
-    ' ⭐ Holds the image bytes so we can save them to the DB ⭐
+
     Dim selectedImageBytes As Byte() = Nothing
 
     Private Sub frm_mm4admin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -26,20 +26,30 @@ Public Class frm_mm4admin
 
     Sub previewautonumber()
         conn()
-        query = "SELECT Max(NewNumber) FROM AutoNumberUsers where pfx = 'M'"
+
+        ' Read from AutoNumberUsers (unified table) instead of AutoNumberMenu
+        query = "SELECT MAX(NewNumber) FROM AutoNumberUsers WHERE pfx = 'M'"
         cmd = New SqlClient.SqlCommand(query, sqlconn)
         Dim result As Object = cmd.ExecuteScalar()
         cmd.Dispose()
 
         If result Is Nothing OrElse IsDBNull(result) Then
-            txbiditem.Text = "M1000"
+            ' No menu items yet, preview the first one
+            txbiditem.Text = "M1001"
         Else
             Dim lastNum As String = result.ToString()
-            Dim intNum As Integer = Convert.ToInt32(lastNum.Substring(1)) + 1
-            txbiditem.Text = "M" & intNum.ToString()
-        End If
-    End Sub
+            Dim numPart As String = lastNum.Substring(1) ' Remove the "M"
+            Dim intNum As Integer
 
+            If Integer.TryParse(numPart, intNum) Then
+                txbiditem.Text = "M" & (intNum + 1).ToString()
+            Else
+                txbiditem.Text = "M1001"
+            End If
+        End If
+
+
+    End Sub
     Sub readdatacategories()
         If datagridviewcategories.Columns.Count = 0 Then Exit Sub
         conn()

@@ -46,6 +46,7 @@ CREATE TABLE cashier_accounts (
     FOREIGN KEY (userID) REFERENCES user_accounts(userID) ON DELETE CASCADE
 );
 
+
 CREATE TABLE AutoNumberUsers (
     pfx VARCHAR(5) NOT NULL,
     NewNumber VARCHAR(15) NOT NULL
@@ -53,7 +54,7 @@ CREATE TABLE AutoNumberUsers (
 GO
 
 CREATE PROCEDURE SP_AutoNumberUser
-    @pfx VARCHAR(5),
+    @pfx VARCHAR(4),
     @NewNumber VARCHAR(15) OUTPUT
 AS
 BEGIN
@@ -62,13 +63,13 @@ BEGIN
     IF @lastNum IS NULL
     BEGIN
         SET @intNum = 1;
-        SET @newNumStr = @pfx + '001';
+        SET @newNumStr = @pfx + '10000';
         INSERT INTO AutoNumberUsers (pfx, NewNumber) VALUES (@pfx, @newNumStr);
     END
     ELSE
     BEGIN
         SET @intNum = CAST(SUBSTRING(@lastNum, 2, LEN(@lastNum)) AS INT) + 1;
-        SET @newNumStr = @pfx + RIGHT('000' + CAST(@intNum AS VARCHAR), 3);
+        SET @newNumStr = @pfx + RIGHT('1000' + CAST(@intNum AS VARCHAR), 4);
         INSERT INTO AutoNumberUsers (pfx, NewNumber) VALUES (@pfx, @newNumStr);
     END
     SET @NewNumber = @newNumStr;
@@ -77,14 +78,14 @@ GO
 
 -- Insert Default Admin
 INSERT INTO user_accounts (role, username, password, gender, first_name, middle_name, last_name, extension_name)
-VALUES ('admin', 'admin', 'Admin123', 'male', 'Admin', '', 'Account', '');
+VALUES ('admin', 'admin1', 'Admin123', 'male', 'Admin', '', 'Account', '');
 DECLARE @adminUserID INT = SCOPE_IDENTITY();
-INSERT INTO admin_accounts (userID, admin_code) VALUES (@adminUserID, 'A001');
+INSERT INTO admin_accounts (userID, admin_code) VALUES (@adminUserID, 'A1000');
 
 -- Initialize Sequences
-INSERT INTO AutoNumberUsers (pfx, NewNumber) VALUES ('A', 'A001'); 
-INSERT INTO AutoNumberUsers (pfx, NewNumber) VALUES ('C', 'C000'); 
-INSERT INTO AutoNumberUsers (pfx, NewNumber) VALUES ('O', 'O000'); 
+INSERT INTO AutoNumberUsers (pfx, NewNumber) VALUES ('A', 'A1001'); 
+INSERT INTO AutoNumberUsers (pfx, NewNumber) VALUES ('C', 'C1000'); 
+INSERT INTO AutoNumberUsers (pfx, NewNumber) VALUES ('O', 'O1000'); 
 GO
 
 -- -------------------------------------------------------------------------
@@ -106,7 +107,7 @@ GO
 -- -------------------------------------------------------------------------
 
 -- 1. Delete all users and their role records
--- DELETE FROM user_accounts;
+---DELETE FROM user_accounts;
 
 -- 2. Reset the Identity ID back to 1
 -- DBCC CHECKIDENT ('user_accounts', RESEED, 0);

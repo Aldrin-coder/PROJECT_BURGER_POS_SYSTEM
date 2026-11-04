@@ -135,6 +135,12 @@
     <Compile Include="frm_oe4cashier.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frm_receipt.Designer.vb">
+      <DependentUpon>frm_receipt.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_receipt.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Mainformd.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -179,6 +185,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_oe4cashier.resx">
       <DependentUpon>frm_oe4cashier.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_receipt.resx">
+      <DependentUpon>frm_receipt.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Mainformd.resx">
       <DependentUpon>Mainformd.vb</DependentUpon>
