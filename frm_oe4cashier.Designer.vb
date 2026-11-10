@@ -18,10 +18,10 @@ Partial Class frm_oe4cashier
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.txbsearch = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Guna2Shapes1 = New Guna.UI2.WinForms.Guna2Shapes()
         Me.cmbcategory = New Guna.UI2.WinForms.Guna2ComboBox()
@@ -101,12 +101,12 @@ Partial Class frm_oe4cashier
         Me.txbsearch.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Bold)
         Me.txbsearch.ForeColor = System.Drawing.Color.Black
         Me.txbsearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.txbsearch.Location = New System.Drawing.Point(858, 24)
+        Me.txbsearch.Location = New System.Drawing.Point(887, 24)
         Me.txbsearch.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.txbsearch.Name = "txbsearch"
         Me.txbsearch.PlaceholderText = "Search Product Name..."
         Me.txbsearch.SelectedText = ""
-        Me.txbsearch.Size = New System.Drawing.Size(318, 37)
+        Me.txbsearch.Size = New System.Drawing.Size(289, 37)
         Me.txbsearch.TabIndex = 2
         '
         'Guna2Shapes1
@@ -135,7 +135,9 @@ Partial Class frm_oe4cashier
         Me.cmbcategory.FocusedColor = System.Drawing.Color.Empty
         Me.cmbcategory.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold)
         Me.cmbcategory.ForeColor = System.Drawing.Color.Black
+        Me.cmbcategory.HoverState.FillColor = System.Drawing.Color.Red
         Me.cmbcategory.ItemHeight = 25
+        Me.cmbcategory.ItemsAppearance.SelectedBackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.cmbcategory.Location = New System.Drawing.Point(1296, 29)
         Me.cmbcategory.Name = "cmbcategory"
         Me.cmbcategory.Size = New System.Drawing.Size(224, 31)
@@ -283,11 +285,11 @@ Partial Class frm_oe4cashier
         Me.Guna2HtmlLabel9.BackColor = System.Drawing.Color.Transparent
         Me.Guna2HtmlLabel9.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Bold)
         Me.Guna2HtmlLabel9.ForeColor = System.Drawing.Color.White
-        Me.Guna2HtmlLabel9.Location = New System.Drawing.Point(1252, 12)
+        Me.Guna2HtmlLabel9.Location = New System.Drawing.Point(1207, 12)
         Me.Guna2HtmlLabel9.Name = "Guna2HtmlLabel9"
-        Me.Guna2HtmlLabel9.Size = New System.Drawing.Size(143, 24)
+        Me.Guna2HtmlLabel9.Size = New System.Drawing.Size(153, 24)
         Me.Guna2HtmlLabel9.TabIndex = 327
-        Me.Guna2HtmlLabel9.Text = "ORDER NUMBER:"
+        Me.Guna2HtmlLabel9.Text = "TRANSACTION ID:"
         Me.Guna2HtmlLabel9.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
         '
         'txbordern
@@ -298,13 +300,13 @@ Partial Class frm_oe4cashier
         Me.txbordern.DefaultText = ""
         Me.txbordern.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold)
         Me.txbordern.ForeColor = System.Drawing.Color.Black
-        Me.txbordern.Location = New System.Drawing.Point(1402, 9)
+        Me.txbordern.Location = New System.Drawing.Point(1365, 9)
         Me.txbordern.Margin = New System.Windows.Forms.Padding(4)
         Me.txbordern.Name = "txbordern"
         Me.txbordern.PlaceholderText = ""
         Me.txbordern.ReadOnly = True
         Me.txbordern.SelectedText = ""
-        Me.txbordern.Size = New System.Drawing.Size(164, 28)
+        Me.txbordern.Size = New System.Drawing.Size(201, 28)
         Me.txbordern.TabIndex = 327
         Me.txbordern.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -313,13 +315,13 @@ Partial Class frm_oe4cashier
         Me.Guna2Shapes3.BackColor = System.Drawing.Color.Transparent
         Me.Guna2Shapes3.FillColor = System.Drawing.Color.White
         Me.Guna2Shapes3.LineThickness = 1
-        Me.Guna2Shapes3.Location = New System.Drawing.Point(1166, 3)
+        Me.Guna2Shapes3.Location = New System.Drawing.Point(1136, 3)
         Me.Guna2Shapes3.Margin = New System.Windows.Forms.Padding(0)
         Me.Guna2Shapes3.Name = "Guna2Shapes3"
         Me.Guna2Shapes3.PolygonSkip = 1
         Me.Guna2Shapes3.Rotate = 90.0!
         Me.Guna2Shapes3.Shape = Guna.UI2.WinForms.Enums.ShapeType.Line
-        Me.Guna2Shapes3.Size = New System.Drawing.Size(144, 37)
+        Me.Guna2Shapes3.Size = New System.Drawing.Size(132, 37)
         Me.Guna2Shapes3.TabIndex = 248
         Me.Guna2Shapes3.Text = "Guna2Shapes3"
         Me.Guna2Shapes3.UseTransparentBackground = True
@@ -330,7 +332,7 @@ Partial Class frm_oe4cashier
         Me.Guna2HtmlLabel5.BackColor = System.Drawing.Color.Transparent
         Me.Guna2HtmlLabel5.Font = New System.Drawing.Font("Microsoft YaHei UI", 18.0!, System.Drawing.FontStyle.Bold)
         Me.Guna2HtmlLabel5.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Guna2HtmlLabel5.Location = New System.Drawing.Point(1003, 5)
+        Me.Guna2HtmlLabel5.Location = New System.Drawing.Point(980, 7)
         Me.Guna2HtmlLabel5.Name = "Guna2HtmlLabel5"
         Me.Guna2HtmlLabel5.Size = New System.Drawing.Size(215, 33)
         Me.Guna2HtmlLabel5.TabIndex = 247
@@ -342,7 +344,7 @@ Partial Class frm_oe4cashier
         Me.Guna2Shapes2.BackColor = System.Drawing.Color.Transparent
         Me.Guna2Shapes2.FillColor = System.Drawing.Color.White
         Me.Guna2Shapes2.LineThickness = 1
-        Me.Guna2Shapes2.Location = New System.Drawing.Point(911, 3)
+        Me.Guna2Shapes2.Location = New System.Drawing.Point(886, 3)
         Me.Guna2Shapes2.Margin = New System.Windows.Forms.Padding(0)
         Me.Guna2Shapes2.Name = "Guna2Shapes2"
         Me.Guna2Shapes2.PolygonSkip = 1
@@ -376,14 +378,14 @@ Partial Class frm_oe4cashier
         Me.TableLayoutPanel1.Controls.Add(Me.datagridvieworder, 0, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.Guna2Panel2, 0, 1)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(982, 133)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(959, 133)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 4
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 38.89204!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.20166!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 27.75208!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.15422!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(590, 802)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(613, 802)
         Me.TableLayoutPanel1.TabIndex = 247
         '
         'Guna2Panel4
@@ -398,7 +400,7 @@ Partial Class frm_oe4cashier
         Me.Guna2Panel4.Location = New System.Drawing.Point(2, 713)
         Me.Guna2Panel4.Margin = New System.Windows.Forms.Padding(2)
         Me.Guna2Panel4.Name = "Guna2Panel4"
-        Me.Guna2Panel4.Size = New System.Drawing.Size(586, 87)
+        Me.Guna2Panel4.Size = New System.Drawing.Size(609, 87)
         Me.Guna2Panel4.TabIndex = 327
         '
         'btnclear
@@ -444,7 +446,7 @@ Partial Class frm_oe4cashier
         Me.Guna2Panel3.Location = New System.Drawing.Point(2, 491)
         Me.Guna2Panel3.Margin = New System.Windows.Forms.Padding(2)
         Me.Guna2Panel3.Name = "Guna2Panel3"
-        Me.Guna2Panel3.Size = New System.Drawing.Size(586, 218)
+        Me.Guna2Panel3.Size = New System.Drawing.Size(609, 218)
         Me.Guna2Panel3.TabIndex = 326
         '
         'lblchange
@@ -538,29 +540,29 @@ Partial Class frm_oe4cashier
         '
         Me.datagridvieworder.AllowUserToAddRows = False
         Me.datagridvieworder.AllowUserToDeleteRows = False
-        DataGridViewCellStyle13.BackColor = System.Drawing.Color.White
-        Me.datagridvieworder.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle13
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
+        Me.datagridvieworder.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.datagridvieworder.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.datagridvieworder.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.[Single]
         Me.datagridvieworder.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.HotTrack
-        DataGridViewCellStyle14.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle14.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.datagridvieworder.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle14
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.HotTrack
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.datagridvieworder.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.datagridvieworder.ColumnHeadersHeight = 20
         Me.datagridvieworder.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4})
-        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle16.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle16.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle16.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
-        DataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.datagridvieworder.DefaultCellStyle = DataGridViewCellStyle16
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.datagridvieworder.DefaultCellStyle = DataGridViewCellStyle4
         Me.datagridvieworder.Dock = System.Windows.Forms.DockStyle.Fill
         Me.datagridvieworder.GridColor = System.Drawing.Color.Black
         Me.datagridvieworder.Location = New System.Drawing.Point(3, 3)
@@ -569,7 +571,7 @@ Partial Class frm_oe4cashier
         Me.datagridvieworder.RowHeadersVisible = False
         Me.datagridvieworder.RowHeadersWidth = 10
         Me.datagridvieworder.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        Me.datagridvieworder.Size = New System.Drawing.Size(584, 305)
+        Me.datagridvieworder.Size = New System.Drawing.Size(607, 305)
         Me.datagridvieworder.TabIndex = 324
         Me.datagridvieworder.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White
         Me.datagridvieworder.ThemeStyle.GridColor = System.Drawing.Color.Black
@@ -606,10 +608,10 @@ Partial Class frm_oe4cashier
         '
         'Column4
         '
-        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle15.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.Red
-        Me.Column4.DefaultCellStyle = DataGridViewCellStyle15
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Red
+        Me.Column4.DefaultCellStyle = DataGridViewCellStyle3
         Me.Column4.HeaderText = "VOID ITEM"
         Me.Column4.Name = "Column4"
         Me.Column4.ReadOnly = True
@@ -631,7 +633,7 @@ Partial Class frm_oe4cashier
         Me.Guna2Panel2.Location = New System.Drawing.Point(2, 313)
         Me.Guna2Panel2.Margin = New System.Windows.Forms.Padding(2)
         Me.Guna2Panel2.Name = "Guna2Panel2"
-        Me.Guna2Panel2.Size = New System.Drawing.Size(586, 174)
+        Me.Guna2Panel2.Size = New System.Drawing.Size(609, 174)
         Me.Guna2Panel2.TabIndex = 325
         '
         'lbltotal2
@@ -768,7 +770,7 @@ Partial Class frm_oe4cashier
         Me.FlowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left
         Me.FlowLayoutPanel1.Location = New System.Drawing.Point(0, 133)
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(982, 802)
+        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(959, 802)
         Me.FlowLayoutPanel1.TabIndex = 246
         '
         'ErrorProvider1
@@ -928,10 +930,10 @@ Partial Class frm_oe4cashier
     Friend WithEvents Guna2HtmlLabel8 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents lblchange As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2HtmlLabel9 As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents txbordern As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Guna2Shapes3 As Guna.UI2.WinForms.Guna2Shapes
     Friend WithEvents Column1 As DataGridViewTextBoxColumn
     Friend WithEvents Column2 As DataGridViewTextBoxColumn
     Friend WithEvents Column3 As DataGridViewTextBoxColumn
     Friend WithEvents Column4 As DataGridViewButtonColumn
+    Friend WithEvents txbordern As Guna.UI2.WinForms.Guna2TextBox
 End Class

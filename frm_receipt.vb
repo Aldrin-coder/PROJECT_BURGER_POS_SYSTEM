@@ -82,7 +82,7 @@ Public Class frm_receipt
 
         ' --- HEADER ---
         DrawCenter(g, "BURGER SHOP", fTitle, black, CX, y) : y += 22
-        DrawCenter(g, "Tasty. Fresh. Fast.", fSub, black, CX, y) : y += lh
+        DrawCenter(g, "Fresh Burger, Great Taste !", fSub, black, CX, y) : y += lh
 
         DrawRule(g, L, R, y, fSmall, black) : y += gap
 
@@ -257,4 +257,7 @@ Public Class frm_receipt
         Me.Close()
     End Sub
 
+    Private Sub pnlReceiptHolder_Paint(sender As Object, e As PaintEventArgs) Handles pnlReceiptHolder.Paint
+
+    End Sub
 End Class

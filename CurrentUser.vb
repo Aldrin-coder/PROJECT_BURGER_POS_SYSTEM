@@ -7,10 +7,8 @@
     Public fullname As String = ""
     Public gender As String = ""
     Public role As String = ""
-    Public role_code As String = ""
+    Public user_code As String = ""
     Public shift = ""
-    Public admin_id As String = ""
-    Public owner_id As String = ""
-    Public cashier_id As String = ""
+
 
 End Module

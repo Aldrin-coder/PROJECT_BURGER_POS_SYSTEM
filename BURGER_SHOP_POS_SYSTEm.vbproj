@@ -99,22 +99,16 @@
       <DependentUpon>Form1.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_dashboard4admin.Designer.vb">
-      <DependentUpon>frm_dashboard4admin.vb</DependentUpon>
+    <Compile Include="frm_dashboard4adminandowner.Designer.vb">
+      <DependentUpon>frm_dashboard4adminandowner.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_dashboard4admin.vb">
+    <Compile Include="frm_dashboard4adminandowner.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frm_dashboard4cashier.Designer.vb">
       <DependentUpon>frm_dashboard4cashier.vb</DependentUpon>
     </Compile>
     <Compile Include="frm_dashboard4cashier.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frm_dashboard4owner.Designer.vb">
-      <DependentUpon>frm_dashboard4owner.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frm_dashboard4owner.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frm_mm4admin.Designer.vb">
@@ -139,6 +133,18 @@
       <DependentUpon>frm_receipt.vb</DependentUpon>
     </Compile>
     <Compile Include="frm_receipt.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_recentransaction4cashier.Designer.vb">
+      <DependentUpon>frm_recentransaction4cashier.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_recentransaction4cashier.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_salesreport4owner.Designer.vb">
+      <DependentUpon>frm_salesreport4owner.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frm_salesreport4owner.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Mainformd.vb">
@@ -174,8 +180,11 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_dashboard4admin.resx">
-      <DependentUpon>frm_dashboard4admin.vb</DependentUpon>
+    <EmbeddedResource Include="frm_dashboard4adminandowner.resx">
+      <DependentUpon>frm_dashboard4adminandowner.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_dashboard4cashier.resx">
+      <DependentUpon>frm_dashboard4cashier.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_mm4admin.resx">
       <DependentUpon>frm_mm4admin.vb</DependentUpon>
@@ -188,6 +197,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_receipt.resx">
       <DependentUpon>frm_receipt.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_recentransaction4cashier.resx">
+      <DependentUpon>frm_recentransaction4cashier.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_salesreport4owner.resx">
+      <DependentUpon>frm_salesreport4owner.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Mainformd.resx">
       <DependentUpon>Mainformd.vb</DependentUpon>
@@ -417,6 +432,22 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
+    <None Include="Resources\item.png" />
+    <None Include="Resources\dollar.png" />
+    <None Include="Resources\money-transfer %281%294.png" />
+    <None Include="Resources\user-account.png" />
+    <None Include="Resources\money-transfer %281%293.png" />
+    <None Include="Resources\money-transfer.png" />
+    <None Include="Resources\sales %282%29.png" />
+    <None Include="Resources\money-transfer %281%292.png" />
+    <None Include="Resources\cashier1.png" />
+    <None Include="Resources\sales %281%29.png" />
+    <None Include="Resources\money-transfer %281%291.png" />
+    <None Include="Resources\money-transfer %281%29.png" />
+    <None Include="Resources\cheque2.png" />
+    <None Include="Resources\cashier.png" />
+    <None Include="Resources\cheque1.png" />
+    <None Include="Resources\cheque.png" />
     <None Include="Resources\checklist.png" />
     <None Include="Resources\menu %285%29.png" />
     <None Include="Resources\multiple-users-silhouette %281%29.png" />

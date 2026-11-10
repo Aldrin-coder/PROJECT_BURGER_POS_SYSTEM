@@ -1,128 +1,130 @@
--- =========================================================================
--- SCRIPT 1: USER ACCOUNTS SYSTEM
--- =========================================================================
+USE DB_DARKSYSTEM
+GO
 
--- -------------------------------------------------------------------------
--- PART A: CREATE TABLES, PROCEDURES, AND DEFAULT DATA
--- -------------------------------------------------------------------------
-IF OBJECT_ID('dbo.SP_AutoNumberUser', 'P') IS NOT NULL DROP PROCEDURE dbo.SP_AutoNumberUser;
-IF OBJECT_ID('dbo.cashier_accounts', 'U') IS NOT NULL DROP TABLE dbo.cashier_accounts;
-IF OBJECT_ID('dbo.owner_accounts', 'U') IS NOT NULL DROP TABLE dbo.owner_accounts;
-IF OBJECT_ID('dbo.admin_accounts', 'U') IS NOT NULL DROP TABLE dbo.admin_accounts;
+-- Drop if exists to avoid errors
+IF OBJECT_ID('dbo.SP_AutoNumberUser', 'P') IS NOT NULL DROP PROCEDURE dbo.SP_AutoNumber;
 IF OBJECT_ID('dbo.user_accounts', 'U') IS NOT NULL DROP TABLE dbo.user_accounts;
-IF OBJECT_ID('dbo.AutoNumberUsers', 'U') IS NOT NULL DROP TABLE dbo.AutoNumberUsers;
+IF OBJECT_ID('dbo.AutoNumberUser', 'U') IS NOT NULL DROP TABLE dbo.AutoNumber;
 GO
 
-CREATE TABLE user_accounts (
-    userID INT IDENTITY(1,1) PRIMARY KEY,
-    role VARCHAR(50) NOT NULL,
-    username VARCHAR(50) NOT NULL UNIQUE,
-    password VARCHAR(50) NOT NULL,
-    gender VARCHAR(20),
-    first_name VARCHAR(50),
-    middle_name VARCHAR(50),
-    last_name VARCHAR(50),
-    extension_name VARCHAR(10),
-    created_at DATETIME DEFAULT GETDATE(),
-    userimage VARBINARY(MAX)
-);
-
-CREATE TABLE admin_accounts (
-    userID INT PRIMARY KEY,
-    admin_code VARCHAR(20) UNIQUE,
-    FOREIGN KEY (userID) REFERENCES user_accounts(userID) ON DELETE CASCADE
-);
-
-CREATE TABLE owner_accounts (
-    userID INT PRIMARY KEY,
-    owner_code VARCHAR(20) UNIQUE,
-    FOREIGN KEY (userID) REFERENCES user_accounts(userID) ON DELETE CASCADE
-);
-
-CREATE TABLE cashier_accounts (
-    userID INT PRIMARY KEY,
-    cashier_code VARCHAR(20) UNIQUE,
-    shift VARCHAR(20),
-    FOREIGN KEY (userID) REFERENCES user_accounts(userID) ON DELETE CASCADE
-);
-
-
-CREATE TABLE AutoNumberUsers (
-    pfx VARCHAR(5) NOT NULL,
-    NewNumber VARCHAR(15) NOT NULL
-);
+-- 1. CREATE AutoNumber TABLE (Changed CHAR to VARCHAR)
+CREATE TABLE [dbo].[AutoNumberUser](
+    [RecNo]       [int] IDENTITY(1,1) NOT NULL,
+    [Pfx]         [varchar](10) NULL,              -- Changed to VARCHAR
+    [NewNumber]   [varchar](20) NULL,              -- Changed to VARCHAR
+    CONSTRAINT [PK_AutoNumber] PRIMARY KEY CLUSTERED ([RecNo] ASC)
+)
 GO
 
-CREATE PROCEDURE SP_AutoNumberUser
-    @pfx VARCHAR(4),
-    @NewNumber VARCHAR(15) OUTPUT
+-- 2. CREATE SP_AutoNumber (Changed CHAR to VARCHAR)
+CREATE PROCEDURE [dbo].[SP_AutoNumberUser]
+    @pfx       varchar(10) = '',
+    @NewNumber varchar(20) = '' OUTPUT
 AS
 BEGIN
-    DECLARE @lastNum VARCHAR(15), @intNum INT, @newNumStr VARCHAR(15);
-    SELECT TOP 1 @lastNum = NewNumber FROM AutoNumberUsers WHERE pfx = @pfx ORDER BY NewNumber DESC;
-    IF @lastNum IS NULL
-    BEGIN
-        SET @intNum = 1;
-        SET @newNumStr = @pfx + '10000';
-        INSERT INTO AutoNumberUsers (pfx, NewNumber) VALUES (@pfx, @newNumStr);
-    END
-    ELSE
-    BEGIN
-        SET @intNum = CAST(SUBSTRING(@lastNum, 2, LEN(@lastNum)) AS INT) + 1;
-        SET @newNumStr = @pfx + RIGHT('1000' + CAST(@intNum AS VARCHAR), 4);
-        INSERT INTO AutoNumberUsers (pfx, NewNumber) VALUES (@pfx, @newNumStr);
-    END
-    SET @NewNumber = @newNumStr;
+    Declare @MaxCode As varchar(20)
+    Declare @CreateNumber As int
+    Declare @RecNo As int
+
+    select @MaxCode = case when max(NewNumber) is null then 'DSBS0000000'
+                           else max(NewNumber) end
+    from AutoNumberUser
+    where left(NewNumber, 4) = @pfx 
+
+    set @CreateNumber = cast(right(@maxCode, 7) as int) + 1
+
+    -- Generate the new number
+    Select @NewNumber = @pfx + Replicate('0', 11 - Len(@CreateNumber) - 4) + Cast(@CreateNumber as varchar)
+
+    insert into AutoNumberUser(Pfx, NewNumber) Values
+    (@Pfx, @NewNumber)
+
+    Select @RecNo = @@Identity
+    Select NewNumber from AutoNumberUser where RecNo = @RecNo
 END
 GO
 
--- Insert Default Admin
-INSERT INTO user_accounts (role, username, password, gender, first_name, middle_name, last_name, extension_name)
-VALUES ('admin', 'admin1', 'Admin123', 'male', 'Admin', '', 'Account', '');
-DECLARE @adminUserID INT = SCOPE_IDENTITY();
-INSERT INTO admin_accounts (userID, admin_code) VALUES (@adminUserID, 'A1000');
-
--- Initialize Sequences
-INSERT INTO AutoNumberUsers (pfx, NewNumber) VALUES ('A', 'A1001'); 
-INSERT INTO AutoNumberUsers (pfx, NewNumber) VALUES ('C', 'C1000'); 
-INSERT INTO AutoNumberUsers (pfx, NewNumber) VALUES ('O', 'O1000'); 
+-- 3. CREATE User Accounts Table
+CREATE TABLE user_accounts (
+    userID          INT IDENTITY(1,1) PRIMARY KEY,
+    user_code       VARCHAR(50) NOT NULL UNIQUE,   
+    role            VARCHAR(20) NOT NULL,          
+    username        VARCHAR(255) NOT NULL UNIQUE,
+    password        VARCHAR(50) NOT NULL,
+    gender          VARCHAR(20)  NOT NULL,
+    first_name      VARCHAR(255)  NOT NULL,
+    middle_name     VARCHAR(255)  NULL,
+    last_name       VARCHAR(255) NOT NULL,
+    extension_name  VARCHAR(20) NULL,
+    shift           VARCHAR(20)  NULL,              
+    created_at      DATETIME DEFAULT GETDATE(),
+    userimage       image
+);
 GO
 
--- -------------------------------------------------------------------------
--- PART B: SELECT (VIEW DATA)
--- -------------------------------------------------------------------------
+-- 4. INSERT DEFAULT ADMIN (DSBS0000001)
+DECLARE @adminCode varchar(20); -- Changed to VARCHAR
+EXEC [dbo].[SP_AutoNumberUser] @pfx = 'DSBS', @NewNumber = @adminCode OUTPUT;
+DECLARE @cashierCode varchar(20); -- Changed to VARCHAR
+EXEC [dbo].[SP_AutoNumberUser] @pfx = 'DSBS', @NewNumber =  @cashierCode OUTPUT;
+DECLARE @ownerCode varchar(20); -- Changed to VARCHAR
+EXEC [dbo].[SP_AutoNumberUser] @pfx = 'DSBS', @NewNumber =  @ownerCode OUTPUT;
+
+
+-- You no longer need LTRIM(RTRIM()) because VARCHAR doesn't add spaces!
+INSERT INTO user_accounts (user_code, role, username, password, gender, first_name, middle_name, last_name, extension_name)
+VALUES (@adminCode, 'admin', 'admin2', 'Admin123', 'male', 'Admin', '', 'Account', ''),
+ (@cashierCode, 'cashier', 'cashier1', 'Cashier123', 'male', 'cashier', '', 'Account', ''),
+ (@ownerCode, 'owner', 'owner1', 'Owner123', 'male', 'cashier', '', 'Account', '');
+GO
+
+-- 5. VIEW DATA (Use LEN to prove there are no hidden spaces)
+SELECT userID, user_code, LEN(user_code) as CodeLength, role, username, password, first_name, last_name, shift, created_at 
+FROM user_accounts;
+GO
+
+-- ============================================================
+-- 6. RESEED IDENTITIES
+-- ============================================================
+-- Purpose:
+--   Reset both identity counters so the *next* inserted row
+--   starts at 1 again.
+--
+-- NOTE: SQL Server identity columns cannot contain duplicate
+-- values. Because we just inserted 1 admin row (RecNo = 1,
+-- userID = 1), reseeding to 0 without deleting the row will
+-- cause the next INSERT to fail with a PK violation.
+--
+-- Therefore this block:
+--   1. Deletes the existing rows (removes test admin).
+--   2. Reseeds both tables to 0 so next insert = 1.
+--
+-- If you want to KEEP the admin row and merely verify the
+-- counter values without resetting, comment out the DELETE
+-- and the two DBCC RESEED lines, leaving only the verify
+-- SELECT at the bottom.
+-- ============================================================
+
+-- Delete existing test data so reseed to 1 is safe
+DELETE FROM dbo.user_accounts;
+DELETE FROM dbo.AutoNumberUser;
+GO
+
+-- Reseed to 0 => next inserted row receives identity value 1
+DBCC CHECKIDENT ('dbo.AutoNumberUser', RESEED, 0);
+DBCC CHECKIDENT ('dbo.user_accounts', RESEED, 0);
+GO
+
+-- Verify current identity values
 SELECT 
-    u.userID, u.role, u.username, u.password, u.first_name, u.last_name,
-    COALESCE(a.admin_code, o.owner_code, c.cashier_code) AS RoleCode,
-    c.shift, u.created_at
-FROM user_accounts u
-LEFT JOIN admin_accounts a ON a.userID = u.userID
-LEFT JOIN owner_accounts o ON o.userID = u.userID
-LEFT JOIN cashier_accounts c ON c.userID = u.userID;
-GO
-
--- -------------------------------------------------------------------------
--- PART C: RESET / RESEED SCRIPT 
--- (Remove the -- to run. This resets the Table AND the SP_AutoNumberUser)
--- -------------------------------------------------------------------------
-
--- 1. Delete all users and their role records
----DELETE FROM user_accounts;
-
--- 2. Reset the Identity ID back to 1
--- DBCC CHECKIDENT ('user_accounts', RESEED, 0);
-
--- 3. Clear the AutoNumber history completely
--- DELETE FROM AutoNumberUsers;
-
--- 4. Put the starting seeds back so the SP generates A001, C001, O001 again
--- INSERT INTO AutoNumberUsers (pfx, NewNumber) VALUES ('A', 'A001'); 
--- INSERT INTO AutoNumberUsers (pfx, NewNumber) VALUES ('C', 'C000'); 
--- INSERT INTO AutoNumberUsers (pfx, NewNumber) VALUES ('O', 'O000'); 
-
--- 5. Create the default Admin again
--- INSERT INTO user_accounts (role, username, password, gender, first_name, middle_name, last_name, extension_name)
--- VALUES ('admin', 'admin', 'Admin123', 'male', 'Admin', '', 'Account', '');
--- DECLARE @adminUserID INT = SCOPE_IDENTITY();
--- INSERT INTO admin_accounts (userID, admin_code) VALUES (@adminUserID, 'A001');
+    'AutoNumberUser' AS TableName,
+    IDENT_CURRENT('dbo.AutoNumberUSer') AS CurrentIdentity,
+    IDENT_SEED('dbo.AutoNumberUser')    AS SeedValue,
+    IDENT_INCR('dbo.AutoNumberUser')    AS IncrementValue
+UNION ALL
+SELECT 
+    'user_accounts' AS TableName,
+    IDENT_CURRENT('dbo.user_accounts') AS CurrentIdentity,
+    IDENT_SEED('dbo.user_accounts')    AS SeedValue,
+    IDENT_INCR('dbo.user_accounts')    AS IncrementValue;
 GO

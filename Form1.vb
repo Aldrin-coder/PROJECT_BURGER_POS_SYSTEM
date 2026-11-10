@@ -1,10 +1,6 @@
-﻿Imports System.Diagnostics.Eventing.Reader
+﻿Imports System.Data.SqlClient
 Imports System.IO
-Imports System.Reflection
 Imports System.Text.RegularExpressions
-Imports System.Web.Security
-Imports Microsoft.VisualBasic.ApplicationServices
-Imports TheArtOfDevHtmlRenderer
 
 Public Class loginform
 
@@ -15,15 +11,18 @@ Public Class loginform
 
     Private Sub loginform_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         conn()
-
         attempt.Visible = False
         uservalm.Visible = False
         Passvalm.Visible = False
-
     End Sub
 
     Private Sub exitbtn_Click(sender As Object, e As EventArgs) Handles exitbtn.Click
         Application.Exit()
+    End Sub
+
+    Sub clearfields()
+        usertxb.Clear()
+        passtxb.Clear()
     End Sub
 
     Private Sub showpasschb_CheckedChanged(sender As Object, e As EventArgs) Handles showpasschb.CheckedChanged
@@ -44,7 +43,7 @@ Public Class loginform
             Return
         End If
 
-        Dim username As String = usertxb.Text.Trim()
+        Dim username As String = usertxb.Text
 
         If username.Length = 0 Then
             uservalm.Text = "⚠️ Please enter a username."
@@ -108,67 +107,50 @@ Public Class loginform
         End If
 
         query =
-            "SELECT u.userID, u.first_name, u.middle_name, u.last_name,u.extension_name,u.userimage," &
-            "       u.gender, u.role, " &
-            "       a.admin_code, o.owner_code, c.cashier_code, " &
-            "       c.shift " &
-            "FROM user_accounts u " &
-            "LEFT JOIN admin_accounts   a ON a.userID = u.userID " &
-            "LEFT JOIN owner_accounts   o ON o.userID = u.userID " &
-            "LEFT JOIN cashier_accounts c ON c.userID = u.userID " &
-            "WHERE u.username = @username AND u.password = @password"
+            "SELECT userID, first_name, middle_name, last_name, extension_name, userimage, " &
+            "gender, role, user_code, shift " &
+            "FROM user_accounts " &
+            "WHERE username = '" & usertxb.Text & "' AND password = '" & passtxb.Text & "'"
 
         cmd = New SqlClient.SqlCommand(query, sqlconn)
-        cmd.Parameters.AddWithValue("@username", username)
-        cmd.Parameters.AddWithValue("@password", pass)
-
         dr = cmd.ExecuteReader()
 
         While dr.Read()
             matcheddata = True
 
             CurrentUser.user_id = Convert.ToInt32(dr("userID"))
-            CurrentUser.firstname = dr("first_name").ToString()
-            CurrentUser.lastname = dr("last_name").ToString()
-            CurrentUser.gender = dr("gender").ToString()
-            CurrentUser.role = dr("role").ToString()
-            CurrentUser.admin_id = dr("admin_code").ToString()
-            CurrentUser.owner_id = dr("owner_code").ToString()
-            CurrentUser.cashier_id = dr("cashier_code").ToString()
-            CurrentUser.middle_name = dr("middle_name").ToString()
-            CurrentUser.extension_name = dr("extension_name").ToString()
-            CurrentUser.shift = dr("shift").ToString()
+            CurrentUser.firstname = dr("first_name")
+            CurrentUser.lastname = dr("last_name")
+            CurrentUser.gender = dr("gender")
+            CurrentUser.role = dr("role")
 
-            If CurrentUser.admin_id <> "" Then
-                CurrentUser.role_code = CurrentUser.admin_id
-            ElseIf CurrentUser.owner_id <> "" Then
-                CurrentUser.role_code = CurrentUser.owner_id
-            ElseIf CurrentUser.cashier_id <> "" Then
-                CurrentUser.role_code = CurrentUser.cashier_id
+            If IsDBNull(dr("middle_name")) Then
+                CurrentUser.middle_name = ""
             Else
-                CurrentUser.role_code = ""
+                CurrentUser.middle_name = dr("middle_name")
             End If
 
-            If CurrentUser.shift <> "" Then
-                CurrentUser.shift = CurrentUser.shift
+            If IsDBNull(dr("extension_name")) Then
+                CurrentUser.extension_name = ""
             Else
+                CurrentUser.extension_name = dr("extension_name")
+            End If
+
+            CurrentUser.user_code = dr("user_code")
+
+            If IsDBNull(dr("shift")) Then
                 CurrentUser.shift = ""
+            Else
+                CurrentUser.shift = dr("shift")
             End If
 
-            If CurrentUser.middle_name <> "" Then
-                CurrentUser.middle_name = CurrentUser.middle_name
+
+
+            If CurrentUser.extension_name <> "" Then
+                CurrentUser.extension_name = " " & CurrentUser.extension_name
             End If
 
-            If CurrentUser.middle_name <> "" Then
-                CurrentUser.middle_name = CurrentUser.middle_name.Substring(0, 1).ToUpper()
-                CurrentUser.middle_name = " " & CurrentUser.middle_name & "."
-            End If
-
-            CurrentUser.fullname =
-                StrConv(CurrentUser.firstname, vbProperCase) &
-                CurrentUser.middle_name & " " &
-                StrConv(CurrentUser.lastname, vbProperCase) &
-                If(CurrentUser.extension_name <> "", " " & StrConv(CurrentUser.extension_name, vbProperCase), "")
+            CurrentUser.fullname = CurrentUser.firstname & " " & CurrentUser.middle_name & " " & CurrentUser.lastname & CurrentUser.extension_name
 
             If IsDBNull(dr("userimage")) Then
                 Mainformd.picturebox1.Image = Nothing
@@ -184,26 +166,21 @@ Public Class loginform
         cmd.Dispose()
 
         If matcheddata Then
-
-            MsgBox("Welcome! " & CurrentUser.fullname & " " &
-                   "is now logged in as (" &
-                   StrConv(CurrentUser.role, vbProperCase) & ").",
+            MsgBox("Welcome! " & CurrentUser.fullname &
+                   " is now logged in as (" & CurrentUser.role & ").",
                    MsgBoxStyle.Information, "Login Successful!")
 
             Mainformd.Show()
-
             Me.Hide()
 
             matcheddata = False
-            usertxb.Clear()
-            passtxb.Clear()
+            clearfields()
             failedAttempts = 0
             Mainformd.logintimer11.Text = "0"
 
         Else
             MsgBox("Invalid Credentials", MsgBoxStyle.Exclamation, "Error")
-            usertxb.Clear()
-            passtxb.Clear()
+            clearfields()
             failedAttempts += 1
         End If
 
@@ -226,7 +203,6 @@ Public Class loginform
     Private Sub timerattempt_Tick(sender As Object, e As EventArgs) Handles timerattempt.Tick
 
         secondsleft -= 1
-
         attempt.Text = "⚠️ Account locked! Please try again in " & secondsleft & " seconds."
         attempt.ForeColor = Color.Tomato
         attempt.Visible = True

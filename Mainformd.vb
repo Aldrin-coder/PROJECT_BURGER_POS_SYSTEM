@@ -1,11 +1,9 @@
-﻿Imports System.Data.Common
-Imports System.Drawing.Text
+﻿Imports System.Data.SqlClient
 Imports System.IO
-Imports System.Text
-Imports System.Timers
-Imports System.Web.UI.Design.WebControls
-Imports Microsoft.VisualBasic.ApplicationServices
-Imports TheArtOfDevHtmlRenderer.Adapters.RGraphicsPath
+
+
+
+
 
 
 
@@ -19,7 +17,6 @@ Public Class Mainformd
         dashboardbtn.Checked = True
         datetimenlogintimer.Start()
         ApplyUserInfo()
-        logintimer11.Text = "0"
         loaddashboardroles()
 
     End Sub
@@ -30,9 +27,9 @@ Public Class Mainformd
 
     Sub loaddashboardroles()
         If CurrentUser.role.ToLower() = "owner" Then
-            LoadFormInsidePanel(New frm_dashboard4owner())
+            LoadFormInsidePanel(New frm_dashboard4adminandowner())
         ElseIf CurrentUser.role.ToLower() = "admin" Then
-            LoadFormInsidePanel(New frm_dashboard4admin())
+            LoadFormInsidePanel(New frm_dashboard4adminandowner())
         ElseIf CurrentUser.role.ToLower() = "cashier" Then
             LoadFormInsidePanel(New frm_dashboard4cashier())
         End If
@@ -48,8 +45,7 @@ Public Class Mainformd
     End Sub
 
     Private Sub buttonswitch_Click(sender As Object, e As EventArgs) Handles _
-        dashboardbtn.Click, mmbtn.Click, muabtn.Click, oebtn.Click,
-        trbtn.Click, srbtn.Click
+        dashboardbtn.Click, mmbtn.Click, muabtn.Click, oebtn.Click, srbtn.Click, trbtn.Click
 
         Dim btn As Guna.UI2.WinForms.Guna2Button = CType(sender, Guna.UI2.WinForms.Guna2Button)
 
@@ -60,35 +56,25 @@ Public Class Mainformd
 
 
         If btn.Name = "dashboardbtn" Then
-            If CurrentUser.role.ToLower() = "owner" Then
-                LoadFormInsidePanel(New frm_dashboard4owner())
-            ElseIf CurrentUser.role.ToLower() = "admin" Then
-                LoadFormInsidePanel(New frm_dashboard4admin())
-            ElseIf CurrentUser.role.ToLower() = "cashier" Then
-                LoadFormInsidePanel(New frm_dashboard4cashier())
-            End If
+
         ElseIf btn.Name = "mmbtn" Then
-            If CurrentUser.role.ToLower() = "admin" Then
-                LoadFormInsidePanel(New frm_mm4admin())
-            End If
+
 
         ElseIf btn.Name = "muabtn" Then
-            If CurrentUser.role.ToLower() = "admin" Then
+            If CurrentUser.role.ToLower() = "owner" Then
                 LoadFormInsidePanel(New frm_mua4admin_owner2())
-
-            ElseIf CurrentUser.role.ToLower() = "owner" Then
+            ElseIf CurrentUser.role.ToLower() = "admin" Then
                 LoadFormInsidePanel(New frm_mua4admin_owner2())
             End If
+
         ElseIf btn.Name = "oebtn" Then
-            If CurrentUser.role.ToLower() = "cashier" Then
-                LoadFormInsidePanel(New frm_oe4cashier())
-            End If
 
-        ElseIf btn.Name = "trbtn" Then
 
-        ElseIf btn.Name = "srbtn" Then
+                ElseIf btn.Name = "trbtn" Then
 
-        End If
+                ElseIf btn.Name = "srbtn" Then
+
+                End If
     End Sub
 
 
@@ -108,16 +94,16 @@ Public Class Mainformd
 
             dashboardbtn.Visible = True
             muabtn.Visible = True
-            trbtn.Visible = True
             srbtn.Visible = True
+            mmbtn.Visible = True
 
             lbluserinfo1.Text = "OWNER INFORMATION"
-            lbluserid1.Text = "OWNER ID      : " & CurrentUser.role_code
+            lbluserid1.Text = "OWNER ID      : " & CurrentUser.user_code
             lbluserfn1.Text = "FULLNAME           : " & CurrentUser.fullname
             lbluserg1.Text = "GENDER           : " & CurrentUser.gender.ToUpper
 
             lblusershift1.Visible = False
-            lbluserinfo1.Margin = New Padding(0, 0, 0, 10)
+            lbluserinfo1.Margin = New Padding(0, 0, 0, 20)
             logoutbtn.Margin = New Padding(92, 120, 3, 0)
 
 
@@ -129,11 +115,11 @@ Public Class Mainformd
             muabtn.Visible = True
 
             lbluserinfo1.Text = "ADMIN INFORMATION"
-            lbluserid1.Text = "ADMIN ID      : " & CurrentUser.role_code
+            lbluserid1.Text = "ADMIN ID      : " & CurrentUser.user_code
             lbluserfn1.Text = "FULLNAME           : " & CurrentUser.fullname
             lbluserg1.Text = "GENDER           : " & CurrentUser.gender.ToUpper
             lblusershift1.Visible = False
-            lbluserinfo1.Margin = New Padding(0, 0, 0, 10)
+            lbluserinfo1.Margin = New Padding(0, 0, 0, 20)
             logoutbtn.Margin = New Padding(92, 180, 3, 0)
 
 
@@ -146,7 +132,7 @@ Public Class Mainformd
 
 
             lbluserinfo1.Text = "CASHIER INFORMATION"
-            lbluserid1.Text = "CASHIER ID      : " & CurrentUser.role_code
+            lbluserid1.Text = "CASHIER ID      : " & CurrentUser.user_code
             lbluserfn1.Text = "FULLNAME           : " & CurrentUser.fullname
             lbluserg1.Text = "GENDER           : " & CurrentUser.gender.ToUpper
             lblusershift1.Text = "SHIFT           : " & CurrentUser.shift.ToUpper
@@ -166,8 +152,8 @@ Public Class Mainformd
 
         If result = DialogResult.Yes Then
             Me.Close()
-            Dim f As New loginform()
-            f.Show()
+
+            loginform.Show()
         Else
             logoutbtn.Checked = False
         End If
@@ -182,12 +168,12 @@ Public Class Mainformd
 
         timercout += 1
         Dim ts As TimeSpan = TimeSpan.FromSeconds(timercout)
-        logintimer11.Text = "LOGIN TIME: " & ts.ToString("hh\:mm\:ss")
+        logintimer11.Text = "TIME IN: " & ts.ToString("hh\:mm\:ss")
 
     End Sub
 
 
-    Private Sub Guna2ControlBox2_Click(sender As Object, e As EventArgs) Handles Guna2ControlBox2.Click
+    Private Sub minimize_Click(sender As Object, e As EventArgs) Handles minimize.Click
         Me.WindowState = FormWindowState.Minimized
     End Sub
 
@@ -200,5 +186,7 @@ Public Class Mainformd
 
     End Sub
 
+    Private Sub panelcontainer_Paint(sender As Object, e As PaintEventArgs) Handles panelcontainer.Paint
 
+    End Sub
 End Class

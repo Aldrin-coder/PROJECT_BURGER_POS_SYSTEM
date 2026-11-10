@@ -17,19 +17,17 @@ Partial Class frm_receipt
 
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Me.pnlHeader = New Guna.UI2.WinForms.Guna2Panel()
+        Me.exitbtn = New Guna.UI2.WinForms.Guna2ControlBox()
+        Me.lblTitle = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.pnlFooter = New Guna.UI2.WinForms.Guna2Panel()
         Me.btnPrint = New Guna.UI2.WinForms.Guna2Button()
         Me.btnSavePDF = New Guna.UI2.WinForms.Guna2Button()
         Me.pnlReceiptHolder = New Guna.UI2.WinForms.Guna2Panel()
+        Me.picReceipt = New Guna.UI2.WinForms.Guna2PictureBox()
         Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
         Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
         Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
-        Me.lblTitle = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.Guna2BorderlessForm1 = New Guna.UI2.WinForms.Guna2BorderlessForm(Me.components)
-        Me.picReceipt = New Guna.UI2.WinForms.Guna2PictureBox()
-        Me.exitbtn = New Guna.UI2.WinForms.Guna2ControlBox()
         Me.pnlHeader.SuspendLayout()
         Me.pnlFooter.SuspendLayout()
         Me.pnlReceiptHolder.SuspendLayout()
@@ -46,6 +44,28 @@ Partial Class frm_receipt
         Me.pnlHeader.Name = "pnlHeader"
         Me.pnlHeader.Size = New System.Drawing.Size(460, 60)
         Me.pnlHeader.TabIndex = 0
+        '
+        'exitbtn
+        '
+        Me.exitbtn.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.exitbtn.FillColor = System.Drawing.Color.FromArgb(CType(CType(139, Byte), Integer), CType(CType(152, Byte), Integer), CType(CType(166, Byte), Integer))
+        Me.exitbtn.HoverState.FillColor = System.Drawing.Color.Red
+        Me.exitbtn.IconColor = System.Drawing.Color.White
+        Me.exitbtn.Location = New System.Drawing.Point(421, 0)
+        Me.exitbtn.Name = "exitbtn"
+        Me.exitbtn.Size = New System.Drawing.Size(39, 23)
+        Me.exitbtn.TabIndex = 1
+        '
+        'lblTitle
+        '
+        Me.lblTitle.BackColor = System.Drawing.Color.Transparent
+        Me.lblTitle.Font = New System.Drawing.Font("Microsoft YaHei UI", 15.0!, System.Drawing.FontStyle.Bold)
+        Me.lblTitle.ForeColor = System.Drawing.Color.White
+        Me.lblTitle.Location = New System.Drawing.Point(20, 14)
+        Me.lblTitle.Name = "lblTitle"
+        Me.lblTitle.Size = New System.Drawing.Size(183, 29)
+        Me.lblTitle.TabIndex = 0
+        Me.lblTitle.Text = "RECEIPT PREVIEW"
         '
         'pnlFooter
         '
@@ -97,27 +117,6 @@ Partial Class frm_receipt
         Me.pnlReceiptHolder.Size = New System.Drawing.Size(460, 590)
         Me.pnlReceiptHolder.TabIndex = 2
         '
-        'PrintDocument1
-        '
-        Me.PrintDocument1.DocumentName = "BurgerShopReceipt"
-        '
-        'lblTitle
-        '
-        Me.lblTitle.BackColor = System.Drawing.Color.Transparent
-        Me.lblTitle.Font = New System.Drawing.Font("Microsoft YaHei UI", 15.0!, System.Drawing.FontStyle.Bold)
-        Me.lblTitle.ForeColor = System.Drawing.Color.White
-        Me.lblTitle.Location = New System.Drawing.Point(20, 14)
-        Me.lblTitle.Name = "lblTitle"
-        Me.lblTitle.Size = New System.Drawing.Size(183, 29)
-        Me.lblTitle.TabIndex = 0
-        Me.lblTitle.Text = "RECEIPT PREVIEW"
-        '
-        'Guna2BorderlessForm1
-        '
-        Me.Guna2BorderlessForm1.ContainerControl = Me
-        Me.Guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6R
-        Me.Guna2BorderlessForm1.TransparentWhileDrag = True
-        '
         'picReceipt
         '
         Me.picReceipt.BackColor = System.Drawing.Color.White
@@ -130,16 +129,9 @@ Partial Class frm_receipt
         Me.picReceipt.TabIndex = 0
         Me.picReceipt.TabStop = False
         '
-        'exitbtn
+        'PrintDocument1
         '
-        Me.exitbtn.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.exitbtn.FillColor = System.Drawing.Color.FromArgb(CType(CType(139, Byte), Integer), CType(CType(152, Byte), Integer), CType(CType(166, Byte), Integer))
-        Me.exitbtn.HoverState.FillColor = System.Drawing.Color.Red
-        Me.exitbtn.IconColor = System.Drawing.Color.White
-        Me.exitbtn.Location = New System.Drawing.Point(421, 0)
-        Me.exitbtn.Name = "exitbtn"
-        Me.exitbtn.Size = New System.Drawing.Size(39, 23)
-        Me.exitbtn.TabIndex = 1
+        Me.PrintDocument1.DocumentName = "BurgerShopReceipt"
         '
         'frm_receipt
         '
@@ -174,6 +166,5 @@ Partial Class frm_receipt
     Friend WithEvents PrintDialog1 As PrintDialog
     Friend WithEvents SaveFileDialog1 As SaveFileDialog
     Friend WithEvents lblTitle As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents Guna2BorderlessForm1 As Guna.UI2.WinForms.Guna2BorderlessForm
     Friend WithEvents exitbtn As Guna.UI2.WinForms.Guna2ControlBox
 End Class

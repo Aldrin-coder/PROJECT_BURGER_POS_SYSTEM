@@ -51,7 +51,7 @@ Partial Class Mainformd
         Me.Guna2Shapes3 = New Guna.UI2.WinForms.Guna2Shapes()
         Me.Guna2Shapes4 = New Guna.UI2.WinForms.Guna2Shapes()
         Me.exit2 = New Guna.UI2.WinForms.Guna2ControlBox()
-        Me.Guna2ControlBox2 = New Guna.UI2.WinForms.Guna2ControlBox()
+        Me.minimize = New Guna.UI2.WinForms.Guna2ControlBox()
         Me.Guna2Panel1 = New Guna.UI2.WinForms.Guna2Panel()
         Me.Guna2HtmlLabel4 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2PictureBox2 = New Guna.UI2.WinForms.Guna2PictureBox()
@@ -164,7 +164,7 @@ Partial Class Mainformd
         Me.oebtn.HoverState.FillColor = System.Drawing.Color.FromArgb(CType(CType(233, Byte), Integer), CType(CType(90, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.oebtn.Image = CType(resources.GetObject("oebtn.Image"), System.Drawing.Image)
         Me.oebtn.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left
-        Me.oebtn.ImageSize = New System.Drawing.Size(25, 25)
+        Me.oebtn.ImageSize = New System.Drawing.Size(30, 30)
         Me.oebtn.IndicateFocus = True
         Me.oebtn.Location = New System.Drawing.Point(10, 294)
         Me.oebtn.Margin = New System.Windows.Forms.Padding(10, 3, 3, 14)
@@ -196,7 +196,7 @@ Partial Class Mainformd
         Me.mmbtn.HoverState.FillColor = System.Drawing.Color.FromArgb(CType(CType(233, Byte), Integer), CType(CType(90, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.mmbtn.Image = CType(resources.GetObject("mmbtn.Image"), System.Drawing.Image)
         Me.mmbtn.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left
-        Me.mmbtn.ImageSize = New System.Drawing.Size(25, 25)
+        Me.mmbtn.ImageSize = New System.Drawing.Size(30, 30)
         Me.mmbtn.IndicateFocus = True
         Me.mmbtn.Location = New System.Drawing.Point(10, 351)
         Me.mmbtn.Margin = New System.Windows.Forms.Padding(10, 3, 3, 14)
@@ -259,7 +259,7 @@ Partial Class Mainformd
         Me.trbtn.HoverState.FillColor = System.Drawing.Color.FromArgb(CType(CType(233, Byte), Integer), CType(CType(90, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.trbtn.Image = CType(resources.GetObject("trbtn.Image"), System.Drawing.Image)
         Me.trbtn.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left
-        Me.trbtn.ImageSize = New System.Drawing.Size(25, 25)
+        Me.trbtn.ImageSize = New System.Drawing.Size(30, 30)
         Me.trbtn.IndicateFocus = True
         Me.trbtn.Location = New System.Drawing.Point(10, 465)
         Me.trbtn.Margin = New System.Windows.Forms.Padding(10, 3, 3, 14)
@@ -268,7 +268,7 @@ Partial Class Mainformd
         Me.trbtn.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.trbtn.Size = New System.Drawing.Size(322, 40)
         Me.trbtn.TabIndex = 5
-        Me.trbtn.Text = "TRANSACTION  RECORDS"
+        Me.trbtn.Text = " RECENT TRANSACTIONS"
         Me.trbtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.trbtn.UseTransparentBackground = True
         '
@@ -290,7 +290,7 @@ Partial Class Mainformd
         Me.srbtn.HoverState.FillColor = System.Drawing.Color.FromArgb(CType(CType(233, Byte), Integer), CType(CType(90, Byte), Integer), CType(CType(30, Byte), Integer))
         Me.srbtn.Image = CType(resources.GetObject("srbtn.Image"), System.Drawing.Image)
         Me.srbtn.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left
-        Me.srbtn.ImageSize = New System.Drawing.Size(25, 25)
+        Me.srbtn.ImageSize = New System.Drawing.Size(30, 30)
         Me.srbtn.Location = New System.Drawing.Point(10, 522)
         Me.srbtn.Margin = New System.Windows.Forms.Padding(10, 3, 3, 14)
         Me.srbtn.Name = "srbtn"
@@ -579,18 +579,18 @@ Partial Class Mainformd
         Me.exit2.Size = New System.Drawing.Size(50, 24)
         Me.exit2.TabIndex = 3
         '
-        'Guna2ControlBox2
+        'minimize
         '
-        Me.Guna2ControlBox2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Guna2ControlBox2.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MinimizeBox
-        Me.Guna2ControlBox2.FillColor = System.Drawing.Color.Transparent
-        Me.Guna2ControlBox2.HoverState.FillColor = System.Drawing.Color.Red
-        Me.Guna2ControlBox2.IconColor = System.Drawing.Color.White
-        Me.Guna2ControlBox2.Location = New System.Drawing.Point(1832, 0)
-        Me.Guna2ControlBox2.Name = "Guna2ControlBox2"
-        Me.Guna2ControlBox2.PressedColor = System.Drawing.Color.DarkRed
-        Me.Guna2ControlBox2.Size = New System.Drawing.Size(58, 24)
-        Me.Guna2ControlBox2.TabIndex = 18
+        Me.minimize.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.minimize.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MinimizeBox
+        Me.minimize.FillColor = System.Drawing.Color.Transparent
+        Me.minimize.HoverState.FillColor = System.Drawing.Color.Red
+        Me.minimize.IconColor = System.Drawing.Color.White
+        Me.minimize.Location = New System.Drawing.Point(1832, 0)
+        Me.minimize.Name = "minimize"
+        Me.minimize.PressedColor = System.Drawing.Color.DarkRed
+        Me.minimize.Size = New System.Drawing.Size(58, 24)
+        Me.minimize.TabIndex = 18
         '
         'Guna2Panel1
         '
@@ -600,7 +600,7 @@ Partial Class Mainformd
         Me.Guna2Panel1.Controls.Add(Me.Guna2Shapes1)
         Me.Guna2Panel1.Controls.Add(Me.timerlabel1)
         Me.Guna2Panel1.Controls.Add(Me.datelabel1)
-        Me.Guna2Panel1.Controls.Add(Me.Guna2ControlBox2)
+        Me.Guna2Panel1.Controls.Add(Me.minimize)
         Me.Guna2Panel1.Controls.Add(Me.exit2)
         Me.Guna2Panel1.Controls.Add(Me.Guna2Shapes4)
         Me.Guna2Panel1.Controls.Add(Me.Guna2Shapes3)
@@ -724,7 +724,6 @@ Partial Class Mainformd
 
     End Sub
     Friend WithEvents mmbtn As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents trbtn As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents oebtn As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Guna2PictureBox1 As Guna.UI2.WinForms.Guna2PictureBox
     Friend WithEvents FlowLayoutPanel2 As FlowLayoutPanel
@@ -750,7 +749,7 @@ Partial Class Mainformd
     Friend WithEvents lblusershift1 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents lbluserfn1 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2Panel1 As Guna.UI2.WinForms.Guna2Panel
-    Friend WithEvents Guna2ControlBox2 As Guna.UI2.WinForms.Guna2ControlBox
+    Friend WithEvents minimize As Guna.UI2.WinForms.Guna2ControlBox
     Friend WithEvents exit2 As Guna.UI2.WinForms.Guna2ControlBox
     Friend WithEvents Guna2Shapes4 As Guna.UI2.WinForms.Guna2Shapes
     Friend WithEvents Guna2Shapes3 As Guna.UI2.WinForms.Guna2Shapes
@@ -766,4 +765,5 @@ Partial Class Mainformd
     Friend WithEvents dashboardbtn As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents logintimer11 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents picturebox1 As Guna.UI2.WinForms.Guna2CirclePictureBox
+    Friend WithEvents trbtn As Guna.UI2.WinForms.Guna2Button
 End Class

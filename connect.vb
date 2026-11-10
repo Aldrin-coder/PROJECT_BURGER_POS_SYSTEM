@@ -12,7 +12,7 @@ Module connect
     Sub conn()
         Try
             If sqlconn.State = ConnectionState.Open Then sqlconn.Close()
-            sqlconn.ConnectionString = "Server = Aldrin\SQLEXPRESS ; Database = DB_DARKSYSTEM; Trusted_Connection=True; MultipleActiveResultSets = True;"
+            sqlconn.ConnectionString = "Server = Aldrin\SQLEXPRESS; Database = DB_DARKSYSTEM; Trusted_Connection=True; MultipleActiveResultSets = True;"
             sqlconn.Open()
 
         Catch ex As Exception
