@@ -99,16 +99,10 @@
       <DependentUpon>Form1.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_dashboard4adminandowner.Designer.vb">
-      <DependentUpon>frm_dashboard4adminandowner.vb</DependentUpon>
+    <Compile Include="frm_dashboard1.Designer.vb">
+      <DependentUpon>frm_dashboard1.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_dashboard4adminandowner.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frm_dashboard4cashier.Designer.vb">
-      <DependentUpon>frm_dashboard4cashier.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frm_dashboard4cashier.vb">
+    <Compile Include="frm_dashboard1.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frm_mm4admin.Designer.vb">
@@ -129,22 +123,10 @@
     <Compile Include="frm_oe4cashier.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_receipt.Designer.vb">
-      <DependentUpon>frm_receipt.vb</DependentUpon>
+    <Compile Include="frm_sales_report4owner.Designer.vb">
+      <DependentUpon>frm_sales_report4owner.vb</DependentUpon>
     </Compile>
-    <Compile Include="frm_receipt.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frm_recentransaction4cashier.Designer.vb">
-      <DependentUpon>frm_recentransaction4cashier.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frm_recentransaction4cashier.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frm_salesreport4owner.Designer.vb">
-      <DependentUpon>frm_salesreport4owner.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frm_salesreport4owner.vb">
+    <Compile Include="frm_sales_report4owner.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Mainformd.vb">
@@ -180,11 +162,8 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_dashboard4adminandowner.resx">
-      <DependentUpon>frm_dashboard4adminandowner.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frm_dashboard4cashier.resx">
-      <DependentUpon>frm_dashboard4cashier.vb</DependentUpon>
+    <EmbeddedResource Include="frm_dashboard1.resx">
+      <DependentUpon>frm_dashboard1.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_mm4admin.resx">
       <DependentUpon>frm_mm4admin.vb</DependentUpon>
@@ -195,14 +174,8 @@
     <EmbeddedResource Include="frm_oe4cashier.resx">
       <DependentUpon>frm_oe4cashier.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_receipt.resx">
-      <DependentUpon>frm_receipt.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frm_recentransaction4cashier.resx">
-      <DependentUpon>frm_recentransaction4cashier.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frm_salesreport4owner.resx">
-      <DependentUpon>frm_salesreport4owner.vb</DependentUpon>
+    <EmbeddedResource Include="frm_sales_report4owner.resx">
+      <DependentUpon>frm_sales_report4owner.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Mainformd.resx">
       <DependentUpon>Mainformd.vb</DependentUpon>
@@ -432,6 +405,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
+    <None Include="Resources\transaction-history.png" />
     <None Include="Resources\item.png" />
     <None Include="Resources\dollar.png" />
     <None Include="Resources\money-transfer %281%294.png" />

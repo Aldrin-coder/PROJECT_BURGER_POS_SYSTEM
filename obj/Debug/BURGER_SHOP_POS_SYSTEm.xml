@@ -557,6 +557,11 @@ BURGER_SHOP_POS_SYSTEm
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="P:BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.transaction_history">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:BURGER_SHOP_POS_SYSTEm.My.Resources.Resources.transaction_record">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.

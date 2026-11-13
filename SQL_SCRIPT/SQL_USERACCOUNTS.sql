@@ -128,3 +128,4 @@ SELECT
     IDENT_SEED('dbo.user_accounts')    AS SeedValue,
     IDENT_INCR('dbo.user_accounts')    AS IncrementValue;
 GO
+

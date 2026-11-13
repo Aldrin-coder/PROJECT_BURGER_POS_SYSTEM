@@ -21,6 +21,7 @@ Partial Class frm_oe4cashier
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.txbsearch = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Guna2Shapes1 = New Guna.UI2.WinForms.Guna2Shapes()
@@ -41,29 +42,6 @@ Partial Class frm_oe4cashier
         Me.Guna2HtmlLabel5 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2Shapes2 = New Guna.UI2.WinForms.Guna2Shapes()
         Me.Guna2HtmlLabel4 = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
-        Me.Guna2Panel4 = New Guna.UI2.WinForms.Guna2Panel()
-        Me.btnclear = New Guna.UI2.WinForms.Guna2Button()
-        Me.btnpn = New Guna.UI2.WinForms.Guna2Button()
-        Me.Guna2Panel3 = New Guna.UI2.WinForms.Guna2Panel()
-        Me.lblchange = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.Guna2HtmlLabel8 = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.Guna2HtmlLabel7 = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.Guna2HtmlLabel6 = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.cmbpm = New Guna.UI2.WinForms.Guna2ComboBox()
-        Me.txbap = New Guna.UI2.WinForms.Guna2TextBox()
-        Me.datagridvieworder = New Guna.UI2.WinForms.Guna2DataGridView()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column4 = New System.Windows.Forms.DataGridViewButtonColumn()
-        Me.Guna2Panel2 = New Guna.UI2.WinForms.Guna2Panel()
-        Me.lbltotal2 = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.lbltr2 = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.lblsubtotal2 = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.lbltotal = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.lbltr = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.lblsubtotal = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.pn = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2HtmlLabel18 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2HtmlLabel20 = New Guna.UI2.WinForms.Guna2HtmlLabel()
@@ -71,6 +49,7 @@ Partial Class frm_oe4cashier
         Me.Guna2HtmlLabel21 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2HtmlLabel22 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.Guna2Panel5 = New Guna.UI2.WinForms.Guna2Panel()
         Me.ErrorProvider1 = New System.Windows.Forms.ErrorProvider(Me.components)
         Me.Guna2HtmlLabel16 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2HtmlLabel15 = New Guna.UI2.WinForms.Guna2HtmlLabel()
@@ -78,17 +57,41 @@ Partial Class frm_oe4cashier
         Me.Guna2HtmlLabel12 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2HtmlLabel13 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.lblmn = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.Guna2Panel2 = New Guna.UI2.WinForms.Guna2Panel()
+        Me.lbltotal2 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.lbltr2 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.lblsubtotal2 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.lbltotal = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.lbltr = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.lblsubtotal = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.datagridvieworder = New Guna.UI2.WinForms.Guna2DataGridView()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column4 = New System.Windows.Forms.DataGridViewButtonColumn()
+        Me.Guna2Panel3 = New Guna.UI2.WinForms.Guna2Panel()
+        Me.lblchange = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.Guna2HtmlLabel8 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.Guna2HtmlLabel7 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.Guna2HtmlLabel6 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.cmbpm = New Guna.UI2.WinForms.Guna2ComboBox()
+        Me.txbap = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.Guna2Panel4 = New Guna.UI2.WinForms.Guna2Panel()
+        Me.btnclear = New Guna.UI2.WinForms.Guna2Button()
+        Me.btnpn = New Guna.UI2.WinForms.Guna2Button()
+        Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         CType(Me.Guna2PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Guna2PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Guna2Panel1.SuspendLayout()
         Me.Panel1.SuspendLayout()
-        Me.TableLayoutPanel1.SuspendLayout()
-        Me.Guna2Panel4.SuspendLayout()
-        Me.Guna2Panel3.SuspendLayout()
-        CType(Me.datagridvieworder, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Guna2Panel2.SuspendLayout()
+        Me.FlowLayoutPanel1.SuspendLayout()
         CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Guna2Panel2.SuspendLayout()
+        CType(Me.datagridvieworder, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Guna2Panel3.SuspendLayout()
+        Me.Guna2Panel4.SuspendLayout()
+        Me.TableLayoutPanel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'txbsearch
@@ -368,68 +371,339 @@ Partial Class frm_oe4cashier
         Me.Guna2HtmlLabel4.Text = "PRODUCT LIST     "
         Me.Guna2HtmlLabel4.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'TableLayoutPanel1
+        'pn
         '
-        Me.TableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.TableLayoutPanel1.ColumnCount = 1
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel1.Controls.Add(Me.Guna2Panel4, 0, 3)
-        Me.TableLayoutPanel1.Controls.Add(Me.Guna2Panel3, 0, 2)
-        Me.TableLayoutPanel1.Controls.Add(Me.datagridvieworder, 0, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.Guna2Panel2, 0, 1)
-        Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(959, 133)
-        Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
-        Me.TableLayoutPanel1.RowCount = 4
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 38.89204!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.20166!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 27.75208!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.15422!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(613, 802)
-        Me.TableLayoutPanel1.TabIndex = 247
+        Me.pn.BackColor = System.Drawing.Color.Transparent
+        Me.pn.Location = New System.Drawing.Point(0, 0)
+        Me.pn.Name = "pn"
+        Me.pn.Size = New System.Drawing.Size(3, 2)
+        Me.pn.TabIndex = 0
+        Me.pn.Text = Nothing
         '
-        'Guna2Panel4
+        'Guna2HtmlLabel18
         '
-        Me.Guna2Panel4.BackColor = System.Drawing.Color.White
-        Me.Guna2Panel4.BorderColor = System.Drawing.Color.Black
-        Me.Guna2Panel4.BorderRadius = 1
-        Me.Guna2Panel4.BorderThickness = 1
-        Me.Guna2Panel4.Controls.Add(Me.btnclear)
-        Me.Guna2Panel4.Controls.Add(Me.btnpn)
-        Me.Guna2Panel4.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Guna2Panel4.Location = New System.Drawing.Point(2, 713)
-        Me.Guna2Panel4.Margin = New System.Windows.Forms.Padding(2)
-        Me.Guna2Panel4.Name = "Guna2Panel4"
-        Me.Guna2Panel4.Size = New System.Drawing.Size(609, 87)
-        Me.Guna2Panel4.TabIndex = 327
+        Me.Guna2HtmlLabel18.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2HtmlLabel18.Location = New System.Drawing.Point(0, 0)
+        Me.Guna2HtmlLabel18.Name = "Guna2HtmlLabel18"
+        Me.Guna2HtmlLabel18.Size = New System.Drawing.Size(3, 2)
+        Me.Guna2HtmlLabel18.TabIndex = 0
+        Me.Guna2HtmlLabel18.Text = Nothing
         '
-        'btnclear
+        'Guna2HtmlLabel20
         '
-        Me.btnclear.AutoRoundedCorners = True
-        Me.btnclear.BorderThickness = 1
-        Me.btnclear.FillColor = System.Drawing.Color.Gray
-        Me.btnclear.Font = New System.Drawing.Font("Microsoft YaHei UI", 10.0!, System.Drawing.FontStyle.Bold)
-        Me.btnclear.ForeColor = System.Drawing.Color.White
-        Me.btnclear.HoverState.FillColor = System.Drawing.Color.Red
-        Me.btnclear.Location = New System.Drawing.Point(375, 16)
-        Me.btnclear.Name = "btnclear"
-        Me.btnclear.Size = New System.Drawing.Size(208, 61)
-        Me.btnclear.TabIndex = 331
-        Me.btnclear.Text = "CLEAR"
+        Me.Guna2HtmlLabel20.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2HtmlLabel20.Location = New System.Drawing.Point(0, 0)
+        Me.Guna2HtmlLabel20.Name = "Guna2HtmlLabel20"
+        Me.Guna2HtmlLabel20.Size = New System.Drawing.Size(3, 2)
+        Me.Guna2HtmlLabel20.TabIndex = 0
+        Me.Guna2HtmlLabel20.Text = Nothing
         '
-        'btnpn
+        'Guna2HtmlLabel19
         '
-        Me.btnpn.AutoRoundedCorners = True
-        Me.btnpn.BorderThickness = 1
-        Me.btnpn.FillColor = System.Drawing.Color.ForestGreen
-        Me.btnpn.Font = New System.Drawing.Font("Microsoft YaHei UI", 10.0!, System.Drawing.FontStyle.Bold)
-        Me.btnpn.ForeColor = System.Drawing.Color.White
-        Me.btnpn.HoverState.FillColor = System.Drawing.Color.LimeGreen
-        Me.btnpn.Location = New System.Drawing.Point(4, 16)
-        Me.btnpn.Name = "btnpn"
-        Me.btnpn.Size = New System.Drawing.Size(365, 61)
-        Me.btnpn.TabIndex = 328
-        Me.btnpn.Text = "PAY NOW (PRINT RECEIPT)"
+        Me.Guna2HtmlLabel19.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2HtmlLabel19.Location = New System.Drawing.Point(0, 0)
+        Me.Guna2HtmlLabel19.Name = "Guna2HtmlLabel19"
+        Me.Guna2HtmlLabel19.Size = New System.Drawing.Size(3, 2)
+        Me.Guna2HtmlLabel19.TabIndex = 0
+        Me.Guna2HtmlLabel19.Text = Nothing
+        '
+        'Guna2HtmlLabel21
+        '
+        Me.Guna2HtmlLabel21.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2HtmlLabel21.Location = New System.Drawing.Point(0, 0)
+        Me.Guna2HtmlLabel21.Name = "Guna2HtmlLabel21"
+        Me.Guna2HtmlLabel21.Size = New System.Drawing.Size(3, 2)
+        Me.Guna2HtmlLabel21.TabIndex = 0
+        Me.Guna2HtmlLabel21.Text = Nothing
+        '
+        'Guna2HtmlLabel22
+        '
+        Me.Guna2HtmlLabel22.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2HtmlLabel22.Location = New System.Drawing.Point(0, 0)
+        Me.Guna2HtmlLabel22.Name = "Guna2HtmlLabel22"
+        Me.Guna2HtmlLabel22.Size = New System.Drawing.Size(3, 2)
+        Me.Guna2HtmlLabel22.TabIndex = 0
+        Me.Guna2HtmlLabel22.Text = Nothing
+        '
+        'FlowLayoutPanel1
+        '
+        Me.FlowLayoutPanel1.AutoScroll = True
+        Me.FlowLayoutPanel1.BackColor = System.Drawing.Color.Gainsboro
+        Me.FlowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.FlowLayoutPanel1.Controls.Add(Me.Guna2Panel5)
+        Me.FlowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left
+        Me.FlowLayoutPanel1.Location = New System.Drawing.Point(0, 133)
+        Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
+        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(959, 802)
+        Me.FlowLayoutPanel1.TabIndex = 246
+        '
+        'Guna2Panel5
+        '
+        Me.Guna2Panel5.Location = New System.Drawing.Point(3, 3)
+        Me.Guna2Panel5.Name = "Guna2Panel5"
+        Me.Guna2Panel5.Size = New System.Drawing.Size(149, 72)
+        Me.Guna2Panel5.TabIndex = 246
+        '
+        'ErrorProvider1
+        '
+        Me.ErrorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink
+        Me.ErrorProvider1.ContainerControl = Me
+        '
+        'Guna2HtmlLabel16
+        '
+        Me.Guna2HtmlLabel16.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2HtmlLabel16.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.Guna2HtmlLabel16.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Guna2HtmlLabel16.Location = New System.Drawing.Point(148, 154)
+        Me.Guna2HtmlLabel16.Name = "Guna2HtmlLabel16"
+        Me.Guna2HtmlLabel16.Size = New System.Drawing.Size(68, 24)
+        Me.Guna2HtmlLabel16.TabIndex = 321
+        Me.Guna2HtmlLabel16.Text = "Change:"
+        Me.Guna2HtmlLabel16.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Guna2HtmlLabel15
+        '
+        Me.Guna2HtmlLabel15.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2HtmlLabel15.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.Guna2HtmlLabel15.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Guna2HtmlLabel15.Location = New System.Drawing.Point(416, 154)
+        Me.Guna2HtmlLabel15.Name = "Guna2HtmlLabel15"
+        Me.Guna2HtmlLabel15.Size = New System.Drawing.Size(120, 24)
+        Me.Guna2HtmlLabel15.TabIndex = 322
+        Me.Guna2HtmlLabel15.Text = "Money change"
+        Me.Guna2HtmlLabel15.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Guna2HtmlLabel17
+        '
+        Me.Guna2HtmlLabel17.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2HtmlLabel17.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.Guna2HtmlLabel17.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Guna2HtmlLabel17.Location = New System.Drawing.Point(103, 28)
+        Me.Guna2HtmlLabel17.Name = "Guna2HtmlLabel17"
+        Me.Guna2HtmlLabel17.Size = New System.Drawing.Size(148, 24)
+        Me.Guna2HtmlLabel17.TabIndex = 248
+        Me.Guna2HtmlLabel17.Text = "Payment Method:"
+        Me.Guna2HtmlLabel17.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Guna2HtmlLabel12
+        '
+        Me.Guna2HtmlLabel12.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2HtmlLabel12.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.Guna2HtmlLabel12.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Guna2HtmlLabel12.Location = New System.Drawing.Point(106, 81)
+        Me.Guna2HtmlLabel12.Name = "Guna2HtmlLabel12"
+        Me.Guna2HtmlLabel12.Size = New System.Drawing.Size(115, 24)
+        Me.Guna2HtmlLabel12.TabIndex = 319
+        Me.Guna2HtmlLabel12.Text = "Amount Paid: "
+        Me.Guna2HtmlLabel12.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Guna2HtmlLabel13
+        '
+        Me.Guna2HtmlLabel13.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2HtmlLabel13.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.Guna2HtmlLabel13.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Guna2HtmlLabel13.Location = New System.Drawing.Point(108, 134)
+        Me.Guna2HtmlLabel13.Name = "Guna2HtmlLabel13"
+        Me.Guna2HtmlLabel13.Size = New System.Drawing.Size(68, 24)
+        Me.Guna2HtmlLabel13.TabIndex = 321
+        Me.Guna2HtmlLabel13.Text = "Change:"
+        Me.Guna2HtmlLabel13.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'lblmn
+        '
+        Me.lblmn.BackColor = System.Drawing.Color.Transparent
+        Me.lblmn.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.lblmn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.lblmn.Location = New System.Drawing.Point(0, 0)
+        Me.lblmn.Name = "lblmn"
+        Me.lblmn.Size = New System.Drawing.Size(120, 24)
+        Me.lblmn.TabIndex = 322
+        Me.lblmn.Text = "Money change"
+        Me.lblmn.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Guna2Panel2
+        '
+        Me.Guna2Panel2.BackColor = System.Drawing.Color.White
+        Me.Guna2Panel2.BorderColor = System.Drawing.Color.Black
+        Me.Guna2Panel2.BorderThickness = 1
+        Me.Guna2Panel2.Controls.Add(Me.lbltotal2)
+        Me.Guna2Panel2.Controls.Add(Me.lbltr2)
+        Me.Guna2Panel2.Controls.Add(Me.lblsubtotal2)
+        Me.Guna2Panel2.Controls.Add(Me.lbltotal)
+        Me.Guna2Panel2.Controls.Add(Me.lbltr)
+        Me.Guna2Panel2.Controls.Add(Me.lblsubtotal)
+        Me.Guna2Panel2.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Guna2Panel2.Location = New System.Drawing.Point(2, 313)
+        Me.Guna2Panel2.Margin = New System.Windows.Forms.Padding(2)
+        Me.Guna2Panel2.Name = "Guna2Panel2"
+        Me.Guna2Panel2.Size = New System.Drawing.Size(609, 174)
+        Me.Guna2Panel2.TabIndex = 325
+        '
+        'lbltotal2
+        '
+        Me.lbltotal2.BackColor = System.Drawing.Color.Transparent
+        Me.lbltotal2.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.lbltotal2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.lbltotal2.Location = New System.Drawing.Point(397, 114)
+        Me.lbltotal2.Name = "lbltotal2"
+        Me.lbltotal2.Size = New System.Drawing.Size(49, 24)
+        Me.lbltotal2.TabIndex = 253
+        Me.lbltotal2.Text = " ₱0.00"
+        Me.lbltotal2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'lbltr2
+        '
+        Me.lbltr2.BackColor = System.Drawing.Color.Transparent
+        Me.lbltr2.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.lbltr2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.lbltr2.Location = New System.Drawing.Point(397, 68)
+        Me.lbltr2.Name = "lbltr2"
+        Me.lbltr2.Size = New System.Drawing.Size(49, 24)
+        Me.lbltr2.TabIndex = 252
+        Me.lbltr2.Text = " ₱0.00"
+        Me.lbltr2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'lblsubtotal2
+        '
+        Me.lblsubtotal2.BackColor = System.Drawing.Color.Transparent
+        Me.lblsubtotal2.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.lblsubtotal2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.lblsubtotal2.Location = New System.Drawing.Point(397, 27)
+        Me.lblsubtotal2.Name = "lblsubtotal2"
+        Me.lblsubtotal2.Size = New System.Drawing.Size(49, 24)
+        Me.lblsubtotal2.TabIndex = 251
+        Me.lblsubtotal2.Text = " ₱0.00"
+        Me.lblsubtotal2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'lbltotal
+        '
+        Me.lbltotal.BackColor = System.Drawing.Color.Transparent
+        Me.lbltotal.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.lbltotal.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.lbltotal.Location = New System.Drawing.Point(116, 108)
+        Me.lbltotal.Name = "lbltotal"
+        Me.lbltotal.Size = New System.Drawing.Size(62, 24)
+        Me.lbltotal.TabIndex = 250
+        Me.lbltotal.Text = "TOTAL:"
+        Me.lbltotal.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'lbltr
+        '
+        Me.lbltr.BackColor = System.Drawing.Color.Transparent
+        Me.lbltr.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.lbltr.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.lbltr.Location = New System.Drawing.Point(116, 65)
+        Me.lbltr.Name = "lbltr"
+        Me.lbltr.Size = New System.Drawing.Size(119, 24)
+        Me.lbltr.TabIndex = 249
+        Me.lbltr.Text = " Tax Rate (2%):"
+        Me.lbltr.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'lblsubtotal
+        '
+        Me.lblsubtotal.BackColor = System.Drawing.Color.Transparent
+        Me.lblsubtotal.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.lblsubtotal.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.lblsubtotal.Location = New System.Drawing.Point(116, 27)
+        Me.lblsubtotal.Name = "lblsubtotal"
+        Me.lblsubtotal.Size = New System.Drawing.Size(78, 24)
+        Me.lblsubtotal.TabIndex = 248
+        Me.lblsubtotal.Text = "Subtotal: "
+        Me.lblsubtotal.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'datagridvieworder
+        '
+        Me.datagridvieworder.AllowUserToAddRows = False
+        Me.datagridvieworder.AllowUserToDeleteRows = False
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
+        Me.datagridvieworder.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        Me.datagridvieworder.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.datagridvieworder.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.[Single]
+        Me.datagridvieworder.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.HotTrack
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.datagridvieworder.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        Me.datagridvieworder.ColumnHeadersHeight = 25
+        Me.datagridvieworder.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4})
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold)
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.datagridvieworder.DefaultCellStyle = DataGridViewCellStyle4
+        Me.datagridvieworder.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.datagridvieworder.GridColor = System.Drawing.Color.Black
+        Me.datagridvieworder.Location = New System.Drawing.Point(3, 3)
+        Me.datagridvieworder.Name = "datagridvieworder"
+        Me.datagridvieworder.ReadOnly = True
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.datagridvieworder.RowHeadersDefaultCellStyle = DataGridViewCellStyle5
+        Me.datagridvieworder.RowHeadersVisible = False
+        Me.datagridvieworder.RowHeadersWidth = 10
+        Me.datagridvieworder.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
+        Me.datagridvieworder.Size = New System.Drawing.Size(607, 305)
+        Me.datagridvieworder.TabIndex = 324
+        Me.datagridvieworder.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White
+        Me.datagridvieworder.ThemeStyle.GridColor = System.Drawing.Color.Black
+        Me.datagridvieworder.ThemeStyle.HeaderStyle.BackColor = System.Drawing.SystemColors.HotTrack
+        Me.datagridvieworder.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        Me.datagridvieworder.ThemeStyle.HeaderStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.datagridvieworder.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        Me.datagridvieworder.ThemeStyle.HeaderStyle.Height = 25
+        Me.datagridvieworder.ThemeStyle.ReadOnly = True
+        Me.datagridvieworder.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.[Single]
+        Me.datagridvieworder.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold)
+        Me.datagridvieworder.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.Black
+        Me.datagridvieworder.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.datagridvieworder.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
+        '
+        'Column1
+        '
+        Me.Column1.HeaderText = "QTY"
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
+        Me.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        '
+        'Column2
+        '
+        Me.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.Column2.HeaderText = "ITEM"
+        Me.Column2.Name = "Column2"
+        Me.Column2.ReadOnly = True
+        Me.Column2.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        '
+        'Column3
+        '
+        Me.Column3.HeaderText = "PRICE"
+        Me.Column3.Name = "Column3"
+        Me.Column3.ReadOnly = True
+        Me.Column3.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        '
+        'Column4
+        '
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Red
+        Me.Column4.DefaultCellStyle = DataGridViewCellStyle3
+        Me.Column4.HeaderText = "VOID ITEM"
+        Me.Column4.Name = "Column4"
+        Me.Column4.ReadOnly = True
+        Me.Column4.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.Column4.Text = "VOID ITEM"
+        Me.Column4.UseColumnTextForButtonValue = True
         '
         'Guna2Panel3
         '
@@ -536,319 +810,68 @@ Partial Class frm_oe4cashier
         Me.txbap.TabIndex = 320
         Me.txbap.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'datagridvieworder
+        'Guna2Panel4
         '
-        Me.datagridvieworder.AllowUserToAddRows = False
-        Me.datagridvieworder.AllowUserToDeleteRows = False
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
-        Me.datagridvieworder.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
-        Me.datagridvieworder.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.datagridvieworder.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.[Single]
-        Me.datagridvieworder.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.HotTrack
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.datagridvieworder.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
-        Me.datagridvieworder.ColumnHeadersHeight = 20
-        Me.datagridvieworder.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4})
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle4.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold)
-        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.datagridvieworder.DefaultCellStyle = DataGridViewCellStyle4
-        Me.datagridvieworder.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.datagridvieworder.GridColor = System.Drawing.Color.Black
-        Me.datagridvieworder.Location = New System.Drawing.Point(3, 3)
-        Me.datagridvieworder.Name = "datagridvieworder"
-        Me.datagridvieworder.ReadOnly = True
-        Me.datagridvieworder.RowHeadersVisible = False
-        Me.datagridvieworder.RowHeadersWidth = 10
-        Me.datagridvieworder.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        Me.datagridvieworder.Size = New System.Drawing.Size(607, 305)
-        Me.datagridvieworder.TabIndex = 324
-        Me.datagridvieworder.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White
-        Me.datagridvieworder.ThemeStyle.GridColor = System.Drawing.Color.Black
-        Me.datagridvieworder.ThemeStyle.HeaderStyle.BackColor = System.Drawing.SystemColors.HotTrack
-        Me.datagridvieworder.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        Me.datagridvieworder.ThemeStyle.HeaderStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.datagridvieworder.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.datagridvieworder.ThemeStyle.HeaderStyle.Height = 20
-        Me.datagridvieworder.ThemeStyle.ReadOnly = True
-        Me.datagridvieworder.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.[Single]
-        Me.datagridvieworder.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold)
-        Me.datagridvieworder.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.Black
-        Me.datagridvieworder.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.datagridvieworder.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
+        Me.Guna2Panel4.BackColor = System.Drawing.Color.White
+        Me.Guna2Panel4.BorderColor = System.Drawing.Color.Black
+        Me.Guna2Panel4.BorderRadius = 1
+        Me.Guna2Panel4.BorderThickness = 1
+        Me.Guna2Panel4.Controls.Add(Me.btnclear)
+        Me.Guna2Panel4.Controls.Add(Me.btnpn)
+        Me.Guna2Panel4.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Guna2Panel4.Location = New System.Drawing.Point(2, 713)
+        Me.Guna2Panel4.Margin = New System.Windows.Forms.Padding(2)
+        Me.Guna2Panel4.Name = "Guna2Panel4"
+        Me.Guna2Panel4.Size = New System.Drawing.Size(609, 87)
+        Me.Guna2Panel4.TabIndex = 327
         '
-        'Column1
+        'btnclear
         '
-        Me.Column1.HeaderText = "QTY"
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
+        Me.btnclear.AutoRoundedCorners = True
+        Me.btnclear.BorderThickness = 1
+        Me.btnclear.FillColor = System.Drawing.Color.Gray
+        Me.btnclear.Font = New System.Drawing.Font("Microsoft YaHei UI", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.btnclear.ForeColor = System.Drawing.Color.White
+        Me.btnclear.HoverState.FillColor = System.Drawing.Color.Red
+        Me.btnclear.Location = New System.Drawing.Point(375, 16)
+        Me.btnclear.Name = "btnclear"
+        Me.btnclear.Size = New System.Drawing.Size(208, 61)
+        Me.btnclear.TabIndex = 331
+        Me.btnclear.Text = "CLEAR"
         '
-        'Column2
+        'btnpn
         '
-        Me.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.Column2.HeaderText = "ITEM"
-        Me.Column2.Name = "Column2"
-        Me.Column2.ReadOnly = True
+        Me.btnpn.AutoRoundedCorners = True
+        Me.btnpn.BorderThickness = 1
+        Me.btnpn.FillColor = System.Drawing.Color.ForestGreen
+        Me.btnpn.Font = New System.Drawing.Font("Microsoft YaHei UI", 10.0!, System.Drawing.FontStyle.Bold)
+        Me.btnpn.ForeColor = System.Drawing.Color.White
+        Me.btnpn.HoverState.FillColor = System.Drawing.Color.LimeGreen
+        Me.btnpn.Location = New System.Drawing.Point(4, 16)
+        Me.btnpn.Name = "btnpn"
+        Me.btnpn.Size = New System.Drawing.Size(365, 61)
+        Me.btnpn.TabIndex = 328
+        Me.btnpn.Text = "PAY NOW (PRINT RECEIPT)"
         '
-        'Column3
+        'TableLayoutPanel1
         '
-        Me.Column3.HeaderText = "PRICE"
-        Me.Column3.Name = "Column3"
-        Me.Column3.ReadOnly = True
-        '
-        'Column4
-        '
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Red
-        Me.Column4.DefaultCellStyle = DataGridViewCellStyle3
-        Me.Column4.HeaderText = "VOID ITEM"
-        Me.Column4.Name = "Column4"
-        Me.Column4.ReadOnly = True
-        Me.Column4.Text = "VOID ITEM"
-        Me.Column4.UseColumnTextForButtonValue = True
-        '
-        'Guna2Panel2
-        '
-        Me.Guna2Panel2.BackColor = System.Drawing.Color.White
-        Me.Guna2Panel2.BorderColor = System.Drawing.Color.Black
-        Me.Guna2Panel2.BorderThickness = 1
-        Me.Guna2Panel2.Controls.Add(Me.lbltotal2)
-        Me.Guna2Panel2.Controls.Add(Me.lbltr2)
-        Me.Guna2Panel2.Controls.Add(Me.lblsubtotal2)
-        Me.Guna2Panel2.Controls.Add(Me.lbltotal)
-        Me.Guna2Panel2.Controls.Add(Me.lbltr)
-        Me.Guna2Panel2.Controls.Add(Me.lblsubtotal)
-        Me.Guna2Panel2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Guna2Panel2.Location = New System.Drawing.Point(2, 313)
-        Me.Guna2Panel2.Margin = New System.Windows.Forms.Padding(2)
-        Me.Guna2Panel2.Name = "Guna2Panel2"
-        Me.Guna2Panel2.Size = New System.Drawing.Size(609, 174)
-        Me.Guna2Panel2.TabIndex = 325
-        '
-        'lbltotal2
-        '
-        Me.lbltotal2.BackColor = System.Drawing.Color.Transparent
-        Me.lbltotal2.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.lbltotal2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.lbltotal2.Location = New System.Drawing.Point(397, 114)
-        Me.lbltotal2.Name = "lbltotal2"
-        Me.lbltotal2.Size = New System.Drawing.Size(49, 24)
-        Me.lbltotal2.TabIndex = 253
-        Me.lbltotal2.Text = " ₱0.00"
-        Me.lbltotal2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'lbltr2
-        '
-        Me.lbltr2.BackColor = System.Drawing.Color.Transparent
-        Me.lbltr2.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.lbltr2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.lbltr2.Location = New System.Drawing.Point(397, 68)
-        Me.lbltr2.Name = "lbltr2"
-        Me.lbltr2.Size = New System.Drawing.Size(49, 24)
-        Me.lbltr2.TabIndex = 252
-        Me.lbltr2.Text = " ₱0.00"
-        Me.lbltr2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'lblsubtotal2
-        '
-        Me.lblsubtotal2.BackColor = System.Drawing.Color.Transparent
-        Me.lblsubtotal2.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.lblsubtotal2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.lblsubtotal2.Location = New System.Drawing.Point(397, 27)
-        Me.lblsubtotal2.Name = "lblsubtotal2"
-        Me.lblsubtotal2.Size = New System.Drawing.Size(49, 24)
-        Me.lblsubtotal2.TabIndex = 251
-        Me.lblsubtotal2.Text = " ₱0.00"
-        Me.lblsubtotal2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'lbltotal
-        '
-        Me.lbltotal.BackColor = System.Drawing.Color.Transparent
-        Me.lbltotal.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.lbltotal.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.lbltotal.Location = New System.Drawing.Point(116, 108)
-        Me.lbltotal.Name = "lbltotal"
-        Me.lbltotal.Size = New System.Drawing.Size(62, 24)
-        Me.lbltotal.TabIndex = 250
-        Me.lbltotal.Text = "TOTAL:"
-        Me.lbltotal.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'lbltr
-        '
-        Me.lbltr.BackColor = System.Drawing.Color.Transparent
-        Me.lbltr.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.lbltr.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.lbltr.Location = New System.Drawing.Point(116, 65)
-        Me.lbltr.Name = "lbltr"
-        Me.lbltr.Size = New System.Drawing.Size(119, 24)
-        Me.lbltr.TabIndex = 249
-        Me.lbltr.Text = " Tax Rate (2%):"
-        Me.lbltr.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'lblsubtotal
-        '
-        Me.lblsubtotal.BackColor = System.Drawing.Color.Transparent
-        Me.lblsubtotal.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.lblsubtotal.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.lblsubtotal.Location = New System.Drawing.Point(116, 27)
-        Me.lblsubtotal.Name = "lblsubtotal"
-        Me.lblsubtotal.Size = New System.Drawing.Size(78, 24)
-        Me.lblsubtotal.TabIndex = 248
-        Me.lblsubtotal.Text = "Subtotal: "
-        Me.lblsubtotal.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'pn
-        '
-        Me.pn.BackColor = System.Drawing.Color.Transparent
-        Me.pn.Location = New System.Drawing.Point(0, 0)
-        Me.pn.Name = "pn"
-        Me.pn.Size = New System.Drawing.Size(3, 2)
-        Me.pn.TabIndex = 0
-        Me.pn.Text = Nothing
-        '
-        'Guna2HtmlLabel18
-        '
-        Me.Guna2HtmlLabel18.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2HtmlLabel18.Location = New System.Drawing.Point(0, 0)
-        Me.Guna2HtmlLabel18.Name = "Guna2HtmlLabel18"
-        Me.Guna2HtmlLabel18.Size = New System.Drawing.Size(3, 2)
-        Me.Guna2HtmlLabel18.TabIndex = 0
-        Me.Guna2HtmlLabel18.Text = Nothing
-        '
-        'Guna2HtmlLabel20
-        '
-        Me.Guna2HtmlLabel20.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2HtmlLabel20.Location = New System.Drawing.Point(0, 0)
-        Me.Guna2HtmlLabel20.Name = "Guna2HtmlLabel20"
-        Me.Guna2HtmlLabel20.Size = New System.Drawing.Size(3, 2)
-        Me.Guna2HtmlLabel20.TabIndex = 0
-        Me.Guna2HtmlLabel20.Text = Nothing
-        '
-        'Guna2HtmlLabel19
-        '
-        Me.Guna2HtmlLabel19.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2HtmlLabel19.Location = New System.Drawing.Point(0, 0)
-        Me.Guna2HtmlLabel19.Name = "Guna2HtmlLabel19"
-        Me.Guna2HtmlLabel19.Size = New System.Drawing.Size(3, 2)
-        Me.Guna2HtmlLabel19.TabIndex = 0
-        Me.Guna2HtmlLabel19.Text = Nothing
-        '
-        'Guna2HtmlLabel21
-        '
-        Me.Guna2HtmlLabel21.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2HtmlLabel21.Location = New System.Drawing.Point(0, 0)
-        Me.Guna2HtmlLabel21.Name = "Guna2HtmlLabel21"
-        Me.Guna2HtmlLabel21.Size = New System.Drawing.Size(3, 2)
-        Me.Guna2HtmlLabel21.TabIndex = 0
-        Me.Guna2HtmlLabel21.Text = Nothing
-        '
-        'Guna2HtmlLabel22
-        '
-        Me.Guna2HtmlLabel22.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2HtmlLabel22.Location = New System.Drawing.Point(0, 0)
-        Me.Guna2HtmlLabel22.Name = "Guna2HtmlLabel22"
-        Me.Guna2HtmlLabel22.Size = New System.Drawing.Size(3, 2)
-        Me.Guna2HtmlLabel22.TabIndex = 0
-        Me.Guna2HtmlLabel22.Text = Nothing
-        '
-        'FlowLayoutPanel1
-        '
-        Me.FlowLayoutPanel1.AutoScroll = True
-        Me.FlowLayoutPanel1.BackColor = System.Drawing.Color.LightGray
-        Me.FlowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.FlowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left
-        Me.FlowLayoutPanel1.Location = New System.Drawing.Point(0, 133)
-        Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(959, 802)
-        Me.FlowLayoutPanel1.TabIndex = 246
-        '
-        'ErrorProvider1
-        '
-        Me.ErrorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink
-        Me.ErrorProvider1.ContainerControl = Me
-        '
-        'Guna2HtmlLabel16
-        '
-        Me.Guna2HtmlLabel16.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2HtmlLabel16.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.Guna2HtmlLabel16.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Guna2HtmlLabel16.Location = New System.Drawing.Point(148, 154)
-        Me.Guna2HtmlLabel16.Name = "Guna2HtmlLabel16"
-        Me.Guna2HtmlLabel16.Size = New System.Drawing.Size(68, 24)
-        Me.Guna2HtmlLabel16.TabIndex = 321
-        Me.Guna2HtmlLabel16.Text = "Change:"
-        Me.Guna2HtmlLabel16.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Guna2HtmlLabel15
-        '
-        Me.Guna2HtmlLabel15.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2HtmlLabel15.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.Guna2HtmlLabel15.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Guna2HtmlLabel15.Location = New System.Drawing.Point(416, 154)
-        Me.Guna2HtmlLabel15.Name = "Guna2HtmlLabel15"
-        Me.Guna2HtmlLabel15.Size = New System.Drawing.Size(120, 24)
-        Me.Guna2HtmlLabel15.TabIndex = 322
-        Me.Guna2HtmlLabel15.Text = "Money change"
-        Me.Guna2HtmlLabel15.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Guna2HtmlLabel17
-        '
-        Me.Guna2HtmlLabel17.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2HtmlLabel17.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.Guna2HtmlLabel17.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Guna2HtmlLabel17.Location = New System.Drawing.Point(103, 28)
-        Me.Guna2HtmlLabel17.Name = "Guna2HtmlLabel17"
-        Me.Guna2HtmlLabel17.Size = New System.Drawing.Size(148, 24)
-        Me.Guna2HtmlLabel17.TabIndex = 248
-        Me.Guna2HtmlLabel17.Text = "Payment Method:"
-        Me.Guna2HtmlLabel17.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Guna2HtmlLabel12
-        '
-        Me.Guna2HtmlLabel12.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2HtmlLabel12.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.Guna2HtmlLabel12.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Guna2HtmlLabel12.Location = New System.Drawing.Point(106, 81)
-        Me.Guna2HtmlLabel12.Name = "Guna2HtmlLabel12"
-        Me.Guna2HtmlLabel12.Size = New System.Drawing.Size(115, 24)
-        Me.Guna2HtmlLabel12.TabIndex = 319
-        Me.Guna2HtmlLabel12.Text = "Amount Paid: "
-        Me.Guna2HtmlLabel12.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Guna2HtmlLabel13
-        '
-        Me.Guna2HtmlLabel13.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2HtmlLabel13.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.Guna2HtmlLabel13.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Guna2HtmlLabel13.Location = New System.Drawing.Point(108, 134)
-        Me.Guna2HtmlLabel13.Name = "Guna2HtmlLabel13"
-        Me.Guna2HtmlLabel13.Size = New System.Drawing.Size(68, 24)
-        Me.Guna2HtmlLabel13.TabIndex = 321
-        Me.Guna2HtmlLabel13.Text = "Change:"
-        Me.Guna2HtmlLabel13.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'lblmn
-        '
-        Me.lblmn.BackColor = System.Drawing.Color.Transparent
-        Me.lblmn.Font = New System.Drawing.Font("Microsoft YaHei UI", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.lblmn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.lblmn.Location = New System.Drawing.Point(0, 0)
-        Me.lblmn.Name = "lblmn"
-        Me.lblmn.Size = New System.Drawing.Size(120, 24)
-        Me.lblmn.TabIndex = 322
-        Me.lblmn.Text = "Money change"
-        Me.lblmn.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        Me.TableLayoutPanel1.BackColor = System.Drawing.Color.Gainsboro
+        Me.TableLayoutPanel1.ColumnCount = 1
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel1.Controls.Add(Me.Guna2Panel4, 0, 3)
+        Me.TableLayoutPanel1.Controls.Add(Me.Guna2Panel3, 0, 2)
+        Me.TableLayoutPanel1.Controls.Add(Me.datagridvieworder, 0, 0)
+        Me.TableLayoutPanel1.Controls.Add(Me.Guna2Panel2, 0, 1)
+        Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(959, 133)
+        Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
+        Me.TableLayoutPanel1.RowCount = 4
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 38.89204!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.20166!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 27.75208!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.15422!))
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(613, 802)
+        Me.TableLayoutPanel1.TabIndex = 247
         '
         'frm_oe4cashier
         '
@@ -868,14 +891,15 @@ Partial Class frm_oe4cashier
         Me.Guna2Panel1.PerformLayout()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
-        Me.TableLayoutPanel1.ResumeLayout(False)
-        Me.Guna2Panel4.ResumeLayout(False)
-        Me.Guna2Panel3.ResumeLayout(False)
-        Me.Guna2Panel3.PerformLayout()
-        CType(Me.datagridvieworder, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.FlowLayoutPanel1.ResumeLayout(False)
+        CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Guna2Panel2.ResumeLayout(False)
         Me.Guna2Panel2.PerformLayout()
-        CType(Me.ErrorProvider1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.datagridvieworder, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Guna2Panel3.ResumeLayout(False)
+        Me.Guna2Panel3.PerformLayout()
+        Me.Guna2Panel4.ResumeLayout(False)
+        Me.TableLayoutPanel1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -893,18 +917,9 @@ Partial Class frm_oe4cashier
     Friend WithEvents Guna2HtmlLabel2 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2HtmlLabel1 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
     Friend WithEvents Guna2HtmlLabel4 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2Shapes2 As Guna.UI2.WinForms.Guna2Shapes
     Friend WithEvents Guna2HtmlLabel5 As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents datagridvieworder As Guna.UI2.WinForms.Guna2DataGridView
-    Friend WithEvents Guna2Panel2 As Guna.UI2.WinForms.Guna2Panel
-    Friend WithEvents lblsubtotal As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents lbltr As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents lbltotal As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents lblsubtotal2 As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents lbltr2 As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents lbltotal2 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents pn As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2HtmlLabel18 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2HtmlLabel20 As Guna.UI2.WinForms.Guna2HtmlLabel
@@ -913,27 +928,37 @@ Partial Class frm_oe4cashier
     Friend WithEvents Guna2HtmlLabel22 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents FlowLayoutPanel1 As FlowLayoutPanel
     Friend WithEvents ErrorProvider1 As ErrorProvider
-    Friend WithEvents Guna2Panel4 As Guna.UI2.WinForms.Guna2Panel
-    Friend WithEvents Guna2Panel3 As Guna.UI2.WinForms.Guna2Panel
-    Friend WithEvents cmbpm As Guna.UI2.WinForms.Guna2ComboBox
-    Friend WithEvents txbap As Guna.UI2.WinForms.Guna2TextBox
-    Friend WithEvents btnpn As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents btnclear As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Guna2HtmlLabel16 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2HtmlLabel15 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2HtmlLabel17 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2HtmlLabel12 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2HtmlLabel13 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents lblmn As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents Guna2HtmlLabel6 As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents Guna2HtmlLabel7 As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents Guna2HtmlLabel8 As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents lblchange As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2HtmlLabel9 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2Shapes3 As Guna.UI2.WinForms.Guna2Shapes
+    Friend WithEvents txbordern As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
+    Friend WithEvents Guna2Panel4 As Guna.UI2.WinForms.Guna2Panel
+    Friend WithEvents btnclear As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents btnpn As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents Guna2Panel3 As Guna.UI2.WinForms.Guna2Panel
+    Friend WithEvents lblchange As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents Guna2HtmlLabel8 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents Guna2HtmlLabel7 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents Guna2HtmlLabel6 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents cmbpm As Guna.UI2.WinForms.Guna2ComboBox
+    Friend WithEvents txbap As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents datagridvieworder As Guna.UI2.WinForms.Guna2DataGridView
+    Friend WithEvents Guna2Panel2 As Guna.UI2.WinForms.Guna2Panel
+    Friend WithEvents lbltotal2 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents lbltr2 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents lblsubtotal2 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents lbltotal As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents lbltr As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents lblsubtotal As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents Guna2Panel5 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents Column1 As DataGridViewTextBoxColumn
     Friend WithEvents Column2 As DataGridViewTextBoxColumn
     Friend WithEvents Column3 As DataGridViewTextBoxColumn
     Friend WithEvents Column4 As DataGridViewButtonColumn
-    Friend WithEvents txbordern As Guna.UI2.WinForms.Guna2TextBox
 End Class

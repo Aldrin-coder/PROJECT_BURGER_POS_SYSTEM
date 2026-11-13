@@ -31,7 +31,6 @@ Partial Class Mainformd
         Me.oebtn = New Guna.UI2.WinForms.Guna2Button()
         Me.mmbtn = New Guna.UI2.WinForms.Guna2Button()
         Me.muabtn = New Guna.UI2.WinForms.Guna2Button()
-        Me.trbtn = New Guna.UI2.WinForms.Guna2Button()
         Me.srbtn = New Guna.UI2.WinForms.Guna2Button()
         Me.logoutbtn = New Guna.UI2.WinForms.Guna2Button()
         Me.FlowLayoutPanel3 = New System.Windows.Forms.FlowLayoutPanel()
@@ -47,9 +46,6 @@ Partial Class Mainformd
         Me.Guna2HtmlLabel1 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.panelcontainer = New Guna.UI2.WinForms.Guna2Panel()
         Me.Guna2Shapes1 = New Guna.UI2.WinForms.Guna2Shapes()
-        Me.Guna2Shapes2 = New Guna.UI2.WinForms.Guna2Shapes()
-        Me.Guna2Shapes3 = New Guna.UI2.WinForms.Guna2Shapes()
-        Me.Guna2Shapes4 = New Guna.UI2.WinForms.Guna2Shapes()
         Me.exit2 = New Guna.UI2.WinForms.Guna2ControlBox()
         Me.minimize = New Guna.UI2.WinForms.Guna2ControlBox()
         Me.Guna2Panel1 = New Guna.UI2.WinForms.Guna2Panel()
@@ -57,6 +53,9 @@ Partial Class Mainformd
         Me.Guna2PictureBox2 = New Guna.UI2.WinForms.Guna2PictureBox()
         Me.timerlabel1 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.datelabel1 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.Guna2Shapes4 = New Guna.UI2.WinForms.Guna2Shapes()
+        Me.Guna2Shapes3 = New Guna.UI2.WinForms.Guna2Shapes()
+        Me.Guna2Shapes2 = New Guna.UI2.WinForms.Guna2Shapes()
         Me.datelabel = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.timerlabel = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2HtmlLabel3 = New Guna.UI2.WinForms.Guna2HtmlLabel()
@@ -77,7 +76,6 @@ Partial Class Mainformd
         Me.FlowLayoutPanel2.Controls.Add(Me.oebtn)
         Me.FlowLayoutPanel2.Controls.Add(Me.mmbtn)
         Me.FlowLayoutPanel2.Controls.Add(Me.muabtn)
-        Me.FlowLayoutPanel2.Controls.Add(Me.trbtn)
         Me.FlowLayoutPanel2.Controls.Add(Me.srbtn)
         Me.FlowLayoutPanel2.Controls.Add(Me.logoutbtn)
         Me.FlowLayoutPanel2.Controls.Add(Me.FlowLayoutPanel3)
@@ -241,37 +239,6 @@ Partial Class Mainformd
         Me.muabtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.muabtn.UseTransparentBackground = True
         '
-        'trbtn
-        '
-        Me.trbtn.AutoRoundedCorners = True
-        Me.trbtn.BackColor = System.Drawing.Color.Transparent
-        Me.trbtn.BorderRadius = 19
-        Me.trbtn.CheckedState.FillColor = System.Drawing.Color.OrangeRed
-        Me.trbtn.CheckedState.ForeColor = System.Drawing.Color.White
-        Me.trbtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray
-        Me.trbtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
-        Me.trbtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
-        Me.trbtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.trbtn.FillColor = System.Drawing.Color.Transparent
-        Me.trbtn.FocusedColor = System.Drawing.Color.Transparent
-        Me.trbtn.Font = New System.Drawing.Font("Cooper Black", 14.0!)
-        Me.trbtn.ForeColor = System.Drawing.Color.White
-        Me.trbtn.HoverState.FillColor = System.Drawing.Color.FromArgb(CType(CType(233, Byte), Integer), CType(CType(90, Byte), Integer), CType(CType(30, Byte), Integer))
-        Me.trbtn.Image = CType(resources.GetObject("trbtn.Image"), System.Drawing.Image)
-        Me.trbtn.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left
-        Me.trbtn.ImageSize = New System.Drawing.Size(30, 30)
-        Me.trbtn.IndicateFocus = True
-        Me.trbtn.Location = New System.Drawing.Point(10, 465)
-        Me.trbtn.Margin = New System.Windows.Forms.Padding(10, 3, 3, 14)
-        Me.trbtn.Name = "trbtn"
-        Me.trbtn.PressedColor = System.Drawing.Color.OrangeRed
-        Me.trbtn.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.trbtn.Size = New System.Drawing.Size(322, 40)
-        Me.trbtn.TabIndex = 5
-        Me.trbtn.Text = " RECENT TRANSACTIONS"
-        Me.trbtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
-        Me.trbtn.UseTransparentBackground = True
-        '
         'srbtn
         '
         Me.srbtn.AutoRoundedCorners = True
@@ -291,7 +258,7 @@ Partial Class Mainformd
         Me.srbtn.Image = CType(resources.GetObject("srbtn.Image"), System.Drawing.Image)
         Me.srbtn.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.srbtn.ImageSize = New System.Drawing.Size(30, 30)
-        Me.srbtn.Location = New System.Drawing.Point(10, 522)
+        Me.srbtn.Location = New System.Drawing.Point(10, 465)
         Me.srbtn.Margin = New System.Windows.Forms.Padding(10, 3, 3, 14)
         Me.srbtn.Name = "srbtn"
         Me.srbtn.PressedColor = System.Drawing.Color.OrangeRed
@@ -322,7 +289,7 @@ Partial Class Mainformd
         Me.logoutbtn.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.logoutbtn.ImageSize = New System.Drawing.Size(28, 28)
         Me.logoutbtn.IndicateFocus = True
-        Me.logoutbtn.Location = New System.Drawing.Point(92, 596)
+        Me.logoutbtn.Location = New System.Drawing.Point(92, 539)
         Me.logoutbtn.Margin = New System.Windows.Forms.Padding(92, 20, 3, 0)
         Me.logoutbtn.Name = "logoutbtn"
         Me.logoutbtn.PressedColor = System.Drawing.Color.Red
@@ -343,10 +310,10 @@ Partial Class Mainformd
         Me.FlowLayoutPanel3.Controls.Add(Me.lbluserg1)
         Me.FlowLayoutPanel3.Controls.Add(Me.lblusershift1)
         Me.FlowLayoutPanel3.Controls.Add(Me.logintimer11)
-        Me.FlowLayoutPanel3.Location = New System.Drawing.Point(0, 646)
+        Me.FlowLayoutPanel3.Location = New System.Drawing.Point(0, 589)
         Me.FlowLayoutPanel3.Margin = New System.Windows.Forms.Padding(0, 10, 3, 20)
         Me.FlowLayoutPanel3.Name = "FlowLayoutPanel3"
-        Me.FlowLayoutPanel3.Size = New System.Drawing.Size(351, 328)
+        Me.FlowLayoutPanel3.Size = New System.Drawing.Size(351, 334)
         Me.FlowLayoutPanel3.TabIndex = 10
         '
         'lbluserinfo1
@@ -508,64 +475,6 @@ Partial Class Mainformd
         Me.Guna2Shapes1.UseTransparentBackground = True
         Me.Guna2Shapes1.Zoom = 100
         '
-        'Guna2Shapes2
-        '
-        Me.Guna2Shapes2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Guna2Shapes2.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2Shapes2.BorderColor = System.Drawing.Color.Transparent
-        Me.Guna2Shapes2.FillColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(109, Byte), Integer))
-        Me.Guna2Shapes2.LineThickness = 4
-        Me.Guna2Shapes2.Location = New System.Drawing.Point(1623, 1)
-        Me.Guna2Shapes2.Margin = New System.Windows.Forms.Padding(1, 3, 3, 3)
-        Me.Guna2Shapes2.Name = "Guna2Shapes2"
-        Me.Guna2Shapes2.PolygonSkip = 1
-        Me.Guna2Shapes2.Rotate = 0!
-        Me.Guna2Shapes2.Shape = Guna.UI2.WinForms.Enums.ShapeType.Line
-        Me.Guna2Shapes2.Size = New System.Drawing.Size(640, 62)
-        Me.Guna2Shapes2.TabIndex = 13
-        Me.Guna2Shapes2.Text = "Guna2Shapes2"
-        Me.Guna2Shapes2.UseTransparentBackground = True
-        Me.Guna2Shapes2.Zoom = 1000
-        '
-        'Guna2Shapes3
-        '
-        Me.Guna2Shapes3.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Guna2Shapes3.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2Shapes3.BorderColor = System.Drawing.Color.Transparent
-        Me.Guna2Shapes3.FillColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(109, Byte), Integer))
-        Me.Guna2Shapes3.LineThickness = 4
-        Me.Guna2Shapes3.Location = New System.Drawing.Point(1486, 48)
-        Me.Guna2Shapes3.Name = "Guna2Shapes3"
-        Me.Guna2Shapes3.PolygonSkip = 1
-        Me.Guna2Shapes3.Rotate = 0!
-        Me.Guna2Shapes3.Shape = Guna.UI2.WinForms.Enums.ShapeType.Line
-        Me.Guna2Shapes3.Size = New System.Drawing.Size(640, 40)
-        Me.Guna2Shapes3.TabIndex = 14
-        Me.Guna2Shapes3.Text = "Guna2Shapes3"
-        Me.Guna2Shapes3.UseTransparentBackground = True
-        Me.Guna2Shapes3.Zoom = 1000
-        '
-        'Guna2Shapes4
-        '
-        Me.Guna2Shapes4.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Guna2Shapes4.BackColor = System.Drawing.Color.Transparent
-        Me.Guna2Shapes4.BorderColor = System.Drawing.Color.Transparent
-        Me.Guna2Shapes4.FillColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(109, Byte), Integer))
-        Me.Guna2Shapes4.LineThickness = 4
-        Me.Guna2Shapes4.Location = New System.Drawing.Point(1707, 48)
-        Me.Guna2Shapes4.Name = "Guna2Shapes4"
-        Me.Guna2Shapes4.PolygonSkip = 1
-        Me.Guna2Shapes4.Rotate = 0!
-        Me.Guna2Shapes4.Shape = Guna.UI2.WinForms.Enums.ShapeType.Line
-        Me.Guna2Shapes4.Size = New System.Drawing.Size(640, 113)
-        Me.Guna2Shapes4.TabIndex = 15
-        Me.Guna2Shapes4.Text = "Guna2Shapes4"
-        Me.Guna2Shapes4.UseTransparentBackground = True
-        Me.Guna2Shapes4.Zoom = 1000
-        '
         'exit2
         '
         Me.exit2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -661,6 +570,64 @@ Partial Class Mainformd
         Me.datelabel1.TabIndex = 20
         Me.datelabel1.Text = "datelabel1"
         '
+        'Guna2Shapes4
+        '
+        Me.Guna2Shapes4.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Guna2Shapes4.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2Shapes4.BorderColor = System.Drawing.Color.Transparent
+        Me.Guna2Shapes4.FillColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(109, Byte), Integer))
+        Me.Guna2Shapes4.LineThickness = 4
+        Me.Guna2Shapes4.Location = New System.Drawing.Point(1707, 48)
+        Me.Guna2Shapes4.Name = "Guna2Shapes4"
+        Me.Guna2Shapes4.PolygonSkip = 1
+        Me.Guna2Shapes4.Rotate = 0!
+        Me.Guna2Shapes4.Shape = Guna.UI2.WinForms.Enums.ShapeType.Line
+        Me.Guna2Shapes4.Size = New System.Drawing.Size(640, 113)
+        Me.Guna2Shapes4.TabIndex = 15
+        Me.Guna2Shapes4.Text = "Guna2Shapes4"
+        Me.Guna2Shapes4.UseTransparentBackground = True
+        Me.Guna2Shapes4.Zoom = 1000
+        '
+        'Guna2Shapes3
+        '
+        Me.Guna2Shapes3.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Guna2Shapes3.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2Shapes3.BorderColor = System.Drawing.Color.Transparent
+        Me.Guna2Shapes3.FillColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(109, Byte), Integer))
+        Me.Guna2Shapes3.LineThickness = 4
+        Me.Guna2Shapes3.Location = New System.Drawing.Point(1486, 48)
+        Me.Guna2Shapes3.Name = "Guna2Shapes3"
+        Me.Guna2Shapes3.PolygonSkip = 1
+        Me.Guna2Shapes3.Rotate = 0!
+        Me.Guna2Shapes3.Shape = Guna.UI2.WinForms.Enums.ShapeType.Line
+        Me.Guna2Shapes3.Size = New System.Drawing.Size(640, 40)
+        Me.Guna2Shapes3.TabIndex = 14
+        Me.Guna2Shapes3.Text = "Guna2Shapes3"
+        Me.Guna2Shapes3.UseTransparentBackground = True
+        Me.Guna2Shapes3.Zoom = 1000
+        '
+        'Guna2Shapes2
+        '
+        Me.Guna2Shapes2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Guna2Shapes2.BackColor = System.Drawing.Color.Transparent
+        Me.Guna2Shapes2.BorderColor = System.Drawing.Color.Transparent
+        Me.Guna2Shapes2.FillColor = System.Drawing.Color.FromArgb(CType(CType(30, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(109, Byte), Integer))
+        Me.Guna2Shapes2.LineThickness = 4
+        Me.Guna2Shapes2.Location = New System.Drawing.Point(1623, 1)
+        Me.Guna2Shapes2.Margin = New System.Windows.Forms.Padding(1, 3, 3, 3)
+        Me.Guna2Shapes2.Name = "Guna2Shapes2"
+        Me.Guna2Shapes2.PolygonSkip = 1
+        Me.Guna2Shapes2.Rotate = 0!
+        Me.Guna2Shapes2.Shape = Guna.UI2.WinForms.Enums.ShapeType.Line
+        Me.Guna2Shapes2.Size = New System.Drawing.Size(640, 62)
+        Me.Guna2Shapes2.TabIndex = 13
+        Me.Guna2Shapes2.Text = "Guna2Shapes2"
+        Me.Guna2Shapes2.UseTransparentBackground = True
+        Me.Guna2Shapes2.Zoom = 1000
+        '
         'datelabel
         '
         Me.datelabel.BackColor = System.Drawing.Color.Transparent
@@ -751,9 +718,6 @@ Partial Class Mainformd
     Friend WithEvents Guna2Panel1 As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents minimize As Guna.UI2.WinForms.Guna2ControlBox
     Friend WithEvents exit2 As Guna.UI2.WinForms.Guna2ControlBox
-    Friend WithEvents Guna2Shapes4 As Guna.UI2.WinForms.Guna2Shapes
-    Friend WithEvents Guna2Shapes3 As Guna.UI2.WinForms.Guna2Shapes
-    Friend WithEvents Guna2Shapes2 As Guna.UI2.WinForms.Guna2Shapes
     Friend WithEvents Guna2Shapes1 As Guna.UI2.WinForms.Guna2Shapes
     Friend WithEvents datelabel As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents timerlabel As Guna.UI2.WinForms.Guna2HtmlLabel
@@ -765,5 +729,7 @@ Partial Class Mainformd
     Friend WithEvents dashboardbtn As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents logintimer11 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents picturebox1 As Guna.UI2.WinForms.Guna2CirclePictureBox
-    Friend WithEvents trbtn As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents Guna2Shapes4 As Guna.UI2.WinForms.Guna2Shapes
+    Friend WithEvents Guna2Shapes3 As Guna.UI2.WinForms.Guna2Shapes
+    Friend WithEvents Guna2Shapes2 As Guna.UI2.WinForms.Guna2Shapes
 End Class

@@ -7,7 +7,7 @@ Public Class frm_mm4admin
     Dim originalCategoryId As Integer = 0
 
     ' ==========================================
-    ' LOAD
+    ' FORM LOAD & SETUP
     ' ==========================================
     Private Sub frm_mm4admin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         conn()
@@ -16,11 +16,11 @@ Public Class frm_mm4admin
         readdata()
         readCategories()
         loadCategoriesToCombo()
-        bordercolor()
+        ResetValidation()
     End Sub
 
     ' ==========================================
-    ' SETUP FILTER COMBO
+    ' FILTER & COMBOBOX SETUP
     ' ==========================================
     Sub categoryfilter()
         cmbfilter.Items.Clear()
@@ -39,8 +39,24 @@ Public Class frm_mm4admin
         If cmbfilter.Items.Count > 0 Then cmbfilter.SelectedIndex = 0
     End Sub
 
+    Sub loadCategoriesToCombo()
+        conn()
+        txbproductcat.Items.Clear()
+
+        query = "SELECT category_name FROM categories ORDER BY category_name"
+        cmd = New SqlClient.SqlCommand(query, sqlconn)
+        dr = cmd.ExecuteReader
+        While dr.Read
+            txbproductcat.Items.Add(dr("category_name").ToString())
+        End While
+        dr.Close()
+        cmd.Dispose()
+
+        categoryfilter()
+    End Sub
+
     ' ==========================================
-    ' AUTO NUMBER (same pattern as frm_mua4admin_owner2)
+    ' AUTO NUMBER GENERATOR
     ' ==========================================
     Sub SP_AutoNumber()
         conn()
@@ -62,9 +78,6 @@ Public Class frm_mm4admin
         cmd.Dispose()
     End Sub
 
-    ' ==========================================
-    ' CREATE NEW AUTO NUMBER (same pattern as user form)
-    ' ==========================================
     Sub CreateNewAutoNumber()
         Try
             Dim cmd As New SqlCommand
@@ -81,7 +94,7 @@ Public Class frm_mm4admin
     End Sub
 
     ' ==========================================
-    ' READ DATA (MENU GRID)
+    ' READ DATA
     ' ==========================================
     Sub readdata()
         If datagridviewmenulist.Columns.Count = 0 Then Return
@@ -105,31 +118,22 @@ Public Class frm_mm4admin
         cmd = New SqlClient.SqlCommand(query, sqlconn)
         With cmd.Parameters
             If cmbfilter.Text <> "" AndAlso cmbfilter.Text.ToUpper() <> "ALL" Then .AddWithValue("@FILTER", cmbfilter.Text)
-            If txbsearch.Text.Trim() <> "" Then .AddWithValue("@SEARCH", "%" & txbsearch.Text.Trim() & "%")
+            If txbsearch.Text <> "" Then .AddWithValue("@SEARCH", "%" & txbsearch.Text & "%")
         End With
 
         dr = cmd.ExecuteReader
         While dr.Read
-            Dim img As Image = Nothing
-            If Not IsDBNull(dr("product_image")) Then
-                Using ms As New MemoryStream(CType(dr("product_image"), Byte()))
-                    img = Image.FromStream(ms)
-                End Using
-            End If
-
-            Dim isActive As Boolean = CBool(dr("IsActive"))
-
             datagridviewmenulist.Rows.Add(
-            dr("item_code"),                                              ' 0
-            dr("product_name"),                                           ' 1
-            dr("price"),                                                  ' 2
-            dr("category_name"),                                          ' 3
-            dr("quantity"),                                               ' 4
-            If(isActive, "ACTIVE", "INACTIVE"),                           ' 5
-            img,                                                          ' 6
-            If(isActive, "DISABLE", "ENABLE"),                            ' 7
-            "UPDATE",                                                     ' 8
-            "DELETE")                                                     ' 9
+                dr("item_code"),                                              ' 0
+                dr("product_name"),                                           ' 1
+                dr("price"),                                                  ' 2
+                dr("category_name"),                                          ' 3
+                dr("quantity"),                                               ' 4
+                If(CBool(dr("IsActive")), "ACTIVE", "INACTIVE"),              ' 5
+                If(IsDBNull(dr("product_image")), Nothing, Image.FromStream(New MemoryStream(CType(dr("product_image"), Byte())))), ' 6
+                If(CBool(dr("IsActive")), "DISABLE", "ENABLE"),               ' 7
+                "UPDATE",                                                     ' 8
+                "DELETE")                                                     ' 9
 
             datagridviewmenulist.Rows(datagridviewmenulist.Rows.Count - 1).Tag = dr("category_id")
         End While
@@ -141,9 +145,6 @@ Public Class frm_mm4admin
         Next
     End Sub
 
-    ' ==========================================
-    ' READ DATA (CATEGORIES GRID)
-    ' ==========================================
     Sub readCategories()
         If datagridviewcategories.Columns.Count = 0 Then Return
         datagridviewcategories.Rows.Clear()
@@ -164,30 +165,25 @@ Public Class frm_mm4admin
     End Sub
 
     ' ==========================================
-    ' LOAD CATEGORIES TO COMBO
+    ' COMBINED VALIDATION & BORDER RESET
     ' ==========================================
-    Sub loadCategoriesToCombo()
-        conn()
-        txbproductcat.Items.Clear()
+    Private Sub ResetValidation()
+        ErrorProvider1.Clear()
 
-        query = "SELECT category_name FROM categories ORDER BY category_name"
-        cmd = New SqlClient.SqlCommand(query, sqlconn)
-        dr = cmd.ExecuteReader
-        While dr.Read
-            txbproductcat.Items.Add(dr("category_name").ToString())
-        End While
-        dr.Close()
-        cmd.Dispose()
+        txbpn.BorderColor = Color.Black
+        txbprice.BorderColor = Color.Black
+        txbpq.BorderColor = Color.Black
+        txbproductcat.BorderColor = Color.Black
+        txbcategoryname.BorderColor = Color.Black
 
-        categoryfilter()
+        picturebox1.BackColor = Color.SlateGray
     End Sub
 
     ' ==========================================
-    ' CLEAR (MENU)
+    ' CLEAR FIELDS
     ' ==========================================
     Sub clear()
-        ErrorProvider1.Clear()
-        bordercolor()
+        ResetValidation()
         originalItemCode = ""
         txbpn.Clear() : txbprice.Clear() : txbpq.Clear()
         txbproductcat.SelectedIndex = -1
@@ -195,33 +191,30 @@ Public Class frm_mm4admin
         SP_AutoNumber()
     End Sub
 
-    ' ==========================================
-    ' CLEAR (CATEGORY)
-    ' ==========================================
     Sub clearCategory()
-        ErrorProvider1.Clear()
-        bordercolor()
+        ResetValidation()
         originalCategoryId = 0
         txbcategoryname.Clear()
     End Sub
 
-    Sub bordercolor()
-        txbpn.BorderColor = Color.Black
-        txbprice.BorderColor = Color.Black
-        txbpq.BorderColor = Color.Black
-        txbproductcat.BorderColor = Color.Black
-        txbcategoryname.BorderColor = Color.Black
-        picturebox1.BackColor = Color.SlateGray
+    ' ==========================================
+    ' SAVE MENU (CONTROLLER)
+    ' ==========================================
+    Sub saveMenu()
+        If originalItemCode <> "" Then
+            updateData()
+        Else
+            insertData()
+        End If
     End Sub
 
     ' ==========================================
-    ' SAVE MENU (INSERT / UPDATE)
+    ' INSERT DATA SUB
     ' ==========================================
-    Sub saveMenu()
+    Private Sub insertData()
         Dim ms As New MemoryStream
         picturebox1.Image.Save(ms, picturebox1.Image.RawFormat)
 
-        ' ⭐ get category_id from the selected name
         conn()
         query = "SELECT category_id FROM categories WHERE category_name = @NAME"
         cmd = New SqlClient.SqlCommand(query, sqlconn)
@@ -229,57 +222,129 @@ Public Class frm_mm4admin
         Dim categoryId As Integer = Convert.ToInt32(cmd.ExecuteScalar())
         cmd.Dispose()
 
-        If originalItemCode <> "" Then
-            ' UPDATE
-            query = "UPDATE menu_items SET product_name=@NAME, price=@PRICE, category_id=@CAT, " &
-                "       quantity=@QTY, product_image=@IMG WHERE item_code=@CODE"
-            cmd = New SqlClient.SqlCommand(query, sqlconn)
-            With cmd.Parameters
-                .AddWithValue("@NAME", txbpn.Text)
-                .AddWithValue("@PRICE", txbprice.Text)
-                .AddWithValue("@CAT", categoryId)               ' ⭐ use lookup
-                .AddWithValue("@QTY", txbpq.Text)
-                .AddWithValue("@IMG", ms.ToArray())
-                .AddWithValue("@CODE", originalItemCode)
-            End With
-            cmd.ExecuteNonQuery()
-            cmd.Dispose()
+        cmd = New SqlClient.SqlCommand("SP_AutoNumberMenu", sqlconn)
+        cmd.CommandType = CommandType.StoredProcedure
+        cmd.Parameters.AddWithValue("@pfx", "M")
+        Dim outP As New SqlParameter("@NewNumber", SqlDbType.VarChar, 20)
+        outP.Direction = ParameterDirection.Output
+        cmd.Parameters.Add(outP)
+        cmd.ExecuteScalar()
+        Dim newCode As String = outP.Value.ToString()
+        cmd.Dispose()
+
+        query = "INSERT INTO menu_items (item_code, product_name, price, category_id, quantity, product_image, IsActive) " &
+            "VALUES (@CODE, @NAME, @PRICE, @CAT, @QTY, @IMG, 1)"
+        cmd = New SqlClient.SqlCommand(query, sqlconn)
+        With cmd.Parameters
+            .AddWithValue("@CODE", newCode)
+            .AddWithValue("@NAME", txbpn.Text)
+            .AddWithValue("@PRICE", txbprice.Text)
+            .AddWithValue("@CAT", categoryId)
+            .AddWithValue("@QTY", txbpq.Text)
+            .AddWithValue("@IMG", ms.ToArray())
+        End With
+        cmd.ExecuteNonQuery()
+        cmd.Dispose()
+
+        CreateNewAutoNumber()
+        SP_AutoNumber()
+    End Sub
+
+    ' ==========================================
+    ' UPDATE DATA SUB
+    ' ==========================================
+    Private Sub updateData()
+        Dim ms As New MemoryStream
+        picturebox1.Image.Save(ms, picturebox1.Image.RawFormat)
+
+        conn()
+        query = "SELECT category_id FROM categories WHERE category_name = @NAME"
+        cmd = New SqlClient.SqlCommand(query, sqlconn)
+        cmd.Parameters.AddWithValue("@NAME", txbproductcat.Text)
+        Dim categoryId As Integer = Convert.ToInt32(cmd.ExecuteScalar())
+        cmd.Dispose()
+
+        query = "UPDATE menu_items SET product_name=@NAME, price=@PRICE, category_id=@CAT, " &
+            "       quantity=@QTY, product_image=@IMG WHERE item_code=@CODE"
+        cmd = New SqlClient.SqlCommand(query, sqlconn)
+        With cmd.Parameters
+            .AddWithValue("@NAME", txbpn.Text)
+            .AddWithValue("@PRICE", txbprice.Text)
+            .AddWithValue("@CAT", categoryId)
+            .AddWithValue("@QTY", txbpq.Text)
+            .AddWithValue("@IMG", ms.ToArray())
+            .AddWithValue("@CODE", originalItemCode)
+        End With
+        cmd.ExecuteNonQuery()
+        cmd.Dispose()
+    End Sub
+
+    ' ==========================================
+    ' LIVE VALIDATION EVENTS
+    ' ==========================================
+    Private Sub txbpn_TextChanged(sender As Object, e As EventArgs) Handles txbpn.TextChanged
+        If txbpn.Text.Length = 0 Then
+            ErrorProvider1.SetError(txbpn, "Product name cannot be blank.")
+            txbpn.BorderColor = Color.Red
         Else
-            ' INSERT — same
-            cmd = New SqlClient.SqlCommand("SP_AutoNumberMenu", sqlconn)
-            cmd.CommandType = CommandType.StoredProcedure
-            cmd.Parameters.AddWithValue("@pfx", "M")
-            Dim outP As New SqlParameter("@NewNumber", SqlDbType.VarChar, 20)
-            outP.Direction = ParameterDirection.Output
-            cmd.Parameters.Add(outP)
-            cmd.ExecuteScalar()
-            Dim newCode As String = outP.Value.ToString()
-            cmd.Dispose()
-
-            query = "INSERT INTO menu_items (item_code, product_name, price, category_id, quantity, product_image, IsActive) " &
-                "VALUES (@CODE, @NAME, @PRICE, @CAT, @QTY, @IMG, 1)"
-            cmd = New SqlClient.SqlCommand(query, sqlconn)
-            With cmd.Parameters
-                .AddWithValue("@CODE", newCode)
-                .AddWithValue("@NAME", txbpn.Text)
-                .AddWithValue("@PRICE", txbprice.Text)
-                .AddWithValue("@CAT", categoryId)
-                .AddWithValue("@QTY", txbpq.Text)
-                .AddWithValue("@IMG", ms.ToArray())
-            End With
-            cmd.ExecuteNonQuery()
-            cmd.Dispose()
-
-            CreateNewAutoNumber()
-            SP_AutoNumber()
+            ErrorProvider1.SetError(txbpn, "")
+            txbpn.BorderColor = Color.Black
         End If
     End Sub
+
+    Private Sub txbprice_TextChanged(sender As Object, e As EventArgs) Handles txbprice.TextChanged
+        Dim priceVal As Decimal
+        If txbprice.Text.Length = 0 Then
+            ErrorProvider1.SetError(txbprice, "Price cannot be blank.")
+            txbprice.BorderColor = Color.Red
+        ElseIf Not Decimal.TryParse(txbprice.Text, priceVal) OrElse priceVal <= 0 Then
+            ErrorProvider1.SetError(txbprice, "Enter a valid price greater than 0.")
+            txbprice.BorderColor = Color.Red
+        Else
+            ErrorProvider1.SetError(txbprice, "")
+            txbprice.BorderColor = Color.Black
+        End If
+    End Sub
+
+    Private Sub txbpq_TextChanged(sender As Object, e As EventArgs) Handles txbpq.TextChanged
+        Dim qtyVal As Integer
+        If txbpq.Text.Length = 0 Then
+            ErrorProvider1.SetError(txbpq, "Quantity cannot be blank.")
+            txbpq.BorderColor = Color.Red
+        ElseIf Not Integer.TryParse(txbpq.Text, qtyVal) OrElse qtyVal < 0 Then
+            ErrorProvider1.SetError(txbpq, "Enter a valid quantity.")
+            txbpq.BorderColor = Color.Red
+        Else
+            ErrorProvider1.SetError(txbpq, "")
+            txbpq.BorderColor = Color.Black
+        End If
+    End Sub
+
+    Private Sub txbproductcat_SelectedIndexChanged(sender As Object, e As EventArgs) Handles txbproductcat.SelectedIndexChanged
+        If txbproductcat.SelectedIndex = -1 Then
+            ErrorProvider1.SetError(txbproductcat, "Please select category.")
+            txbproductcat.BorderColor = Color.Red
+        Else
+            ErrorProvider1.SetError(txbproductcat, "")
+            txbproductcat.BorderColor = Color.Black
+        End If
+    End Sub
+
+    Private Sub txbcategoryname_TextChanged(sender As Object, e As EventArgs) Handles txbcategoryname.TextChanged
+        If txbcategoryname.Text.Length = 0 Then
+            ErrorProvider1.SetError(txbcategoryname, "Category name cannot be blank.")
+            txbcategoryname.BorderColor = Color.Red
+        Else
+            ErrorProvider1.SetError(txbcategoryname, "")
+            txbcategoryname.BorderColor = Color.Black
+        End If
+    End Sub
+
     ' ==========================================
-    ' ADD / SAVE MENU BUTTON
+    ' ADD BUTTON VALIDATION (FINAL CHECK)
     ' ==========================================
     Private Sub addmenubtn_Click(sender As Object, e As EventArgs) Handles addmenubtn.Click
-        ErrorProvider1.Clear()
-        bordercolor()
+        ResetValidation()
         Dim isValid As Boolean = True
 
         If txbpn.Text = "" Then
@@ -333,8 +398,58 @@ Public Class frm_mm4admin
         clear()
     End Sub
 
+    Private Sub addbtncateg_Click(sender As Object, e As EventArgs) Handles addbtncateg.Click
+        ResetValidation()
+
+        If txbcategoryname.Text = "" Then
+            ErrorProvider1.SetError(txbcategoryname, "Category name cannot be blank.")
+            txbcategoryname.BorderColor = Color.Red
+            Exit Sub
+        End If
+
+        query = "SELECT COUNT(*) FROM categories WHERE category_name = @NAME AND category_id <> @CID"
+        cmd = New SqlClient.SqlCommand(query, sqlconn)
+        With cmd.Parameters
+            .AddWithValue("@NAME", txbcategoryname.Text)
+            .AddWithValue("@CID", originalCategoryId)
+        End With
+        If Convert.ToInt32(cmd.ExecuteScalar()) > 0 Then
+            ErrorProvider1.SetError(txbcategoryname, "Category name already exists.")
+            txbcategoryname.BorderColor = Color.Red
+            cmd.Dispose()
+            Exit Sub
+        End If
+        cmd.Dispose()
+
+        If originalCategoryId > 0 Then
+            query = "UPDATE categories SET category_name=@NAME WHERE category_id=@CID"
+            cmd = New SqlClient.SqlCommand(query, sqlconn)
+            With cmd.Parameters
+                .AddWithValue("@NAME", txbcategoryname.Text)
+                .AddWithValue("@CID", originalCategoryId)
+            End With
+        Else
+            query = "INSERT INTO categories (category_name) VALUES (@NAME)"
+            cmd = New SqlClient.SqlCommand(query, sqlconn)
+            With cmd.Parameters
+                .AddWithValue("@NAME", txbcategoryname.Text)
+            End With
+        End If
+        cmd.ExecuteNonQuery()
+        cmd.Dispose()
+
+        MsgBox("Data saved successfully", MsgBoxStyle.Information, "Success")
+        readCategories()
+        loadCategoriesToCombo()
+        clearCategory()
+    End Sub
+
+    Private Sub clearbtncateg_Click(sender As Object, e As EventArgs) Handles clearbtncateg.Click
+        clearCategory()
+    End Sub
+
     ' ==========================================
-    ' MENU GRID CLICK — ACTION(7) / UPDATE(8) / DELETE(9)
+    ' GRID CLICK EVENTS
     ' ==========================================
     Private Sub datagridviewmenulist_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles datagridviewmenulist.CellContentClick
         If e.RowIndex < 0 Then Return
@@ -360,7 +475,7 @@ Public Class frm_mm4admin
             txbpq.Text = datagridviewmenulist.Item(4, i).Value.ToString()
             txbproductcat.Text = datagridviewmenulist.Item(3, i).Value.ToString()
             viewimage()
-            bordercolor()
+            ResetValidation()
 
         ElseIf e.ColumnIndex = 9 Then
             If MessageBox.Show("Delete this item permanently?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
@@ -374,8 +489,43 @@ Public Class frm_mm4admin
         End If
     End Sub
 
+    Private Sub datagridviewcategories_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles datagridviewcategories.CellContentClick
+        If e.RowIndex < 0 Then Return
+        Dim i As Integer = e.RowIndex
+
+        If e.ColumnIndex = 2 Then
+            clearCategory()
+            originalCategoryId = CInt(datagridviewcategories.Item(0, i).Value)
+            txbcategoryname.Text = datagridviewcategories.Item(1, i).Value.ToString()
+            ResetValidation()
+
+        ElseIf e.ColumnIndex = 3 Then
+            query = "SELECT COUNT(*) FROM menu_items WHERE category_id = @CID"
+            cmd = New SqlClient.SqlCommand(query, sqlconn)
+            With cmd.Parameters
+                .AddWithValue("@CID", CInt(datagridviewcategories.Item(0, i).Value))
+            End With
+            Dim inUse As Boolean = Convert.ToInt32(cmd.ExecuteScalar()) > 0
+            cmd.Dispose()
+
+            If inUse Then
+                MsgBox("Cannot delete - category is in use.", MsgBoxStyle.Exclamation, "In Use")
+            ElseIf MessageBox.Show("Delete this category?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
+                query = "DELETE FROM categories WHERE category_id = @CID"
+                cmd = New SqlClient.SqlCommand(query, sqlconn)
+                With cmd.Parameters
+                    .AddWithValue("@CID", CInt(datagridviewcategories.Item(0, i).Value))
+                End With
+                cmd.ExecuteNonQuery()
+                cmd.Dispose()
+                readCategories()
+                loadCategoriesToCombo()
+            End If
+        End If
+    End Sub
+
     ' ==========================================
-    ' VIEW IMAGE
+    ' IMAGE & KEYPRESS EVENTS
     ' ==========================================
     Sub viewimage()
         If txbiditem.Text = "" Then
@@ -413,20 +563,12 @@ Public Class frm_mm4admin
         End If
     End Sub
 
-    ' ==========================================
-    ' KEYPRESS — PRODUCT NAME
-    ' ==========================================
     Private Sub ProductName_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txbpn.KeyPress
         If Not (Char.IsLetter(e.KeyChar) OrElse Char.IsControl(e.KeyChar) OrElse e.KeyChar = " "c) Then
             e.Handled = True
-        ElseIf txbpn.Text.Length = 0 OrElse (txbpn.SelectionStart > 0 AndAlso txbpn.Text(txbpn.SelectionStart - 1) = " "c) Then
-            e.KeyChar = Char.ToUpper(e.KeyChar)
         End If
     End Sub
 
-    ' ==========================================
-    ' KEYPRESS — NUMERIC ONLY
-    ' ==========================================
     Private Sub NumericOnly_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txbprice.KeyPress, txbpq.KeyPress
         If Not (Char.IsDigit(e.KeyChar) OrElse Char.IsControl(e.KeyChar) OrElse e.KeyChar = "."c) Then
             e.Handled = True
@@ -435,116 +577,12 @@ Public Class frm_mm4admin
         End If
     End Sub
 
-    ' ==========================================
-    ' ADD / UPDATE CATEGORY
-    ' ==========================================
-    Private Sub addbtncateg_Click(sender As Object, e As EventArgs) Handles addbtncateg.Click
-        ErrorProvider1.Clear()
-        bordercolor()
-        Dim isValid As Boolean = True
-
-        If txbcategoryname.Text = "" Then
-            ErrorProvider1.SetError(txbcategoryname, "Category name cannot be blank.")
-            txbcategoryname.BorderColor = Color.Red
-            isValid = False
-        End If
-
-        If isValid Then
-            query = "SELECT COUNT(*) FROM categories WHERE category_name = @NAME AND category_id <> @CID"
-            cmd = New SqlClient.SqlCommand(query, sqlconn)
-            With cmd.Parameters
-                .AddWithValue("@NAME", txbcategoryname.Text)
-                .AddWithValue("@CID", originalCategoryId)
-            End With
-            If Convert.ToInt32(cmd.ExecuteScalar()) > 0 Then
-                ErrorProvider1.SetError(txbcategoryname, "Category name already exists.")
-                txbcategoryname.BorderColor = Color.Red
-                isValid = False
-            End If
-            cmd.Dispose()
-        End If
-
-        If isValid Then
-            If originalCategoryId > 0 Then
-                query = "UPDATE categories SET category_name=@NAME WHERE category_id=@CID"
-                cmd = New SqlClient.SqlCommand(query, sqlconn)
-                With cmd.Parameters
-                    .AddWithValue("@NAME", txbcategoryname.Text)
-                    .AddWithValue("@CID", originalCategoryId)
-                End With
-            Else
-                query = "INSERT INTO categories (category_name) VALUES (@NAME)"
-                cmd = New SqlClient.SqlCommand(query, sqlconn)
-                With cmd.Parameters
-                    .AddWithValue("@NAME", txbcategoryname.Text)
-                End With
-            End If
-            cmd.ExecuteNonQuery()
-            cmd.Dispose()
-
-            MsgBox("Data saved successfully", MsgBoxStyle.Information, "Success")
-            readCategories()
-            loadCategoriesToCombo()
-            clearCategory()
-        End If
-    End Sub
-
-    Private Sub clearbtncateg_Click(sender As Object, e As EventArgs) Handles clearbtncateg.Click
-        clearCategory()
-    End Sub
-
-    ' ==========================================
-    ' CATEGORY GRID CLICK — UPDATE(2) / DELETE(3)
-    ' ==========================================
-    Private Sub datagridviewcategories_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles datagridviewcategories.CellContentClick
-        If e.RowIndex < 0 Then Return
-        Dim i As Integer = e.RowIndex
-
-        If e.ColumnIndex = 2 Then
-            clearCategory()
-            originalCategoryId = CInt(datagridviewcategories.Item(0, i).Value)
-            txbcategoryname.Text = datagridviewcategories.Item(1, i).Value.ToString()
-            bordercolor()
-
-        ElseIf e.ColumnIndex = 3 Then
-            query = "SELECT COUNT(*) FROM menu_items WHERE category_id = @CID"
-            cmd = New SqlClient.SqlCommand(query, sqlconn)
-            With cmd.Parameters
-                .AddWithValue("@CID", CInt(datagridviewcategories.Item(0, i).Value))
-            End With
-            Dim inUse As Boolean = Convert.ToInt32(cmd.ExecuteScalar()) > 0
-            cmd.Dispose()
-
-            If inUse Then
-                MsgBox("Cannot delete - category is in use.", MsgBoxStyle.Exclamation, "In Use")
-            ElseIf MessageBox.Show("Delete this category?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = DialogResult.Yes Then
-                query = "DELETE FROM categories WHERE category_id = @CID"
-                cmd = New SqlClient.SqlCommand(query, sqlconn)
-                With cmd.Parameters
-                    .AddWithValue("@CID", CInt(datagridviewcategories.Item(0, i).Value))
-                End With
-                cmd.ExecuteNonQuery()
-                cmd.Dispose()
-                readCategories()
-                loadCategoriesToCombo()
-            End If
-        End If
-    End Sub
-
-    ' ==========================================
-    ' CATEGORY NAME KEYPRESS
-    ' ==========================================
     Private Sub CategoryName_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txbcategoryname.KeyPress
         If Not (Char.IsLetter(e.KeyChar) OrElse Char.IsControl(e.KeyChar) OrElse e.KeyChar = " "c) Then
             e.Handled = True
-        ElseIf txbcategoryname.Text.Length = 0 OrElse (txbcategoryname.SelectionStart > 0 AndAlso txbcategoryname.Text(txbcategoryname.SelectionStart - 1) = " "c) Then
-            e.KeyChar = Char.ToUpper(e.KeyChar)
         End If
     End Sub
 
-    ' ==========================================
-    ' FILTER + SEARCH
-    ' ==========================================
     Private Sub cmbfilter_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbfilter.SelectedIndexChanged
         readdata()
     End Sub

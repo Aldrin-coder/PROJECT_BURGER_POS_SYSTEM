@@ -32,7 +32,7 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.BURGER_SHOP_POS_SYSTEm.frm_oe4cashier
+            Me.MainForm = Global.BURGER_SHOP_POS_SYSTEm.loginform
         End Sub
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _

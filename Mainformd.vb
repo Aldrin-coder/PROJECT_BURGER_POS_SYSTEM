@@ -27,11 +27,11 @@ Public Class Mainformd
 
     Sub loaddashboardroles()
         If CurrentUser.role.ToLower() = "owner" Then
-            LoadFormInsidePanel(New frm_dashboard4adminandowner())
+            LoadFormInsidePanel(New frm_dashboard1())
         ElseIf CurrentUser.role.ToLower() = "admin" Then
-            LoadFormInsidePanel(New frm_dashboard4adminandowner())
+            LoadFormInsidePanel(New frm_dashboard1())
         ElseIf CurrentUser.role.ToLower() = "cashier" Then
-            LoadFormInsidePanel(New frm_dashboard4cashier())
+            LoadFormInsidePanel(New frm_dashboard1())
         End If
     End Sub
 
@@ -45,21 +45,31 @@ Public Class Mainformd
     End Sub
 
     Private Sub buttonswitch_Click(sender As Object, e As EventArgs) Handles _
-        dashboardbtn.Click, mmbtn.Click, muabtn.Click, oebtn.Click, srbtn.Click, trbtn.Click
+        dashboardbtn.Click, mmbtn.Click, muabtn.Click, oebtn.Click, srbtn.Click
 
         Dim btn As Guna.UI2.WinForms.Guna2Button = CType(sender, Guna.UI2.WinForms.Guna2Button)
 
 
-        For Each b As Guna.UI2.WinForms.Guna2Button In {dashboardbtn, mmbtn, muabtn, oebtn, trbtn, srbtn}
+        For Each b As Guna.UI2.WinForms.Guna2Button In {dashboardbtn, mmbtn, muabtn, srbtn}
             b.Checked = (b Is sender)
         Next
 
 
         If btn.Name = "dashboardbtn" Then
-
+            If CurrentUser.role.ToLower() = "owner" Then
+                LoadFormInsidePanel(New frm_dashboard1())
+            ElseIf CurrentUser.role.ToLower() = "admin" Then
+                LoadFormInsidePanel(New frm_dashboard1())
+            ElseIf CurrentUser.role.ToLower() = "cashier" Then
+                LoadFormInsidePanel(New frm_dashboard1())
+            End If
         ElseIf btn.Name = "mmbtn" Then
-
-
+            If CurrentUser.role.ToLower() = "admin" Then
+                LoadFormInsidePanel(New frm_mm4admin())
+            End If
+            If CurrentUser.role.ToLower() = "owner" Then
+                LoadFormInsidePanel(New frm_mm4admin())
+            End If
         ElseIf btn.Name = "muabtn" Then
             If CurrentUser.role.ToLower() = "owner" Then
                 LoadFormInsidePanel(New frm_mua4admin_owner2())
@@ -68,13 +78,19 @@ Public Class Mainformd
             End If
 
         ElseIf btn.Name = "oebtn" Then
+            If CurrentUser.role.ToLower() = "cashier" Then
+                LoadFormInsidePanel(New frm_oe4cashier())
+            End If
 
 
-                ElseIf btn.Name = "trbtn" Then
+        ElseIf btn.Name = "srbtn" Then
+            If CurrentUser.role.ToLower() = "owner" Then
+                LoadFormInsidePanel(New frm_sales_report4owner())
 
-                ElseIf btn.Name = "srbtn" Then
 
-                End If
+            End If
+
+        End If
     End Sub
 
 
@@ -85,7 +101,7 @@ Public Class Mainformd
         oebtn.Visible = False
         mmbtn.Visible = False
         muabtn.Visible = False
-        trbtn.Visible = False
+
         srbtn.Visible = False
         lblusershift1.Visible = False
 
@@ -104,7 +120,7 @@ Public Class Mainformd
 
             lblusershift1.Visible = False
             lbluserinfo1.Margin = New Padding(0, 0, 0, 20)
-            logoutbtn.Margin = New Padding(92, 120, 3, 0)
+            logoutbtn.Margin = New Padding(92, 130, 3, 0)
 
 
 
@@ -126,7 +142,7 @@ Public Class Mainformd
 
         ElseIf CurrentUser.role.ToLower = "cashier" Then
             oebtn.Visible = True
-            trbtn.Visible = True
+
             dashboardbtn.Visible = True
             lblusershift1.Visible = True
 
@@ -137,7 +153,7 @@ Public Class Mainformd
             lbluserg1.Text = "GENDER           : " & CurrentUser.gender.ToUpper
             lblusershift1.Text = "SHIFT           : " & CurrentUser.shift.ToUpper
             lbluserinfo1.Margin = New Padding(0, 0, 0, 10)
-            logoutbtn.Margin = New Padding(92, 170, 3, 0)
+            logoutbtn.Margin = New Padding(92, 230, 3, 0)
 
 
         End If
@@ -182,11 +198,11 @@ Public Class Mainformd
     End Sub
 
     Private Sub FlowLayoutPanel3_Paint(sender As Object, e As PaintEventArgs) Handles FlowLayoutPanel3.Paint
-        FlowLayoutPanel3.BackColor = Color.FromArgb(50, 10, 20, 40)
+        FlowLayoutPanel3.BackColor = Color.FromArgb(100, 10, 20, 40)
 
     End Sub
 
-    Private Sub panelcontainer_Paint(sender As Object, e As PaintEventArgs) Handles panelcontainer.Paint
+    Private Sub Guna2Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Guna2Panel1.Paint
 
     End Sub
 End Class

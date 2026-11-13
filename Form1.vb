@@ -166,8 +166,8 @@ Public Class loginform
         cmd.Dispose()
 
         If matcheddata Then
-            MsgBox("Welcome! " & CurrentUser.fullname &
-                   " is now logged in as (" & CurrentUser.role & ").",
+            MsgBox("Welcome! " & StrConv(CurrentUser.fullname, VbStrConv.ProperCase) &
+                   " is now logged in as " & StrConv(CurrentUser.role, VbStrConv.ProperCase) & ".",
                    MsgBoxStyle.Information, "Login Successful!")
 
             Mainformd.Show()

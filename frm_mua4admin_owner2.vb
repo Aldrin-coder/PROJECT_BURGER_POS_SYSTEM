@@ -6,12 +6,15 @@ Public Class frm_mua4admin_owner2
 
     Dim originalUsername As String = ""
 
+    ' ==========================================
+    ' FORM LOAD & SETUP
+    ' ==========================================
     Private Sub frm_mua4admin_owner2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         conn()
         rolefilter()
         cmbitems()
         readdata()
-        bordercolor()
+        ResetValidation()
         cmbshift.Enabled = False
     End Sub
 
@@ -33,7 +36,7 @@ Public Class frm_mua4admin_owner2
         If cmbfilter.Items.Count > 0 Then cmbfilter.SelectedIndex = 0
     End Sub
 
-    Sub cmbitems()
+    Private Sub cmbitems()
         cmbshift.Items.Clear() : cmbshift.Items.AddRange({"am", "pm"})
         cmbgender.Items.Clear() : cmbgender.Items.AddRange({"male", "female"})
         cmben.Items.Clear() : cmben.Items.AddRange({"Jr.", "Sr.", "I", "II", "III", "IV", "V"})
@@ -45,7 +48,10 @@ Public Class frm_mua4admin_owner2
         datagridviewaccounts.Columns("Column3").Visible = Not (r = "owner" OrElse r = "admin" OrElse f = "owner" OrElse f = "admin")
     End Sub
 
-    Sub readdata()
+    ' ==========================================
+    ' READ DATA (FIXED FOR DBNULL)
+    ' ==========================================
+    Private Sub readdata()
         datagridviewaccounts.Rows.Clear()
         conn()
         query = "SELECT role, user_code, shift, gender, first_name, middle_name, last_name, extension_name, username, password, created_at, userimage FROM user_accounts WHERE 1 = 1 "
@@ -64,19 +70,35 @@ Public Class frm_mua4admin_owner2
 
         dr = cmd.ExecuteReader
         While dr.Read
-            datagridviewaccounts.Rows.Add(dr("role"), dr("user_code"), dr("shift"), dr("gender"), dr("first_name"), dr("middle_name"), dr("last_name"), dr("extension_name"), dr("username"), dr("password"), dr("created_at"), dr("userimage"), "UPDATE", "DELETE")
+            datagridviewaccounts.Rows.Add(
+                dr("role"),
+                dr("user_code"),
+                If(IsDBNull(dr("shift")), "", dr("shift")),
+                dr("gender"),
+                dr("first_name"),
+                If(IsDBNull(dr("middle_name")), "", dr("middle_name")),
+                dr("last_name"),
+                If(IsDBNull(dr("extension_name")), "", dr("extension_name")),
+                dr("username"),
+                dr("password"),
+                dr("created_at"),
+                If(IsDBNull(dr("userimage")), Nothing, Image.FromStream(New MemoryStream(CType(dr("userimage"), Byte())))),
+                "UPDATE",
+                "DELETE")
         End While
         cmd.Dispose()
         dr.Close()
 
         For i = 0 To datagridviewaccounts.Rows.Count - 1
-            datagridviewaccounts.Rows(i).Height = 100
+            datagridviewaccounts.Rows(i).Height = 60
         Next
     End Sub
 
-    Sub clear()
-        ErrorProvider1.Clear()
-        bordercolor()
+    ' ==========================================
+    ' CLEAR FIELDS & AUTO NUMBER
+    ' ==========================================
+    Private Sub clear()
+        ResetValidation()
 
         cmbrole.SelectedIndex = -1 : cmbshift.SelectedIndex = -1 : cmbgender.SelectedIndex = -1 : cmben.SelectedIndex = -1
         txbfn.Clear() : txbmn.Clear() : txbln.Clear() : txbusername.Clear() : txbpass.Clear() : txbcp.Clear()
@@ -86,15 +108,15 @@ Public Class frm_mua4admin_owner2
         cmben.Enabled = True : txbmn.Enabled = True : cmbshift.Enabled = False
     End Sub
 
-    Sub SP_AutoNumber()
+    Private Sub SP_AutoNumber()
         conn()
         Dim number As String
-        query = "SELECT Max(NewNumber) FROM AutoNumber WHERE Pfx = 'DSBS'"
+        query = "SELECT Max(NewNumber) FROM AutoNumberUser WHERE Pfx = 'DSBS'"
         cmd = New SqlClient.SqlCommand(query, sqlconn)
         With cmd
             If IsDBNull(cmd.ExecuteScalar) Then
                 CreateNewAutoNumber()
-                query = "SELECT Max(NewNumber) FROM AutoNumber WHERE Pfx = 'DSBS'"
+                query = "SELECT Max(NewNumber) FROM AutoNumberUser WHERE Pfx = 'DSBS'"
                 cmd = New SqlClient.SqlCommand(query, sqlconn)
                 txbrole.Text = Convert.ToString(cmd.ExecuteScalar)
                 cmd.Dispose()
@@ -106,12 +128,12 @@ Public Class frm_mua4admin_owner2
         cmd.Dispose()
     End Sub
 
-    Sub CreateNewAutoNumber()
+    Private Sub CreateNewAutoNumber()
         Try
             Dim cmd As New SqlCommand
             With cmd
                 .Connection = sqlconn
-                .CommandText = "SP_AutoNumber"
+                .CommandText = "SP_AutoNumberUser"
                 .CommandType = CommandType.StoredProcedure
                 .Parameters.AddWithValue("@pfx", "DSBS")
             End With
@@ -121,7 +143,8 @@ Public Class frm_mua4admin_owner2
         End Try
     End Sub
 
-    Function IsUsernameExists() As Boolean
+    Private Function IsUsernameExists() As Boolean
+        conn()
         query = "SELECT COUNT(*) FROM user_accounts WHERE username = @username"
         cmd = New SqlClient.SqlCommand(query, sqlconn)
         cmd.Parameters.AddWithValue("@username", txbusername.Text)
@@ -131,9 +154,11 @@ Public Class frm_mua4admin_owner2
     End Function
 
     ' ==========================================
-    ' UPDATED BORDERCOLOR (INCLUDES COMBOBOXES & PICTUREBOX)
+    ' COMBINED VALIDATION & BORDER RESET
     ' ==========================================
-    Sub bordercolor()
+    Private Sub ResetValidation()
+        ErrorProvider1.Clear()
+
         txbusername.BorderColor = Color.Black
         txbpass.BorderColor = Color.Black
         txbcp.BorderColor = Color.Black
@@ -149,7 +174,21 @@ Public Class frm_mua4admin_owner2
         picturebox1.BackColor = Color.SlateGray
     End Sub
 
-    Sub savedata()
+    ' ==========================================
+    ' SAVE DATA (CONTROLLER)
+    ' ==========================================
+    Private Sub savedata()
+        If originalUsername <> "" Then
+            updateData()
+        Else
+            insertData()
+        End If
+    End Sub
+
+    ' ==========================================
+    ' INSERT DATA SUB
+    ' ==========================================
+    Private Sub insertData()
         Dim ms As New MemoryStream
         picturebox1.Image.Save(ms, picturebox1.Image.RawFormat)
 
@@ -162,58 +201,192 @@ Public Class frm_mua4admin_owner2
         Dim shiftnone As Object = DBNull.Value
         If cmbrole.Text.ToLower() = "cashier" AndAlso cmbshift.Text <> "" Then shiftnone = cmbshift.Text
 
-        If originalUsername <> "" Then
-            ' UPDATE QUERY
-            query = "UPDATE user_accounts SET role=@ROLE, user_code=@CODE, username=@USERNAME, password=@PASSWORD, gender=@GENDER, first_name=@FIRSTNAME, middle_name=@MIDDLENAME, last_name=@LASTNAME, extension_name=@EXTENSIONNAME, shift=@SHIFT, userimage=@USERIMAGE WHERE username=@ORIGINAL_USERNAME"
-            cmd = New SqlClient.SqlCommand(query, sqlconn)
-            With cmd.Parameters
-                .AddWithValue("@ROLE", cmbrole.Text)
-                .AddWithValue("@CODE", txbrole.Text)
-                .AddWithValue("@USERNAME", txbusername.Text)
-                .AddWithValue("@PASSWORD", txbpass.Text)
-                .AddWithValue("@GENDER", cmbgender.Text)
-                .AddWithValue("@FIRSTNAME", txbfn.Text)
-                .AddWithValue("@MIDDLENAME", mnnone)
-                .AddWithValue("@LASTNAME", txbln.Text)
-                .AddWithValue("@EXTENSIONNAME", ennone)
-                .AddWithValue("@SHIFT", shiftnone)
-                .AddWithValue("@USERIMAGE", ms.ToArray())
-                .AddWithValue("@ORIGINAL_USERNAME", originalUsername)
-            End With
-            cmd.ExecuteNonQuery()
-            cmd.Dispose()
-        Else
-            ' INSERT QUERY
-            query = "INSERT INTO user_accounts (role, user_code, username, password, gender, first_name, middle_name, last_name, extension_name, shift, created_at, userimage) VALUES (@ROLE, @CODE, @USERNAME, @PASSWORD, @GENDER, @FIRSTNAME, @MIDDLENAME, @LASTNAME, @EXTENSIONNAME, @SHIFT, @CREATED_AT, @USERIMAGE)"
-            cmd = New SqlClient.SqlCommand(query, sqlconn)
-            With cmd.Parameters
-                .AddWithValue("@ROLE", cmbrole.Text)
-                .AddWithValue("@CODE", txbrole.Text)
-                .AddWithValue("@USERNAME", txbusername.Text)
-                .AddWithValue("@PASSWORD", txbpass.Text)
-                .AddWithValue("@GENDER", cmbgender.Text)
-                .AddWithValue("@FIRSTNAME", txbfn.Text)
-                .AddWithValue("@MIDDLENAME", mnnone)
-                .AddWithValue("@LASTNAME", txbln.Text)
-                .AddWithValue("@EXTENSIONNAME", ennone)
-                .AddWithValue("@SHIFT", shiftnone)
-                .AddWithValue("@CREATED_AT", DateTime.Now)
-                .AddWithValue("@USERIMAGE", ms.ToArray())
-            End With
-            cmd.ExecuteNonQuery()
-            cmd.Dispose()
+        query = "INSERT INTO user_accounts (role, user_code, username, password, gender, first_name, middle_name, last_name, extension_name, shift, created_at, userimage) VALUES (@ROLE, @CODE, @USERNAME, @PASSWORD, @GENDER, @FIRSTNAME, @MIDDLENAME, @LASTNAME, @EXTENSIONNAME, @SHIFT, @CREATED_AT, @USERIMAGE)"
 
-            CreateNewAutoNumber()
-            SP_AutoNumber()
+        cmd = New SqlClient.SqlCommand(query, sqlconn)
+        With cmd.Parameters
+            .AddWithValue("@ROLE", cmbrole.Text)
+            .AddWithValue("@CODE", txbrole.Text)
+            .AddWithValue("@USERNAME", txbusername.Text)
+            .AddWithValue("@PASSWORD", txbpass.Text)
+            .AddWithValue("@GENDER", cmbgender.Text)
+            .AddWithValue("@FIRSTNAME", txbfn.Text)
+            .AddWithValue("@MIDDLENAME", mnnone)
+            .AddWithValue("@LASTNAME", txbln.Text)
+            .AddWithValue("@EXTENSIONNAME", ennone)
+            .AddWithValue("@SHIFT", shiftnone)
+            .AddWithValue("@CREATED_AT", DateTime.Now)
+            .AddWithValue("@USERIMAGE", ms.ToArray())
+        End With
+        cmd.ExecuteNonQuery()
+        cmd.Dispose()
+
+        CreateNewAutoNumber()
+        SP_AutoNumber()
+    End Sub
+
+    ' ==========================================
+    ' UPDATE DATA SUB
+    ' ==========================================
+    Private Sub updateData()
+        Dim ms As New MemoryStream
+        picturebox1.Image.Save(ms, picturebox1.Image.RawFormat)
+
+        Dim mnnone As Object = DBNull.Value
+        If Not chkbnonemn.Checked AndAlso txbmn.Text <> "" Then mnnone = txbmn.Text
+
+        Dim ennone As Object = DBNull.Value
+        If Not chknoneen.Checked AndAlso cmben.Text <> "" Then ennone = cmben.Text
+
+        Dim shiftnone As Object = DBNull.Value
+        If cmbrole.Text.ToLower() = "cashier" AndAlso cmbshift.Text <> "" Then shiftnone = cmbshift.Text
+
+        query = "UPDATE user_accounts SET role=@ROLE, user_code=@CODE, username=@USERNAME, password=@PASSWORD, gender=@GENDER, first_name=@FIRSTNAME, middle_name=@MIDDLENAME, last_name=@LASTNAME, extension_name=@EXTENSIONNAME, shift=@SHIFT, userimage=@USERIMAGE WHERE username=@ORIGINAL_USERNAME"
+
+        cmd = New SqlClient.SqlCommand(query, sqlconn)
+        With cmd.Parameters
+            .AddWithValue("@ROLE", cmbrole.Text)
+            .AddWithValue("@CODE", txbrole.Text)
+            .AddWithValue("@USERNAME", txbusername.Text)
+            .AddWithValue("@PASSWORD", txbpass.Text)
+            .AddWithValue("@GENDER", cmbgender.Text)
+            .AddWithValue("@FIRSTNAME", txbfn.Text)
+            .AddWithValue("@MIDDLENAME", mnnone)
+            .AddWithValue("@LASTNAME", txbln.Text)
+            .AddWithValue("@EXTENSIONNAME", ennone)
+            .AddWithValue("@SHIFT", shiftnone)
+            .AddWithValue("@USERIMAGE", ms.ToArray())
+            .AddWithValue("@ORIGINAL_USERNAME", originalUsername)
+        End With
+        cmd.ExecuteNonQuery()
+        cmd.Dispose()
+    End Sub
+
+    ' ==========================================
+    ' LIVE VALIDATION EVENTS 
+    ' ==========================================
+    Private Sub txbusername_TextChanged(sender As Object, e As EventArgs) Handles txbusername.TextChanged
+        If txbusername.Text.Length > 0 AndAlso txbusername.Text.Length < 6 Then
+            ErrorProvider1.SetError(txbusername, "Minimum 6 characters.")
+            txbusername.BorderColor = Color.Red
+        ElseIf txbusername.Text.Length >= 6 AndAlso IsUsernameExists() And txbusername.Text <> originalUsername Then
+            ErrorProvider1.SetError(txbusername, "Username already exists.")
+            txbusername.BorderColor = Color.Red
+        Else
+            ErrorProvider1.SetError(txbusername, "")
+            txbusername.BorderColor = Color.Black
         End If
     End Sub
 
+    Private Sub txbpass_TextChanged(sender As Object, e As EventArgs) Handles txbpass.TextChanged
+        If txbpass.Text.Length > 0 AndAlso txbpass.Text.Length < 8 Then
+            ErrorProvider1.SetError(txbpass, "Minimum 8 characters.")
+            txbpass.BorderColor = Color.Red
+        ElseIf txbpass.Text.Length >= 8 AndAlso Not Regex.IsMatch(txbpass.Text, "[A-Z]") Then
+            ErrorProvider1.SetError(txbpass, "Needs 1 uppercase letter.")
+            txbpass.BorderColor = Color.Red
+        ElseIf txbpass.Text.Length >= 8 AndAlso Not Regex.IsMatch(txbpass.Text, "[0-9]") Then
+            ErrorProvider1.SetError(txbpass, "Needs 1 number.")
+            txbpass.BorderColor = Color.Red
+        Else
+            ErrorProvider1.SetError(txbpass, "")
+            txbpass.BorderColor = Color.Black
+        End If
+    End Sub
+
+    Private Sub txbcp_TextChanged(sender As Object, e As EventArgs) Handles txbcp.TextChanged
+        If txbcp.Text.Length > 0 AndAlso txbcp.Text <> txbpass.Text Then
+            ErrorProvider1.SetError(txbcp, "Passwords do not match.")
+            txbcp.BorderColor = Color.Red
+        Else
+            ErrorProvider1.SetError(txbcp, "")
+            txbcp.BorderColor = Color.Black
+        End If
+    End Sub
+
+    Private Sub txbfn_TextChanged(sender As Object, e As EventArgs) Handles txbfn.TextChanged
+        If txbfn.Text.Length = 0 Then
+            ErrorProvider1.SetError(txbfn, "First name is required.")
+            txbfn.BorderColor = Color.Red
+        Else
+            ErrorProvider1.SetError(txbfn, "")
+            txbfn.BorderColor = Color.Black
+        End If
+    End Sub
+
+    Private Sub txbln_TextChanged(sender As Object, e As EventArgs) Handles txbln.TextChanged
+        If txbln.Text.Length = 0 Then
+            ErrorProvider1.SetError(txbln, "Last name is required.")
+            txbln.BorderColor = Color.Red
+        Else
+            ErrorProvider1.SetError(txbln, "")
+            txbln.BorderColor = Color.Black
+        End If
+    End Sub
+
+    Private Sub txbmn_TextChanged(sender As Object, e As EventArgs) Handles txbmn.TextChanged
+        If Not chkbnonemn.Checked AndAlso txbmn.Text.Length = 0 Then
+            ErrorProvider1.SetError(txbmn, "Middle name is required.")
+            txbmn.BorderColor = Color.Red
+        Else
+            ErrorProvider1.SetError(txbmn, "")
+            txbmn.BorderColor = Color.Black
+        End If
+    End Sub
+
+    Private Sub cmbrole_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbrole.SelectedIndexChanged
+        UpdateShiftColumn()
+        cmbshift.Enabled = (cmbrole.Text.ToLower() = "cashier")
+        If Not cmbshift.Enabled Then cmbshift.SelectedIndex = -1
+        If originalUsername = "" Then SP_AutoNumber()
+
+        If cmbrole.SelectedIndex = -1 Then
+            ErrorProvider1.SetError(cmbrole, "Role is required.")
+            cmbrole.BorderColor = Color.Red
+        Else
+            ErrorProvider1.SetError(cmbrole, "")
+            cmbrole.BorderColor = Color.Black
+        End If
+    End Sub
+
+    Private Sub cmbgender_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbgender.SelectedIndexChanged
+        If cmbgender.SelectedIndex = -1 Then
+            ErrorProvider1.SetError(cmbgender, "Gender is required.")
+            cmbgender.BorderColor = Color.Red
+        Else
+            ErrorProvider1.SetError(cmbgender, "")
+            cmbgender.BorderColor = Color.Black
+        End If
+    End Sub
+
+    Private Sub cmbshift_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbshift.SelectedIndexChanged
+        If cmbrole.Text.ToLower() = "cashier" AndAlso cmbshift.SelectedIndex = -1 Then
+            ErrorProvider1.SetError(cmbshift, "Shift is required.")
+            cmbshift.BorderColor = Color.Red
+        Else
+            ErrorProvider1.SetError(cmbshift, "")
+            cmbshift.BorderColor = Color.Black
+        End If
+    End Sub
+
+    Private Sub cmben_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmben.SelectedIndexChanged
+        If Not chknoneen.Checked AndAlso cmben.SelectedIndex = -1 Then
+            ErrorProvider1.SetError(cmben, "Extension is required.")
+            cmben.BorderColor = Color.Red
+        Else
+            ErrorProvider1.SetError(cmben, "")
+            cmben.BorderColor = Color.Black
+        End If
+    End Sub
+
+    ' ==========================================
+    ' ADD BUTTON VALIDATION (FINAL CHECK)
+    ' ==========================================
     Private Sub addbtn_Click(sender As Object, e As EventArgs) Handles addbtn.Click
-        ErrorProvider1.Clear()
-        bordercolor()
+        ResetValidation()
         Dim isValid As Boolean = True
 
-        ' 1. Username Validation
+        ' Username
         If txbusername.Text = "" Then
             ErrorProvider1.SetError(txbusername, "Username cannot be blank.")
             txbusername.BorderColor = Color.Red
@@ -228,7 +401,7 @@ Public Class frm_mua4admin_owner2
             isValid = False
         End If
 
-        ' 2. Password Validation
+        ' Password
         If txbpass.Text = "" Then
             ErrorProvider1.SetError(txbpass, "Password cannot be blank.")
             txbpass.BorderColor = Color.Red
@@ -247,7 +420,7 @@ Public Class frm_mua4admin_owner2
             isValid = False
         End If
 
-        ' 3. Confirm Password Validation
+        ' Confirm Password
         If txbcp.Text = "" Then
             ErrorProvider1.SetError(txbcp, "Confirm password cannot be blank.")
             txbcp.BorderColor = Color.Red
@@ -258,21 +431,19 @@ Public Class frm_mua4admin_owner2
             isValid = False
         End If
 
-        ' 4. First Name Validation
+        ' Names
         If txbfn.Text = "" Then
             ErrorProvider1.SetError(txbfn, "First name cannot be blank.")
             txbfn.BorderColor = Color.Red
             isValid = False
         End If
 
-        ' 5. Last Name Validation
         If txbln.Text = "" Then
             ErrorProvider1.SetError(txbln, "Last name cannot be blank.")
             txbln.BorderColor = Color.Red
             isValid = False
         End If
 
-        ' 6. Middle Name Validation
         If Not chkbnonemn.Checked Then
             If txbmn.Text = "" Then
                 ErrorProvider1.SetError(txbmn, "Middle name cannot be blank or check 'No Middle Name'.")
@@ -281,7 +452,7 @@ Public Class frm_mua4admin_owner2
             End If
         End If
 
-        ' 7. Dropdowns & Others
+        ' Dropdowns & Image
         If Not chknoneen.Checked AndAlso cmben.Text = "" Then
             ErrorProvider1.SetError(cmben, "Please select extension name or check 'None'.")
             cmben.BorderColor = Color.Red
@@ -308,11 +479,10 @@ Public Class frm_mua4admin_owner2
 
         If picturebox1.Image Is Nothing Then
             ErrorProvider1.SetError(picturebox1, "Image cannot be empty.")
-
             isValid = False
         End If
 
-
+        ' Save
         If isValid Then
             savedata()
             MsgBox("Data added successfully", MsgBoxStyle.Information, "Success")
@@ -325,44 +495,53 @@ Public Class frm_mua4admin_owner2
         clear()
     End Sub
 
+    ' ==========================================
+    ' GRID CLICK EVENTS (FIXED FOR DBNULL)
+    ' ==========================================
     Private Sub datagridviewaccounts_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles datagridviewaccounts.CellContentClick
         If e.RowIndex < 0 Then Exit Sub
         Dim i As Integer = datagridviewaccounts.CurrentRow.Index
 
+        ' UPDATE
         If e.ColumnIndex = 12 Then
             clear()
-            cmbrole.Text = datagridviewaccounts.Item(0, i).Value
-            txbrole.Text = datagridviewaccounts.Item(1, i).Value
-            cmbshift.Text = datagridviewaccounts.Item(2, i).Value
-            cmbgender.Text = datagridviewaccounts.Item(3, i).Value
-            txbfn.Text = datagridviewaccounts.Item(4, i).Value
 
-            If IsDBNull(datagridviewaccounts.Item(5, i).Value) OrElse datagridviewaccounts.Item(5, i).Value = "" Then
+            ' Safely read text column values to prevent InvalidCastException
+            cmbrole.Text = If(IsDBNull(datagridviewaccounts.Item(0, i).Value), "", datagridviewaccounts.Item(0, i).Value.ToString())
+            txbrole.Text = If(IsDBNull(datagridviewaccounts.Item(1, i).Value), "", datagridviewaccounts.Item(1, i).Value.ToString())
+            cmbshift.Text = If(IsDBNull(datagridviewaccounts.Item(2, i).Value), "", datagridviewaccounts.Item(2, i).Value.ToString())
+            cmbgender.Text = If(IsDBNull(datagridviewaccounts.Item(3, i).Value), "", datagridviewaccounts.Item(3, i).Value.ToString())
+            txbfn.Text = If(IsDBNull(datagridviewaccounts.Item(4, i).Value), "", datagridviewaccounts.Item(4, i).Value.ToString())
+
+            ' Middle Name safe check
+            If IsDBNull(datagridviewaccounts.Item(5, i).Value) OrElse datagridviewaccounts.Item(5, i).Value.ToString() = "" Then
                 chkbnonemn.Checked = True
                 txbmn.Text = ""
             Else
                 chkbnonemn.Checked = False
-                txbmn.Text = datagridviewaccounts.Item(5, i).Value
+                txbmn.Text = datagridviewaccounts.Item(5, i).Value.ToString()
             End If
 
-            txbln.Text = datagridviewaccounts.Item(6, i).Value
+            txbln.Text = If(IsDBNull(datagridviewaccounts.Item(6, i).Value), "", datagridviewaccounts.Item(6, i).Value.ToString())
 
-            If IsDBNull(datagridviewaccounts.Item(7, i).Value) OrElse datagridviewaccounts.Item(7, i).Value = "" Then
+            ' Extension Name safe check
+            If IsDBNull(datagridviewaccounts.Item(7, i).Value) OrElse datagridviewaccounts.Item(7, i).Value.ToString() = "" Then
                 chknoneen.Checked = True
                 cmben.Text = ""
             Else
                 chknoneen.Checked = False
-                cmben.Text = datagridviewaccounts.Item(7, i).Value
+                cmben.Text = datagridviewaccounts.Item(7, i).Value.ToString()
             End If
 
-            txbusername.Text = datagridviewaccounts.Item(8, i).Value
+            txbusername.Text = If(IsDBNull(datagridviewaccounts.Item(8, i).Value), "", datagridviewaccounts.Item(8, i).Value.ToString())
             originalUsername = txbusername.Text
-            txbpass.Text = datagridviewaccounts.Item(9, i).Value
-            txbcp.Text = datagridviewaccounts.Item(9, i).Value
+            txbpass.Text = If(IsDBNull(datagridviewaccounts.Item(9, i).Value), "", datagridviewaccounts.Item(9, i).Value.ToString())
+            txbcp.Text = If(IsDBNull(datagridviewaccounts.Item(9, i).Value), "", datagridviewaccounts.Item(9, i).Value.ToString())
+
             viewimage()
+            ResetValidation()
 
-            bordercolor()
-
+            ' DELETE
         ElseIf e.ColumnIndex = 13 Then
             Dim targetRole As String = datagridviewaccounts.Item(0, i).Value.ToString().ToLower()
             Dim targetUsername As String = datagridviewaccounts.Item(8, i).Value.ToString()
@@ -388,7 +567,10 @@ Public Class frm_mua4admin_owner2
         End If
     End Sub
 
-    Sub viewimage()
+    ' ==========================================
+    ' VIEW IMAGE & OTHER EVENTS
+    ' ==========================================
+    Private Sub viewimage()
         If txbusername.Text = "" Then
             picturebox1.Image = Nothing
             Exit Sub
@@ -406,6 +588,7 @@ Public Class frm_mua4admin_owner2
                 img = dr("userimage")
                 Dim ms As New MemoryStream(img)
                 picturebox1.Image = Image.FromStream(ms)
+
             End If
         End While
 
@@ -426,22 +609,18 @@ Public Class frm_mua4admin_owner2
         If count > 0 Then Return True Else Return False
     End Function
 
-    Private Sub cmbrole_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbrole.SelectedIndexChanged
-        UpdateShiftColumn()
-        cmbshift.Enabled = (cmbrole.Text.ToLower() = "cashier")
-        If Not cmbshift.Enabled Then cmbshift.SelectedIndex = -1
-        If originalUsername = "" Then SP_AutoNumber()
-        bordercolor()
-    End Sub
-
     Private Sub chknoneen_CheckedChanged(sender As Object, e As EventArgs) Handles chknoneen.CheckedChanged
         cmben.Enabled = Not chknoneen.Checked
         If chknoneen.Checked Then cmben.Text = ""
+        ErrorProvider1.SetError(cmben, "")
+        cmben.BorderColor = Color.Black
     End Sub
 
     Private Sub chkbnonemn_CheckedChanged(sender As Object, e As EventArgs) Handles chkbnonemn.CheckedChanged
         txbmn.Enabled = Not chkbnonemn.Checked
         If chkbnonemn.Checked Then txbmn.Text = ""
+        ErrorProvider1.SetError(txbmn, "")
+        txbmn.BorderColor = Color.Black
     End Sub
 
     Private Sub cmbfilter_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbfilter.SelectedIndexChanged
@@ -460,27 +639,17 @@ Public Class frm_mua4admin_owner2
             picturebox1.SizeMode = PictureBoxSizeMode.StretchImage
             picturebox1.Image = Image.FromFile(ofd.FileName)
             ErrorProvider1.SetError(picturebox1, "")
-            picturebox1.BackColor = Color.SlateGray
+
+
         End If
     End Sub
 
     ' ==========================================
-    ' SHORTENED KEYPRESS (HANDLES ALL 3 TEXTBOXES + AUTO CAPITALIZE)
+    ' KEYPRESS (LETTERS ONLY)
     ' ==========================================
     Private Sub OnlyLetters_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txbfn.KeyPress, txbmn.KeyPress, txbln.KeyPress
-        ' 1. Allow only letters, spaces, and control keys (backspace)
         If Not (Char.IsLetter(e.KeyChar) OrElse Char.IsControl(e.KeyChar) OrElse e.KeyChar = " "c) Then
             e.Handled = True
-            Exit Sub
-        End If
-
-        ' 2. Auto-capitalize the first letter of every word
-        Dim txt As Guna.UI2.WinForms.Guna2TextBox = CType(sender, Guna.UI2.WinForms.Guna2TextBox)
-        Dim currentText As String = txt.Text
-
-        ' If the textbox is empty OR the last typed character was a space, force uppercase
-        If currentText.Length = 0 OrElse (txt.SelectionStart > 0 AndAlso currentText(txt.SelectionStart - 1) = " "c) Then
-            e.KeyChar = Char.ToUpper(e.KeyChar)
         End If
     End Sub
 
