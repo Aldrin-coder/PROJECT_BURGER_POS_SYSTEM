@@ -139,6 +139,7 @@ Public Class frm_oe4cashier
             pic.SizeMode = PictureBoxSizeMode.StretchImage
             pic.BackColor = Color.White
             pic.Cursor = Cursors.Hand
+            pic.BorderStyle = BorderStyle.FixedSingle
 
             If Not IsDBNull(dr("product_image")) Then
                 Using ms As New MemoryStream(CType(dr("product_image"), Byte()))

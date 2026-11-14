@@ -195,9 +195,11 @@ Public Class frm_sales_report4owner
         sb.AppendLine("--------------------------------")
         sb.AppendLine("ITEM             QTY   AMOUNT")
 
-        query = "SELECT product_name, product_quantity, product_price " &
-                "FROM transaction_records " &
-                "WHERE payment_id = (SELECT payment_id FROM payments WHERE transaction_id = @TID)"
+        ' ---- FIXED: replaced scalar subquery with INNER JOIN ----
+        query = "SELECT tr.product_name, tr.product_quantity, tr.product_price " &
+                "FROM transaction_records tr " &
+                "INNER JOIN payments p ON p.payment_id = tr.payment_id " &
+                "WHERE p.transaction_id = @TID"
         cmd = New SqlClient.SqlCommand(query, sqlconn)
         cmd.Parameters.AddWithValue("@TID", txnId)
         dr = cmd.ExecuteReader()
@@ -293,7 +295,7 @@ Public Class frm_sales_report4owner
         Dim printDoc As New System.Drawing.Printing.PrintDocument()
         printDoc.DefaultPageSettings.Landscape = True
         printDoc.DefaultPageSettings.PaperSize = New System.Drawing.Printing.PaperSize("A4", 827, 1169)
-        printDoc.DefaultPageSettings.Margins = New System.Drawing.Printing.Margins(50, 50, 50, 50)
+        printDoc.DefaultPageSettings.Margins = New System.Drawing.Printing.Margins(220, 20, 50, 50)
 
         AddHandler printDoc.PrintPage, Sub(s As Object, ev As System.Drawing.Printing.PrintPageEventArgs)
                                            Dim font As New Font("Consolas", 10)

@@ -11,7 +11,7 @@ Public Class frm_dashboard1
         loadWelcome()
         loadrecenttrans()
         readdata()
-        readMonthlyTrend()
+        readMonthlySales1()
         readPaymentMethod()
         ApplyRoleVisibility()
     End Sub
@@ -50,6 +50,8 @@ Public Class frm_dashboard1
             paneltransactoday.Visible = False
             panelms.Visible = False
             panelmni.Visible = False
+            panelmst.Visible = True
+            panelpm.Visible = True
         Else
             Column4.Visible = True
             Column5.Visible = True
@@ -60,6 +62,8 @@ Public Class frm_dashboard1
             paneltransactoday.Visible = True
             panelms.Visible = True
             panelmni.Visible = True
+            panelmst.Visible = True  ' Shows the Monthly Sales Trend Chart
+            panelpm.Visible = True   ' Shows the Payment Methods Chart
         End If
     End Sub
 
@@ -266,10 +270,13 @@ Public Class frm_dashboard1
     ' ==========================================
     ' CARDS
     ' ==========================================
+
+    ' --- FIXED: Only shows TODAY'S shift sales ---
     Sub readMyShift()
         conn()
         query = "SELECT ISNULL(SUM(subtotal_amount * 1.02), 0) FROM payments " &
-                "WHERE cashier_id = @CID"
+                "WHERE cashier_id = @CID " &
+                "AND CAST(current_date AS DATE) = CAST(GETDATE() AS DATE)"
         cmd = New SqlClient.SqlCommand(query, sqlconn)
         cmd.Parameters.AddWithValue("@CID", CurrentUser.user_code)
         dr = cmd.ExecuteReader
@@ -278,9 +285,11 @@ Public Class frm_dashboard1
         cmd.Dispose()
     End Sub
 
+    ' --- FIXED: Only counts TODAY'S transactions ---
     Sub readMyTransactions()
         conn()
-        query = "SELECT COUNT(*) FROM payments WHERE cashier_id = @CID"
+        query = "SELECT COUNT(*) FROM payments WHERE cashier_id = @CID " &
+                "AND CAST(current_date AS DATE) = CAST(GETDATE() AS DATE)"
         cmd = New SqlClient.SqlCommand(query, sqlconn)
         cmd.Parameters.AddWithValue("@CID", CurrentUser.user_code)
         dr = cmd.ExecuteReader
@@ -289,10 +298,13 @@ Public Class frm_dashboard1
         cmd.Dispose()
     End Sub
 
+    ' --- FIXED: True Cash Sales for Today ---
     Sub readCashOnHand()
         conn()
-        query = "SELECT ISNULL(SUM(amount_paid - (subtotal_amount * 1.02)), 0) FROM payments " &
-                "WHERE payment_method = 'CASH' AND cashier_id = @CID"
+        ' Calculates the actual physical cash sales (Subtotal + Tax)
+        query = "SELECT ISNULL(SUM(subtotal_amount * 1.02), 0) FROM payments " &
+                "WHERE payment_method = 'CASH' AND cashier_id = @CID " &
+                "AND CAST(current_date AS DATE) = CAST(GETDATE() AS DATE)"
         cmd = New SqlClient.SqlCommand(query, sqlconn)
         cmd.Parameters.AddWithValue("@CID", CurrentUser.user_code)
         dr = cmd.ExecuteReader
@@ -321,9 +333,11 @@ Public Class frm_dashboard1
         cmd.Dispose()
     End Sub
 
+    ' --- FIXED: True Monthly Sales (Current Month) ---
     Sub readMonthlySales()
         conn()
-        query = "SELECT ISNULL(SUM(subtotal_amount * 1.02), 0) FROM payments"
+        query = "SELECT ISNULL(SUM(subtotal_amount * 1.02), 0) FROM payments " &
+                "WHERE YEAR(current_date) = YEAR(GETDATE()) AND MONTH(current_date) = MONTH(GETDATE())"
         cmd = New SqlClient.SqlCommand(query, sqlconn)
         dr = cmd.ExecuteReader
         If dr.Read() Then lblms.Text = "₱" & Convert.ToDecimal(dr(0)).ToString("N2")
@@ -344,7 +358,9 @@ Public Class frm_dashboard1
     ' ==========================================
     ' CHARTS
     ' ==========================================
-    Sub readMonthlyTrend()
+
+    ' --- FINAL FIX: Bar Chart plots all months safely using @Y parameter ---
+    Sub readMonthlySales1()
         chartmsl.Datasets.Clear()
         chartmsl.YAxes.Ticks.Display = True
         chartmsl.XAxes.Ticks.Display = True
@@ -357,15 +373,28 @@ Public Class frm_dashboard1
         chartmsl.Title.Text = "Monthly Sales Trend (" & DateTime.Now.Year.ToString() & ")"
 
         conn()
-        query = "SELECT ISNULL(SUM(subtotal_amount * 1.02), 0) AS amt FROM payments "
-        If CurrentUser.role.ToLower() = "cashier" Then query &= "WHERE cashier_id = @CID "
 
-        Dim totalAmt As Decimal = 0
+        ' Parameterized @Y forces SQL Server to treat [current_date] strictly as a column
+        Dim q As String = "SELECT MONTH([current_date]) AS m, ISNULL(SUM(subtotal_amount * 1.02), 0) AS amt " &
+                          "FROM dbo.payments " &
+                          "WHERE YEAR([current_date]) = @Y "
 
-        cmd = New SqlClient.SqlCommand(query, sqlconn)
+        If CurrentUser.role.ToLower() = "cashier" Then
+            q &= " AND cashier_id = @CID "
+        End If
+
+        q &= " GROUP BY MONTH([current_date])"
+
+        Dim monthlyData(11) As Decimal
+
+        cmd = New SqlClient.SqlCommand(q, sqlconn)
+        cmd.Parameters.AddWithValue("@Y", DateTime.Now.Year)
         If CurrentUser.role.ToLower() = "cashier" Then cmd.Parameters.AddWithValue("@CID", CurrentUser.user_code)
+
         dr = cmd.ExecuteReader
-        If dr.Read() Then totalAmt = Convert.ToDecimal(dr("amt"))
+        While dr.Read
+            monthlyData(Convert.ToInt32(dr("m")) - 1) = Convert.ToDecimal(dr("amt"))
+        End While
         dr.Close()
         cmd.Dispose()
 
@@ -377,7 +406,7 @@ Public Class frm_dashboard1
                                       "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"}
 
         For m As Integer = 1 To 12
-            Dim amt As Decimal = If(m = DateTime.Now.Month, totalAmt, 0D)
+            Dim amt As Decimal = monthlyData(m - 1)
             dataset.DataPoints.Add(New LPoint With {
                 .Label = monthNames(m - 1) & " (" & amt.ToString("N0") & ")",
                 .Y = CDbl(amt)
@@ -447,4 +476,7 @@ Public Class frm_dashboard1
         readdata()
     End Sub
 
+    Private Sub Guna2Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Guna2Panel1.Paint
+
+    End Sub
 End Class
