@@ -1,0 +1,20 @@
+         DS BURGER SHOP         
+   Fresh Burger, Great Taste!   
+--------------------------------
+TXN #  : TXN-000000003
+Date   : 11/14/2026 02:42 PM
+Cashier: Clark Kent  Sayno
+Cash ID: DSBS0000004
+Payment: MAYA
+--------------------------------
+ITEM             QTY   AMOUNT
+BEEF BURGER        1    20.00
+--------------------------------
+Subtotal:           P 20.00
+Tax (2%):           P 0.40
+TOTAL:              P 20.40
+Paid:               P 20.40
+Change:             P 0.00
+--------------------------------
+   THANK YOU FOR YOUR ORDER!    
+       Please come again!       

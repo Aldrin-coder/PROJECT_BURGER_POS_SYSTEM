@@ -143,13 +143,13 @@ GO
 -- 9. DEMO RESET — uncomment ALL lines below ONLY to wipe data.
 --    (Do NOT uncomment if you want to keep test data.)
 -- ============================================================
-/*
+
 DELETE FROM dbo.transaction_records;
 DELETE FROM dbo.payments;
 DELETE FROM dbo.AutoNumberTxn;
 DBCC CHECKIDENT ('dbo.transaction_records', RESEED, 0);
 DBCC CHECKIDENT ('dbo.payments',           RESEED, 0);
-*/
+
 GO
 
 USE DB_DARKSYSTEM

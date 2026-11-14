@@ -367,12 +367,18 @@ Public Class frm_dashboard1
         chartmsl.YAxes.Ticks.Display = True
         chartmsl.XAxes.Ticks.Display = True
 
+
+
         Dim titleFont As New Guna.Charts.WinForms.ChartFont()
         titleFont.FontName = "Arial"
         titleFont.Size = 12
         titleFont.Style = Guna.Charts.WinForms.ChartFontStyle.Bold
         chartmsl.Title.Font = titleFont
-        chartmsl.Title.Text = "Monthly Sales  (" & DateTime.Now.Year.ToString() & ")"
+        If CurrentUser.role.ToLower() = "cashier" Then
+            chartmsl.Title.Text = "My Monthly Sales  (" & DateTime.Now.Year.ToString() & ")"
+        Else
+            chartmsl.Title.Text = "Monthly Sales  (" & DateTime.Now.Year.ToString() & ")"
+        End If
 
         conn()
 
@@ -416,7 +422,7 @@ Public Class frm_dashboard1
         Next
 
         chartmsl.Datasets.Add(dataset)
-        chartmsl.Update()
+
     End Sub
 
     Sub readPaymentMethod()
@@ -462,13 +468,13 @@ Public Class frm_dashboard1
         Dim dataset As New GunaDoughnutDataset()
         dataset.Label = "Payment Methods"
         dataset.FillColors.AddRange(New Color() {Color.Orange, Color.SteelBlue, Color.LimeGreen})
-        dataset.YFormat = "{0}%"
-        dataset.DataPoints.Add(New LPoint With {.Label = "Cash", .Y = CDbl(cash / totalSales * 100)})
-        dataset.DataPoints.Add(New LPoint With {.Label = "GCash", .Y = CDbl(gcash / totalSales * 100)})
-        dataset.DataPoints.Add(New LPoint With {.Label = "Maya", .Y = CDbl(maya / totalSales * 100)})
+        dataset.YFormat = "{0:0}%"
+        dataset.DataPoints.Add(New LPoint With {.Label = "Cash (₱" & cash.ToString("#,##0") & ")", .Y = CDbl(cash / totalSales * 100)})
+        dataset.DataPoints.Add(New LPoint With {.Label = "GCash (₱" & gcash.ToString("#,##0") & ")", .Y = CDbl(gcash / totalSales * 100)})
+        dataset.DataPoints.Add(New LPoint With {.Label = "Maya (₱" & maya.ToString("#,##0") & ")", .Y = CDbl(maya / totalSales * 100)})
 
         chartpm.Datasets.Add(dataset)
-        chartpm.Update()
+
     End Sub
 
     ' ==========================================

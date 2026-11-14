@@ -22,13 +22,13 @@ Partial Class frm_sales_report4owner
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Guna2Panel1 = New Guna.UI2.WinForms.Guna2Panel()
         Me.printreportbtn = New Guna.UI2.WinForms.Guna2Button()
         Me.dtdt = New Guna.UI2.WinForms.Guna2DateTimePicker()
@@ -40,15 +40,6 @@ Partial Class frm_sales_report4owner
         Me.lblmua = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.txbsearch = New Guna.UI2.WinForms.Guna2TextBox()
         Me.datagridviewsalesreport = New Guna.UI2.WinForms.Guna2DataGridView()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column8 = New System.Windows.Forms.DataGridViewButtonColumn()
-        Me.Column10 = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.Guna2Panel4 = New Guna.UI2.WinForms.Guna2Panel()
         Me.lbltr = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.lblts = New Guna.UI2.WinForms.Guna2HtmlLabel()
@@ -58,6 +49,16 @@ Partial Class frm_sales_report4owner
         Me.Guna2Panel3 = New Guna.UI2.WinForms.Guna2Panel()
         Me.lblms = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2HtmlLabel4 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.Column12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column212 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column323 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column42 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column923 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column523 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column62 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column723 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column823 = New System.Windows.Forms.DataGridViewButtonColumn()
+        Me.Column1032 = New System.Windows.Forms.DataGridViewButtonColumn()
         Me.Guna2Panel1.SuspendLayout()
         CType(Me.Guna2PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Guna2PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -238,49 +239,49 @@ Partial Class frm_sales_report4owner
         '
         Me.datagridviewsalesreport.AllowUserToAddRows = False
         Me.datagridviewsalesreport.AllowUserToDeleteRows = False
-        DataGridViewCellStyle8.BackColor = System.Drawing.Color.Transparent
-        Me.datagridviewsalesreport.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.Transparent
+        Me.datagridviewsalesreport.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Me.datagridviewsalesreport.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.datagridviewsalesreport.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.[Single]
         Me.datagridviewsalesreport.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
         Me.datagridviewsalesreport.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.HotTrack
-        DataGridViewCellStyle9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle9.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.datagridviewsalesreport.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.HotTrack
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.datagridviewsalesreport.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.datagridviewsalesreport.ColumnHeadersHeight = 40
-        Me.datagridviewsalesreport.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5, Me.Column6, Me.Column7, Me.Column8, Me.Column10})
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle12.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle12.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
-        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.datagridviewsalesreport.DefaultCellStyle = DataGridViewCellStyle12
+        Me.datagridviewsalesreport.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column12, Me.Column212, Me.Column323, Me.Column42, Me.Column923, Me.Column523, Me.Column62, Me.Column723, Me.Column823, Me.Column1032})
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.datagridviewsalesreport.DefaultCellStyle = DataGridViewCellStyle5
         Me.datagridviewsalesreport.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.datagridviewsalesreport.GridColor = System.Drawing.Color.Black
         Me.datagridviewsalesreport.Location = New System.Drawing.Point(0, 507)
         Me.datagridviewsalesreport.Name = "datagridviewsalesreport"
         Me.datagridviewsalesreport.ReadOnly = True
         Me.datagridviewsalesreport.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle13.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
-        DataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.datagridviewsalesreport.RowHeadersDefaultCellStyle = DataGridViewCellStyle13
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.datagridviewsalesreport.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
         Me.datagridviewsalesreport.RowHeadersVisible = False
         Me.datagridviewsalesreport.RowHeadersWidth = 15
         Me.datagridviewsalesreport.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        DataGridViewCellStyle14.BackColor = System.Drawing.Color.Transparent
-        Me.datagridviewsalesreport.RowsDefaultCellStyle = DataGridViewCellStyle14
+        DataGridViewCellStyle7.BackColor = System.Drawing.Color.Transparent
+        Me.datagridviewsalesreport.RowsDefaultCellStyle = DataGridViewCellStyle7
         Me.datagridviewsalesreport.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White
         Me.datagridviewsalesreport.RowTemplate.ReadOnly = True
         Me.datagridviewsalesreport.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
@@ -299,72 +300,6 @@ Partial Class frm_sales_report4owner
         Me.datagridviewsalesreport.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.Black
         Me.datagridviewsalesreport.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(0, Byte), Integer))
         Me.datagridviewsalesreport.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black
-        '
-        'Column1
-        '
-        Me.Column1.HeaderText = "ID"
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
-        '
-        'Column2
-        '
-        Me.Column2.HeaderText = "TRANSACTION ID"
-        Me.Column2.Name = "Column2"
-        Me.Column2.ReadOnly = True
-        '
-        'Column3
-        '
-        Me.Column3.HeaderText = "DATE"
-        Me.Column3.Name = "Column3"
-        Me.Column3.ReadOnly = True
-        '
-        'Column4
-        '
-        Me.Column4.HeaderText = "TRANSACTION TIME"
-        Me.Column4.Name = "Column4"
-        Me.Column4.ReadOnly = True
-        '
-        'Column5
-        '
-        Me.Column5.HeaderText = "CASHIER"
-        Me.Column5.Name = "Column5"
-        Me.Column5.ReadOnly = True
-        '
-        'Column6
-        '
-        Me.Column6.HeaderText = "PAYMENT METHOD "
-        Me.Column6.Name = "Column6"
-        Me.Column6.ReadOnly = True
-        '
-        'Column7
-        '
-        Me.Column7.HeaderText = "TOTAL"
-        Me.Column7.Name = "Column7"
-        Me.Column7.ReadOnly = True
-        '
-        'Column8
-        '
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle10.BackColor = System.Drawing.Color.LawnGreen
-        DataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.LawnGreen
-        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black
-        Me.Column8.DefaultCellStyle = DataGridViewCellStyle10
-        Me.Column8.HeaderText = "VIEW"
-        Me.Column8.Name = "Column8"
-        Me.Column8.ReadOnly = True
-        '
-        'Column10
-        '
-        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle11.BackColor = System.Drawing.Color.Red
-        DataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.Red
-        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black
-        Me.Column10.DefaultCellStyle = DataGridViewCellStyle11
-        Me.Column10.HeaderText = "DELETE"
-        Me.Column10.Name = "Column10"
-        Me.Column10.ReadOnly = True
         '
         'Guna2Panel4
         '
@@ -480,6 +415,80 @@ Partial Class frm_sales_report4owner
         Me.Guna2HtmlLabel4.TabIndex = 0
         Me.Guna2HtmlLabel4.Text = "MONTHY SALES (THIS MONTH)"
         '
+        'Column12
+        '
+        Me.Column12.HeaderText = "ID"
+        Me.Column12.Name = "Column12"
+        Me.Column12.ReadOnly = True
+        '
+        'Column212
+        '
+        Me.Column212.HeaderText = "TRANSACTION ID"
+        Me.Column212.Name = "Column212"
+        Me.Column212.ReadOnly = True
+        '
+        'Column323
+        '
+        Me.Column323.HeaderText = "DATE"
+        Me.Column323.Name = "Column323"
+        Me.Column323.ReadOnly = True
+        '
+        'Column42
+        '
+        Me.Column42.HeaderText = "TRANSACTION TIME"
+        Me.Column42.Name = "Column42"
+        Me.Column42.ReadOnly = True
+        '
+        'Column923
+        '
+        Me.Column923.HeaderText = "CASHIER ID"
+        Me.Column923.Name = "Column923"
+        Me.Column923.ReadOnly = True
+        Me.Column923.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.Column923.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'Column523
+        '
+        Me.Column523.HeaderText = "CASHIER"
+        Me.Column523.Name = "Column523"
+        Me.Column523.ReadOnly = True
+        '
+        'Column62
+        '
+        Me.Column62.HeaderText = "PAYMENT METHOD "
+        Me.Column62.Name = "Column62"
+        Me.Column62.ReadOnly = True
+        '
+        'Column723
+        '
+        Me.Column723.HeaderText = "TOTAL"
+        Me.Column723.Name = "Column723"
+        Me.Column723.ReadOnly = True
+        '
+        'Column823
+        '
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.LawnGreen
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LawnGreen
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
+        Me.Column823.DefaultCellStyle = DataGridViewCellStyle3
+        Me.Column823.HeaderText = "VIEW"
+        Me.Column823.Name = "Column823"
+        Me.Column823.ReadOnly = True
+        '
+        'Column1032
+        '
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.Red
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Red
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black
+        Me.Column1032.DefaultCellStyle = DataGridViewCellStyle4
+        Me.Column1032.HeaderText = "DELETE"
+        Me.Column1032.Name = "Column1032"
+        Me.Column1032.ReadOnly = True
+        '
         'frm_sales_report4owner
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -526,14 +535,15 @@ Partial Class frm_sales_report4owner
     Friend WithEvents Guna2HtmlLabel4 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents lblts As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents lblst As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents Column1 As DataGridViewTextBoxColumn
-    Friend WithEvents Column2 As DataGridViewTextBoxColumn
-    Friend WithEvents Column3 As DataGridViewTextBoxColumn
-    Friend WithEvents Column4 As DataGridViewTextBoxColumn
-    Friend WithEvents Column5 As DataGridViewTextBoxColumn
-    Friend WithEvents Column6 As DataGridViewTextBoxColumn
-    Friend WithEvents Column7 As DataGridViewTextBoxColumn
-    Friend WithEvents Column8 As DataGridViewButtonColumn
-    Friend WithEvents Column10 As DataGridViewButtonColumn
     Friend WithEvents printreportbtn As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents Column12 As DataGridViewTextBoxColumn
+    Friend WithEvents Column212 As DataGridViewTextBoxColumn
+    Friend WithEvents Column323 As DataGridViewTextBoxColumn
+    Friend WithEvents Column42 As DataGridViewTextBoxColumn
+    Friend WithEvents Column923 As DataGridViewTextBoxColumn
+    Friend WithEvents Column523 As DataGridViewTextBoxColumn
+    Friend WithEvents Column62 As DataGridViewTextBoxColumn
+    Friend WithEvents Column723 As DataGridViewTextBoxColumn
+    Friend WithEvents Column823 As DataGridViewButtonColumn
+    Friend WithEvents Column1032 As DataGridViewButtonColumn
 End Class

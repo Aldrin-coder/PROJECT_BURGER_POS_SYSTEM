@@ -107,11 +107,11 @@ Partial Class frm_dashboard1
         Me.GunaBarDataset1 = New Guna.Charts.WinForms.GunaBarDataset()
         Me.panelpm = New Guna.UI2.WinForms.Guna2Panel()
         Me.chartpm = New Guna.Charts.WinForms.GunaChart()
-        Me.GunaDoughnutDataset1 = New Guna.Charts.WinForms.GunaDoughnutDataset()
         Me.panelbanner = New Guna.UI2.WinForms.Guna2Panel()
         Me.lblrole = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2PictureBox1 = New Guna.UI2.WinForms.Guna2PictureBox()
         Me.lblgg = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Me.GunaPieDataset1 = New Guna.Charts.WinForms.GunaPieDataset()
         Me.Guna2Panel1.SuspendLayout()
         CType(Me.Guna2PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panelshift.SuspendLayout()
@@ -830,12 +830,12 @@ Partial Class frm_dashboard1
         'chartpm
         '
         Me.chartpm.Animation.Easing = Guna.Charts.WinForms.Easing.Linear
-        Me.chartpm.Datasets.AddRange(New Guna.Charts.Interfaces.IGunaDataset() {Me.GunaDoughnutDataset1})
+        Me.chartpm.Datasets.AddRange(New Guna.Charts.Interfaces.IGunaDataset() {Me.GunaPieDataset1})
         ChartFont9.FontName = "Arial"
         ChartFont9.Size = 10
         Me.chartpm.Legend.LabelFont = ChartFont9
         Me.chartpm.Legend.LabelForeColor = System.Drawing.Color.Black
-        Me.chartpm.Location = New System.Drawing.Point(16, 16)
+        Me.chartpm.Location = New System.Drawing.Point(18, 16)
         Me.chartpm.Name = "chartpm"
         Me.chartpm.Size = New System.Drawing.Size(476, 208)
         Me.chartpm.TabIndex = 0
@@ -877,11 +877,6 @@ Partial Class frm_dashboard1
         ChartFont16.FontName = "Arial"
         Tick6.Font = ChartFont16
         Me.chartpm.ZAxes.Ticks = Tick6
-        '
-        'GunaDoughnutDataset1
-        '
-        Me.GunaDoughnutDataset1.Label = "Doughnut1"
-        Me.GunaDoughnutDataset1.TargetChart = Me.chartpm
         '
         'panelbanner
         '
@@ -936,6 +931,11 @@ Partial Class frm_dashboard1
         Me.lblgg.TabIndex = 112
         Me.lblgg.Text = "WELCOME, FULLNAME!"
         Me.lblgg.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'GunaPieDataset1
+        '
+        Me.GunaPieDataset1.Label = "Pie1"
+        Me.GunaPieDataset1.TargetChart = Me.chartpm
         '
         'frm_dashboard1
         '
@@ -1037,7 +1037,6 @@ Partial Class frm_dashboard1
     Friend WithEvents panelpm As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents chartpm As Guna.Charts.WinForms.GunaChart
     Friend WithEvents GunaBarDataset1 As Guna.Charts.WinForms.GunaBarDataset
-    Friend WithEvents GunaDoughnutDataset1 As Guna.Charts.WinForms.GunaDoughnutDataset
     Friend WithEvents Guna2PictureBox1 As Guna.UI2.WinForms.Guna2PictureBox
     Friend WithEvents panelbanner As Guna.UI2.WinForms.Guna2Panel
     Friend WithEvents lblrole As Guna.UI2.WinForms.Guna2HtmlLabel
@@ -1050,4 +1049,5 @@ Partial Class frm_dashboard1
     Friend WithEvents Column6 As DataGridViewTextBoxColumn
     Friend WithEvents Column7 As DataGridViewTextBoxColumn
     Friend WithEvents Column8 As DataGridViewButtonColumn
+    Friend WithEvents GunaPieDataset1 As Guna.Charts.WinForms.GunaPieDataset
 End Class

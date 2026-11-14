@@ -98,7 +98,6 @@ Public Class frm_oe4cashier
         FlowLayoutPanel1.Padding = New Padding(15)
         stockLabels.Clear()
 
-        ' Pull the quantity (stock) from the database
         query = "SELECT m.item_code, m.product_name, m.price, m.quantity, m.product_image, c.category_name " &
             "FROM menu_items m " &
             "INNER JOIN categories c ON m.category_id = c.category_id " &
@@ -119,7 +118,6 @@ Public Class frm_oe4cashier
 
         dr = cmd.ExecuteReader
         While dr.Read
-            ' --- MAIN CARD ---
             Dim card As New Guna2Panel()
             card.Width = 200
             card.Height = 300
@@ -131,7 +129,6 @@ Public Class frm_oe4cashier
             card.Padding = New Padding(4)
             card.Cursor = Cursors.Hand
 
-            ' --- PICTURE BOX ---
             Dim pic As New Guna2PictureBox()
             pic.Width = 146
             pic.Height = 116
@@ -147,7 +144,6 @@ Public Class frm_oe4cashier
                 End Using
             End If
 
-            ' --- LABELS ---
             Dim lblName As New Label()
             lblName.Text = dr("product_name").ToString().ToUpper()
             lblName.Font = New Font("Segoe UI", 10, FontStyle.Bold)
@@ -180,7 +176,6 @@ Public Class frm_oe4cashier
             lblPrice.Cursor = Cursors.Hand
             lblPrice.BackColor = Color.Transparent
 
-            ' --- STOCK DISPLAY LABEL ---
             Dim pName As String = dr("product_name").ToString()
             Dim pPrice As Decimal = Convert.ToDecimal(dr("price"))
             Dim pStock As Integer = Convert.ToInt32(dr("quantity"))
@@ -196,17 +191,14 @@ Public Class frm_oe4cashier
             lblStock.Location = New Point(50, 258)
             lblStock.Cursor = Cursors.Hand
 
-            ' Save the label reference
             stockLabels(pName) = lblStock
 
-            ' --- ADD TO MAIN CARD ---
             card.Controls.Add(pic)
             card.Controls.Add(lblName)
             card.Controls.Add(lblCategory)
             card.Controls.Add(lblPrice)
             card.Controls.Add(lblStock)
 
-            ' --- CLICK EVENTS ---
             AddHandler card.Click, Sub(s, ev) addToOrder(pName, pPrice)
             AddHandler pic.Click, Sub(s, ev) addToOrder(pName, pPrice)
             AddHandler lblName.Click, Sub(s, ev) addToOrder(pName, pPrice)
@@ -214,7 +206,6 @@ Public Class frm_oe4cashier
             AddHandler lblPrice.Click, Sub(s, ev) addToOrder(pName, pPrice)
             AddHandler lblStock.Click, Sub(s, ev) addToOrder(pName, pPrice)
 
-            ' --- HOVER EFFECT ---
             ApplyHover(card, Color.FromArgb(236, 112, 60), Color.White, pic, lblName, lblCategory, lblPrice, lblStock)
 
             FlowLayoutPanel1.Controls.Add(card)
@@ -242,22 +233,19 @@ Public Class frm_oe4cashier
     End Sub
 
     ' ==========================================
-    ' ORDER LOGIC (INSTANT STOCK DEDUCTION)
+    ' ORDER LOGIC
     ' ==========================================
     Sub addToOrder(productName As String, price As Decimal)
-        ' 1. Check current stock from the label
         Dim currentStock As Integer = 0
         If stockLabels.ContainsKey(productName) Then
             currentStock = Convert.ToInt32(stockLabels(productName).Text.Replace("STOCK: ", ""))
         End If
 
-        ' 2. Block if out of stock
         If currentStock <= 0 Then
             MessageBox.Show("Cannot add item. Out of stock!", "Out of Stock", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Exit Sub
         End If
 
-        ' 3. Add to grid (Increment if exists)
         Dim existingRow As DataGridViewRow = Nothing
         For Each row As DataGridViewRow In datagridvieworder.Rows
             If row.Cells(1).Value IsNot Nothing AndAlso
@@ -273,11 +261,9 @@ Public Class frm_oe4cashier
             datagridvieworder.Rows.Add(1, productName, price, "VOID")
         End If
 
-        ' 4. Deduct 1 from the UI stock label instantly
         Dim newStock As Integer = currentStock - 1
         stockLabels(productName).Text = "STOCK: " & newStock.ToString()
 
-        ' Change color to red if stock hits 0
         If newStock <= 0 Then
             stockLabels(productName).BackColor = Color.Red
         Else
@@ -324,7 +310,6 @@ Public Class frm_oe4cashier
         bordercolor()
         updateTotals()
 
-        ' Reload products to reset stock display to original DB values
         loadProducts()
     End Sub
 
@@ -351,7 +336,6 @@ Public Class frm_oe4cashier
         cmd.Dispose()
 
         For Each row As DataGridViewRow In datagridvieworder.Rows
-            ' 1. Insert into transaction records
             query = "INSERT INTO transaction_records " &
                     "(payment_id, product_name, product_price, product_quantity) " &
                     "VALUES (@PID, @NAME, @PRICE, @QTY)"
@@ -365,7 +349,6 @@ Public Class frm_oe4cashier
             cmd.ExecuteNonQuery()
             cmd.Dispose()
 
-            ' 2. Deduct the stock permanently from the database
             Dim productName As String = row.Cells(1).Value.ToString()
             Dim qtyPurchased As Integer = CInt(row.Cells(0).Value)
 
@@ -381,7 +364,100 @@ Public Class frm_oe4cashier
     End Sub
 
     ' ==========================================
-    ' PAY NOW EVENT (CENTERED & PUSHED DOWN RECEIPT)
+    ' BUILD RECEIPT TEXT
+    ' ==========================================
+    Private Function BuildReceiptText(paid As Decimal) As String
+        Dim sb As New System.Text.StringBuilder()
+        Dim lineWidth As Integer = 32
+
+        Dim CenterText As Func(Of String, String) = Function(txt)
+                                                        If txt.Length >= lineWidth Then Return txt
+                                                        Dim leftPad As Integer = (lineWidth - txt.Length) \ 2
+                                                        Return txt.PadLeft(txt.Length + leftPad).PadRight(lineWidth)
+                                                    End Function
+
+        sb.AppendLine(CenterText("DS BURGER SHOP"))
+        sb.AppendLine(CenterText("Fresh Burger, Great Taste!"))
+        sb.AppendLine("".PadRight(lineWidth, "-"c))
+
+        sb.AppendLine("TXN #  : " & txbordern.Text)
+        sb.AppendLine("Date   : " & DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"))
+        sb.AppendLine("Cashier: " & CurrentUser.fullname)
+        sb.AppendLine("Cash ID: " & CurrentUser.user_code)
+        sb.AppendLine("Payment: " & cmbpm.Text)
+        sb.AppendLine("".PadRight(lineWidth, "-"c))
+
+        sb.AppendLine("ITEM             QTY   AMOUNT")
+
+        For Each row As DataGridViewRow In datagridvieworder.Rows
+            Dim itemName As String = row.Cells(1).Value.ToString().ToUpper()
+            If itemName.Length > 15 Then itemName = itemName.Substring(0, 15)
+            Dim qty As Integer = CInt(row.Cells(0).Value)
+            Dim price As Decimal = CDec(row.Cells(2).Value)
+            sb.AppendLine(itemName.PadRight(17) & qty.ToString().PadLeft(3) & (qty * price).ToString("N2").PadLeft(9))
+        Next
+
+        sb.AppendLine("".PadRight(lineWidth, "-"c))
+
+        sb.AppendLine("Subtotal:".PadRight(20) & "P " & totalSubtotal.ToString("N2"))
+        sb.AppendLine("Tax (2%):".PadRight(20) & "P " & (totalAmount - totalSubtotal).ToString("N2"))
+        sb.AppendLine("TOTAL:".PadRight(20) & "P " & totalAmount.ToString("N2"))
+        sb.AppendLine("Paid:".PadRight(20) & "P " & paid.ToString("N2"))
+        sb.AppendLine("Change:".PadRight(20) & "P " & (paid - totalAmount).ToString("N2"))
+        sb.AppendLine("".PadRight(lineWidth, "-"c))
+
+        sb.AppendLine(CenterText("THANK YOU FOR YOUR ORDER!"))
+        sb.AppendLine(CenterText("Please come again!"))
+
+        Return sb.ToString()
+    End Function
+
+    ' ==========================================
+    ' PRINT RECEIPT (safe with or without printer)
+    ' Returns Nothing on success, error message on failure
+    ' ==========================================
+    Private Function PrintReceipt(receiptText As String) As String
+        Try
+            Using printDoc As New System.Drawing.Printing.PrintDocument()
+                ' Empty = system default printer (works with PDF / XPS / thermal)
+                printDoc.PrinterSettings.PrinterName = ""
+
+                If Not printDoc.PrinterSettings.IsValid Then
+                    Return "No printer installed on this computer."
+                End If
+
+                ' Prefer driver's 58mm paper; else use narrow custom
+                Dim paperFound As Boolean = False
+                For Each ps As PaperSize In printDoc.PrinterSettings.PaperSizes
+                    If ps.Width >= 200 AndAlso ps.Width <= 260 Then
+                        printDoc.DefaultPageSettings.PaperSize = ps
+                        paperFound = True
+                        Exit For
+                    End If
+                Next
+                If Not paperFound Then
+                    printDoc.DefaultPageSettings.PaperSize = New PaperSize("Receipt", 280, 900)
+                End If
+                printDoc.DefaultPageSettings.Margins = New Margins(0, 0, 0, 0)
+
+                Dim receiptFont As New Font("Consolas", 8)
+
+                AddHandler printDoc.PrintPage, Sub(s, ev)
+                                                   ev.Graphics.DrawString(receiptText, receiptFont, Brushes.Black, 7, 80)
+                                               End Sub
+
+                printDoc.Print()
+            End Using
+
+            Return Nothing   ' success
+
+        Catch ex As Exception
+            Return ex.Message
+        End Try
+    End Function
+
+    ' ==========================================
+    ' PAY NOW EVENT
     ' ==========================================
     Private Sub btnpn_Click(sender As Object, e As EventArgs) Handles btnpn.Click
         ErrorProvider1.Clear()
@@ -425,91 +501,45 @@ Public Class frm_oe4cashier
 
         If confirm = DialogResult.No Then Return
 
+        ' ---- STEP 1: SAVE PAYMENT (must succeed) ----
         Try
             conn()
             savePayment(paid)
-
-            ' --- Build Receipt Text (CENTERED) ---
-            Dim sb As New System.Text.StringBuilder()
-            Dim lineWidth As Integer = 32 ' Characters per line for Consolas 9 on 58mm paper
-
-            ' Helper function to center text
-            Dim CenterText As Func(Of String, String) = Function(txt)
-                                                            If txt.Length >= lineWidth Then Return txt
-                                                            Dim leftPad As Integer = (lineWidth - txt.Length) \ 2
-                                                            Return txt.PadLeft(txt.Length + leftPad).PadRight(lineWidth)
-                                                        End Function
-
-            ' --- HEADER ---
-            sb.AppendLine(CenterText("DS BURGER SHOP"))
-            sb.AppendLine(CenterText("Fresh Burger, Great Taste!"))
-            sb.AppendLine("".PadRight(lineWidth, "-"c))
-
-            ' --- TRANSACTION INFO ---
-            sb.AppendLine("TXN #  : " & txbordern.Text)
-            sb.AppendLine("Date   : " & DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"))
-            sb.AppendLine("Cashier: " & CurrentUser.fullname)
-            sb.AppendLine("Cash ID: " & CurrentUser.user_code)
-            sb.AppendLine("Payment: " & cmbpm.Text)
-            sb.AppendLine("".PadRight(lineWidth, "-"c))
-
-            ' --- ITEMS HEADER ---
-            sb.AppendLine("ITEM             QTY   AMOUNT")
-
-            ' --- ITEM LIST ---
-            For Each row As DataGridViewRow In datagridvieworder.Rows
-                Dim itemName As String = row.Cells(1).Value.ToString().ToUpper()
-                If itemName.Length > 15 Then itemName = itemName.Substring(0, 15)
-                Dim qty As Integer = CInt(row.Cells(0).Value)
-                Dim price As Decimal = CDec(row.Cells(2).Value)
-                sb.AppendLine(itemName.PadRight(17) & qty.ToString().PadLeft(3) & (qty * price).ToString("N2").PadLeft(9))
-            Next
-
-            sb.AppendLine("".PadRight(lineWidth, "-"c))
-
-            ' --- TOTALS ---
-            sb.AppendLine("Subtotal:".PadRight(20) & "P " & totalSubtotal.ToString("N2"))
-            sb.AppendLine("Tax (2%):".PadRight(20) & "P " & (totalAmount - totalSubtotal).ToString("N2"))
-            sb.AppendLine("TOTAL:".PadRight(20) & "P " & totalAmount.ToString("N2"))
-            sb.AppendLine("Paid:".PadRight(20) & "P " & paid.ToString("N2"))
-            sb.AppendLine("Change:".PadRight(20) & "P " & (paid - totalAmount).ToString("N2"))
-            sb.AppendLine("".PadRight(lineWidth, "-"c))
-
-            ' --- FOOTER ---
-            sb.AppendLine(CenterText("THANK YOU FOR YOUR ORDER!"))
-            sb.AppendLine(CenterText("Please come again!"))
-
-            ' --- Setup Printer ---
-            Dim printDoc As New System.Drawing.Printing.PrintDocument()
-            ' Increased height to 900 so it doesn't cut off
-            printDoc.DefaultPageSettings.PaperSize = New System.Drawing.Printing.PaperSize("Thermal58mm", 220, 900)
-            printDoc.DefaultPageSettings.Margins = New System.Drawing.Printing.Margins(0, 0, 0, 0)
-
-            ' X = 10 (centered), Y = 80 (pushed down from top)
-            AddHandler printDoc.PrintPage, Sub(s, ev)
-                                               ev.Graphics.DrawString(sb.ToString(), New Font("Consolas", 8), Brushes.Black, 7, 80)
-                                           End Sub
-
-
-
-            ' Dim preview As New PrintPreviewDialog()
-            'preview.Document = printDoc
-            'preview.WindowState = FormWindowState.Maximized
-            'preview.ShowDialog()
-
-
-
-
-            printDoc.PrinterSettings.PrinterName = "Name of your printer"
-            printDoc.Print()
-
-            clearOrder()
-            CreateNewAutoNumber()
-            SP_AutoNumber()
-
         Catch ex As Exception
-            MsgBox("Error processing payment: " & ex.Message, MsgBoxStyle.Critical, "Error")
+            MsgBox("Payment failed to save:" & vbCrLf & ex.Message, MsgBoxStyle.Critical, "Error")
+            Return
         End Try
+
+        ' ---- STEP 2: BUILD RECEIPT (safe) ----
+        Dim receiptText As String = BuildReceiptText(paid)
+
+        ' ---- STEP 3: PRINT (optional — errors reported, never blocks clear) ----
+        Dim printError As String = PrintReceipt(receiptText)
+
+        If printError IsNot Nothing Then
+            ' Save receipt to file as fallback so it isn't lost
+            Dim savedPath As String = ""
+            Try
+                Dim dir As String = IO.Path.Combine(Application.StartupPath, "Receipts")
+                IO.Directory.CreateDirectory(dir)
+                Dim fileName As String = IO.Path.Combine(dir, txbordern.Text.Replace("TXN-", "TXN-") & ".txt")
+                IO.File.WriteAllText(fileName, receiptText)
+                savedPath = fileName
+            Catch
+                ' ignore file save failure
+            End Try
+
+            Dim msg As String = "Receipt did NOT print:" & vbCrLf & printError
+            If savedPath <> "" Then
+                msg &= vbCrLf & vbCrLf & "But the receipt was saved to:" & vbCrLf & savedPath
+            End If
+            MsgBox(msg, MsgBoxStyle.Exclamation, "Print Issue")
+        End If
+
+        ' ---- STEP 4: ALWAYS CLEAR + ADVANCE TXN ----
+        clearOrder()
+        CreateNewAutoNumber()
+        SP_AutoNumber()
     End Sub
 
     Private Sub btnclear_Click(sender As Object, e As EventArgs) Handles btnclear.Click
@@ -517,14 +547,12 @@ Public Class frm_oe4cashier
         SP_AutoNumber()
     End Sub
 
-    ' If the user clicks VOID on the grid, add 1 back to the display stock
     Private Sub datagridvieworder_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles datagridvieworder.CellContentClick
         If e.RowIndex < 0 Then Return
         If e.ColumnIndex = 3 Then
             Dim productName As String = datagridvieworder.Rows(e.RowIndex).Cells(1).Value.ToString()
             Dim qtyVoided As Integer = CInt(datagridvieworder.Rows(e.RowIndex).Cells(0).Value)
 
-            ' Add the voided quantity back to the stock label
             If stockLabels.ContainsKey(productName) Then
                 Dim currentStock As Integer = Convert.ToInt32(stockLabels(productName).Text.Replace("STOCK: ", ""))
                 Dim newStock As Integer = currentStock + qtyVoided
