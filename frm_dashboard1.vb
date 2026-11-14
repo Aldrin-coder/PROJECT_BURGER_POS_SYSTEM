@@ -1,5 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Imports Guna.Charts.WinForms
+Imports System.Text
 
 Public Class frm_dashboard1
 
@@ -42,6 +43,9 @@ Public Class frm_dashboard1
     ' VISIBILITY
     ' ==========================================
     Sub ApplyRoleVisibility()
+        ' Show the VIEW button column for everyone
+        Column8.Visible = True
+
         If CurrentUser.role.ToLower() = "cashier" Then
             Column4.Visible = False
             Column5.Visible = False
@@ -64,8 +68,8 @@ Public Class frm_dashboard1
             paneltransactoday.Visible = True
             panelms.Visible = True
             panelmni.Visible = True
-            panelmst.Visible = True  ' Shows the Monthly Sales Trend Chart
-            panelpm.Visible = True   ' Shows the Payment Methods Chart
+            panelmst.Visible = True
+            panelpm.Visible = True
         End If
     End Sub
 
@@ -77,8 +81,9 @@ Public Class frm_dashboard1
 
         datagridviewrecenttransac.Rows.Clear()
 
+        ' THIS MAKES SURE COLUMN 1 TO 8 ARE VISIBLE
         For Each c As DataGridViewColumn In datagridviewrecenttransac.Columns
-            If c.Name Like "Column[1-7]" Then c.Visible = True
+            If c.Name Like "Column[1-8]" Then c.Visible = True
         Next
 
         conn()
@@ -114,12 +119,12 @@ Public Class frm_dashboard1
                 dr("cashier_id"),
                 dr("cashier_fullname"),
                 dr("payment_method"),
-                "₱" & total.ToString("N2"))
+                "₱" & total.ToString("N2"),
+                "VIEW")
         End While
         dr.Close()
         cmd.Dispose()
 
-        AddViewButtonColumn()
         ApplyRoleVisibility()
 
         If CurrentUser.role.ToLower() = "cashier" Then
@@ -135,145 +140,113 @@ Public Class frm_dashboard1
     End Sub
 
     ' ==========================================
-    ' VIEW BUTTON COLUMN
-    ' ==========================================
-    Sub AddViewButtonColumn()
-        If datagridviewrecenttransac.Columns.Contains("VIEW") Then Return
-
-        Dim btn As New DataGridViewButtonColumn()
-        btn.Name = "VIEW"
-        btn.HeaderText = "VIEW"
-        btn.Text = "View"
-        btn.UseColumnTextForButtonValue = True
-        btn.Width = 70
-        btn.FlatStyle = FlatStyle.Flat
-        datagridviewrecenttransac.Columns.Add(btn)
-    End Sub
-
-    ' ==========================================
-    ' VIEW CLICK — Show Receipt Preview
+    ' VIEW CLICK (Trigger Preview)
     ' ==========================================
     Private Sub datagridviewrecenttransac_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles datagridviewrecenttransac.CellContentClick
-        If e.RowIndex < 0 Then Return
-        If e.ColumnIndex <> datagridviewrecenttransac.Columns("VIEW").Index Then Return
+        If e.RowIndex < 0 Then Exit Sub
 
-        Dim cellVal = datagridviewrecenttransac.Item(0, e.RowIndex).Value
-        If cellVal Is Nothing OrElse IsDBNull(cellVal) Then Return
-
-        ShowReceipt(cellVal.ToString())
+        ' Check if the clicked column is a Button column (Column8)
+        If TypeOf datagridviewrecenttransac.Columns(e.ColumnIndex) Is DataGridViewButtonColumn Then
+            Dim cellVal = datagridviewrecenttransac.Item(0, e.RowIndex).Value
+            If cellVal IsNot Nothing AndAlso Not IsDBNull(cellVal) Then
+                ShowReceipt(cellVal.ToString())
+            End If
+        End If
     End Sub
 
     ' ==========================================
-    ' RECEIPT PREVIEW (FIXED)
+    ' RECEIPT PREVIEW (May Print Preview Dialog)
     ' ==========================================
     Sub ShowReceipt(txnId As String)
         conn()
 
         Dim cashierName As String = ""
-        Dim cashierId As String = ""
         Dim paymentMethod As String = ""
         Dim subtotalAmt As Decimal = 0
+        Dim taxRate As Decimal = 0
         Dim totalAmount As Decimal = 0
         Dim paid As Decimal = 0
-        Dim changeAmt As Decimal = 0
 
-        query = "SELECT cashier_id, cashier_fullname, payment_method, " &
-                "       subtotal_amount, amount_paid " &
-                "FROM payments WHERE transaction_id = @TID"
-        cmd = New SqlClient.SqlCommand(query, sqlconn)
+        ' 1. Get Payment Details
+        cmd = New SqlClient.SqlCommand("SELECT cashier_fullname, payment_method, subtotal_amount, tax_rate, total_amount, amount_paid FROM payments WHERE transaction_id = @TID", sqlconn)
         cmd.Parameters.AddWithValue("@TID", txnId)
-        dr = cmd.ExecuteReader
+        dr = cmd.ExecuteReader()
+
         If dr.Read() Then
-            cashierId = dr("cashier_id").ToString()
-            cashierName = dr("cashier_fullname").ToString()
-            paymentMethod = dr("payment_method").ToString()
-
-            If Not IsDBNull(dr("subtotal_amount")) Then
-                subtotalAmt = Convert.ToDecimal(dr("subtotal_amount"))
-            End If
-            If Not IsDBNull(dr("amount_paid")) Then
-                paid = Convert.ToDecimal(dr("amount_paid"))
-            End If
-
-            totalAmount = subtotalAmt * 1.02D
-            changeAmt = paid - totalAmount
+            If Not IsDBNull(dr("cashier_fullname")) Then cashierName = dr("cashier_fullname").ToString()
+            If Not IsDBNull(dr("payment_method")) Then paymentMethod = dr("payment_method").ToString()
+            If Not IsDBNull(dr("subtotal_amount")) Then subtotalAmt = Convert.ToDecimal(dr("subtotal_amount"))
+            If Not IsDBNull(dr("tax_rate")) Then taxRate = Convert.ToDecimal(dr("tax_rate"))
+            If Not IsDBNull(dr("total_amount")) Then totalAmount = Convert.ToDecimal(dr("total_amount"))
+            If Not IsDBNull(dr("amount_paid")) Then paid = Convert.ToDecimal(dr("amount_paid"))
         End If
         dr.Close()
         cmd.Dispose()
 
+        Dim changeAmt As Decimal = paid - totalAmount
+        Dim taxPeso As Decimal = totalAmount - subtotalAmt
+
+        ' 2. Build the receipt text (Standard Padding)
         Dim sb As New System.Text.StringBuilder()
-        Dim lineWidth As Integer = 32
+        Dim line As String = "--------------------------------"
 
-        Dim CenterText As Func(Of String, String) = Function(txt)
-                                                        If txt.Length >= lineWidth Then Return txt
-                                                        Dim leftPad As Integer = (lineWidth - txt.Length) \ 2
-                                                        Return txt.PadLeft(txt.Length + leftPad).PadRight(lineWidth)
-                                                    End Function
-
-        sb.AppendLine(CenterText("DS BURGER SHOP"))
-        sb.AppendLine(CenterText("Fresh Burger, Great Taste!"))
-        sb.AppendLine("".PadRight(lineWidth, "-"c))
-
+        sb.AppendLine("        DS BURGER SHOP        ")
+        sb.AppendLine("   Fresh Burger, Great Taste!  ")
+        sb.AppendLine(line)
         sb.AppendLine("TXN #  : " & txnId)
         sb.AppendLine("Date   : " & DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"))
         sb.AppendLine("Cashier: " & cashierName)
-        sb.AppendLine("Cash ID: " & cashierId)
         sb.AppendLine("Payment: " & paymentMethod)
-        sb.AppendLine("".PadRight(lineWidth, "-"c))
-
+        sb.AppendLine(line)
         sb.AppendLine("ITEM             QTY   AMOUNT")
 
-        ' --- FIX: ADDED TOP 1 TO PREVENT MULTIPLE ROW ERROR ---
-        query = "SELECT product_name, product_quantity, product_price " &
-                "FROM transaction_records " &
-                "WHERE payment_id = (SELECT TOP 1 payment_id FROM payments WHERE transaction_id = @TID)"
-        cmd = New SqlClient.SqlCommand(query, sqlconn)
+        ' 3. Loop through items (Using TOP 1 to prevent errors)
+        cmd = New SqlClient.SqlCommand("SELECT product_name, product_quantity, product_price FROM transaction_records WHERE payment_id = (SELECT TOP 1 payment_id FROM payments WHERE transaction_id = @TID)", sqlconn)
         cmd.Parameters.AddWithValue("@TID", txnId)
-        dr = cmd.ExecuteReader
+        dr = cmd.ExecuteReader()
+
         While dr.Read
             Dim itemName As String = dr("product_name").ToString().ToUpper()
-            If itemName.Length > 15 Then itemName = itemName.Substring(0, 15)
+            If itemName.Length > 15 Then
+                itemName = itemName.Substring(0, 15)
+            End If
             Dim qty As Integer = Convert.ToInt32(dr("product_quantity"))
             Dim price As Decimal = Convert.ToDecimal(dr("product_price"))
+
             sb.AppendLine(itemName.PadRight(17) & qty.ToString().PadLeft(3) & (qty * price).ToString("N2").PadLeft(9))
         End While
         dr.Close()
         cmd.Dispose()
 
-        sb.AppendLine("".PadRight(lineWidth, "-"c))
-
-        Dim taxAmt As Decimal = totalAmount - subtotalAmt
+        ' 4. Add Totals
+        sb.AppendLine(line)
         sb.AppendLine("Subtotal:".PadRight(20) & "P " & subtotalAmt.ToString("N2"))
-        sb.AppendLine("Tax (2%):".PadRight(20) & "P " & taxAmt.ToString("N2"))
+        sb.AppendLine("Tax (" & (taxRate * 100).ToString("0.##") & "%):".PadRight(20) & "P " & taxPeso.ToString("N2"))
         sb.AppendLine("TOTAL:".PadRight(20) & "P " & totalAmount.ToString("N2"))
         sb.AppendLine("Paid:".PadRight(20) & "P " & paid.ToString("N2"))
         sb.AppendLine("Change:".PadRight(20) & "P " & changeAmt.ToString("N2"))
-        sb.AppendLine("".PadRight(lineWidth, "-"c))
+        sb.AppendLine(line)
+        sb.AppendLine("   THANK YOU FOR YOUR ORDER!  ")
+        sb.AppendLine("      Please come again!      ")
 
-        sb.AppendLine(CenterText("THANK YOU FOR YOUR ORDER!"))
-        sb.AppendLine(CenterText("Please come again!"))
-
+        ' 5. Show Print Preview Dialog (ETO ANG PREVIEW)
         Dim printDoc As New System.Drawing.Printing.PrintDocument()
         printDoc.DefaultPageSettings.PaperSize = New System.Drawing.Printing.PaperSize("Thermal58mm", 220, 900)
         printDoc.DefaultPageSettings.Margins = New System.Drawing.Printing.Margins(0, 0, 0, 0)
 
-        Dim localReceiptText As String = sb.ToString()
-
         AddHandler printDoc.PrintPage, Sub(s As Object, ev As System.Drawing.Printing.PrintPageEventArgs)
-                                           ev.Graphics.DrawString(localReceiptText, New Font("Consolas", 8), Brushes.Black, 7, 80)
+                                           ev.Graphics.DrawString(sb.ToString(), New Font("Consolas", 8), Brushes.Black, 7, 80)
                                        End Sub
 
         Dim preview As New PrintPreviewDialog()
         preview.Document = printDoc
         preview.WindowState = FormWindowState.Maximized
-        preview.ShowDialog()
+        preview.ShowDialog() ' <--- ITO ANG NAGPAPALABAS NG PREVIEW
     End Sub
 
     ' ==========================================
     ' CARDS
     ' ==========================================
-
-    ' --- FIXED: Only shows TODAY'S shift sales ---
     Sub readMyShift()
         conn()
         query = "SELECT ISNULL(SUM(subtotal_amount * 1.02), 0) FROM payments " &
@@ -287,7 +260,6 @@ Public Class frm_dashboard1
         cmd.Dispose()
     End Sub
 
-    ' --- FIXED: Only counts TODAY'S transactions ---
     Sub readMyTransactions()
         conn()
         query = "SELECT COUNT(*) FROM payments WHERE cashier_id = @CID " &
@@ -300,10 +272,8 @@ Public Class frm_dashboard1
         cmd.Dispose()
     End Sub
 
-    ' --- FIXED: True Cash Sales for Today ---
     Sub readCashOnHand()
         conn()
-        ' Calculates the actual physical cash sales (Subtotal + Tax)
         query = "SELECT ISNULL(SUM(subtotal_amount * 1.02), 0) FROM payments " &
                 "WHERE payment_method = 'CASH' AND cashier_id = @CID " &
                 "AND CAST(current_date AS DATE) = CAST(GETDATE() AS DATE)"
@@ -335,7 +305,6 @@ Public Class frm_dashboard1
         cmd.Dispose()
     End Sub
 
-    ' --- FIXED: True Monthly Sales (Current Month) ---
     Sub readMonthlySales()
         conn()
         query = "SELECT ISNULL(SUM(subtotal_amount * 1.02), 0) FROM payments " &
@@ -360,20 +329,17 @@ Public Class frm_dashboard1
     ' ==========================================
     ' CHARTS
     ' ==========================================
-
-    ' --- FINAL FIX: Bar Chart plots all months safely using @Y parameter ---
     Sub readMonthlySales1()
         chartmsl.Datasets.Clear()
         chartmsl.YAxes.Ticks.Display = True
         chartmsl.XAxes.Ticks.Display = True
-
-
 
         Dim titleFont As New Guna.Charts.WinForms.ChartFont()
         titleFont.FontName = "Arial"
         titleFont.Size = 12
         titleFont.Style = Guna.Charts.WinForms.ChartFontStyle.Bold
         chartmsl.Title.Font = titleFont
+
         If CurrentUser.role.ToLower() = "cashier" Then
             chartmsl.Title.Text = "My Monthly Sales  (" & DateTime.Now.Year.ToString() & ")"
         Else
@@ -382,20 +348,19 @@ Public Class frm_dashboard1
 
         conn()
 
-        ' Parameterized @Y forces SQL Server to treat [current_date] strictly as a column
-        Dim q As String = "SELECT MONTH([current_date]) AS m, ISNULL(SUM(subtotal_amount * 1.02), 0) AS amt " &
+        query = "SELECT MONTH([current_date]) AS m, ISNULL(SUM(subtotal_amount * 1.02), 0) AS amt " &
                           "FROM dbo.payments " &
                           "WHERE YEAR([current_date]) = @Y "
 
         If CurrentUser.role.ToLower() = "cashier" Then
-            q &= " AND cashier_id = @CID "
+            query &= " AND cashier_id = @CID "
         End If
 
-        q &= " GROUP BY MONTH([current_date])"
+        query &= " GROUP BY MONTH([current_date])"
 
         Dim monthlyData(11) As Decimal
 
-        cmd = New SqlClient.SqlCommand(q, sqlconn)
+        cmd = New SqlClient.SqlCommand(query, sqlconn)
         cmd.Parameters.AddWithValue("@Y", DateTime.Now.Year)
         If CurrentUser.role.ToLower() = "cashier" Then cmd.Parameters.AddWithValue("@CID", CurrentUser.user_code)
 
@@ -422,7 +387,6 @@ Public Class frm_dashboard1
         Next
 
         chartmsl.Datasets.Add(dataset)
-
     End Sub
 
     Sub readPaymentMethod()
@@ -474,7 +438,6 @@ Public Class frm_dashboard1
         dataset.DataPoints.Add(New LPoint With {.Label = "Maya (₱" & maya.ToString("#,##0") & ")", .Y = CDbl(maya / totalSales * 100)})
 
         chartpm.Datasets.Add(dataset)
-
     End Sub
 
     ' ==========================================

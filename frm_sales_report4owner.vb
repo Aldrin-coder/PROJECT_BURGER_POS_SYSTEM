@@ -20,17 +20,16 @@ Public Class frm_sales_report4owner
         datagridviewsalesreport.Rows.Clear()
         conn()
 
-        ' Selects BOTH Cashier ID and Cashier Fullname
-        Dim q As String = "SELECT payment_id, transaction_id, [current_date], transaction_time, " &
-                          "cashier_id, cashier_fullname, payment_method, total_amount " &
-                          "FROM payments WHERE CAST([current_date] AS DATE) = @DATE "
+        query = "SELECT payment_id, transaction_id, [current_date], transaction_time, " &
+                "       cashier_id, cashier_fullname, payment_method, total_amount " &
+                "FROM payments WHERE CAST([current_date] AS DATE) = @DATE "
 
         If txbsearch.Text <> "" Then
-            q &= "AND (transaction_id LIKE @SEARCH OR cashier_fullname LIKE @SEARCH) "
+            query &= "AND (transaction_id LIKE @SEARCH OR cashier_fullname LIKE @SEARCH) "
         End If
-        q &= "ORDER BY payment_id DESC"
+        query &= "ORDER BY payment_id DESC"
 
-        cmd = New SqlClient.SqlCommand(q, sqlconn)
+        cmd = New SqlClient.SqlCommand(query, sqlconn)
         cmd.Parameters.AddWithValue("@DATE", dtdt.Value.Date)
         If txbsearch.Text <> "" Then cmd.Parameters.AddWithValue("@SEARCH", "%" & txbsearch.Text & "%")
 
@@ -45,7 +44,7 @@ Public Class frm_sales_report4owner
             Dim cName As String = If(IsDBNull(dr("cashier_fullname")), "", dr("cashier_fullname").ToString())
             Dim method As String = If(IsDBNull(dr("payment_method")), "", dr("payment_method").ToString())
 
-            ' Matches your EXACT 10-column Designer layout
+            ' Matches your 10-column Designer layout
             datagridviewsalesreport.Rows.Add(
                 dr("payment_id"),                            ' 0: ID
                 dr("transaction_id").ToString(),             ' 1: TRANSACTION ID
@@ -104,17 +103,19 @@ Public Class frm_sales_report4owner
     End Sub
 
     ' ==========================================
-    ' VIEW / DELETE (Indices match your Designer)
+    ' VIEW / DELETE (Safe Header Check)
     ' ==========================================
     Private Sub datagridviewtransaction_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles datagridviewsalesreport.CellContentClick
         If e.RowIndex < 0 Then Exit Sub
 
+        Dim colHeader As String = datagridviewsalesreport.Columns(e.ColumnIndex).HeaderText.ToUpper()
         Dim payID As Integer = Convert.ToInt32(datagridviewsalesreport.Item(0, e.RowIndex).Value)
         Dim txnID As String = datagridviewsalesreport.Item(1, e.RowIndex).Value.ToString()
 
-        If e.ColumnIndex = 8 Then
+        If colHeader.Contains("VIEW") Then
             ShowReceipt(txnID)
-        ElseIf e.ColumnIndex = 9 Then
+
+        ElseIf colHeader.Contains("DELETE") Then
             If MessageBox.Show("Delete Transaction " & txnID & "?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) = DialogResult.Yes Then
                 cmd = New SqlClient.SqlCommand("DELETE FROM transaction_records WHERE payment_id = @ID; DELETE FROM payments WHERE payment_id = @ID;", sqlconn)
                 cmd.Parameters.AddWithValue("@ID", payID)
@@ -126,58 +127,80 @@ Public Class frm_sales_report4owner
     End Sub
 
     ' ==========================================
-    ' RECEIPT PREVIEW (Shows Subtotal & Tax)
+    ' RECEIPT PREVIEW (Simplified "Student Logic")
     ' ==========================================
     Sub ShowReceipt(txnId As String)
         conn()
 
-        cmd = New SqlClient.SqlCommand("SELECT cashier_fullname, payment_method, subtotal_amount, tax_amount, total_amount FROM payments WHERE transaction_id = @TID", sqlconn)
+        Dim cashierName As String = ""
+        Dim paymentMethod As String = ""
+        Dim subtotalAmt As Decimal = 0
+        Dim taxRate As Decimal = 0
+        Dim totalAmount As Decimal = 0
+        Dim paid As Decimal = 0
+
+        cmd = New SqlClient.SqlCommand("SELECT cashier_fullname, payment_method, subtotal_amount, tax_rate, total_amount, amount_paid FROM payments WHERE transaction_id = @TID", sqlconn)
         cmd.Parameters.AddWithValue("@TID", txnId)
         dr = cmd.ExecuteReader()
 
-        Dim cashier As String = "", method As String = ""
-        Dim subT As Decimal = 0, tax As Decimal = 0, tot As Decimal = 0
-
         If dr.Read() Then
-            cashier = If(IsDBNull(dr("cashier_fullname")), "", dr("cashier_fullname").ToString())
-            method = If(IsDBNull(dr("payment_method")), "", dr("payment_method").ToString())
-            subT = If(IsDBNull(dr("subtotal_amount")), 0, Convert.ToDecimal(dr("subtotal_amount")))
-            tax = If(IsDBNull(dr("tax_amount")), 0, Convert.ToDecimal(dr("tax_amount")))
-            tot = If(IsDBNull(dr("total_amount")), 0, Convert.ToDecimal(dr("total_amount")))
+            If Not IsDBNull(dr("cashier_fullname")) Then cashierName = dr("cashier_fullname").ToString()
+            If Not IsDBNull(dr("payment_method")) Then paymentMethod = dr("payment_method").ToString()
+            If Not IsDBNull(dr("subtotal_amount")) Then subtotalAmt = Convert.ToDecimal(dr("subtotal_amount"))
+            If Not IsDBNull(dr("tax_rate")) Then taxRate = Convert.ToDecimal(dr("tax_rate"))
+            If Not IsDBNull(dr("total_amount")) Then totalAmount = Convert.ToDecimal(dr("total_amount"))
+            If Not IsDBNull(dr("amount_paid")) Then paid = Convert.ToDecimal(dr("amount_paid"))
         End If
         dr.Close()
+        cmd.Dispose()
 
-        Dim sb As New StringBuilder()
-        sb.AppendLine("DS BURGER SHOP")
+        Dim changeAmt As Decimal = paid - totalAmount
+        Dim taxPeso As Decimal = totalAmount - subtotalAmt
+
+        Dim sb As New System.Text.StringBuilder()
+        Dim line As String = "--------------------------------"
+
+        sb.AppendLine("        DS BURGER SHOP        ")
+        sb.AppendLine("   Fresh Burger, Great Taste!  ")
+        sb.AppendLine(line)
         sb.AppendLine("TXN #  : " & txnId)
-        sb.AppendLine("Cashier: " & cashier)
-        sb.AppendLine("Payment: " & method)
-        sb.AppendLine("--------------------------------")
+        sb.AppendLine("Date   : " & DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"))
+        sb.AppendLine("Cashier: " & cashierName)
+        sb.AppendLine("Payment: " & paymentMethod)
+        sb.AppendLine(line)
         sb.AppendLine("ITEM             QTY   AMOUNT")
 
-        cmd = New SqlClient.SqlCommand("SELECT tr.product_name, tr.product_quantity, tr.product_price FROM transaction_records tr INNER JOIN payments p ON p.payment_id = tr.payment_id WHERE p.transaction_id = @TID", sqlconn)
+        cmd = New SqlClient.SqlCommand("SELECT product_name, product_quantity, product_price FROM transaction_records WHERE payment_id = (SELECT TOP 1 payment_id FROM payments WHERE transaction_id = @TID)", sqlconn)
         cmd.Parameters.AddWithValue("@TID", txnId)
         dr = cmd.ExecuteReader()
 
         While dr.Read
-            Dim name As String = If(IsDBNull(dr("product_name")), "", dr("product_name").ToString().ToUpper())
-            If name.Length > 15 Then name = name.Substring(0, 15)
-            Dim qty As Integer = If(IsDBNull(dr("product_quantity")), 0, Convert.ToInt32(dr("product_quantity")))
-            Dim price As Decimal = If(IsDBNull(dr("product_price")), 0, Convert.ToDecimal(dr("product_price")))
-            sb.AppendLine(name.PadRight(17) & qty.ToString().PadLeft(3) & (qty * price).ToString("N2").PadLeft(9))
+            Dim itemName As String = dr("product_name").ToString().ToUpper()
+            If itemName.Length > 15 Then
+                itemName = itemName.Substring(0, 15)
+            End If
+            Dim qty As Integer = Convert.ToInt32(dr("product_quantity"))
+            Dim price As Decimal = Convert.ToDecimal(dr("product_price"))
+
+            sb.AppendLine(itemName.PadRight(17) & qty.ToString().PadLeft(3) & (qty * price).ToString("N2").PadLeft(9))
         End While
         dr.Close()
         cmd.Dispose()
 
-        sb.AppendLine("--------------------------------")
-        ' Receipt still shows the tax breakdown as required by the PDF
-        sb.AppendLine("Subtotal:".PadRight(16) & "P " & subT.ToString("N2"))
-        sb.AppendLine("Tax (2%):".PadRight(16) & "P " & tax.ToString("N2"))
-        sb.AppendLine("TOTAL:".PadRight(16) & "P " & tot.ToString("N2"))
+        sb.AppendLine(line)
+        sb.AppendLine("Subtotal:".PadRight(20) & "P " & subtotalAmt.ToString("N2"))
+        sb.AppendLine("Tax (" & (taxRate * 100).ToString("0.##") & "%):".PadRight(20) & "P " & taxPeso.ToString("N2"))
+        sb.AppendLine("TOTAL:".PadRight(20) & "P " & totalAmount.ToString("N2"))
+        sb.AppendLine("Paid:".PadRight(20) & "P " & paid.ToString("N2"))
+        sb.AppendLine("Change:".PadRight(20) & "P " & changeAmt.ToString("N2"))
+        sb.AppendLine(line)
+        sb.AppendLine("   THANK YOU FOR YOUR ORDER!  ")
+        sb.AppendLine("      Please come again!      ")
 
         Dim printDoc As New System.Drawing.Printing.PrintDocument()
         printDoc.DefaultPageSettings.PaperSize = New System.Drawing.Printing.PaperSize("Thermal58mm", 220, 900)
         printDoc.DefaultPageSettings.Margins = New System.Drawing.Printing.Margins(0, 0, 0, 0)
+
         AddHandler printDoc.PrintPage, Sub(s As Object, ev As System.Drawing.Printing.PrintPageEventArgs)
                                            ev.Graphics.DrawString(sb.ToString(), New Font("Consolas", 8), Brushes.Black, 7, 80)
                                        End Sub
@@ -189,7 +212,7 @@ Public Class frm_sales_report4owner
     End Sub
 
     ' ==========================================
-    ' PRINT BUTTON MENU (Daily and Monthly only)
+    ' PRINT BUTTON MENU
     ' ==========================================
     Private Sub printreportbtn_Click(sender As Object, e As EventArgs) Handles printreportbtn.Click
         Dim menu As New ContextMenuStrip()
@@ -242,6 +265,7 @@ Public Class frm_sales_report4owner
         Next
 
         sb.AppendLine("==========================================================================================")
+        sb.AppendLine("END OF REPORT")
         ShowPrintPreview(sb.ToString())
     End Sub
 
@@ -275,18 +299,21 @@ Public Class frm_sales_report4owner
         sb.AppendLine("Month        : " & MonthName(mo) & " " & yr.ToString())
         sb.AppendLine("Date Printed : " & DateTime.Now.ToString("MMMM dd, yyyy hh:mm tt"))
         sb.AppendLine("------------------------------------------------------------------------------------------")
-        sb.AppendLine("DATE           DAY              TRANSACTIONS        TOTAL SALES        % OF MONTH")
+        ' TINANGGAL ANG % OF MONTH SA HEADER
+        sb.AppendLine("DATE           DAY              TRANSACTIONS        TOTAL SALES")
         sb.AppendLine("------------------------------------------------------------------------------------------")
 
         For dy As Integer = 1 To days
-            Dim pct As String = If(grandTot > 0, (tot(dy) / grandTot * 100D).ToString("0.00") & "%", "0.00%")
             Dim dayName As String = New DateTime(yr, mo, dy).ToString("ddd")
             Dim dateStr As String = New DateTime(yr, mo, dy).ToString("MM/dd/yyyy")
-            sb.AppendLine(dateStr.PadRight(15) & dayName.PadRight(10) & cnt(dy).ToString().PadLeft(12) & tot(dy).ToString("₱#,##0.00").PadLeft(20) & pct.PadLeft(15))
+
+            ' TINANGGAL ANG pct variable dito
+            sb.AppendLine(dateStr.PadRight(15) & dayName.PadRight(10) & cnt(dy).ToString().PadLeft(12) & tot(dy).ToString("₱#,##0.00").PadLeft(20))
         Next
 
         sb.AppendLine("------------------------------------------------------------------------------------------")
-        sb.AppendLine("TOTAL".PadRight(25) & cnt.Sum().ToString().PadLeft(12) & grandTot.ToString("₱#,##0.00").PadLeft(20) & "100.00%".PadLeft(15))
+        ' TINANGGAL ANG 100.00% SA TOTAL
+        sb.AppendLine("TOTAL".PadRight(25) & cnt.Sum().ToString().PadLeft(12) & grandTot.ToString("₱#,##0.00").PadLeft(20))
         sb.AppendLine("==========================================================================================")
         ShowPrintPreview(sb.ToString())
     End Sub
