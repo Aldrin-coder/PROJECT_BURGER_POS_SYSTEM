@@ -14,6 +14,8 @@ Public Class frm_dashboard1
         readMonthlySales1()
         readPaymentMethod()
         ApplyRoleVisibility()
+        chartmsl.Update()
+        chartpm.Update()
     End Sub
 
     ' ==========================================
@@ -370,7 +372,7 @@ Public Class frm_dashboard1
         titleFont.Size = 12
         titleFont.Style = Guna.Charts.WinForms.ChartFontStyle.Bold
         chartmsl.Title.Font = titleFont
-        chartmsl.Title.Text = "Monthly Sales Trend (" & DateTime.Now.Year.ToString() & ")"
+        chartmsl.Title.Text = "Monthly Sales  (" & DateTime.Now.Year.ToString() & ")"
 
         conn()
 
