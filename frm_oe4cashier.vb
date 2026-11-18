@@ -395,23 +395,19 @@ Public Class frm_oe4cashier
         sb.AppendLine("   THANK YOU FOR YOUR ORDER!  ")
         sb.AppendLine("      Please come again!      ")
 
-        ' DIRECT PRINT (No Selection, No Preview)
-        Dim printDoc As New PrintDocument()
-        printDoc.DefaultPageSettings.PaperSize = New PaperSize("Thermal58mm", 220, 900)
-        printDoc.DefaultPageSettings.Margins = New Margins(0, 0, 0, 0)
+        ' 5. Show Print Preview Dialog (ETO ANG PREVIEW)
+        Dim printDoc As New System.Drawing.Printing.PrintDocument()
+        printDoc.DefaultPageSettings.PaperSize = New System.Drawing.Printing.PaperSize("Thermal58mm", 220, 600)
+        printDoc.DefaultPageSettings.Margins = New System.Drawing.Printing.Margins(0, 0, 0, 0)
 
-        AddHandler printDoc.PrintPage, Sub(s, ev)
-                                           Dim font As New Font("Consolas", 8)
-                                           ev.Graphics.DrawString(sb.ToString(), font, Brushes.Black, 7, 80)
+        AddHandler printDoc.PrintPage, Sub(s As Object, ev As System.Drawing.Printing.PrintPageEventArgs)
+                                           ev.Graphics.DrawString(sb.ToString(), New Font("Consolas", 8), Brushes.Black, 7, 20)
                                        End Sub
 
-        Try
-            ' This command sends it straight to the default printer
-            printDoc.Print()
-        Catch ex As Exception
-            ' If there's no printer connected, it won't crash. It will just show this message.
-            MsgBox("Printing failed. Please check your printer connection." & vbCrLf & ex.Message, MsgBoxStyle.Exclamation, "Print Error")
-        End Try
+        Dim preview As New PrintPreviewDialog()
+        preview.Document = printDoc
+        preview.WindowState = FormWindowState.Maximized
+        preview.ShowDialog() ' <--- ITO ANG NAGPAPALABAS NG PREVIEW
     End Sub
 
     ' ==========================================

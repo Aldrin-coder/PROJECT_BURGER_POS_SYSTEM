@@ -2,24 +2,14 @@ SET NOCOUNT ON;
 USE DB_DARKSYSTEM
 GO
 
--- =========================================================================
--- SCRIPT 2: MENU AND CATEGORIES SYSTEM - FULL VERSION
--- Menu code format: M000000001, M000000002, ... (M plus 9 digits)
--- Category: category_id (identity)
--- =========================================================================
 
--- PART 0: DROP EXISTING MENU OBJECTS (safe re-run)
 IF OBJECT_ID('dbo.SP_AutoNumberMenu', 'P') IS NOT NULL DROP PROCEDURE dbo.SP_AutoNumberMenu;
 IF OBJECT_ID('dbo.menu_items',        'U') IS NOT NULL DROP TABLE dbo.menu_items;
 IF OBJECT_ID('dbo.categories',        'U') IS NOT NULL DROP TABLE dbo.categories;
 IF OBJECT_ID('dbo.AutoNumberMenu',    'U') IS NOT NULL DROP TABLE dbo.AutoNumberMenu;
 GO
 
--- =========================================================================
--- PART A: CREATE TABLES, PROCEDURE, AND DEFAULT DATA
--- =========================================================================
 
--- A1. AUTO-NUMBER TABLE (menu only)
 CREATE TABLE [dbo].[AutoNumberMenu](
     [RecNo]     [int] IDENTITY(1,1) PRIMARY KEY,
     [Pfx]       [varchar](10) NULL,
@@ -27,7 +17,6 @@ CREATE TABLE [dbo].[AutoNumberMenu](
 );
 GO
 
--- A2. MENU AUTO-NUMBER PROC
 CREATE PROCEDURE [dbo].[SP_AutoNumberMenu]
     @pfx       varchar(10) = '',
     @NewNumber varchar(20) = '' OUTPUT
@@ -54,14 +43,12 @@ BEGIN
 END
 GO
 
--- A3. CATEGORIES TABLE
 CREATE TABLE categories (
     category_id   INT IDENTITY(1,1) PRIMARY KEY,
     category_name VARCHAR(50) NOT NULL UNIQUE
 );
 GO
 
--- A4. MENU ITEMS TABLE
 CREATE TABLE menu_items (
     item_id       INT IDENTITY(1,1) PRIMARY KEY,
     item_code     VARCHAR(20) UNIQUE NOT NULL,
@@ -75,17 +62,15 @@ CREATE TABLE menu_items (
 );
 GO
 
--- A5. DEFAULT CATEGORIES
+
 INSERT INTO categories (category_name) VALUES
 ('Burgers'), ('Hotdogs'), ('Sandwiches'), ('Fries'), ('Add-ons'), ('Drinks');
 GO
 
--- A6. INSERT FIRST MENU ITEM (generates M000000001)
 DECLARE @NewItemCode VARCHAR(20);
 EXEC [dbo].[SP_AutoNumberMenu] 'M', @NewItemCode OUTPUT;
-
--- Safety check: fail loudly if the proc didn't set the code
 IF @NewItemCode IS NULL
+
 BEGIN
     RAISERROR('SP_AutoNumberMenu failed to generate a code. Check AutoNumberMenu table exists.', 16, 1);
     RETURN;

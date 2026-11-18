@@ -1,18 +1,12 @@
 USE DB_DARKSYSTEM
 GO
 
--- ============================================================
--- DROP (FK-safe order)
--- ============================================================
 IF OBJECT_ID('dbo.sp_AutoNumberTxn', 'P')    IS NOT NULL DROP PROCEDURE dbo.sp_AutoNumberTxn;
 IF OBJECT_ID('dbo.transaction_records', 'U') IS NOT NULL DROP TABLE dbo.transaction_records;
 IF OBJECT_ID('dbo.payments', 'U')            IS NOT NULL DROP TABLE dbo.payments;
 IF OBJECT_ID('dbo.AutoNumberTxn', 'U')       IS NOT NULL DROP TABLE dbo.AutoNumberTxn;
 GO
 
--- ============================================================
--- 1. AutoNumberTxn
--- ============================================================
 CREATE TABLE [dbo].[AutoNumberTxn](
     [RecNo]     [int] IDENTITY(1,1) NOT NULL,
     [Pfx]       [varchar](10) NULL,
@@ -21,9 +15,6 @@ CREATE TABLE [dbo].[AutoNumberTxn](
 )
 GO
 
--- ============================================================
--- 2. sp_AutoNumberTxn
--- ============================================================
 CREATE PROCEDURE [dbo].[sp_AutoNumberTxn]
     @pfx       varchar(10) = '',
     @NewNumber varchar(20) = '' OUTPUT
@@ -48,9 +39,8 @@ BEGIN
 END
 GO
 
--- ============================================================
--- 3. payments — current_date is a REAL DATE column (fixes GROUP BY)
--- ============================================================
+-- payments — current_date is a REAL DATE column (fixes GROUP BY)
+
 CREATE TABLE payments (
     payment_id          INT IDENTITY(1,1) PRIMARY KEY,
     transaction_id      VARCHAR(20)     NOT NULL,
@@ -68,9 +58,8 @@ CREATE TABLE payments (
 );
 GO
 
--- ============================================================
--- 4. transaction_records
--- ============================================================
+
+-- transaction_records
 CREATE TABLE transaction_records (
     id                  INT IDENTITY(1,1) PRIMARY KEY,
     payment_id          INT             NOT NULL,
@@ -82,9 +71,8 @@ CREATE TABLE transaction_records (
 );
 GO
 
--- ============================================================
--- 5. Insert test data
--- ============================================================
+-- Insert test data
+
 DECLARE @TestTxn       varchar(20);
 DECLARE @TestPaymentID INT;
 
@@ -107,9 +95,9 @@ PRINT 'Transaction ID: ' + @TestTxn;
 PRINT 'Payment ID:     ' + CAST(@TestPaymentID AS VARCHAR(10));
 GO
 
--- ============================================================
--- 6. Verify data
--- ============================================================
+
+--Verify data
+
 SELECT
     p.payment_id, p.transaction_id, p.[current_date], p.transaction_time,
     p.cashier_id, p.cashier_fullname, p.payment_method,
@@ -120,29 +108,6 @@ INNER JOIN transaction_records t ON p.payment_id = t.payment_id
 ORDER BY p.payment_id DESC;
 GO
 
--- ============================================================
--- 7. VERIFY FIX — is_computed MUST be 0
--- ============================================================
-SELECT c.name, t.name AS data_type, c.is_computed
-FROM sys.columns c
-JOIN sys.types t ON t.user_type_id = c.user_type_id
-WHERE c.object_id = OBJECT_ID('payments') AND c.name = 'current_date';
-GO
-
--- ============================================================
--- 8. VERIFY FIX — the exact query from readMonthlySales1() must run
--- ============================================================
-SELECT DATEPART(MONTH, current_date) AS mth,
-       ISNULL(SUM(subtotal_amount * 1.02), 0) AS amt
-FROM payments
-WHERE current_date >= '2026-01-01' AND current_date < '2027-01-01'
-GROUP BY DATEPART(MONTH, current_date);
-GO
-
--- ============================================================
--- 9. DEMO RESET — uncomment ALL lines below ONLY to wipe data.
---    (Do NOT uncomment if you want to keep test data.)
--- ============================================================
 
 DELETE FROM dbo.transaction_records;
 DELETE FROM dbo.payments;
@@ -211,9 +176,9 @@ END
 PRINT 'Successfully inserted 36 test transactions across all 12 months of ' + CAST(@CurrentYear AS VARCHAR(4)) + '!';
 GO
 
--- ============================================================
+
 -- VERIFY THE DATA 
--- ============================================================
+
 SELECT 
     MONTH([current_date]) AS [Month],
     DATENAME(MONTH, [current_date]) AS [Month Name],

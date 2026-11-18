@@ -124,16 +124,16 @@ Public Class frm_mm4admin
         dr = cmd.ExecuteReader
         While dr.Read
             datagridviewmenulist.Rows.Add(
-                dr("item_code"),                                              ' 0
-                dr("product_name"),                                           ' 1
-                dr("price"),                                                  ' 2
-                dr("category_name"),                                          ' 3
-                dr("quantity"),                                               ' 4
-                If(CBool(dr("IsActive")), "ACTIVE", "INACTIVE"),              ' 5
+                dr("item_code"),
+                dr("product_name"),
+                dr("price"),
+                dr("category_name"),
+                dr("quantity"),
+                If(CBool(dr("IsActive")), "ACTIVE", "INACTIVE"),
                 If(IsDBNull(dr("product_image")), Nothing, Image.FromStream(New MemoryStream(CType(dr("product_image"), Byte())))), ' 6
-                If(CBool(dr("IsActive")), "DISABLE", "ENABLE"),               ' 7
-                "UPDATE",                                                     ' 8
-                "DELETE")                                                     ' 9
+                If(CBool(dr("IsActive")), "DISABLE", "ENABLE"),
+                "UPDATE",
+                "DELETE")
 
             datagridviewmenulist.Rows(datagridviewmenulist.Rows.Count - 1).Tag = dr("category_id")
         End While

@@ -231,11 +231,11 @@ Public Class frm_dashboard1
 
         ' 5. Show Print Preview Dialog (ETO ANG PREVIEW)
         Dim printDoc As New System.Drawing.Printing.PrintDocument()
-        printDoc.DefaultPageSettings.PaperSize = New System.Drawing.Printing.PaperSize("Thermal58mm", 220, 900)
+        printDoc.DefaultPageSettings.PaperSize = New System.Drawing.Printing.PaperSize("Thermal58mm", 220, 600)
         printDoc.DefaultPageSettings.Margins = New System.Drawing.Printing.Margins(0, 0, 0, 0)
 
         AddHandler printDoc.PrintPage, Sub(s As Object, ev As System.Drawing.Printing.PrintPageEventArgs)
-                                           ev.Graphics.DrawString(sb.ToString(), New Font("Consolas", 8), Brushes.Black, 7, 80)
+                                           ev.Graphics.DrawString(sb.ToString(), New Font("Consolas", 8), Brushes.Black, 7, 20)
                                        End Sub
 
         Dim preview As New PrintPreviewDialog()
