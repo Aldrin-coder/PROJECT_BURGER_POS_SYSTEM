@@ -155,7 +155,7 @@ Public Class frm_sales_report4owner
         cmd.Dispose()
 
         Dim changeAmt As Decimal = paid - totalAmount
-        Dim taxPeso As Decimal = totalAmount - subtotalAmt
+        Dim totaltax As Decimal = totalAmount - subtotalAmt
 
         Dim sb As New System.Text.StringBuilder()
         Dim line As String = "--------------------------------"
@@ -189,7 +189,7 @@ Public Class frm_sales_report4owner
 
         sb.AppendLine(line)
         sb.AppendLine("Subtotal:".PadRight(20) & "P " & subtotalAmt.ToString("N2"))
-        sb.AppendLine("Tax (" & (taxRate * 100).ToString("0.##") & "%):".PadRight(20) & "P " & taxPeso.ToString("N2"))
+        sb.AppendLine("Tax (2%):".PadRight(20) & "P " & totaltax.ToString("N2"))
         sb.AppendLine("TOTAL:".PadRight(20) & "P " & totalAmount.ToString("N2"))
         sb.AppendLine("Paid:".PadRight(20) & "P " & paid.ToString("N2"))
         sb.AppendLine("Change:".PadRight(20) & "P " & changeAmt.ToString("N2"))

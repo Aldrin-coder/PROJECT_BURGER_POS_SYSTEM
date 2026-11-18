@@ -67,9 +67,7 @@ Public Class Mainformd
             If CurrentUser.role.ToLower() = "admin" Then
                 LoadFormInsidePanel(New frm_mm4admin())
             End If
-            If CurrentUser.role.ToLower() = "owner" Then
-                LoadFormInsidePanel(New frm_mm4admin())
-            End If
+
         ElseIf btn.Name = "muabtn" Then
             If CurrentUser.role.ToLower() = "owner" Then
                 LoadFormInsidePanel(New frm_mua4admin_owner2())
@@ -111,7 +109,7 @@ Public Class Mainformd
             dashboardbtn.Visible = True
             muabtn.Visible = True
             srbtn.Visible = True
-            mmbtn.Visible = True
+
 
             lbluserinfo1.Text = "OWNER INFORMATION"
             lbluserid1.Text = "OWNER ID      : " & CurrentUser.user_code
@@ -120,7 +118,7 @@ Public Class Mainformd
 
             lblusershift1.Visible = False
             lbluserinfo1.Margin = New Padding(0, 0, 0, 20)
-            logoutbtn.Margin = New Padding(92, 130, 3, 0)
+            logoutbtn.Margin = New Padding(92, 180, 3, 0)
 
 
 
@@ -207,6 +205,10 @@ Public Class Mainformd
     End Sub
 
     Private Sub panelcontainer_Paint(sender As Object, e As PaintEventArgs) Handles panelcontainer.Paint
+
+    End Sub
+
+    Private Sub logintimer11_Click(sender As Object, e As EventArgs) Handles logintimer11.Click
 
     End Sub
 End Class

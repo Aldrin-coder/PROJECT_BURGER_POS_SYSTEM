@@ -222,6 +222,37 @@ Public Class frm_oe4cashier
             AddHandler lblPrice.Click, Sub(s, ev) addToOrder(pName, pPrice)
             AddHandler lblStock.Click, Sub(s, ev) addToOrder(pName, pPrice)
 
+            ' ==========================================
+            ' HOVER EFFECTS — Card only
+            ' ==========================================
+            Dim enterCard As EventHandler = Sub(s, ev)
+                                                card.FillColor = Color.FromArgb(255, 248, 220) ' light cream
+                                                card.BorderColor = Color.OrangeRed
+                                                card.BorderThickness = 3
+                                            End Sub
+
+            Dim leaveCard As EventHandler = Sub(s, ev)
+                                                ' Only reset if the cursor truly left the whole card
+                                                If Not card.ClientRectangle.Contains(card.PointToClient(Cursor.Position)) Then
+                                                    card.FillColor = Color.White
+                                                    card.BorderColor = Color.DarkOrange
+                                                    card.BorderThickness = 2
+                                                End If
+                                            End Sub
+
+            AddHandler card.MouseEnter, enterCard
+            AddHandler card.MouseLeave, leaveCard
+            AddHandler pic.MouseEnter, enterCard
+            AddHandler pic.MouseLeave, leaveCard
+            AddHandler lblName.MouseEnter, enterCard
+            AddHandler lblName.MouseLeave, leaveCard
+            AddHandler lblCategory.MouseEnter, enterCard
+            AddHandler lblCategory.MouseLeave, leaveCard
+            AddHandler lblPrice.MouseEnter, enterCard
+            AddHandler lblPrice.MouseLeave, leaveCard
+            AddHandler lblStock.MouseEnter, enterCard
+            AddHandler lblStock.MouseLeave, leaveCard
+
             FlowLayoutPanel1.Controls.Add(card)
         End While
 
@@ -472,24 +503,40 @@ Public Class frm_oe4cashier
         SP_AutoNumber()
     End Sub
 
+    ' ==========================================
+    ' VOID ITEM — REMOVES 1 QTY PER CLICK
+    ' ==========================================
     Private Sub datagridvieworder_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles datagridvieworder.CellContentClick
         If e.RowIndex < 0 Then Return
 
-        ' If "VOID" button is clicked
+        ' If "VOID ITEM" button is clicked
         If e.ColumnIndex = 3 Then
-            Dim productName As String = datagridvieworder.Rows(e.RowIndex).Cells(1).Value.ToString()
-            Dim qtyVoided As Integer = CInt(datagridvieworder.Rows(e.RowIndex).Cells(0).Value)
+            Dim row As DataGridViewRow = datagridvieworder.Rows(e.RowIndex)
+            Dim productName As String = row.Cells(1).Value.ToString()
+            Dim currentQty As Integer = CInt(row.Cells(0).Value)
 
-            ' Return the stock to the label
+            ' Return 1 stock to the label
             If stockLabels.ContainsKey(productName) Then
                 Dim currentStock As Integer = Convert.ToInt32(stockLabels(productName).Text.Replace("STOCK: ", ""))
-                Dim newStock As Integer = currentStock + qtyVoided
+                Dim newStock As Integer = currentStock + 1
                 stockLabels(productName).Text = "STOCK: " & newStock
-                stockLabels(productName).BackColor = Color.DarkOrange
+
+                ' Update stock label color
+                If newStock > 0 Then
+                    stockLabels(productName).BackColor = Color.DarkOrange
+                Else
+                    stockLabels(productName).BackColor = Color.Red
+                End If
             End If
 
-            ' Remove from list
-            datagridvieworder.Rows.RemoveAt(e.RowIndex)
+            ' Decrease quantity by 1
+            If currentQty > 1 Then
+                row.Cells(0).Value = currentQty - 1
+            Else
+                ' Quantity is 1 → remove the row entirely
+                datagridvieworder.Rows.RemoveAt(e.RowIndex)
+            End If
+
             updateTotals()
         End If
     End Sub

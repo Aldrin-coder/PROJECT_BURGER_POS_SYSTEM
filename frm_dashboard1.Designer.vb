@@ -107,11 +107,11 @@ Partial Class frm_dashboard1
         Me.GunaBarDataset1 = New Guna.Charts.WinForms.GunaBarDataset()
         Me.panelpm = New Guna.UI2.WinForms.Guna2Panel()
         Me.chartpm = New Guna.Charts.WinForms.GunaChart()
+        Me.GunaPieDataset1 = New Guna.Charts.WinForms.GunaPieDataset()
         Me.panelbanner = New Guna.UI2.WinForms.Guna2Panel()
         Me.lblrole = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Me.Guna2PictureBox1 = New Guna.UI2.WinForms.Guna2PictureBox()
         Me.lblgg = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Me.GunaPieDataset1 = New Guna.Charts.WinForms.GunaPieDataset()
         Me.Guna2Panel1.SuspendLayout()
         CType(Me.Guna2PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.panelshift.SuspendLayout()
@@ -764,7 +764,7 @@ Partial Class frm_dashboard1
         ChartFont1.FontName = "Microsoft JhengHei UI Light"
         Me.chartmsl.Legend.LabelFont = ChartFont1
         Me.chartmsl.Legend.LabelForeColor = System.Drawing.Color.Black
-        Me.chartmsl.Location = New System.Drawing.Point(16, 16)
+        Me.chartmsl.Location = New System.Drawing.Point(10, 29)
         Me.chartmsl.Name = "chartmsl"
         Me.chartmsl.Size = New System.Drawing.Size(958, 208)
         Me.chartmsl.TabIndex = 0
@@ -878,6 +878,11 @@ Partial Class frm_dashboard1
         Tick6.Font = ChartFont16
         Me.chartpm.ZAxes.Ticks = Tick6
         '
+        'GunaPieDataset1
+        '
+        Me.GunaPieDataset1.Label = "Pie1"
+        Me.GunaPieDataset1.TargetChart = Me.chartpm
+        '
         'panelbanner
         '
         Me.panelbanner.BackColor = System.Drawing.Color.Transparent
@@ -931,11 +936,6 @@ Partial Class frm_dashboard1
         Me.lblgg.TabIndex = 112
         Me.lblgg.Text = "WELCOME, FULLNAME!"
         Me.lblgg.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'GunaPieDataset1
-        '
-        Me.GunaPieDataset1.Label = "Pie1"
-        Me.GunaPieDataset1.TargetChart = Me.chartpm
         '
         'frm_dashboard1
         '

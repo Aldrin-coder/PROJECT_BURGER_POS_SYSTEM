@@ -184,7 +184,7 @@ Public Class frm_dashboard1
         cmd.Dispose()
 
         Dim changeAmt As Decimal = paid - totalAmount
-        Dim taxPeso As Decimal = totalAmount - subtotalAmt
+        Dim totaltax As Decimal = totalAmount - subtotalAmt
 
         ' 2. Build the receipt text (Standard Padding)
         Dim sb As New System.Text.StringBuilder()
@@ -221,7 +221,7 @@ Public Class frm_dashboard1
         ' 4. Add Totals
         sb.AppendLine(line)
         sb.AppendLine("Subtotal:".PadRight(20) & "P " & subtotalAmt.ToString("N2"))
-        sb.AppendLine("Tax (" & (taxRate * 100).ToString("0.##") & "%):".PadRight(20) & "P " & taxPeso.ToString("N2"))
+        sb.AppendLine("Tax (2%):".PadRight(20) & "P " & totaltax.ToString("N2"))
         sb.AppendLine("TOTAL:".PadRight(20) & "P " & totalAmount.ToString("N2"))
         sb.AppendLine("Paid:".PadRight(20) & "P " & paid.ToString("N2"))
         sb.AppendLine("Change:".PadRight(20) & "P " & changeAmt.ToString("N2"))
@@ -448,6 +448,10 @@ Public Class frm_dashboard1
     End Sub
 
     Private Sub Guna2Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Guna2Panel1.Paint
+
+    End Sub
+
+    Private Sub chartmsl_Load(sender As Object, e As EventArgs) Handles chartmsl.Load
 
     End Sub
 End Class

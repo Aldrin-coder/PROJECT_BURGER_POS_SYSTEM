@@ -67,18 +67,6 @@ INSERT INTO categories (category_name) VALUES
 ('Burgers'), ('Hotdogs'), ('Sandwiches'), ('Fries'), ('Add-ons'), ('Drinks');
 GO
 
-DECLARE @NewItemCode VARCHAR(20);
-EXEC [dbo].[SP_AutoNumberMenu] 'M', @NewItemCode OUTPUT;
-IF @NewItemCode IS NULL
-
-BEGIN
-    RAISERROR('SP_AutoNumberMenu failed to generate a code. Check AutoNumberMenu table exists.', 16, 1);
-    RETURN;
-END
-
-INSERT INTO menu_items (item_code, product_name, price, category_id, quantity, product_image, IsActive)
-VALUES (@NewItemCode, 'Classic Burger', 50.00, 1, 100, 'C:\Images\burger.png', 1);
-GO
 
 -- PART B: SELECT (VIEW DATA)
 SELECT
